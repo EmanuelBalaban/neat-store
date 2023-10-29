@@ -1,5 +1,15 @@
 {
   "@@locale": "en",
   "languageName": "English",
-  "appTitle": "NeatStore"
+  "appTitle": "NeatStore",
+  "email": "Email",
+  "emailHint": "john@doe.com",
+  "emailRequired": "Email is required!",
+  "invalidEmailFormat": "The provided email is not a valid email address.",
+  "password": "Password",
+  "passwordHint": "@$&#@!",
+  "passwordRequired": "Password is required!",
+  "invalidPassword": "Password must be 7 or more characters!",
+  "login": "Login",
+  "register": "Register"
 }
