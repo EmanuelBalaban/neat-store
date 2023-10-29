@@ -1,9 +1,5 @@
 mutation CreateCustomer($input: CustomerCreateInput!) {
     createCustomerV2(input: $input) {
-        customer {
-            firstname
-            lastname
-            email
-        }
+        __typename
     }
 }

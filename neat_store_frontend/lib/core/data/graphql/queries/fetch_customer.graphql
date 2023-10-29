@@ -1,0 +1,7 @@
+query FetchCustomer {
+    customer {
+        firstname
+        lastname
+        email
+    }
+}

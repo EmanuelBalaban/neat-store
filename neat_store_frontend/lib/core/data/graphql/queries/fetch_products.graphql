@@ -1,0 +1,56 @@
+query FetchProducts {
+    products(filter: {}) {
+        items {
+            sku
+            name
+            image {
+                url
+            }
+            review_count
+            rating_summary
+            price_range {
+                minimum_price {
+                    regular_price {
+                        value
+                        currency
+                    }
+                }
+            }
+
+            ... on ConfigurableProduct {
+                configurable_options {
+                    label
+                    attribute_code
+                    values {
+                        uid
+                        label
+                        swatch_data {
+                            value
+                        }
+                    }
+                }
+                variants {
+                    attributes {
+                        uid
+                        code
+                        label
+                    }
+                    product {
+                        sku
+                        image {
+                            url
+                        }
+                        price_range {
+                            minimum_price {
+                                regular_price {
+                                    value
+                                    currency
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

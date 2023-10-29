@@ -1,9 +1,11 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-import '../magento.graphql.dart';
 import 'dart:async';
+
 import 'package:gql/ast.dart';
 import 'package:graphql/client.dart' as graphql;
+
+import '../magento.graphql.dart';
 
 class Variables$Mutation$CreateCustomer {
   factory Variables$Mutation$CreateCustomer(
@@ -277,48 +279,12 @@ const documentNodeMutationCreateCustomer = DocumentNode(definitions: [
         directives: [],
         selectionSet: SelectionSetNode(selections: [
           FieldNode(
-            name: NameNode(value: 'customer'),
-            alias: null,
-            arguments: [],
-            directives: [],
-            selectionSet: SelectionSetNode(selections: [
-              FieldNode(
-                name: NameNode(value: 'firstname'),
-                alias: null,
-                arguments: [],
-                directives: [],
-                selectionSet: null,
-              ),
-              FieldNode(
-                name: NameNode(value: 'lastname'),
-                alias: null,
-                arguments: [],
-                directives: [],
-                selectionSet: null,
-              ),
-              FieldNode(
-                name: NameNode(value: 'email'),
-                alias: null,
-                arguments: [],
-                directives: [],
-                selectionSet: null,
-              ),
-              FieldNode(
-                name: NameNode(value: '__typename'),
-                alias: null,
-                arguments: [],
-                directives: [],
-                selectionSet: null,
-              ),
-            ]),
-          ),
-          FieldNode(
             name: NameNode(value: '__typename'),
             alias: null,
             arguments: [],
             directives: [],
             selectionSet: null,
-          ),
+          )
         ]),
       ),
       FieldNode(
@@ -429,30 +395,20 @@ extension ClientExtension$Mutation$CreateCustomer on graphql.GraphQLClient {
 }
 
 class Mutation$CreateCustomer$createCustomerV2 {
-  Mutation$CreateCustomer$createCustomerV2({
-    required this.customer,
-    this.$__typename = 'CustomerOutput',
-  });
+  Mutation$CreateCustomer$createCustomerV2(
+      {this.$__typename = 'CustomerOutput'});
 
   factory Mutation$CreateCustomer$createCustomerV2.fromJson(
       Map<String, dynamic> json) {
-    final l$customer = json['customer'];
     final l$$__typename = json['__typename'];
     return Mutation$CreateCustomer$createCustomerV2(
-      customer: Mutation$CreateCustomer$createCustomerV2$customer.fromJson(
-          (l$customer as Map<String, dynamic>)),
-      $__typename: (l$$__typename as String),
-    );
+        $__typename: (l$$__typename as String));
   }
-
-  final Mutation$CreateCustomer$createCustomerV2$customer customer;
 
   final String $__typename;
 
   Map<String, dynamic> toJson() {
     final _resultData = <String, dynamic>{};
-    final l$customer = customer;
-    _resultData['customer'] = l$customer.toJson();
     final l$$__typename = $__typename;
     _resultData['__typename'] = l$$__typename;
     return _resultData;
@@ -460,12 +416,8 @@ class Mutation$CreateCustomer$createCustomerV2 {
 
   @override
   int get hashCode {
-    final l$customer = customer;
     final l$$__typename = $__typename;
-    return Object.hashAll([
-      l$customer,
-      l$$__typename,
-    ]);
+    return Object.hashAll([l$$__typename]);
   }
 
   @override
@@ -475,11 +427,6 @@ class Mutation$CreateCustomer$createCustomerV2 {
     }
     if (!(other is Mutation$CreateCustomer$createCustomerV2) ||
         runtimeType != other.runtimeType) {
-      return false;
-    }
-    final l$customer = customer;
-    final lOther$customer = other.customer;
-    if (l$customer != lOther$customer) {
       return false;
     }
     final l$$__typename = $__typename;
@@ -510,11 +457,7 @@ abstract class CopyWith$Mutation$CreateCustomer$createCustomerV2<TRes> {
   factory CopyWith$Mutation$CreateCustomer$createCustomerV2.stub(TRes res) =
       _CopyWithStubImpl$Mutation$CreateCustomer$createCustomerV2;
 
-  TRes call({
-    Mutation$CreateCustomer$createCustomerV2$customer? customer,
-    String? $__typename,
-  });
-  CopyWith$Mutation$CreateCustomer$createCustomerV2$customer<TRes> get customer;
+  TRes call({String? $__typename});
 }
 
 class _CopyWithImpl$Mutation$CreateCustomer$createCustomerV2<TRes>
@@ -530,25 +473,11 @@ class _CopyWithImpl$Mutation$CreateCustomer$createCustomerV2<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
-  TRes call({
-    Object? customer = _undefined,
-    Object? $__typename = _undefined,
-  }) =>
+  TRes call({Object? $__typename = _undefined}) =>
       _then(Mutation$CreateCustomer$createCustomerV2(
-        customer: customer == _undefined || customer == null
-            ? _instance.customer
-            : (customer as Mutation$CreateCustomer$createCustomerV2$customer),
-        $__typename: $__typename == _undefined || $__typename == null
-            ? _instance.$__typename
-            : ($__typename as String),
-      ));
-
-  CopyWith$Mutation$CreateCustomer$createCustomerV2$customer<TRes>
-      get customer {
-    final local$customer = _instance.customer;
-    return CopyWith$Mutation$CreateCustomer$createCustomerV2$customer(
-        local$customer, (e) => call(customer: e));
-  }
+          $__typename: $__typename == _undefined || $__typename == null
+              ? _instance.$__typename
+              : ($__typename as String)));
 }
 
 class _CopyWithStubImpl$Mutation$CreateCustomer$createCustomerV2<TRes>
@@ -557,183 +486,5 @@ class _CopyWithStubImpl$Mutation$CreateCustomer$createCustomerV2<TRes>
 
   TRes _res;
 
-  call({
-    Mutation$CreateCustomer$createCustomerV2$customer? customer,
-    String? $__typename,
-  }) =>
-      _res;
-
-  CopyWith$Mutation$CreateCustomer$createCustomerV2$customer<TRes>
-      get customer =>
-          CopyWith$Mutation$CreateCustomer$createCustomerV2$customer.stub(_res);
-}
-
-class Mutation$CreateCustomer$createCustomerV2$customer {
-  Mutation$CreateCustomer$createCustomerV2$customer({
-    this.firstname,
-    this.lastname,
-    this.email,
-    this.$__typename = 'Customer',
-  });
-
-  factory Mutation$CreateCustomer$createCustomerV2$customer.fromJson(
-      Map<String, dynamic> json) {
-    final l$firstname = json['firstname'];
-    final l$lastname = json['lastname'];
-    final l$email = json['email'];
-    final l$$__typename = json['__typename'];
-    return Mutation$CreateCustomer$createCustomerV2$customer(
-      firstname: (l$firstname as String?),
-      lastname: (l$lastname as String?),
-      email: (l$email as String?),
-      $__typename: (l$$__typename as String),
-    );
-  }
-
-  final String? firstname;
-
-  final String? lastname;
-
-  final String? email;
-
-  final String $__typename;
-
-  Map<String, dynamic> toJson() {
-    final _resultData = <String, dynamic>{};
-    final l$firstname = firstname;
-    _resultData['firstname'] = l$firstname;
-    final l$lastname = lastname;
-    _resultData['lastname'] = l$lastname;
-    final l$email = email;
-    _resultData['email'] = l$email;
-    final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
-    return _resultData;
-  }
-
-  @override
-  int get hashCode {
-    final l$firstname = firstname;
-    final l$lastname = lastname;
-    final l$email = email;
-    final l$$__typename = $__typename;
-    return Object.hashAll([
-      l$firstname,
-      l$lastname,
-      l$email,
-      l$$__typename,
-    ]);
-  }
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) {
-      return true;
-    }
-    if (!(other is Mutation$CreateCustomer$createCustomerV2$customer) ||
-        runtimeType != other.runtimeType) {
-      return false;
-    }
-    final l$firstname = firstname;
-    final lOther$firstname = other.firstname;
-    if (l$firstname != lOther$firstname) {
-      return false;
-    }
-    final l$lastname = lastname;
-    final lOther$lastname = other.lastname;
-    if (l$lastname != lOther$lastname) {
-      return false;
-    }
-    final l$email = email;
-    final lOther$email = other.email;
-    if (l$email != lOther$email) {
-      return false;
-    }
-    final l$$__typename = $__typename;
-    final lOther$$__typename = other.$__typename;
-    if (l$$__typename != lOther$$__typename) {
-      return false;
-    }
-    return true;
-  }
-}
-
-extension UtilityExtension$Mutation$CreateCustomer$createCustomerV2$customer
-    on Mutation$CreateCustomer$createCustomerV2$customer {
-  CopyWith$Mutation$CreateCustomer$createCustomerV2$customer<
-          Mutation$CreateCustomer$createCustomerV2$customer>
-      get copyWith =>
-          CopyWith$Mutation$CreateCustomer$createCustomerV2$customer(
-            this,
-            (i) => i,
-          );
-}
-
-abstract class CopyWith$Mutation$CreateCustomer$createCustomerV2$customer<
-    TRes> {
-  factory CopyWith$Mutation$CreateCustomer$createCustomerV2$customer(
-    Mutation$CreateCustomer$createCustomerV2$customer instance,
-    TRes Function(Mutation$CreateCustomer$createCustomerV2$customer) then,
-  ) = _CopyWithImpl$Mutation$CreateCustomer$createCustomerV2$customer;
-
-  factory CopyWith$Mutation$CreateCustomer$createCustomerV2$customer.stub(
-          TRes res) =
-      _CopyWithStubImpl$Mutation$CreateCustomer$createCustomerV2$customer;
-
-  TRes call({
-    String? firstname,
-    String? lastname,
-    String? email,
-    String? $__typename,
-  });
-}
-
-class _CopyWithImpl$Mutation$CreateCustomer$createCustomerV2$customer<TRes>
-    implements
-        CopyWith$Mutation$CreateCustomer$createCustomerV2$customer<TRes> {
-  _CopyWithImpl$Mutation$CreateCustomer$createCustomerV2$customer(
-    this._instance,
-    this._then,
-  );
-
-  final Mutation$CreateCustomer$createCustomerV2$customer _instance;
-
-  final TRes Function(Mutation$CreateCustomer$createCustomerV2$customer) _then;
-
-  static const _undefined = <dynamic, dynamic>{};
-
-  TRes call({
-    Object? firstname = _undefined,
-    Object? lastname = _undefined,
-    Object? email = _undefined,
-    Object? $__typename = _undefined,
-  }) =>
-      _then(Mutation$CreateCustomer$createCustomerV2$customer(
-        firstname: firstname == _undefined
-            ? _instance.firstname
-            : (firstname as String?),
-        lastname:
-            lastname == _undefined ? _instance.lastname : (lastname as String?),
-        email: email == _undefined ? _instance.email : (email as String?),
-        $__typename: $__typename == _undefined || $__typename == null
-            ? _instance.$__typename
-            : ($__typename as String),
-      ));
-}
-
-class _CopyWithStubImpl$Mutation$CreateCustomer$createCustomerV2$customer<TRes>
-    implements
-        CopyWith$Mutation$CreateCustomer$createCustomerV2$customer<TRes> {
-  _CopyWithStubImpl$Mutation$CreateCustomer$createCustomerV2$customer(
-      this._res);
-
-  TRes _res;
-
-  call({
-    String? firstname,
-    String? lastname,
-    String? email,
-    String? $__typename,
-  }) =>
-      _res;
+  call({String? $__typename}) => _res;
 }
