@@ -15,9 +15,9 @@ use Stripe\PaymentIntent;
 
 class GetPaymentIntent implements ResolverInterface
 {
-    protected $quoteRepository;
-    protected $cartManagement;
-    protected $quoteIdMaskFactory;
+    protected QuoteRepository $quoteRepository;
+    protected CartManagementInterface $cartManagement;
+    protected QuoteIdMaskFactory $quoteIdMaskFactory;
 
     public function __construct(
         QuoteRepository         $quoteRepository,
@@ -36,7 +36,7 @@ class GetPaymentIntent implements ResolverInterface
         ResolveInfo $info,
         array       $value = null,
         array       $args = null
-    )
+    ): array
     {
         $cartId = $args['cart_id'];
 
@@ -49,7 +49,7 @@ class GetPaymentIntent implements ResolverInterface
         }
 
         // Initialize Stripe with your API key
-        // Stripe::setApiKey('sk_test_51O0nGfKUXnP0ANqYxf7L2oXKpUAwMpEroAPOhuvQuvtxwdEuMQzxaSTHubSqFSPUXHPrg2ji38WaTBT325RYfWLn00RDFr2XsF');
+        Stripe::setApiKey('sk_test_51O0nGfKUXnP0ANqYxf7L2oXKpUAwMpEroAPOhuvQuvtxwdEuMQzxaSTHubSqFSPUXHPrg2ji38WaTBT325RYfWLn00RDFr2XsF');
 
         // Create a Payment Intent
         try {
