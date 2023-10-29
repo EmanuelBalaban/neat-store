@@ -1,0 +1,11 @@
+type Query {
+    getPaymentIntent(cart_id: String!): PaymentIntent @resolver(class: "NeatStore\\GetPaymentIntent\\Model\\Resolver\\GetPaymentIntent") @doc(description: "Get Payment Intent for a Cart")
+}
+
+type PaymentIntent {
+    id: ID!
+    amount: Float!
+    currency: String!
+    status: String!
+    clientSecret: String!
+}
