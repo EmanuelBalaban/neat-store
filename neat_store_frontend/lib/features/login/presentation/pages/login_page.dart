@@ -7,7 +7,9 @@ import 'package:neat_store_frontend/features/login/presentation/containers/login
 
 @RoutePage()
 class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+  const LoginPage({this.onResult, super.key});
+
+  final void Function({required bool isAuthenticated})? onResult;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +33,7 @@ class LoginPage extends StatelessWidget {
           ],
         ),
       ),
-      body: const LoginContainer(),
+      body: LoginContainer(onResult: onResult),
     );
   }
 }

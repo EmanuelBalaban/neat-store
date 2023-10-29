@@ -22,9 +22,14 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     LoginRoute.name: (routeData) {
+      final args = routeData.argsAs<LoginRouteArgs>(
+          orElse: () => const LoginRouteArgs());
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const LoginPage(),
+        child: LoginPage(
+          onResult: args.onResult,
+          key: args.key,
+        ),
       );
     },
     RegisterRoute.name: (routeData) {
@@ -52,16 +57,39 @@ class HomeRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [LoginPage]
-class LoginRoute extends PageRouteInfo<void> {
-  const LoginRoute({List<PageRouteInfo>? children})
-      : super(
+class LoginRoute extends PageRouteInfo<LoginRouteArgs> {
+  LoginRoute({
+    void Function({bool isAuthenticated})? onResult,
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
           LoginRoute.name,
+          args: LoginRouteArgs(
+            onResult: onResult,
+            key: key,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'LoginRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<LoginRouteArgs> page = PageInfo<LoginRouteArgs>(name);
+}
+
+class LoginRouteArgs {
+  const LoginRouteArgs({
+    this.onResult,
+    this.key,
+  });
+
+  final void Function({bool isAuthenticated})? onResult;
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'LoginRouteArgs{onResult: $onResult, key: $key}';
+  }
 }
 
 /// generated route for

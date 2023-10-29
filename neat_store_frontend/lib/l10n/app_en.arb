@@ -11,5 +11,6 @@
   "passwordRequired": "Password is required!",
   "invalidPassword": "Password must be 7 or more characters!",
   "login": "Login",
-  "register": "Register"
+  "register": "Register",
+  "loginFailed": "Login failed. Please try again!"
 }

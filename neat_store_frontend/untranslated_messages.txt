@@ -1,0 +1,15 @@
+{
+  "ro": [
+    "email",
+    "emailHint",
+    "emailRequired",
+    "invalidEmailFormat",
+    "password",
+    "passwordHint",
+    "passwordRequired",
+    "invalidPassword",
+    "login",
+    "register",
+    "loginFailed"
+  ]
+}

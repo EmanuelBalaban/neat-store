@@ -1,6 +1,6 @@
 part of 'customer_cubit.dart';
 
-typedef AuthorizationState = AsyncValue<JWT?>;
+typedef AuthorizationState = AsyncValue<String?>;
 typedef FetchCustomerState = AsyncValue<CustomerModel?>;
 typedef RegisterCustomerState = AsyncValue<Void?>;
 
@@ -14,9 +14,9 @@ class CustomerState with _$CustomerState {
     required RegisterCustomerState registerCustomerState,
   }) = _CustomerState;
 
-  factory CustomerState.initial() => const CustomerState(
-        authorizationState: AuthorizationState.data(null),
-        fetchCustomerState: FetchCustomerState.data(null),
-        registerCustomerState: RegisterCustomerState.data(null),
+  factory CustomerState.initial({String? token}) => CustomerState(
+        authorizationState: AuthorizationState.data(token),
+        fetchCustomerState: const FetchCustomerState.data(null),
+        registerCustomerState: const RegisterCustomerState.data(null),
       );
 }

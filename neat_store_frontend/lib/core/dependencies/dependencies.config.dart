@@ -60,18 +60,24 @@ extension GetItInjectableX on _i1.GetIt {
       () => registerModule.sharedPreferences,
       preResolve: true,
     );
-    gh.lazySingletonAsync<_i9.Stripe>(() => registerModule.stripe);
+    await gh.lazySingletonAsync<_i9.Stripe>(
+      () => registerModule.stripe,
+      preResolve: true,
+    );
     gh.factory<_i10.CartRepository>(
         () => _i10.CartRepository(gh<_i5.GraphQLClient>()));
     gh.factory<_i11.CustomerRepository>(
         () => _i11.CustomerRepository(gh<_i5.GraphQLClient>()));
     gh.lazySingleton<_i12.ILocalStorage>(
         () => _i13.SharedPreferencesService(gh<_i8.SharedPreferences>()));
-    gh.factory<_i14.CustomerCubit>(() => _i14.CustomerCubit(
-          gh<_i6.Logger>(),
-          gh<_i12.ILocalStorage>(),
-          gh<_i11.CustomerRepository>(),
-        ));
+    await gh.factoryAsync<_i14.CustomerCubit>(
+      () => _i14.CustomerCubit.create(
+        gh<_i6.Logger>(),
+        gh<_i12.ILocalStorage>(),
+        gh<_i11.CustomerRepository>(),
+      ),
+      preResolve: true,
+    );
     return this;
   }
 }

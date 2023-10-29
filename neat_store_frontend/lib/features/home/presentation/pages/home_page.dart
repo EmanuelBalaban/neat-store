@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'package:auto_route/auto_route.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 
-import 'package:neat_store_frontend/core/business_logic/customer/customer_cubit.dart';
+import 'package:neat_store_frontend/core/dependencies/dependencies.dart';
 
 @RoutePage()
 class HomePage extends StatefulWidget {
@@ -15,6 +14,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  late final _stripe = getIt.get<Stripe>();
   bool _ready = false;
 
   @override
@@ -24,11 +24,6 @@ class _HomePageState extends State<HomePage> {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       _initPaymentSheet();
     });
-
-    context.read<CustomerCubit>().login(
-          email: 'emanuelbalaban@gmail.com',
-          password: 'Password123!',
-        );
   }
 
   @override
@@ -47,7 +42,7 @@ class _HomePageState extends State<HomePage> {
           print('presenting payment sheet...');
 
           try {
-            await Stripe.instance.presentPaymentSheet();
+            await _stripe.presentPaymentSheet();
           } catch (ex, st) {
             print(ex);
             print(st);
@@ -73,7 +68,7 @@ class _HomePageState extends State<HomePage> {
       };
 
       // 2. initialize the payment sheet
-      await Stripe.instance.initPaymentSheet(
+      await _stripe.initPaymentSheet(
         paymentSheetParameters: SetupPaymentSheetParameters(
           merchantDisplayName: 'Flutter Stripe Store Demo',
           paymentIntentClientSecret: data['client_secret'],

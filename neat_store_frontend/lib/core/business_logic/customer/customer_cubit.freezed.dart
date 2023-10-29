@@ -16,7 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$CustomerState {
-  AsyncValue<JWT?> get authorizationState => throw _privateConstructorUsedError;
+  AsyncValue<String?> get authorizationState =>
+      throw _privateConstructorUsedError;
   AsyncValue<CustomerModel?> get fetchCustomerState =>
       throw _privateConstructorUsedError;
   AsyncValue<Void?> get registerCustomerState =>
@@ -34,7 +35,7 @@ abstract class $CustomerStateCopyWith<$Res> {
       _$CustomerStateCopyWithImpl<$Res, CustomerState>;
   @useResult
   $Res call(
-      {AsyncValue<JWT?> authorizationState,
+      {AsyncValue<String?> authorizationState,
       AsyncValue<CustomerModel?> fetchCustomerState,
       AsyncValue<Void?> registerCustomerState});
 }
@@ -60,7 +61,7 @@ class _$CustomerStateCopyWithImpl<$Res, $Val extends CustomerState>
       authorizationState: null == authorizationState
           ? _value.authorizationState
           : authorizationState // ignore: cast_nullable_to_non_nullable
-              as AsyncValue<JWT?>,
+              as AsyncValue<String?>,
       fetchCustomerState: null == fetchCustomerState
           ? _value.fetchCustomerState
           : fetchCustomerState // ignore: cast_nullable_to_non_nullable
@@ -82,7 +83,7 @@ abstract class _$$CustomerStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {AsyncValue<JWT?> authorizationState,
+      {AsyncValue<String?> authorizationState,
       AsyncValue<CustomerModel?> fetchCustomerState,
       AsyncValue<Void?> registerCustomerState});
 }
@@ -106,7 +107,7 @@ class __$$CustomerStateImplCopyWithImpl<$Res>
       authorizationState: null == authorizationState
           ? _value.authorizationState
           : authorizationState // ignore: cast_nullable_to_non_nullable
-              as AsyncValue<JWT?>,
+              as AsyncValue<String?>,
       fetchCustomerState: null == fetchCustomerState
           ? _value.fetchCustomerState
           : fetchCustomerState // ignore: cast_nullable_to_non_nullable
@@ -129,7 +130,7 @@ class _$CustomerStateImpl extends _CustomerState {
       : super._();
 
   @override
-  final AsyncValue<JWT?> authorizationState;
+  final AsyncValue<String?> authorizationState;
   @override
   final AsyncValue<CustomerModel?> fetchCustomerState;
   @override
@@ -166,14 +167,14 @@ class _$CustomerStateImpl extends _CustomerState {
 
 abstract class _CustomerState extends CustomerState {
   const factory _CustomerState(
-          {required final AsyncValue<JWT?> authorizationState,
+          {required final AsyncValue<String?> authorizationState,
           required final AsyncValue<CustomerModel?> fetchCustomerState,
           required final AsyncValue<Void?> registerCustomerState}) =
       _$CustomerStateImpl;
   const _CustomerState._() : super._();
 
   @override
-  AsyncValue<JWT?> get authorizationState;
+  AsyncValue<String?> get authorizationState;
   @override
   AsyncValue<CustomerModel?> get fetchCustomerState;
   @override
