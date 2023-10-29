@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'config.dart';
+part of 'config_model.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,32 +14,34 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-Config _$ConfigFromJson(Map<String, dynamic> json) {
-  return _Config.fromJson(json);
+ConfigModel _$ConfigModelFromJson(Map<String, dynamic> json) {
+  return _ConfigModel.fromJson(json);
 }
 
 /// @nodoc
-mixin _$Config {
+mixin _$ConfigModel {
   String get apiUrl => throw _privateConstructorUsedError;
   String get stripePublishableKey => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ConfigCopyWith<Config> get copyWith => throw _privateConstructorUsedError;
+  $ConfigModelCopyWith<ConfigModel> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ConfigCopyWith<$Res> {
-  factory $ConfigCopyWith(Config value, $Res Function(Config) then) =
-      _$ConfigCopyWithImpl<$Res, Config>;
+abstract class $ConfigModelCopyWith<$Res> {
+  factory $ConfigModelCopyWith(
+          ConfigModel value, $Res Function(ConfigModel) then) =
+      _$ConfigModelCopyWithImpl<$Res, ConfigModel>;
   @useResult
   $Res call({String apiUrl, String stripePublishableKey});
 }
 
 /// @nodoc
-class _$ConfigCopyWithImpl<$Res, $Val extends Config>
-    implements $ConfigCopyWith<$Res> {
-  _$ConfigCopyWithImpl(this._value, this._then);
+class _$ConfigModelCopyWithImpl<$Res, $Val extends ConfigModel>
+    implements $ConfigModelCopyWith<$Res> {
+  _$ConfigModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -66,21 +68,22 @@ class _$ConfigCopyWithImpl<$Res, $Val extends Config>
 }
 
 /// @nodoc
-abstract class _$$ConfigImplCopyWith<$Res> implements $ConfigCopyWith<$Res> {
-  factory _$$ConfigImplCopyWith(
-          _$ConfigImpl value, $Res Function(_$ConfigImpl) then) =
-      __$$ConfigImplCopyWithImpl<$Res>;
+abstract class _$$ConfigModelImplCopyWith<$Res>
+    implements $ConfigModelCopyWith<$Res> {
+  factory _$$ConfigModelImplCopyWith(
+          _$ConfigModelImpl value, $Res Function(_$ConfigModelImpl) then) =
+      __$$ConfigModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String apiUrl, String stripePublishableKey});
 }
 
 /// @nodoc
-class __$$ConfigImplCopyWithImpl<$Res>
-    extends _$ConfigCopyWithImpl<$Res, _$ConfigImpl>
-    implements _$$ConfigImplCopyWith<$Res> {
-  __$$ConfigImplCopyWithImpl(
-      _$ConfigImpl _value, $Res Function(_$ConfigImpl) _then)
+class __$$ConfigModelImplCopyWithImpl<$Res>
+    extends _$ConfigModelCopyWithImpl<$Res, _$ConfigModelImpl>
+    implements _$$ConfigModelImplCopyWith<$Res> {
+  __$$ConfigModelImplCopyWithImpl(
+      _$ConfigModelImpl _value, $Res Function(_$ConfigModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -89,7 +92,7 @@ class __$$ConfigImplCopyWithImpl<$Res>
     Object? apiUrl = null,
     Object? stripePublishableKey = null,
   }) {
-    return _then(_$ConfigImpl(
+    return _then(_$ConfigModelImpl(
       apiUrl: null == apiUrl
           ? _value.apiUrl
           : apiUrl // ignore: cast_nullable_to_non_nullable
@@ -105,12 +108,12 @@ class __$$ConfigImplCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(fieldRename: FieldRename.screamingSnake)
-class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
-  const _$ConfigImpl({required this.apiUrl, required this.stripePublishableKey})
-      : super._();
+class _$ConfigModelImpl implements _ConfigModel {
+  const _$ConfigModelImpl(
+      {required this.apiUrl, required this.stripePublishableKey});
 
-  factory _$ConfigImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ConfigImplFromJson(json);
+  factory _$ConfigModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ConfigModelImplFromJson(json);
 
   @override
   final String apiUrl;
@@ -118,24 +121,15 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
   final String stripePublishableKey;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Config(apiUrl: $apiUrl, stripePublishableKey: $stripePublishableKey)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'Config'))
-      ..add(DiagnosticsProperty('apiUrl', apiUrl))
-      ..add(DiagnosticsProperty('stripePublishableKey', stripePublishableKey));
+  String toString() {
+    return 'ConfigModel(apiUrl: $apiUrl, stripePublishableKey: $stripePublishableKey)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ConfigImpl &&
+            other is _$ConfigModelImpl &&
             (identical(other.apiUrl, apiUrl) || other.apiUrl == apiUrl) &&
             (identical(other.stripePublishableKey, stripePublishableKey) ||
                 other.stripePublishableKey == stripePublishableKey));
@@ -148,24 +142,24 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ConfigImplCopyWith<_$ConfigImpl> get copyWith =>
-      __$$ConfigImplCopyWithImpl<_$ConfigImpl>(this, _$identity);
+  _$$ConfigModelImplCopyWith<_$ConfigModelImpl> get copyWith =>
+      __$$ConfigModelImplCopyWithImpl<_$ConfigModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ConfigImplToJson(
+    return _$$ConfigModelImplToJson(
       this,
     );
   }
 }
 
-abstract class _Config extends Config {
-  const factory _Config(
+abstract class _ConfigModel implements ConfigModel {
+  const factory _ConfigModel(
       {required final String apiUrl,
-      required final String stripePublishableKey}) = _$ConfigImpl;
-  const _Config._() : super._();
+      required final String stripePublishableKey}) = _$ConfigModelImpl;
 
-  factory _Config.fromJson(Map<String, dynamic> json) = _$ConfigImpl.fromJson;
+  factory _ConfigModel.fromJson(Map<String, dynamic> json) =
+      _$ConfigModelImpl.fromJson;
 
   @override
   String get apiUrl;
@@ -173,6 +167,6 @@ abstract class _Config extends Config {
   String get stripePublishableKey;
   @override
   @JsonKey(ignore: true)
-  _$$ConfigImplCopyWith<_$ConfigImpl> get copyWith =>
+  _$$ConfigModelImplCopyWith<_$ConfigModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -1,3 +1,4 @@
+import 'package:graphql/client.dart';
 import 'package:injectable/injectable.dart';
 
 import 'package:neat_store_frontend/core/data/graphql/magento.graphql.dart';
@@ -5,18 +6,17 @@ import 'package:neat_store_frontend/core/data/graphql/mutations/create_customer.
 import 'package:neat_store_frontend/core/data/graphql/mutations/generate_customer_token.graphql.dart';
 import 'package:neat_store_frontend/core/data/graphql/queries/fetch_customer.graphql.dart';
 import 'package:neat_store_frontend/core/data/models/customer/customer_model.dart';
-import 'package:neat_store_frontend/core/services/magento_service.dart';
 
 @injectable
 class CustomerRepository {
-  const CustomerRepository(this._magentoService);
+  const CustomerRepository(this._gql);
 
-  final MagentoService _magentoService;
+  final GraphQLClient _gql;
 
   Future<void> createCustomer(
     Input$CustomerCreateInput input,
   ) async {
-    final result = await _magentoService.gql.mutate$CreateCustomer(
+    final result = await _gql.mutate$CreateCustomer(
       Options$Mutation$CreateCustomer(
         variables: Variables$Mutation$CreateCustomer(input: input),
       ),
@@ -31,7 +31,7 @@ class CustomerRepository {
     required String email,
     required String password,
   }) async {
-    final result = await _magentoService.gql.mutate$GenerateCustomerToken(
+    final result = await _gql.mutate$GenerateCustomerToken(
       Options$Mutation$GenerateCustomerToken(
         variables: Variables$Mutation$GenerateCustomerToken(
           email: email,
@@ -48,7 +48,7 @@ class CustomerRepository {
   }
 
   Future<CustomerModel?> fetchCustomer() async {
-    final result = await _magentoService.gql.query$FetchCustomer();
+    final result = await _gql.query$FetchCustomer();
 
     if (result.hasException) {
       throw result.exception!;

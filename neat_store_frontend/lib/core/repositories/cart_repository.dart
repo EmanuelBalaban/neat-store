@@ -1,12 +1,11 @@
+import 'package:graphql/client.dart';
 import 'package:injectable/injectable.dart';
-
-import 'package:neat_store_frontend/core/services/magento_service.dart';
 
 @injectable
 class CartRepository {
-  const CartRepository(this._magentoService);
+  const CartRepository(this._gql);
 
-  final MagentoService _magentoService;
+  final GraphQLClient _gql;
 
   Future<int> fetchCartItemsCount() async {
     // TODO: implement

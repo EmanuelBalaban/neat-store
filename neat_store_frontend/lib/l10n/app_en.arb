@@ -1,4 +1,5 @@
 {
   "@@locale": "en",
-  "languageName": "English"
+  "languageName": "English",
+  "appTitle": "NeatStore"
 }

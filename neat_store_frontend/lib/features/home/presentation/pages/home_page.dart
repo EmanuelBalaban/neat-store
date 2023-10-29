@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 
+import 'package:auto_route/auto_route.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 
+import 'package:neat_store_frontend/core/business_logic/customer/customer_cubit.dart';
+
+@RoutePage()
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -19,6 +24,11 @@ class _HomePageState extends State<HomePage> {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       _initPaymentSheet();
     });
+
+    context.read<CustomerCubit>().login(
+          email: 'emanuelbalaban@gmail.com',
+          password: 'Password123!',
+        );
   }
 
   @override
