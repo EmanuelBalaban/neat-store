@@ -7,7 +7,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 
 import 'package:neat_store_frontend/core/app.dart';
-import 'package:neat_store_frontend/core/resources/config.dart';
+import 'package:neat_store_frontend/core/data/models/config/config.dart';
 import 'package:neat_store_frontend/core/utils/dev_http_overrides.dart';
 
 Future<void> main() async {

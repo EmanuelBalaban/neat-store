@@ -1,0 +1,10 @@
+schema: magento.graphql
+documents: '**/*.graphql'
+
+extensions:
+  endpoints:
+    Magento:
+      url: https://magento.test/graphql
+      introspect: true
+      headers:
+        authorization: Bearer token

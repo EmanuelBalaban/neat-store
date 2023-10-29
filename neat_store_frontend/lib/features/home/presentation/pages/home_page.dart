@@ -59,7 +59,7 @@ class _HomePageState extends State<HomePage> {
       // final data = await _createTestPaymentSheet();
       final data = {
         'client_secret':
-            'pi_3O6Uu2KUXnP0ANqY1a8APHBh_secret_jxyubWjMh6at5Ps3SkqFYFPox',
+            'pi_3O6WCxKUXnP0ANqY11aGHTHF_secret_IND95sQrE0d5Sycbgqh10IkPk',
       };
 
       // 2. initialize the payment sheet
@@ -67,6 +67,20 @@ class _HomePageState extends State<HomePage> {
         paymentSheetParameters: SetupPaymentSheetParameters(
           merchantDisplayName: 'Flutter Stripe Store Demo',
           paymentIntentClientSecret: data['client_secret'],
+          // TODO: fill in billing details
+          billingDetails: const BillingDetails(
+            name: 'Emanuel Balaban',
+            email: 'emanuelbalaban@gmail.com',
+            phone: '0768900782',
+            address: Address(
+              country: 'RO',
+              state: 'DOLJ',
+              city: 'Craiova',
+              line1: '55',
+              line2: 'Nanterre',
+              postalCode: '200491',
+            ),
+          ),
         ),
       );
 

@@ -17,6 +17,7 @@ analyzer:
     - lib/**.g.dart
     - lib/**/*.gr.dart
     - lib/firebase_options.dart
+    - lib/**/*.graphql.dart
   language:
     strict-casts: false
     strict-inference: false

@@ -20,6 +20,7 @@ Config _$ConfigFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Config {
+  String get apiUrl => throw _privateConstructorUsedError;
   String get stripePublishableKey => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -32,7 +33,7 @@ abstract class $ConfigCopyWith<$Res> {
   factory $ConfigCopyWith(Config value, $Res Function(Config) then) =
       _$ConfigCopyWithImpl<$Res, Config>;
   @useResult
-  $Res call({String stripePublishableKey});
+  $Res call({String apiUrl, String stripePublishableKey});
 }
 
 /// @nodoc
@@ -48,9 +49,14 @@ class _$ConfigCopyWithImpl<$Res, $Val extends Config>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? apiUrl = null,
     Object? stripePublishableKey = null,
   }) {
     return _then(_value.copyWith(
+      apiUrl: null == apiUrl
+          ? _value.apiUrl
+          : apiUrl // ignore: cast_nullable_to_non_nullable
+              as String,
       stripePublishableKey: null == stripePublishableKey
           ? _value.stripePublishableKey
           : stripePublishableKey // ignore: cast_nullable_to_non_nullable
@@ -66,7 +72,7 @@ abstract class _$$ConfigImplCopyWith<$Res> implements $ConfigCopyWith<$Res> {
       __$$ConfigImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String stripePublishableKey});
+  $Res call({String apiUrl, String stripePublishableKey});
 }
 
 /// @nodoc
@@ -80,9 +86,14 @@ class __$$ConfigImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? apiUrl = null,
     Object? stripePublishableKey = null,
   }) {
     return _then(_$ConfigImpl(
+      apiUrl: null == apiUrl
+          ? _value.apiUrl
+          : apiUrl // ignore: cast_nullable_to_non_nullable
+              as String,
       stripePublishableKey: null == stripePublishableKey
           ? _value.stripePublishableKey
           : stripePublishableKey // ignore: cast_nullable_to_non_nullable
@@ -95,17 +106,20 @@ class __$$ConfigImplCopyWithImpl<$Res>
 
 @JsonSerializable(fieldRename: FieldRename.screamingSnake)
 class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
-  const _$ConfigImpl({required this.stripePublishableKey}) : super._();
+  const _$ConfigImpl({required this.apiUrl, required this.stripePublishableKey})
+      : super._();
 
   factory _$ConfigImpl.fromJson(Map<String, dynamic> json) =>
       _$$ConfigImplFromJson(json);
 
   @override
+  final String apiUrl;
+  @override
   final String stripePublishableKey;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Config(stripePublishableKey: $stripePublishableKey)';
+    return 'Config(apiUrl: $apiUrl, stripePublishableKey: $stripePublishableKey)';
   }
 
   @override
@@ -113,6 +127,7 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'Config'))
+      ..add(DiagnosticsProperty('apiUrl', apiUrl))
       ..add(DiagnosticsProperty('stripePublishableKey', stripePublishableKey));
   }
 
@@ -121,13 +136,14 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ConfigImpl &&
+            (identical(other.apiUrl, apiUrl) || other.apiUrl == apiUrl) &&
             (identical(other.stripePublishableKey, stripePublishableKey) ||
                 other.stripePublishableKey == stripePublishableKey));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, stripePublishableKey);
+  int get hashCode => Object.hash(runtimeType, apiUrl, stripePublishableKey);
 
   @JsonKey(ignore: true)
   @override
@@ -144,12 +160,15 @@ class _$ConfigImpl extends _Config with DiagnosticableTreeMixin {
 }
 
 abstract class _Config extends Config {
-  const factory _Config({required final String stripePublishableKey}) =
-      _$ConfigImpl;
+  const factory _Config(
+      {required final String apiUrl,
+      required final String stripePublishableKey}) = _$ConfigImpl;
   const _Config._() : super._();
 
   factory _Config.fromJson(Map<String, dynamic> json) = _$ConfigImpl.fromJson;
 
+  @override
+  String get apiUrl;
   @override
   String get stripePublishableKey;
   @override

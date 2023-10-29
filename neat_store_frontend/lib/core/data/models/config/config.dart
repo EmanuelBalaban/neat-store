@@ -12,10 +12,14 @@ class Config with _$Config {
 
   @JsonSerializable(fieldRename: FieldRename.screamingSnake)
   const factory Config({
+    required String apiUrl,
     required String stripePublishableKey,
   }) = _Config;
 
   factory Config.fromJson(Map<String, dynamic> json) => _$ConfigFromJson(json);
 
-  static Config instance = const Config(stripePublishableKey: '');
+  static Config instance = const Config(
+    apiUrl: '',
+    stripePublishableKey: '',
+  );
 }
