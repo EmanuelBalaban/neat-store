@@ -20,8 +20,8 @@ CustomerModel _$CustomerModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$CustomerModel {
-  String? get firstName => throw _privateConstructorUsedError;
-  String? get lastName => throw _privateConstructorUsedError;
+  String get firstName => throw _privateConstructorUsedError;
+  String get lastName => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +35,7 @@ abstract class $CustomerModelCopyWith<$Res> {
           CustomerModel value, $Res Function(CustomerModel) then) =
       _$CustomerModelCopyWithImpl<$Res, CustomerModel>;
   @useResult
-  $Res call({String? firstName, String? lastName});
+  $Res call({String firstName, String lastName});
 }
 
 /// @nodoc
@@ -51,18 +51,18 @@ class _$CustomerModelCopyWithImpl<$Res, $Val extends CustomerModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? firstName = freezed,
-    Object? lastName = freezed,
+    Object? firstName = null,
+    Object? lastName = null,
   }) {
     return _then(_value.copyWith(
-      firstName: freezed == firstName
+      firstName: null == firstName
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      lastName: freezed == lastName
+              as String,
+      lastName: null == lastName
           ? _value.lastName
           : lastName // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ) as $Val);
   }
 }
@@ -75,7 +75,7 @@ abstract class _$$CustomerModelImplCopyWith<$Res>
       __$$CustomerModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? firstName, String? lastName});
+  $Res call({String firstName, String lastName});
 }
 
 /// @nodoc
@@ -89,18 +89,18 @@ class __$$CustomerModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? firstName = freezed,
-    Object? lastName = freezed,
+    Object? firstName = null,
+    Object? lastName = null,
   }) {
     return _then(_$CustomerModelImpl(
-      firstName: freezed == firstName
+      firstName: null == firstName
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      lastName: freezed == lastName
+              as String,
+      lastName: null == lastName
           ? _value.lastName
           : lastName // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 }
@@ -108,15 +108,15 @@ class __$$CustomerModelImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$CustomerModelImpl implements _CustomerModel {
-  const _$CustomerModelImpl({this.firstName, this.lastName});
+  const _$CustomerModelImpl({required this.firstName, required this.lastName});
 
   factory _$CustomerModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$CustomerModelImplFromJson(json);
 
   @override
-  final String? firstName;
+  final String firstName;
   @override
-  final String? lastName;
+  final String lastName;
 
   @override
   String toString() {
@@ -154,15 +154,16 @@ class _$CustomerModelImpl implements _CustomerModel {
 
 abstract class _CustomerModel implements CustomerModel {
   const factory _CustomerModel(
-      {final String? firstName, final String? lastName}) = _$CustomerModelImpl;
+      {required final String firstName,
+      required final String lastName}) = _$CustomerModelImpl;
 
   factory _CustomerModel.fromJson(Map<String, dynamic> json) =
       _$CustomerModelImpl.fromJson;
 
   @override
-  String? get firstName;
+  String get firstName;
   @override
-  String? get lastName;
+  String get lastName;
   @override
   @JsonKey(ignore: true)
   _$$CustomerModelImplCopyWith<_$CustomerModelImpl> get copyWith =>

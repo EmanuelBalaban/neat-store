@@ -68,8 +68,8 @@ class CustomerRepository {
     final customer = result.parsedData?.customer;
 
     return CustomerModel(
-      firstName: customer?.firstname,
-      lastName: customer?.lastname,
+      firstName: customer?.firstname ?? '',
+      lastName: customer?.lastname ?? '',
     );
   }
 }

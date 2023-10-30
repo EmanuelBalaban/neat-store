@@ -33,6 +33,7 @@ class _SettingsContainerState extends State<SettingsContainer> {
     );
 
     if (fetchCustomerState.isLoading) {
+      // TODO: use skeleton loader instead (for customer name)
       return const Center(
         child: CircularProgressIndicator(),
       );

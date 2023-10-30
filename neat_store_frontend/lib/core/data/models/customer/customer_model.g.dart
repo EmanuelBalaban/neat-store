@@ -8,8 +8,8 @@ part of 'customer_model.dart';
 
 _$CustomerModelImpl _$$CustomerModelImplFromJson(Map<String, dynamic> json) =>
     _$CustomerModelImpl(
-      firstName: json['first_name'] as String?,
-      lastName: json['last_name'] as String?,
+      firstName: json['first_name'] as String,
+      lastName: json['last_name'] as String,
     );
 
 Map<String, dynamic> _$$CustomerModelImplToJson(_$CustomerModelImpl instance) =>

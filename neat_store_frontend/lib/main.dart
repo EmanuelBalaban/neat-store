@@ -7,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:neat_store_frontend/core/app.dart';
 import 'package:neat_store_frontend/core/business_logic/customer/customer_cubit.dart';
+import 'package:neat_store_frontend/core/business_logic/products/products_cubit.dart';
 import 'package:neat_store_frontend/core/business_logic/theme/theme_cubit.dart';
 import 'package:neat_store_frontend/core/dependencies/dependencies.dart';
 import 'package:neat_store_frontend/core/utils/dev_http_overrides.dart';
@@ -23,12 +24,9 @@ Future<void> main() async {
   runApp(
     MultiBlocProvider(
       providers: [
-        BlocProvider<ThemeCubit>(
-          create: (context) => getIt.get(),
-        ),
-        BlocProvider<CustomerCubit>(
-          create: (context) => getIt.get(),
-        ),
+        BlocProvider<ThemeCubit>(create: (_) => getIt.get()),
+        BlocProvider<CustomerCubit>(create: (_) => getIt.get()),
+        BlocProvider<ProductsCubit>(create: (_) => getIt.get()),
       ],
       child: const App(),
     ),

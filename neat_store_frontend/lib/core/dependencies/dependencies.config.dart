@@ -19,13 +19,15 @@ import 'package:shared_preferences/shared_preferences.dart' as _i6;
 import 'package:neat_store_frontend/core/routing/app_router.dart' as _i3;
 
 import 'package:neat_store_frontend/core/business_logic/customer/customer_cubit.dart'
+    as _i16;
+import 'package:neat_store_frontend/core/business_logic/products/products_cubit.dart'
     as _i15;
 import 'package:neat_store_frontend/core/business_logic/theme/theme_cubit.dart'
     as _i10;
 import 'package:neat_store_frontend/core/data/models/config/config_model.dart'
     as _i4;
 import 'package:neat_store_frontend/core/dependencies/register_module.dart'
-    as _i16;
+    as _i17;
 import 'package:neat_store_frontend/core/interfaces/i_local_storage.dart'
     as _i8;
 import 'package:neat_store_frontend/core/repositories/cart_repository.dart'
@@ -82,8 +84,12 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i13.CartRepository(gh<_i11.GraphQLClient>()));
     gh.factory<_i14.CustomerRepository>(
         () => _i14.CustomerRepository(gh<_i11.GraphQLClient>()));
-    await gh.factoryAsync<_i15.CustomerCubit>(
-      () => _i15.CustomerCubit.create(
+    gh.factory<_i15.ProductsCubit>(() => _i15.ProductsCubit(
+          gh<_i5.Logger>(),
+          gh<_i12.ProductsRepository>(),
+        ));
+    await gh.factoryAsync<_i16.CustomerCubit>(
+      () => _i16.CustomerCubit.create(
         gh<_i5.Logger>(),
         gh<_i8.ILocalStorage>(),
         gh<_i14.CustomerRepository>(),
@@ -94,4 +100,4 @@ extension GetItInjectableX on _i1.GetIt {
   }
 }
 
-class _$RegisterModule extends _i16.RegisterModule {}
+class _$RegisterModule extends _i17.RegisterModule {}

@@ -57,7 +57,9 @@ abstract class RegisterModule {
         AuthLink(
           getToken: fetchToken,
           headerKey: HttpHeaders.authorizationHeader,
-        ).concat(HttpLink(config.apiUrl)),
+        ).concat(
+          HttpLink('${config.apiUrl}/graphql'),
+        ),
       ),
       cache: GraphQLCache(),
       defaultPolicies: DefaultPolicies(

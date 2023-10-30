@@ -6,8 +6,8 @@ part 'customer_model.g.dart';
 @freezed
 class CustomerModel with _$CustomerModel {
   const factory CustomerModel({
-    String? firstName,
-    String? lastName,
+    required String firstName,
+    required String lastName,
   }) = _CustomerModel;
 
   factory CustomerModel.fromJson(Map<String, dynamic> json) =>
