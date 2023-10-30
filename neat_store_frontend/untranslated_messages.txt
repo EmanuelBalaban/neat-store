@@ -10,6 +10,8 @@
     "invalidPassword",
     "login",
     "register",
-    "loginFailed"
+    "loginFailed",
+    "products",
+    "settings"
   ]
 }

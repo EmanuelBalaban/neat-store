@@ -29,6 +29,7 @@ dependencies:
   json_annotation: ^4.8.1
   jwt_decoder: ^2.0.1
   logger: ^2.0.2+1
+  rive: ^0.12.1
   riverpod: ^2.4.5
   shared_preferences: ^2.2.2
   synchronized: ^3.1.0
@@ -56,6 +57,7 @@ flutter:
 
   assets:
     - .env
+    - assets/animations/
     - assets/images/
 
   # An image asset can refer to one or more resolution-specific "variants", see

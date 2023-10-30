@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -7,8 +9,10 @@ import 'package:riverpod/riverpod.dart';
 
 import 'package:neat_store_frontend/core/data/models/customer/customer_model.dart';
 import 'package:neat_store_frontend/core/data/models/void.dart';
+import 'package:neat_store_frontend/core/dependencies/dependencies.dart';
 import 'package:neat_store_frontend/core/interfaces/i_local_storage.dart';
 import 'package:neat_store_frontend/core/repositories/customer_repository.dart';
+import 'package:neat_store_frontend/core/routing/app_router.dart';
 
 part 'customer_state.dart';
 
@@ -75,6 +79,48 @@ class CustomerCubit extends Cubit<CustomerState> {
 
             return token;
           },
+        ),
+      ),
+    );
+  }
+
+  Future<void> logout() async {
+    _logger.i('Logging out the user... ↪️');
+
+    emit(
+      state.copyWith(
+        authorizationState: const AuthorizationState.data(null),
+      ),
+    );
+
+    // Reset home selected tab
+    await getIt.get<AppRouter>().replaceAll(const [HomeRoute()]);
+
+    // ignore: unawaited_futures
+    try {
+      await _customerRepository.revokeCustomerToken();
+    } catch (error, stackTrace) {
+      _logger.e(
+        '🔴 Unable to revoke customer token.',
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    await _localStorage.removeCustomerToken();
+  }
+
+  Future<void> fetchCustomer() async {
+    emit(
+      state.copyWith(
+        fetchCustomerState: const FetchCustomerState.loading(),
+      ),
+    );
+
+    emit(
+      state.copyWith(
+        fetchCustomerState: await FetchCustomerState.guard(
+          _customerRepository.fetchCustomer,
         ),
       ),
     );

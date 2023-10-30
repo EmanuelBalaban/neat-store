@@ -6,6 +6,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:neat_store_frontend/core/business_logic/customer/customer_cubit.dart';
 import 'package:neat_store_frontend/core/dependencies/dependencies.dart';
 import 'package:neat_store_frontend/core/routing/app_router.dart';
+import 'package:neat_store_frontend/core/utils/theme.dart';
 import 'package:neat_store_frontend/core/utils/translations.dart';
 
 class App extends StatelessWidget {
@@ -25,13 +26,23 @@ class App extends StatelessWidget {
         ),
       ),
       onGenerateTitle: (context) => context.l10n.appTitle,
+      themeMode: context.theme,
       theme: ThemeData(
+        useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(
           seedColor: Colors.green,
           primary: Colors.green,
           background: Colors.white,
         ),
+      ),
+      darkTheme: ThemeData(
         useMaterial3: true,
+        colorScheme: ColorScheme.fromSeed(
+          brightness: Brightness.dark,
+          seedColor: Colors.green,
+          primary: Colors.green,
+          secondary: Colors.white,
+        ),
       ),
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,

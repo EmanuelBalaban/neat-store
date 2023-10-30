@@ -4,6 +4,7 @@ import 'package:injectable/injectable.dart';
 import 'package:neat_store_frontend/core/data/graphql/magento.graphql.dart';
 import 'package:neat_store_frontend/core/data/graphql/mutations/create_customer.graphql.dart';
 import 'package:neat_store_frontend/core/data/graphql/mutations/generate_customer_token.graphql.dart';
+import 'package:neat_store_frontend/core/data/graphql/mutations/revoke_customer_token.graphql.dart';
 import 'package:neat_store_frontend/core/data/graphql/queries/fetch_customer.graphql.dart';
 import 'package:neat_store_frontend/core/data/models/customer/customer_model.dart';
 
@@ -45,6 +46,16 @@ class CustomerRepository {
     }
 
     return result.parsedData?.generateCustomerToken?.token;
+  }
+
+  Future<bool> revokeCustomerToken() async {
+    final result = await _gql.mutate$RevokeCustomerToken();
+
+    if (result.hasException) {
+      throw result.exception!;
+    }
+
+    return result.parsedData?.revokeCustomerToken?.result ?? false;
   }
 
   Future<CustomerModel?> fetchCustomer() async {

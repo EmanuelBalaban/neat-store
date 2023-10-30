@@ -12,5 +12,7 @@
   "invalidPassword": "Password must be 7 or more characters!",
   "login": "Login",
   "register": "Register",
-  "loginFailed": "Login failed. Please try again!"
+  "loginFailed": "Login failed. Please try again!",
+  "products": "Products",
+  "settings": "Settings"
 }

@@ -1,0 +1,5 @@
+mutation RevokeCustomerToken {
+    revokeCustomerToken {
+        result
+    }
+}

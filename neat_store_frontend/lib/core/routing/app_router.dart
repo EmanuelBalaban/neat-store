@@ -7,7 +7,9 @@ import 'package:neat_store_frontend/core/business_logic/customer/customer_cubit.
 import 'package:neat_store_frontend/core/dependencies/dependencies.dart';
 import 'package:neat_store_frontend/features/home/presentation/pages/home_page.dart';
 import 'package:neat_store_frontend/features/login/presentation/pages/login_page.dart';
+import 'package:neat_store_frontend/features/products/presentation/pages/products_page.dart';
 import 'package:neat_store_frontend/features/register/presentation/pages/register_page.dart';
+import 'package:neat_store_frontend/features/settings/presentation/pages/settings_page.dart';
 
 part 'app_router.gr.dart';
 
@@ -15,7 +17,6 @@ part 'app_router.gr.dart';
 class AppRouter extends _$AppRouter implements AutoRouteGuard {
   @override
   List<AutoRoute> get routes => [
-        RedirectRoute(path: '/', redirectTo: '/home'),
         AutoRoute(
           path: '/login',
           page: LoginRoute.page,
@@ -25,8 +26,18 @@ class AppRouter extends _$AppRouter implements AutoRouteGuard {
           page: RegisterRoute.page,
         ),
         AutoRoute(
-          path: '/home',
+          path: '/',
           page: HomeRoute.page,
+          children: [
+            AutoRoute(
+              path: 'products',
+              page: ProductsRoute.page,
+            ),
+            AutoRoute(
+              path: 'settings',
+              page: SettingsRoute.page,
+            ),
+          ],
         ),
       ];
 

@@ -9,31 +9,33 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 
-import 'package:flutter_stripe/flutter_stripe.dart' as _i9;
+import 'package:flutter_stripe/flutter_stripe.dart' as _i7;
 import 'package:get_it/get_it.dart' as _i1;
-import 'package:graphql/client.dart' as _i5;
+import 'package:graphql/client.dart' as _i11;
 import 'package:injectable/injectable.dart' as _i2;
-import 'package:logger/logger.dart' as _i6;
-import 'package:shared_preferences/shared_preferences.dart' as _i8;
+import 'package:logger/logger.dart' as _i5;
+import 'package:shared_preferences/shared_preferences.dart' as _i6;
 
 import 'package:neat_store_frontend/core/routing/app_router.dart' as _i3;
 
 import 'package:neat_store_frontend/core/business_logic/customer/customer_cubit.dart'
-    as _i14;
+    as _i15;
+import 'package:neat_store_frontend/core/business_logic/theme/theme_cubit.dart'
+    as _i10;
 import 'package:neat_store_frontend/core/data/models/config/config_model.dart'
     as _i4;
 import 'package:neat_store_frontend/core/dependencies/register_module.dart'
-    as _i15;
+    as _i16;
 import 'package:neat_store_frontend/core/interfaces/i_local_storage.dart'
-    as _i12;
+    as _i8;
 import 'package:neat_store_frontend/core/repositories/cart_repository.dart'
-    as _i10;
-import 'package:neat_store_frontend/core/repositories/customer_repository.dart'
-    as _i11;
-import 'package:neat_store_frontend/core/repositories/products_repository.dart'
-    as _i7;
-import 'package:neat_store_frontend/core/services/shared_preferences_service.dart'
     as _i13;
+import 'package:neat_store_frontend/core/repositories/customer_repository.dart'
+    as _i14;
+import 'package:neat_store_frontend/core/repositories/products_repository.dart'
+    as _i12;
+import 'package:neat_store_frontend/core/services/shared_preferences_service.dart'
+    as _i9;
 
 extension GetItInjectableX on _i1.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -52,29 +54,39 @@ extension GetItInjectableX on _i1.GetIt {
       () => registerModule.appConfig,
       preResolve: true,
     );
-    gh.lazySingleton<_i5.GraphQLClient>(() => registerModule.gqlClient);
-    gh.lazySingleton<_i6.Logger>(() => registerModule.logger);
-    gh.factory<_i7.ProductsRepository>(
-        () => _i7.ProductsRepository(gh<_i5.GraphQLClient>()));
-    await gh.lazySingletonAsync<_i8.SharedPreferences>(
+    gh.lazySingleton<_i5.Logger>(() => registerModule.logger);
+    await gh.lazySingletonAsync<_i6.SharedPreferences>(
       () => registerModule.sharedPreferences,
       preResolve: true,
     );
-    await gh.lazySingletonAsync<_i9.Stripe>(
-      () => registerModule.stripe,
+    await gh.lazySingletonAsync<_i7.Stripe>(
+      () => registerModule.createStripe(gh<_i4.ConfigModel>()),
       preResolve: true,
     );
-    gh.factory<_i10.CartRepository>(
-        () => _i10.CartRepository(gh<_i5.GraphQLClient>()));
-    gh.factory<_i11.CustomerRepository>(
-        () => _i11.CustomerRepository(gh<_i5.GraphQLClient>()));
-    gh.lazySingleton<_i12.ILocalStorage>(
-        () => _i13.SharedPreferencesService(gh<_i8.SharedPreferences>()));
-    await gh.factoryAsync<_i14.CustomerCubit>(
-      () => _i14.CustomerCubit.create(
-        gh<_i6.Logger>(),
-        gh<_i12.ILocalStorage>(),
-        gh<_i11.CustomerRepository>(),
+    gh.lazySingleton<_i8.ILocalStorage>(
+        () => _i9.SharedPreferencesService(gh<_i6.SharedPreferences>()));
+    await gh.factoryAsync<_i10.ThemeCubit>(
+      () => _i10.ThemeCubit.create(
+        gh<_i5.Logger>(),
+        gh<_i8.ILocalStorage>(),
+      ),
+      preResolve: true,
+    );
+    gh.lazySingleton<_i11.GraphQLClient>(() => registerModule.createGqlClient(
+          gh<_i8.ILocalStorage>(),
+          gh<_i4.ConfigModel>(),
+        ));
+    gh.factory<_i12.ProductsRepository>(
+        () => _i12.ProductsRepository(gh<_i11.GraphQLClient>()));
+    gh.factory<_i13.CartRepository>(
+        () => _i13.CartRepository(gh<_i11.GraphQLClient>()));
+    gh.factory<_i14.CustomerRepository>(
+        () => _i14.CustomerRepository(gh<_i11.GraphQLClient>()));
+    await gh.factoryAsync<_i15.CustomerCubit>(
+      () => _i15.CustomerCubit.create(
+        gh<_i5.Logger>(),
+        gh<_i8.ILocalStorage>(),
+        gh<_i14.CustomerRepository>(),
       ),
       preResolve: true,
     );
@@ -82,4 +94,4 @@ extension GetItInjectableX on _i1.GetIt {
   }
 }
 
-class _$RegisterModule extends _i15.RegisterModule {}
+class _$RegisterModule extends _i16.RegisterModule {}
