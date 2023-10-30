@@ -14,5 +14,9 @@
   "register": "Register",
   "loginFailed": "Login failed. Please try again!",
   "products": "Products",
-  "settings": "Settings"
+  "settings": "Settings",
+  "cart": "Cart",
+  "logout": "Logout",
+  "welcomeBack": "Welcome back",
+  "unableToFetchCustomerData": "An error occurred and the customer data could not be fetched"
 }

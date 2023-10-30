@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:riverpod/riverpod.dart';
 
 import 'package:neat_store_frontend/core/business_logic/customer/customer_cubit.dart';
+import 'package:neat_store_frontend/core/utils/translations.dart';
 import 'package:neat_store_frontend/features/theme/presentation/widgets/theme_switch.dart';
 
 class SettingsContainer extends StatefulWidget {
@@ -25,6 +26,8 @@ class _SettingsContainerState extends State<SettingsContainer> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
+
     final fetchCustomerState = context.select(
       (CustomerCubit cubit) => cubit.state.fetchCustomerState,
     );
@@ -38,10 +41,8 @@ class _SettingsContainerState extends State<SettingsContainer> {
     final customer = fetchCustomerState.valueOrNull;
 
     if (fetchCustomerState.hasError || customer == null) {
-      return const Center(
-        child: Text(
-          'An error occurred and the customer data could not be fetched',
-        ),
+      return Center(
+        child: Text(l10n.unableToFetchCustomerData),
       );
     }
 
@@ -52,7 +53,7 @@ class _SettingsContainerState extends State<SettingsContainer> {
           textAlign: TextAlign.center,
           style: const TextStyle(fontSize: 22),
           TextSpan(
-            text: 'Welcome back,\n',
+            text: '${l10n.welcomeBack},\n',
             children: [
               TextSpan(
                 text: '${customer.firstName} ${customer.lastName}',
@@ -77,7 +78,7 @@ class _SettingsContainerState extends State<SettingsContainer> {
               minimumSize: const Size(100, 40),
             ),
             icon: const Icon(Icons.logout),
-            label: const Text('Logout'),
+            label: Text(l10n.logout),
           ),
         ),
         const SizedBox(height: 48),

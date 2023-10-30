@@ -12,6 +12,10 @@
     "register",
     "loginFailed",
     "products",
-    "settings"
+    "settings",
+    "cart",
+    "logout",
+    "welcomeBack",
+    "unableToFetchCustomerData"
   ]
 }

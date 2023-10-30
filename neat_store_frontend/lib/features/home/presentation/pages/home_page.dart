@@ -17,7 +17,8 @@ class HomePage extends StatelessWidget {
         ProductsRoute(),
         SettingsRoute(),
       ],
-      appBarBuilder: (context, tabsRouter) => const CustomAppBar(),
+      appBarBuilder: (context, tabsRouter) =>
+          const CustomAppBar(showCart: true),
       bottomNavigationBuilder: (context, tabsRouter) {
         final l10n = context.l10n;
 

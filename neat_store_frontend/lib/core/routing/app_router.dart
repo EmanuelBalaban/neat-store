@@ -5,6 +5,7 @@ import 'package:logger/logger.dart';
 
 import 'package:neat_store_frontend/core/business_logic/customer/customer_cubit.dart';
 import 'package:neat_store_frontend/core/dependencies/dependencies.dart';
+import 'package:neat_store_frontend/features/cart/presentation/pages/cart_page.dart';
 import 'package:neat_store_frontend/features/home/presentation/pages/home_page.dart';
 import 'package:neat_store_frontend/features/login/presentation/pages/login_page.dart';
 import 'package:neat_store_frontend/features/products/presentation/pages/products_page.dart';
@@ -38,6 +39,10 @@ class AppRouter extends _$AppRouter implements AutoRouteGuard {
               page: SettingsRoute.page,
             ),
           ],
+        ),
+        AutoRoute(
+          path: '/cart',
+          page: CartRoute.page,
         ),
       ];
 

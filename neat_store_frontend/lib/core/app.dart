@@ -17,6 +17,7 @@ class App extends StatelessWidget {
     final router = getIt.get<AppRouter>();
 
     return MaterialApp.router(
+      debugShowCheckedModeBanner: false,
       routerConfig: router.config(
         // Re-evaluate auth when authorization state changes
         reevaluateListenable: ReevaluateListenable.stream(

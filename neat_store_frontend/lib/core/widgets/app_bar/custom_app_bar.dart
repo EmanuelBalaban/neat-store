@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 
+import 'package:auto_route/auto_route.dart';
+
+import 'package:neat_store_frontend/core/routing/app_router.dart';
 import 'package:neat_store_frontend/core/utils/translations.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const CustomAppBar({super.key});
+  const CustomAppBar({this.showCart = false, super.key});
+
+  final bool showCart;
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +30,20 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           ),
         ],
       ),
+      actions: showCart
+          ? [
+              Padding(
+                padding: const EdgeInsets.only(right: 12),
+                child: IconButton(
+                  onPressed: () => context.router.push(const CartRoute()),
+                  icon: const Icon(
+                    Icons.shopping_cart_outlined,
+                    size: 28,
+                  ),
+                ),
+              ),
+            ]
+          : null,
     );
   }
 
