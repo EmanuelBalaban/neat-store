@@ -67,3 +67,10 @@ bin/magento setup:upgrade
 ### Install fails because project directory is not empty
 
 Follow the steps from here: https://github.com/markshust/docker-magento#install-fails-because-project-directory-is-not-empty
+
+### 5. Add magento.test to your Windows hosts file
+
+* Open Notepad in admin mode.
+* Open file `C:\Windows\System32\drivers\etc\hosts`.
+* Append `127.0.0.1 ::1 magento.test` to the end of the file.
+* Save.
