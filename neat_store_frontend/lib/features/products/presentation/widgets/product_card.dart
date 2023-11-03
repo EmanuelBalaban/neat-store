@@ -58,6 +58,14 @@ class ProductCard extends StatelessWidget {
                       data.name,
                       style: const TextStyle(fontSize: 20),
                     ),
+                    const Spacer(),
+                    Align(
+                      alignment: Alignment.bottomRight,
+                      child: IconButton(
+                        onPressed: () {},
+                        icon: const Icon(Icons.add_shopping_cart),
+                      ),
+                    ),
                   ],
                 ),
               ),
