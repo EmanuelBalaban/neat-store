@@ -48,7 +48,7 @@ class _SettingsContainerState extends State<SettingsContainer> {
           const SkeletonLine(
             style: SkeletonLineStyle(
               width: 180,
-              height: 22,
+              height: 30,
               alignment: Alignment.center,
             ),
           )
