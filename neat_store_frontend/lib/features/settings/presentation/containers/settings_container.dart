@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:riverpod/riverpod.dart';
+import 'package:skeletons/skeletons.dart';
 
 import 'package:neat_store_frontend/core/business_logic/customer/customer_cubit.dart';
 import 'package:neat_store_frontend/core/utils/translations.dart';
@@ -31,41 +32,34 @@ class _SettingsContainerState extends State<SettingsContainer> {
     final fetchCustomerState = context.select(
       (CustomerCubit cubit) => cubit.state.fetchCustomerState,
     );
-
-    if (fetchCustomerState.isLoading) {
-      // TODO: use skeleton loader instead (for customer name)
-      return const Center(
-        child: CircularProgressIndicator(),
-      );
-    }
+    final isLoading = fetchCustomerState.isLoading;
 
     final customer = fetchCustomerState.valueOrNull;
-
-    if (fetchCustomerState.hasError || customer == null) {
-      return Center(
-        child: Text(l10n.unableToFetchCustomerData),
-      );
-    }
 
     return Column(
       children: [
         const SizedBox(height: 48),
-        Text.rich(
-          textAlign: TextAlign.center,
+        Text(
+          '${l10n.welcomeBack}'
+          '${isLoading || customer != null ? ',' : '!'}',
           style: const TextStyle(fontSize: 22),
-          TextSpan(
-            text: '${l10n.welcomeBack},\n',
-            children: [
-              TextSpan(
-                text: '${customer.firstName} ${customer.lastName}',
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const TextSpan(text: '!'),
-            ],
-          ),
         ),
+        if (isLoading)
+          const SkeletonLine(
+            style: SkeletonLineStyle(
+              width: 180,
+              height: 22,
+              alignment: Alignment.center,
+            ),
+          )
+        else if (customer != null)
+          Text(
+            '${customer.firstName} ${customer.lastName}!',
+            style: const TextStyle(
+              fontSize: 22,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
         const SizedBox(height: 24),
         const ThemeSwitch(),
         const SizedBox(height: 24),

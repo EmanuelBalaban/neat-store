@@ -33,6 +33,7 @@ dependencies:
   rive: ^0.12.1
   riverpod: ^2.4.5
   shared_preferences: ^2.2.2
+  skeletons: ^0.0.3
   synchronized: ^3.1.0
 
 dev_dependencies:
