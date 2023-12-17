@@ -3,18 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:neat_store_frontend/core/business_logic/wishlists/wishlists_cubit.dart';
+import 'package:neat_store_frontend/core/business_logic/cart/cart_cubit.dart';
+import 'package:neat_store_frontend/core/data/models/cart/cart_item_model.dart';
 import 'package:neat_store_frontend/core/data/models/money/money_model.dart';
-import 'package:neat_store_frontend/core/data/models/wishlist/wishlist_item_model.dart';
 import 'package:neat_store_frontend/core/widgets/price/regional_price.dart';
 
-class WishlistProductCard extends StatelessWidget {
-  const WishlistProductCard({
+class CartItemCard extends StatelessWidget {
+  const CartItemCard({
     required this.data,
     super.key,
   });
 
-  final WishlistItemModel data;
+  final CartItemModel data;
 
   @override
   Widget build(BuildContext context) {
@@ -64,21 +64,16 @@ class WishlistProductCard extends StatelessWidget {
                     ),
                     const Spacer(),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         RegionalPrice(price: _price),
+                        const Spacer(),
                         Align(
                           alignment: Alignment.bottomRight,
                           child: IconButton(
                             onPressed: () => context
-                                .read<WishlistsCubit>()
-                                .removeProductFromWishlist(
-                                  wishlistItemId: data.id,
-                                ),
-                            icon: const Icon(
-                              Icons.favorite,
-                              color: Colors.redAccent,
-                            ),
+                                .read<CartCubit>()
+                                .removeProduct(_productSku),
+                            icon: const Icon(Icons.remove_shopping_cart),
                           ),
                         ),
                       ],
@@ -96,4 +91,6 @@ class WishlistProductCard extends StatelessWidget {
   String get _imageUrl => data.product.imageUrl ?? '';
 
   MoneyModel get _price => data.product.price;
+
+  String get _productSku => data.product.sku;
 }

@@ -1,0 +1,38 @@
+mutation AddConfigurableProductsToCart(
+    $input: AddConfigurableProductsToCartInput!
+) {
+    addConfigurableProductsToCart(input: $input) {
+        cart {
+            id
+            total_quantity
+            prices {
+                subtotal_with_discount_excluding_tax {
+                    currency
+                    value
+                }
+                grand_total {
+                    currency
+                    value
+                }
+            }
+            items {
+                uid
+                quantity
+                prices {
+                    price {
+                        value
+                        currency
+                    }
+                }
+                product {
+                    uid
+                    sku
+                    name
+                    image {
+                        url
+                    }
+                }
+            }
+        }
+    }
+}

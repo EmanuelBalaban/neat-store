@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'package:neat_store_frontend/core/business_logic/cart/cart_cubit.dart';
 import 'package:neat_store_frontend/core/routing/app_router.dart';
 import 'package:neat_store_frontend/core/utils/translations.dart';
 
@@ -34,15 +36,25 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           ? [
               Padding(
                 padding: const EdgeInsets.only(right: 12),
-                child: Badge(
-                  label: const Text('10'),
-                  child: IconButton(
-                    onPressed: () => context.router.push(const CartRoute()),
-                    icon: const Icon(
-                      Icons.shopping_cart_outlined,
-                      size: 28,
-                    ),
-                  ),
+                child: Builder(
+                  builder: (context) {
+                    final totalQuantity = context.select(
+                      (CartCubit cubit) => cubit.totalQuantity,
+                    );
+
+                    return InkWell(
+                      onTap: () => context.router.push(const CartRoute()),
+                      customBorder: const CircleBorder(),
+                      child: Badge(
+                        isLabelVisible: totalQuantity > 0,
+                        label: Text('$totalQuantity'),
+                        child: const Icon(
+                          Icons.shopping_cart_outlined,
+                          size: 28,
+                        ),
+                      ),
+                    );
+                  },
                 ),
               ),
             ]

@@ -16,7 +16,13 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$CartState {
+  AsyncValue<CartModel?> get fetchCartState =>
+      throw _privateConstructorUsedError;
   AsyncValue<Void?> get addProductToCartState =>
+      throw _privateConstructorUsedError;
+  AsyncValue<Void?> get removeProductFromCartState =>
+      throw _privateConstructorUsedError;
+  AsyncValue<Void?> get updateProductQuantityState =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -29,7 +35,11 @@ abstract class $CartStateCopyWith<$Res> {
   factory $CartStateCopyWith(CartState value, $Res Function(CartState) then) =
       _$CartStateCopyWithImpl<$Res, CartState>;
   @useResult
-  $Res call({AsyncValue<Void?> addProductToCartState});
+  $Res call(
+      {AsyncValue<CartModel?> fetchCartState,
+      AsyncValue<Void?> addProductToCartState,
+      AsyncValue<Void?> removeProductFromCartState,
+      AsyncValue<Void?> updateProductQuantityState});
 }
 
 /// @nodoc
@@ -45,12 +55,27 @@ class _$CartStateCopyWithImpl<$Res, $Val extends CartState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? fetchCartState = null,
     Object? addProductToCartState = null,
+    Object? removeProductFromCartState = null,
+    Object? updateProductQuantityState = null,
   }) {
     return _then(_value.copyWith(
+      fetchCartState: null == fetchCartState
+          ? _value.fetchCartState
+          : fetchCartState // ignore: cast_nullable_to_non_nullable
+              as AsyncValue<CartModel?>,
       addProductToCartState: null == addProductToCartState
           ? _value.addProductToCartState
           : addProductToCartState // ignore: cast_nullable_to_non_nullable
+              as AsyncValue<Void?>,
+      removeProductFromCartState: null == removeProductFromCartState
+          ? _value.removeProductFromCartState
+          : removeProductFromCartState // ignore: cast_nullable_to_non_nullable
+              as AsyncValue<Void?>,
+      updateProductQuantityState: null == updateProductQuantityState
+          ? _value.updateProductQuantityState
+          : updateProductQuantityState // ignore: cast_nullable_to_non_nullable
               as AsyncValue<Void?>,
     ) as $Val);
   }
@@ -64,7 +89,11 @@ abstract class _$$CartStateImplCopyWith<$Res>
       __$$CartStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({AsyncValue<Void?> addProductToCartState});
+  $Res call(
+      {AsyncValue<CartModel?> fetchCartState,
+      AsyncValue<Void?> addProductToCartState,
+      AsyncValue<Void?> removeProductFromCartState,
+      AsyncValue<Void?> updateProductQuantityState});
 }
 
 /// @nodoc
@@ -78,12 +107,27 @@ class __$$CartStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? fetchCartState = null,
     Object? addProductToCartState = null,
+    Object? removeProductFromCartState = null,
+    Object? updateProductQuantityState = null,
   }) {
     return _then(_$CartStateImpl(
+      fetchCartState: null == fetchCartState
+          ? _value.fetchCartState
+          : fetchCartState // ignore: cast_nullable_to_non_nullable
+              as AsyncValue<CartModel?>,
       addProductToCartState: null == addProductToCartState
           ? _value.addProductToCartState
           : addProductToCartState // ignore: cast_nullable_to_non_nullable
+              as AsyncValue<Void?>,
+      removeProductFromCartState: null == removeProductFromCartState
+          ? _value.removeProductFromCartState
+          : removeProductFromCartState // ignore: cast_nullable_to_non_nullable
+              as AsyncValue<Void?>,
+      updateProductQuantityState: null == updateProductQuantityState
+          ? _value.updateProductQuantityState
+          : updateProductQuantityState // ignore: cast_nullable_to_non_nullable
               as AsyncValue<Void?>,
     ));
   }
@@ -92,14 +136,25 @@ class __$$CartStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$CartStateImpl extends _CartState {
-  const _$CartStateImpl({required this.addProductToCartState}) : super._();
+  const _$CartStateImpl(
+      {required this.fetchCartState,
+      required this.addProductToCartState,
+      required this.removeProductFromCartState,
+      required this.updateProductQuantityState})
+      : super._();
 
   @override
+  final AsyncValue<CartModel?> fetchCartState;
+  @override
   final AsyncValue<Void?> addProductToCartState;
+  @override
+  final AsyncValue<Void?> removeProductFromCartState;
+  @override
+  final AsyncValue<Void?> updateProductQuantityState;
 
   @override
   String toString() {
-    return 'CartState(addProductToCartState: $addProductToCartState)';
+    return 'CartState(fetchCartState: $fetchCartState, addProductToCartState: $addProductToCartState, removeProductFromCartState: $removeProductFromCartState, updateProductQuantityState: $updateProductQuantityState)';
   }
 
   @override
@@ -107,12 +162,27 @@ class _$CartStateImpl extends _CartState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CartStateImpl &&
+            (identical(other.fetchCartState, fetchCartState) ||
+                other.fetchCartState == fetchCartState) &&
             (identical(other.addProductToCartState, addProductToCartState) ||
-                other.addProductToCartState == addProductToCartState));
+                other.addProductToCartState == addProductToCartState) &&
+            (identical(other.removeProductFromCartState,
+                    removeProductFromCartState) ||
+                other.removeProductFromCartState ==
+                    removeProductFromCartState) &&
+            (identical(other.updateProductQuantityState,
+                    updateProductQuantityState) ||
+                other.updateProductQuantityState ==
+                    updateProductQuantityState));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, addProductToCartState);
+  int get hashCode => Object.hash(
+      runtimeType,
+      fetchCartState,
+      addProductToCartState,
+      removeProductFromCartState,
+      updateProductQuantityState);
 
   @JsonKey(ignore: true)
   @override
@@ -123,12 +193,21 @@ class _$CartStateImpl extends _CartState {
 
 abstract class _CartState extends CartState {
   const factory _CartState(
-          {required final AsyncValue<Void?> addProductToCartState}) =
+          {required final AsyncValue<CartModel?> fetchCartState,
+          required final AsyncValue<Void?> addProductToCartState,
+          required final AsyncValue<Void?> removeProductFromCartState,
+          required final AsyncValue<Void?> updateProductQuantityState}) =
       _$CartStateImpl;
   const _CartState._() : super._();
 
   @override
+  AsyncValue<CartModel?> get fetchCartState;
+  @override
   AsyncValue<Void?> get addProductToCartState;
+  @override
+  AsyncValue<Void?> get removeProductFromCartState;
+  @override
+  AsyncValue<Void?> get updateProductQuantityState;
   @override
   @JsonKey(ignore: true)
   _$$CartStateImplCopyWith<_$CartStateImpl> get copyWith =>

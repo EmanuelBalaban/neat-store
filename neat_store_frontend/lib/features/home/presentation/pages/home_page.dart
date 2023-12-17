@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'package:neat_store_frontend/core/business_logic/cart/cart_cubit.dart';
 import 'package:neat_store_frontend/core/business_logic/wishlists/wishlists_cubit.dart';
 import 'package:neat_store_frontend/core/routing/app_router.dart';
 import 'package:neat_store_frontend/core/utils/translations.dart';
@@ -22,6 +23,7 @@ class _HomePageState extends State<HomePage> {
     super.initState();
 
     context.read<WishlistsCubit>().fetchWishlists();
+    context.read<CartCubit>().fetchCart();
   }
 
   @override
@@ -77,17 +79,26 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         Positioned.fill(
-          child: BlocSelector<WishlistsCubit, WishlistsState, bool>(
-            selector: (state) =>
-                state.addProductToWishlistState.isLoading ||
-                state.removeProductFromWishlistState.isLoading,
-            builder: (context, state) => Visibility(
-              visible: state,
-              child: ColoredBox(
-                color: Colors.grey.withOpacity(0.3),
-                child: const Center(child: CircularProgressIndicator()),
-              ),
-            ),
+          child: Builder(
+            builder: (context) {
+              final isLoading = context.select(
+                    (WishlistsCubit cubit) =>
+                        cubit.state.addProductToWishlistState.isLoading ||
+                        cubit.state.removeProductFromWishlistState.isLoading,
+                  ) ||
+                  context.select(
+                    (CartCubit cubit) =>
+                        cubit.state.addProductToCartState.isLoading,
+                  );
+
+              return Visibility(
+                visible: isLoading,
+                child: ColoredBox(
+                  color: Colors.grey.withOpacity(0.3),
+                  child: const Center(child: CircularProgressIndicator()),
+                ),
+              );
+            },
           ),
         ),
       ],

@@ -4,6 +4,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'package:neat_store_frontend/core/business_logic/cart/cart_cubit.dart';
 import 'package:neat_store_frontend/core/business_logic/wishlists/wishlists_cubit.dart';
 import 'package:neat_store_frontend/core/data/converters/color_converter.dart';
 import 'package:neat_store_frontend/core/data/models/money/money_model.dart';
@@ -162,6 +163,9 @@ class ProductCard extends StatelessWidget {
                                   wishlistItem != null
                                       ? Icons.favorite
                                       : Icons.favorite_outline,
+                                  color: wishlistItem != null
+                                      ? Colors.redAccent
+                                      : null,
                                 ),
                               ),
                             );
@@ -170,7 +174,11 @@ class ProductCard extends StatelessWidget {
                         Align(
                           alignment: Alignment.bottomRight,
                           child: IconButton(
-                            onPressed: _canAddToBasket ? () {} : null,
+                            onPressed: _canAddToBasket
+                                ? () => context
+                                    .read<CartCubit>()
+                                    .addProduct(_productSku)
+                                : null,
                             icon: const Icon(Icons.add_shopping_cart),
                           ),
                         ),
