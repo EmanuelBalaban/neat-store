@@ -26,51 +26,71 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return AutoTabsScaffold(
-      routes: const [
-        ProductsRoute(),
-        WishlistsRoute(),
-        SettingsRoute(),
-      ],
-      appBarBuilder: (context, tabsRouter) =>
-          const CustomAppBar(showCart: true),
-      bottomNavigationBuilder: (context, tabsRouter) {
-        final l10n = context.l10n;
+    return Stack(
+      children: [
+        Positioned.fill(
+          child: AutoTabsScaffold(
+            routes: const [
+              ProductsRoute(),
+              WishlistsRoute(),
+              SettingsRoute(),
+            ],
+            appBarBuilder: (context, tabsRouter) =>
+                const CustomAppBar(showCart: true),
+            bottomNavigationBuilder: (context, tabsRouter) {
+              final l10n = context.l10n;
 
-        return BottomNavigationBar(
-          currentIndex: tabsRouter.activeIndex,
-          onTap: tabsRouter.setActiveIndex,
-          backgroundColor: Theme.of(context).colorScheme.onPrimary,
-          items: [
-            BottomNavigationBarItem(
-              label: l10n.products,
-              icon: const Icon(Icons.storefront),
-            ),
-            BottomNavigationBarItem(
-              label: l10n.wishlists,
-              activeIcon: const Icon(Icons.favorite),
-              icon: Builder(
-                builder: (context) {
-                  final itemsCount = context.select(
-                    (WishlistsCubit cubit) => cubit.wishlistItemsCount,
-                  );
+              return BottomNavigationBar(
+                currentIndex: tabsRouter.activeIndex,
+                onTap: tabsRouter.setActiveIndex,
+                backgroundColor: Theme.of(context).colorScheme.onPrimary,
+                items: [
+                  BottomNavigationBarItem(
+                    label: l10n.products,
+                    icon: const Icon(Icons.storefront),
+                  ),
+                  BottomNavigationBarItem(
+                    label: l10n.wishlists,
+                    activeIcon: const Icon(Icons.favorite),
+                    icon: Builder(
+                      builder: (context) {
+                        final itemsCount = context.select(
+                          (WishlistsCubit cubit) => cubit.wishlistItemsCount,
+                        );
 
-                  return Badge(
-                    isLabelVisible: itemsCount != null && itemsCount > 0,
-                    label: Text('$itemsCount'),
-                    alignment: const Alignment(1.2, -1),
-                    child: const Icon(Icons.favorite),
-                  );
-                },
+                        return Badge(
+                          isLabelVisible: itemsCount != null && itemsCount > 0,
+                          label: Text('$itemsCount'),
+                          alignment: const Alignment(1.2, -1),
+                          child: const Icon(Icons.favorite),
+                        );
+                      },
+                    ),
+                  ),
+                  BottomNavigationBarItem(
+                    label: l10n.settings,
+                    icon: const Icon(Icons.settings),
+                  ),
+                ],
+              );
+            },
+          ),
+        ),
+        Positioned.fill(
+          child: BlocSelector<WishlistsCubit, WishlistsState, bool>(
+            selector: (state) =>
+                state.addProductToWishlistState.isLoading ||
+                state.removeProductFromWishlistState.isLoading,
+            builder: (context, state) => Visibility(
+              visible: state,
+              child: ColoredBox(
+                color: Colors.grey.withOpacity(0.3),
+                child: const Center(child: CircularProgressIndicator()),
               ),
             ),
-            BottomNavigationBarItem(
-              label: l10n.settings,
-              icon: const Icon(Icons.settings),
-            ),
-          ],
-        );
-      },
+          ),
+        ),
+      ],
     );
   }
 }
