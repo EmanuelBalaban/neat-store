@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:neat_store_frontend/core/business_logic/cart/cart_cubit.dart';
 import 'package:neat_store_frontend/core/utils/translations.dart';
 import 'package:neat_store_frontend/features/cart/presentation/containers/cart_container.dart';
+import 'package:neat_store_frontend/features/cart/presentation/widgets/cart_bottom_summary.dart';
 
 @RoutePage()
 class CartPage extends StatelessWidget {
@@ -35,6 +36,7 @@ class CartPage extends StatelessWidget {
               ),
             ),
             body: const CartContainer(),
+            bottomNavigationBar: const CartBottomSummary(),
           ),
         ),
         Positioned.fill(
