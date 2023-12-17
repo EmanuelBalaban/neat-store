@@ -21,11 +21,16 @@ ProductModel _$ProductModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$ProductModel {
   String get sku => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
-  String? get imageUrl => throw _privateConstructorUsedError;
-  int get reviewCount => throw _privateConstructorUsedError;
-  double get ratingSummary => throw _privateConstructorUsedError;
   MoneyModel get price => throw _privateConstructorUsedError;
+  String? get name => throw _privateConstructorUsedError;
+  String? get imageUrl => throw _privateConstructorUsedError;
+  int? get reviewCount => throw _privateConstructorUsedError;
+  double? get ratingSummary =>
+      throw _privateConstructorUsedError; // on ConfigurableProduct
+  List<ConfigurableOptionModel>? get configurableOptions =>
+      throw _privateConstructorUsedError;
+  List<ConfigurableVariantModel>? get variants =>
+      throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -41,11 +46,13 @@ abstract class $ProductModelCopyWith<$Res> {
   @useResult
   $Res call(
       {String sku,
-      String name,
+      MoneyModel price,
+      String? name,
       String? imageUrl,
-      int reviewCount,
-      double ratingSummary,
-      MoneyModel price});
+      int? reviewCount,
+      double? ratingSummary,
+      List<ConfigurableOptionModel>? configurableOptions,
+      List<ConfigurableVariantModel>? variants});
 
   $MoneyModelCopyWith<$Res> get price;
 }
@@ -64,37 +71,47 @@ class _$ProductModelCopyWithImpl<$Res, $Val extends ProductModel>
   @override
   $Res call({
     Object? sku = null,
-    Object? name = null,
-    Object? imageUrl = freezed,
-    Object? reviewCount = null,
-    Object? ratingSummary = null,
     Object? price = null,
+    Object? name = freezed,
+    Object? imageUrl = freezed,
+    Object? reviewCount = freezed,
+    Object? ratingSummary = freezed,
+    Object? configurableOptions = freezed,
+    Object? variants = freezed,
   }) {
     return _then(_value.copyWith(
       sku: null == sku
           ? _value.sku
           : sku // ignore: cast_nullable_to_non_nullable
               as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      imageUrl: freezed == imageUrl
-          ? _value.imageUrl
-          : imageUrl // ignore: cast_nullable_to_non_nullable
-              as String?,
-      reviewCount: null == reviewCount
-          ? _value.reviewCount
-          : reviewCount // ignore: cast_nullable_to_non_nullable
-              as int,
-      ratingSummary: null == ratingSummary
-          ? _value.ratingSummary
-          : ratingSummary // ignore: cast_nullable_to_non_nullable
-              as double,
       price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as MoneyModel,
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      imageUrl: freezed == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      reviewCount: freezed == reviewCount
+          ? _value.reviewCount
+          : reviewCount // ignore: cast_nullable_to_non_nullable
+              as int?,
+      ratingSummary: freezed == ratingSummary
+          ? _value.ratingSummary
+          : ratingSummary // ignore: cast_nullable_to_non_nullable
+              as double?,
+      configurableOptions: freezed == configurableOptions
+          ? _value.configurableOptions
+          : configurableOptions // ignore: cast_nullable_to_non_nullable
+              as List<ConfigurableOptionModel>?,
+      variants: freezed == variants
+          ? _value.variants
+          : variants // ignore: cast_nullable_to_non_nullable
+              as List<ConfigurableVariantModel>?,
     ) as $Val);
   }
 
@@ -117,11 +134,13 @@ abstract class _$$ProductModelImplCopyWith<$Res>
   @useResult
   $Res call(
       {String sku,
-      String name,
+      MoneyModel price,
+      String? name,
       String? imageUrl,
-      int reviewCount,
-      double ratingSummary,
-      MoneyModel price});
+      int? reviewCount,
+      double? ratingSummary,
+      List<ConfigurableOptionModel>? configurableOptions,
+      List<ConfigurableVariantModel>? variants});
 
   @override
   $MoneyModelCopyWith<$Res> get price;
@@ -139,37 +158,47 @@ class __$$ProductModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? sku = null,
-    Object? name = null,
-    Object? imageUrl = freezed,
-    Object? reviewCount = null,
-    Object? ratingSummary = null,
     Object? price = null,
+    Object? name = freezed,
+    Object? imageUrl = freezed,
+    Object? reviewCount = freezed,
+    Object? ratingSummary = freezed,
+    Object? configurableOptions = freezed,
+    Object? variants = freezed,
   }) {
     return _then(_$ProductModelImpl(
       sku: null == sku
           ? _value.sku
           : sku // ignore: cast_nullable_to_non_nullable
               as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      imageUrl: freezed == imageUrl
-          ? _value.imageUrl
-          : imageUrl // ignore: cast_nullable_to_non_nullable
-              as String?,
-      reviewCount: null == reviewCount
-          ? _value.reviewCount
-          : reviewCount // ignore: cast_nullable_to_non_nullable
-              as int,
-      ratingSummary: null == ratingSummary
-          ? _value.ratingSummary
-          : ratingSummary // ignore: cast_nullable_to_non_nullable
-              as double,
       price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as MoneyModel,
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      imageUrl: freezed == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      reviewCount: freezed == reviewCount
+          ? _value.reviewCount
+          : reviewCount // ignore: cast_nullable_to_non_nullable
+              as int?,
+      ratingSummary: freezed == ratingSummary
+          ? _value.ratingSummary
+          : ratingSummary // ignore: cast_nullable_to_non_nullable
+              as double?,
+      configurableOptions: freezed == configurableOptions
+          ? _value._configurableOptions
+          : configurableOptions // ignore: cast_nullable_to_non_nullable
+              as List<ConfigurableOptionModel>?,
+      variants: freezed == variants
+          ? _value._variants
+          : variants // ignore: cast_nullable_to_non_nullable
+              as List<ConfigurableVariantModel>?,
     ));
   }
 }
@@ -179,11 +208,15 @@ class __$$ProductModelImplCopyWithImpl<$Res>
 class _$ProductModelImpl implements _ProductModel {
   const _$ProductModelImpl(
       {required this.sku,
-      required this.name,
-      required this.imageUrl,
-      required this.reviewCount,
-      required this.ratingSummary,
-      required this.price});
+      required this.price,
+      this.name,
+      this.imageUrl,
+      this.reviewCount,
+      this.ratingSummary,
+      final List<ConfigurableOptionModel>? configurableOptions,
+      final List<ConfigurableVariantModel>? variants})
+      : _configurableOptions = configurableOptions,
+        _variants = variants;
 
   factory _$ProductModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$ProductModelImplFromJson(json);
@@ -191,19 +224,41 @@ class _$ProductModelImpl implements _ProductModel {
   @override
   final String sku;
   @override
-  final String name;
+  final MoneyModel price;
+  @override
+  final String? name;
   @override
   final String? imageUrl;
   @override
-  final int reviewCount;
+  final int? reviewCount;
   @override
-  final double ratingSummary;
+  final double? ratingSummary;
+// on ConfigurableProduct
+  final List<ConfigurableOptionModel>? _configurableOptions;
+// on ConfigurableProduct
   @override
-  final MoneyModel price;
+  List<ConfigurableOptionModel>? get configurableOptions {
+    final value = _configurableOptions;
+    if (value == null) return null;
+    if (_configurableOptions is EqualUnmodifiableListView)
+      return _configurableOptions;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  final List<ConfigurableVariantModel>? _variants;
+  @override
+  List<ConfigurableVariantModel>? get variants {
+    final value = _variants;
+    if (value == null) return null;
+    if (_variants is EqualUnmodifiableListView) return _variants;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
-    return 'ProductModel(sku: $sku, name: $name, imageUrl: $imageUrl, reviewCount: $reviewCount, ratingSummary: $ratingSummary, price: $price)';
+    return 'ProductModel(sku: $sku, price: $price, name: $name, imageUrl: $imageUrl, reviewCount: $reviewCount, ratingSummary: $ratingSummary, configurableOptions: $configurableOptions, variants: $variants)';
   }
 
   @override
@@ -212,6 +267,7 @@ class _$ProductModelImpl implements _ProductModel {
         (other.runtimeType == runtimeType &&
             other is _$ProductModelImpl &&
             (identical(other.sku, sku) || other.sku == sku) &&
+            (identical(other.price, price) || other.price == price) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.imageUrl, imageUrl) ||
                 other.imageUrl == imageUrl) &&
@@ -219,13 +275,23 @@ class _$ProductModelImpl implements _ProductModel {
                 other.reviewCount == reviewCount) &&
             (identical(other.ratingSummary, ratingSummary) ||
                 other.ratingSummary == ratingSummary) &&
-            (identical(other.price, price) || other.price == price));
+            const DeepCollectionEquality()
+                .equals(other._configurableOptions, _configurableOptions) &&
+            const DeepCollectionEquality().equals(other._variants, _variants));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, sku, name, imageUrl, reviewCount, ratingSummary, price);
+      runtimeType,
+      sku,
+      price,
+      name,
+      imageUrl,
+      reviewCount,
+      ratingSummary,
+      const DeepCollectionEquality().hash(_configurableOptions),
+      const DeepCollectionEquality().hash(_variants));
 
   @JsonKey(ignore: true)
   @override
@@ -244,11 +310,13 @@ class _$ProductModelImpl implements _ProductModel {
 abstract class _ProductModel implements ProductModel {
   const factory _ProductModel(
       {required final String sku,
-      required final String name,
-      required final String? imageUrl,
-      required final int reviewCount,
-      required final double ratingSummary,
-      required final MoneyModel price}) = _$ProductModelImpl;
+      required final MoneyModel price,
+      final String? name,
+      final String? imageUrl,
+      final int? reviewCount,
+      final double? ratingSummary,
+      final List<ConfigurableOptionModel>? configurableOptions,
+      final List<ConfigurableVariantModel>? variants}) = _$ProductModelImpl;
 
   factory _ProductModel.fromJson(Map<String, dynamic> json) =
       _$ProductModelImpl.fromJson;
@@ -256,15 +324,19 @@ abstract class _ProductModel implements ProductModel {
   @override
   String get sku;
   @override
-  String get name;
+  MoneyModel get price;
+  @override
+  String? get name;
   @override
   String? get imageUrl;
   @override
-  int get reviewCount;
+  int? get reviewCount;
   @override
-  double get ratingSummary;
+  double? get ratingSummary;
+  @override // on ConfigurableProduct
+  List<ConfigurableOptionModel>? get configurableOptions;
   @override
-  MoneyModel get price;
+  List<ConfigurableVariantModel>? get variants;
   @override
   @JsonKey(ignore: true)
   _$$ProductModelImplCopyWith<_$ProductModelImpl> get copyWith =>

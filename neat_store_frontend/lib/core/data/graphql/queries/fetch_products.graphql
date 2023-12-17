@@ -1,6 +1,8 @@
 query FetchProducts {
     products(filter: {}) {
         items {
+            __typename
+
             sku
             name
             image {

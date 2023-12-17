@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:cached_network_image/cached_network_image.dart';
 
+import 'package:neat_store_frontend/core/data/converters/color_converter.dart';
+import 'package:neat_store_frontend/core/data/models/product/configurable_attribute_type.dart';
 import 'package:neat_store_frontend/core/data/models/product/product_model.dart';
 
 class ProductCard extends StatelessWidget {
@@ -55,9 +57,49 @@ class ProductCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      data.name,
+                      data.name ?? '',
                       style: const TextStyle(fontSize: 20),
                     ),
+                    if (data.configurableOptions?.isNotEmpty ?? false)
+                      ...data.configurableOptions!.map(
+                        (item) => Container(
+                          margin: const EdgeInsets.only(top: 4),
+                          height: 24,
+                          child: ListView.separated(
+                            scrollDirection: Axis.horizontal,
+                            separatorBuilder: (context, index) =>
+                                const SizedBox(width: 4),
+                            itemCount: item.values.length,
+                            itemBuilder: (context, index) {
+                              final value = item.values[index];
+
+                              if (item.attributeType ==
+                                  ConfigurableAttributeType.color) {
+                                return Container(
+                                  decoration: BoxDecoration(
+                                    border: Border.all(color: Colors.grey),
+                                    color: ColorConverter.fromHex(
+                                      value.swatchData,
+                                    ),
+                                  ),
+                                  width: 24,
+                                  height: 24,
+                                );
+                              }
+
+                              return Container(
+                                decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.grey),
+                                ),
+                                width: 24,
+                                height: 24,
+                                alignment: Alignment.center,
+                                child: Text(value.label),
+                              );
+                            },
+                          ),
+                        ),
+                      ),
                     const Spacer(),
                     Align(
                       alignment: Alignment.bottomRight,

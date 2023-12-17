@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:neat_store_frontend/core/app.dart';
+import 'package:neat_store_frontend/core/business_logic/cart/cart_cubit.dart';
 import 'package:neat_store_frontend/core/business_logic/customer/customer_cubit.dart';
 import 'package:neat_store_frontend/core/business_logic/products/products_cubit.dart';
 import 'package:neat_store_frontend/core/business_logic/theme/theme_cubit.dart';
@@ -27,6 +28,7 @@ Future<void> main() async {
         BlocProvider<ThemeCubit>(create: (_) => getIt.get()),
         BlocProvider<CustomerCubit>(create: (_) => getIt.get()),
         BlocProvider<ProductsCubit>(create: (_) => getIt.get()),
+        BlocProvider<CartCubit>(create: (_) => getIt.get()),
       ],
       child: const App(),
     ),

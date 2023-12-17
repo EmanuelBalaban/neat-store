@@ -170,6 +170,13 @@ const documentNodeQueryFetchProducts = DocumentNode(definitions: [
             directives: [],
             selectionSet: SelectionSetNode(selections: [
               FieldNode(
+                name: NameNode(value: '__typename'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+              FieldNode(
                 name: NameNode(value: 'sku'),
                 alias: null,
                 arguments: [],
@@ -529,13 +536,6 @@ const documentNodeQueryFetchProducts = DocumentNode(definitions: [
                   ),
                 ]),
               ),
-              FieldNode(
-                name: NameNode(value: '__typename'),
-                alias: null,
-                arguments: [],
-                directives: [],
-                selectionSet: null,
-              ),
             ]),
           ),
           FieldNode(
@@ -841,13 +841,13 @@ class _CopyWithStubImpl$Query$FetchProducts$products<TRes>
 
 class Query$FetchProducts$products$items {
   Query$FetchProducts$products$items({
+    required this.$__typename,
     this.sku,
     this.name,
     this.image,
     required this.review_count,
     required this.rating_summary,
     required this.price_range,
-    required this.$__typename,
   });
 
   factory Query$FetchProducts$products$items.fromJson(
@@ -876,14 +876,15 @@ class Query$FetchProducts$products$items {
             json);
 
       default:
+        final l$$__typename = json['__typename'];
         final l$sku = json['sku'];
         final l$name = json['name'];
         final l$image = json['image'];
         final l$review_count = json['review_count'];
         final l$rating_summary = json['rating_summary'];
         final l$price_range = json['price_range'];
-        final l$$__typename = json['__typename'];
         return Query$FetchProducts$products$items(
+          $__typename: (l$$__typename as String),
           sku: (l$sku as String?),
           name: (l$name as String?),
           image: l$image == null
@@ -894,10 +895,11 @@ class Query$FetchProducts$products$items {
           rating_summary: (l$rating_summary as num).toDouble(),
           price_range: Query$FetchProducts$products$items$price_range.fromJson(
               (l$price_range as Map<String, dynamic>)),
-          $__typename: (l$$__typename as String),
         );
     }
   }
+
+  final String $__typename;
 
   final String? sku;
 
@@ -911,10 +913,10 @@ class Query$FetchProducts$products$items {
 
   final Query$FetchProducts$products$items$price_range price_range;
 
-  final String $__typename;
-
   Map<String, dynamic> toJson() {
     final _resultData = <String, dynamic>{};
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
     final l$sku = sku;
     _resultData['sku'] = l$sku;
     final l$name = name;
@@ -927,28 +929,26 @@ class Query$FetchProducts$products$items {
     _resultData['rating_summary'] = l$rating_summary;
     final l$price_range = price_range;
     _resultData['price_range'] = l$price_range.toJson();
-    final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
     return _resultData;
   }
 
   @override
   int get hashCode {
+    final l$$__typename = $__typename;
     final l$sku = sku;
     final l$name = name;
     final l$image = image;
     final l$review_count = review_count;
     final l$rating_summary = rating_summary;
     final l$price_range = price_range;
-    final l$$__typename = $__typename;
     return Object.hashAll([
+      l$$__typename,
       l$sku,
       l$name,
       l$image,
       l$review_count,
       l$rating_summary,
       l$price_range,
-      l$$__typename,
     ]);
   }
 
@@ -959,6 +959,11 @@ class Query$FetchProducts$products$items {
     }
     if (!(other is Query$FetchProducts$products$items) ||
         runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
       return false;
     }
     final l$sku = sku;
@@ -989,11 +994,6 @@ class Query$FetchProducts$products$items {
     final l$price_range = price_range;
     final lOther$price_range = other.price_range;
     if (l$price_range != lOther$price_range) {
-      return false;
-    }
-    final l$$__typename = $__typename;
-    final lOther$$__typename = other.$__typename;
-    if (l$$__typename != lOther$$__typename) {
       return false;
     }
     return true;
@@ -1135,13 +1135,13 @@ abstract class CopyWith$Query$FetchProducts$products$items<TRes> {
       _CopyWithStubImpl$Query$FetchProducts$products$items;
 
   TRes call({
+    String? $__typename,
     String? sku,
     String? name,
     Query$FetchProducts$products$items$image? image,
     int? review_count,
     double? rating_summary,
     Query$FetchProducts$products$items$price_range? price_range,
-    String? $__typename,
   });
   CopyWith$Query$FetchProducts$products$items$image<TRes> get image;
   CopyWith$Query$FetchProducts$products$items$price_range<TRes> get price_range;
@@ -1161,15 +1161,18 @@ class _CopyWithImpl$Query$FetchProducts$products$items<TRes>
   static const _undefined = <dynamic, dynamic>{};
 
   TRes call({
+    Object? $__typename = _undefined,
     Object? sku = _undefined,
     Object? name = _undefined,
     Object? image = _undefined,
     Object? review_count = _undefined,
     Object? rating_summary = _undefined,
     Object? price_range = _undefined,
-    Object? $__typename = _undefined,
   }) =>
       _then(Query$FetchProducts$products$items(
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
         sku: sku == _undefined ? _instance.sku : (sku as String?),
         name: name == _undefined ? _instance.name : (name as String?),
         image: image == _undefined
@@ -1184,9 +1187,6 @@ class _CopyWithImpl$Query$FetchProducts$products$items<TRes>
         price_range: price_range == _undefined || price_range == null
             ? _instance.price_range
             : (price_range as Query$FetchProducts$products$items$price_range),
-        $__typename: $__typename == _undefined || $__typename == null
-            ? _instance.$__typename
-            : ($__typename as String),
       ));
 
   CopyWith$Query$FetchProducts$products$items$image<TRes> get image {
@@ -1213,13 +1213,13 @@ class _CopyWithStubImpl$Query$FetchProducts$products$items<TRes>
   TRes _res;
 
   call({
+    String? $__typename,
     String? sku,
     String? name,
     Query$FetchProducts$products$items$image? image,
     int? review_count,
     double? rating_summary,
     Query$FetchProducts$products$items$price_range? price_range,
-    String? $__typename,
   }) =>
       _res;
 
@@ -4612,25 +4612,26 @@ class _CopyWithStubImpl$Query$FetchProducts$products$items$$ConfigurableProduct$
 class Query$FetchProducts$products$items$$BundleProduct
     implements Query$FetchProducts$products$items {
   Query$FetchProducts$products$items$$BundleProduct({
+    this.$__typename = 'BundleProduct',
     this.sku,
     this.name,
     this.image,
     required this.review_count,
     required this.rating_summary,
     required this.price_range,
-    this.$__typename = 'BundleProduct',
   });
 
   factory Query$FetchProducts$products$items$$BundleProduct.fromJson(
       Map<String, dynamic> json) {
+    final l$$__typename = json['__typename'];
     final l$sku = json['sku'];
     final l$name = json['name'];
     final l$image = json['image'];
     final l$review_count = json['review_count'];
     final l$rating_summary = json['rating_summary'];
     final l$price_range = json['price_range'];
-    final l$$__typename = json['__typename'];
     return Query$FetchProducts$products$items$$BundleProduct(
+      $__typename: (l$$__typename as String),
       sku: (l$sku as String?),
       name: (l$name as String?),
       image: l$image == null
@@ -4641,9 +4642,10 @@ class Query$FetchProducts$products$items$$BundleProduct
       rating_summary: (l$rating_summary as num).toDouble(),
       price_range: Query$FetchProducts$products$items$$BundleProduct$price_range
           .fromJson((l$price_range as Map<String, dynamic>)),
-      $__typename: (l$$__typename as String),
     );
   }
+
+  final String $__typename;
 
   final String? sku;
 
@@ -4658,10 +4660,10 @@ class Query$FetchProducts$products$items$$BundleProduct
   final Query$FetchProducts$products$items$$BundleProduct$price_range
       price_range;
 
-  final String $__typename;
-
   Map<String, dynamic> toJson() {
     final _resultData = <String, dynamic>{};
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
     final l$sku = sku;
     _resultData['sku'] = l$sku;
     final l$name = name;
@@ -4674,28 +4676,26 @@ class Query$FetchProducts$products$items$$BundleProduct
     _resultData['rating_summary'] = l$rating_summary;
     final l$price_range = price_range;
     _resultData['price_range'] = l$price_range.toJson();
-    final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
     return _resultData;
   }
 
   @override
   int get hashCode {
+    final l$$__typename = $__typename;
     final l$sku = sku;
     final l$name = name;
     final l$image = image;
     final l$review_count = review_count;
     final l$rating_summary = rating_summary;
     final l$price_range = price_range;
-    final l$$__typename = $__typename;
     return Object.hashAll([
+      l$$__typename,
       l$sku,
       l$name,
       l$image,
       l$review_count,
       l$rating_summary,
       l$price_range,
-      l$$__typename,
     ]);
   }
 
@@ -4706,6 +4706,11 @@ class Query$FetchProducts$products$items$$BundleProduct
     }
     if (!(other is Query$FetchProducts$products$items$$BundleProduct) ||
         runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
       return false;
     }
     final l$sku = sku;
@@ -4738,11 +4743,6 @@ class Query$FetchProducts$products$items$$BundleProduct
     if (l$price_range != lOther$price_range) {
       return false;
     }
-    final l$$__typename = $__typename;
-    final lOther$$__typename = other.$__typename;
-    if (l$$__typename != lOther$$__typename) {
-      return false;
-    }
     return true;
   }
 }
@@ -4770,13 +4770,13 @@ abstract class CopyWith$Query$FetchProducts$products$items$$BundleProduct<
       _CopyWithStubImpl$Query$FetchProducts$products$items$$BundleProduct;
 
   TRes call({
+    String? $__typename,
     String? sku,
     String? name,
     Query$FetchProducts$products$items$$BundleProduct$image? image,
     int? review_count,
     double? rating_summary,
     Query$FetchProducts$products$items$$BundleProduct$price_range? price_range,
-    String? $__typename,
   });
   CopyWith$Query$FetchProducts$products$items$$BundleProduct$image<TRes>
       get image;
@@ -4799,15 +4799,18 @@ class _CopyWithImpl$Query$FetchProducts$products$items$$BundleProduct<TRes>
   static const _undefined = <dynamic, dynamic>{};
 
   TRes call({
+    Object? $__typename = _undefined,
     Object? sku = _undefined,
     Object? name = _undefined,
     Object? image = _undefined,
     Object? review_count = _undefined,
     Object? rating_summary = _undefined,
     Object? price_range = _undefined,
-    Object? $__typename = _undefined,
   }) =>
       _then(Query$FetchProducts$products$items$$BundleProduct(
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
         sku: sku == _undefined ? _instance.sku : (sku as String?),
         name: name == _undefined ? _instance.name : (name as String?),
         image: image == _undefined
@@ -4824,9 +4827,6 @@ class _CopyWithImpl$Query$FetchProducts$products$items$$BundleProduct<TRes>
             ? _instance.price_range
             : (price_range
                 as Query$FetchProducts$products$items$$BundleProduct$price_range),
-        $__typename: $__typename == _undefined || $__typename == null
-            ? _instance.$__typename
-            : ($__typename as String),
       ));
 
   CopyWith$Query$FetchProducts$products$items$$BundleProduct$image<TRes>
@@ -4856,13 +4856,13 @@ class _CopyWithStubImpl$Query$FetchProducts$products$items$$BundleProduct<TRes>
   TRes _res;
 
   call({
+    String? $__typename,
     String? sku,
     String? name,
     Query$FetchProducts$products$items$$BundleProduct$image? image,
     int? review_count,
     double? rating_summary,
     Query$FetchProducts$products$items$$BundleProduct$price_range? price_range,
-    String? $__typename,
   }) =>
       _res;
 
@@ -6152,25 +6152,26 @@ class _CopyWithStubImpl$Query$FetchProducts$products$items$$ConfigurableProduct$
 class Query$FetchProducts$products$items$$DownloadableProduct
     implements Query$FetchProducts$products$items {
   Query$FetchProducts$products$items$$DownloadableProduct({
+    this.$__typename = 'DownloadableProduct',
     this.sku,
     this.name,
     this.image,
     required this.review_count,
     required this.rating_summary,
     required this.price_range,
-    this.$__typename = 'DownloadableProduct',
   });
 
   factory Query$FetchProducts$products$items$$DownloadableProduct.fromJson(
       Map<String, dynamic> json) {
+    final l$$__typename = json['__typename'];
     final l$sku = json['sku'];
     final l$name = json['name'];
     final l$image = json['image'];
     final l$review_count = json['review_count'];
     final l$rating_summary = json['rating_summary'];
     final l$price_range = json['price_range'];
-    final l$$__typename = json['__typename'];
     return Query$FetchProducts$products$items$$DownloadableProduct(
+      $__typename: (l$$__typename as String),
       sku: (l$sku as String?),
       name: (l$name as String?),
       image: l$image == null
@@ -6182,9 +6183,10 @@ class Query$FetchProducts$products$items$$DownloadableProduct
       price_range:
           Query$FetchProducts$products$items$$DownloadableProduct$price_range
               .fromJson((l$price_range as Map<String, dynamic>)),
-      $__typename: (l$$__typename as String),
     );
   }
+
+  final String $__typename;
 
   final String? sku;
 
@@ -6199,10 +6201,10 @@ class Query$FetchProducts$products$items$$DownloadableProduct
   final Query$FetchProducts$products$items$$DownloadableProduct$price_range
       price_range;
 
-  final String $__typename;
-
   Map<String, dynamic> toJson() {
     final _resultData = <String, dynamic>{};
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
     final l$sku = sku;
     _resultData['sku'] = l$sku;
     final l$name = name;
@@ -6215,28 +6217,26 @@ class Query$FetchProducts$products$items$$DownloadableProduct
     _resultData['rating_summary'] = l$rating_summary;
     final l$price_range = price_range;
     _resultData['price_range'] = l$price_range.toJson();
-    final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
     return _resultData;
   }
 
   @override
   int get hashCode {
+    final l$$__typename = $__typename;
     final l$sku = sku;
     final l$name = name;
     final l$image = image;
     final l$review_count = review_count;
     final l$rating_summary = rating_summary;
     final l$price_range = price_range;
-    final l$$__typename = $__typename;
     return Object.hashAll([
+      l$$__typename,
       l$sku,
       l$name,
       l$image,
       l$review_count,
       l$rating_summary,
       l$price_range,
-      l$$__typename,
     ]);
   }
 
@@ -6247,6 +6247,11 @@ class Query$FetchProducts$products$items$$DownloadableProduct
     }
     if (!(other is Query$FetchProducts$products$items$$DownloadableProduct) ||
         runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
       return false;
     }
     final l$sku = sku;
@@ -6279,11 +6284,6 @@ class Query$FetchProducts$products$items$$DownloadableProduct
     if (l$price_range != lOther$price_range) {
       return false;
     }
-    final l$$__typename = $__typename;
-    final lOther$$__typename = other.$__typename;
-    if (l$$__typename != lOther$$__typename) {
-      return false;
-    }
     return true;
   }
 }
@@ -6311,6 +6311,7 @@ abstract class CopyWith$Query$FetchProducts$products$items$$DownloadableProduct<
       _CopyWithStubImpl$Query$FetchProducts$products$items$$DownloadableProduct;
 
   TRes call({
+    String? $__typename,
     String? sku,
     String? name,
     Query$FetchProducts$products$items$$DownloadableProduct$image? image,
@@ -6318,7 +6319,6 @@ abstract class CopyWith$Query$FetchProducts$products$items$$DownloadableProduct<
     double? rating_summary,
     Query$FetchProducts$products$items$$DownloadableProduct$price_range?
         price_range,
-    String? $__typename,
   });
   CopyWith$Query$FetchProducts$products$items$$DownloadableProduct$image<TRes>
       get image;
@@ -6343,15 +6343,18 @@ class _CopyWithImpl$Query$FetchProducts$products$items$$DownloadableProduct<
   static const _undefined = <dynamic, dynamic>{};
 
   TRes call({
+    Object? $__typename = _undefined,
     Object? sku = _undefined,
     Object? name = _undefined,
     Object? image = _undefined,
     Object? review_count = _undefined,
     Object? rating_summary = _undefined,
     Object? price_range = _undefined,
-    Object? $__typename = _undefined,
   }) =>
       _then(Query$FetchProducts$products$items$$DownloadableProduct(
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
         sku: sku == _undefined ? _instance.sku : (sku as String?),
         name: name == _undefined ? _instance.name : (name as String?),
         image: image == _undefined
@@ -6368,9 +6371,6 @@ class _CopyWithImpl$Query$FetchProducts$products$items$$DownloadableProduct<
             ? _instance.price_range
             : (price_range
                 as Query$FetchProducts$products$items$$DownloadableProduct$price_range),
-        $__typename: $__typename == _undefined || $__typename == null
-            ? _instance.$__typename
-            : ($__typename as String),
       ));
 
   CopyWith$Query$FetchProducts$products$items$$DownloadableProduct$image<TRes>
@@ -6401,6 +6401,7 @@ class _CopyWithStubImpl$Query$FetchProducts$products$items$$DownloadableProduct<
   TRes _res;
 
   call({
+    String? $__typename,
     String? sku,
     String? name,
     Query$FetchProducts$products$items$$DownloadableProduct$image? image,
@@ -6408,7 +6409,6 @@ class _CopyWithStubImpl$Query$FetchProducts$products$items$$DownloadableProduct<
     double? rating_summary,
     Query$FetchProducts$products$items$$DownloadableProduct$price_range?
         price_range,
-    String? $__typename,
   }) =>
       _res;
 
@@ -7067,25 +7067,26 @@ class _CopyWithStubImpl$Query$FetchProducts$products$items$$DownloadableProduct$
 class Query$FetchProducts$products$items$$GroupedProduct
     implements Query$FetchProducts$products$items {
   Query$FetchProducts$products$items$$GroupedProduct({
+    this.$__typename = 'GroupedProduct',
     this.sku,
     this.name,
     this.image,
     required this.review_count,
     required this.rating_summary,
     required this.price_range,
-    this.$__typename = 'GroupedProduct',
   });
 
   factory Query$FetchProducts$products$items$$GroupedProduct.fromJson(
       Map<String, dynamic> json) {
+    final l$$__typename = json['__typename'];
     final l$sku = json['sku'];
     final l$name = json['name'];
     final l$image = json['image'];
     final l$review_count = json['review_count'];
     final l$rating_summary = json['rating_summary'];
     final l$price_range = json['price_range'];
-    final l$$__typename = json['__typename'];
     return Query$FetchProducts$products$items$$GroupedProduct(
+      $__typename: (l$$__typename as String),
       sku: (l$sku as String?),
       name: (l$name as String?),
       image: l$image == null
@@ -7097,9 +7098,10 @@ class Query$FetchProducts$products$items$$GroupedProduct
       price_range:
           Query$FetchProducts$products$items$$GroupedProduct$price_range
               .fromJson((l$price_range as Map<String, dynamic>)),
-      $__typename: (l$$__typename as String),
     );
   }
+
+  final String $__typename;
 
   final String? sku;
 
@@ -7114,10 +7116,10 @@ class Query$FetchProducts$products$items$$GroupedProduct
   final Query$FetchProducts$products$items$$GroupedProduct$price_range
       price_range;
 
-  final String $__typename;
-
   Map<String, dynamic> toJson() {
     final _resultData = <String, dynamic>{};
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
     final l$sku = sku;
     _resultData['sku'] = l$sku;
     final l$name = name;
@@ -7130,28 +7132,26 @@ class Query$FetchProducts$products$items$$GroupedProduct
     _resultData['rating_summary'] = l$rating_summary;
     final l$price_range = price_range;
     _resultData['price_range'] = l$price_range.toJson();
-    final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
     return _resultData;
   }
 
   @override
   int get hashCode {
+    final l$$__typename = $__typename;
     final l$sku = sku;
     final l$name = name;
     final l$image = image;
     final l$review_count = review_count;
     final l$rating_summary = rating_summary;
     final l$price_range = price_range;
-    final l$$__typename = $__typename;
     return Object.hashAll([
+      l$$__typename,
       l$sku,
       l$name,
       l$image,
       l$review_count,
       l$rating_summary,
       l$price_range,
-      l$$__typename,
     ]);
   }
 
@@ -7162,6 +7162,11 @@ class Query$FetchProducts$products$items$$GroupedProduct
     }
     if (!(other is Query$FetchProducts$products$items$$GroupedProduct) ||
         runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
       return false;
     }
     final l$sku = sku;
@@ -7194,11 +7199,6 @@ class Query$FetchProducts$products$items$$GroupedProduct
     if (l$price_range != lOther$price_range) {
       return false;
     }
-    final l$$__typename = $__typename;
-    final lOther$$__typename = other.$__typename;
-    if (l$$__typename != lOther$$__typename) {
-      return false;
-    }
     return true;
   }
 }
@@ -7226,13 +7226,13 @@ abstract class CopyWith$Query$FetchProducts$products$items$$GroupedProduct<
       _CopyWithStubImpl$Query$FetchProducts$products$items$$GroupedProduct;
 
   TRes call({
+    String? $__typename,
     String? sku,
     String? name,
     Query$FetchProducts$products$items$$GroupedProduct$image? image,
     int? review_count,
     double? rating_summary,
     Query$FetchProducts$products$items$$GroupedProduct$price_range? price_range,
-    String? $__typename,
   });
   CopyWith$Query$FetchProducts$products$items$$GroupedProduct$image<TRes>
       get image;
@@ -7255,15 +7255,18 @@ class _CopyWithImpl$Query$FetchProducts$products$items$$GroupedProduct<TRes>
   static const _undefined = <dynamic, dynamic>{};
 
   TRes call({
+    Object? $__typename = _undefined,
     Object? sku = _undefined,
     Object? name = _undefined,
     Object? image = _undefined,
     Object? review_count = _undefined,
     Object? rating_summary = _undefined,
     Object? price_range = _undefined,
-    Object? $__typename = _undefined,
   }) =>
       _then(Query$FetchProducts$products$items$$GroupedProduct(
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
         sku: sku == _undefined ? _instance.sku : (sku as String?),
         name: name == _undefined ? _instance.name : (name as String?),
         image: image == _undefined
@@ -7280,9 +7283,6 @@ class _CopyWithImpl$Query$FetchProducts$products$items$$GroupedProduct<TRes>
             ? _instance.price_range
             : (price_range
                 as Query$FetchProducts$products$items$$GroupedProduct$price_range),
-        $__typename: $__typename == _undefined || $__typename == null
-            ? _instance.$__typename
-            : ($__typename as String),
       ));
 
   CopyWith$Query$FetchProducts$products$items$$GroupedProduct$image<TRes>
@@ -7312,13 +7312,13 @@ class _CopyWithStubImpl$Query$FetchProducts$products$items$$GroupedProduct<TRes>
   TRes _res;
 
   call({
+    String? $__typename,
     String? sku,
     String? name,
     Query$FetchProducts$products$items$$GroupedProduct$image? image,
     int? review_count,
     double? rating_summary,
     Query$FetchProducts$products$items$$GroupedProduct$price_range? price_range,
-    String? $__typename,
   }) =>
       _res;
 
@@ -7973,25 +7973,26 @@ class _CopyWithStubImpl$Query$FetchProducts$products$items$$GroupedProduct$price
 class Query$FetchProducts$products$items$$SimpleProduct
     implements Query$FetchProducts$products$items {
   Query$FetchProducts$products$items$$SimpleProduct({
+    this.$__typename = 'SimpleProduct',
     this.sku,
     this.name,
     this.image,
     required this.review_count,
     required this.rating_summary,
     required this.price_range,
-    this.$__typename = 'SimpleProduct',
   });
 
   factory Query$FetchProducts$products$items$$SimpleProduct.fromJson(
       Map<String, dynamic> json) {
+    final l$$__typename = json['__typename'];
     final l$sku = json['sku'];
     final l$name = json['name'];
     final l$image = json['image'];
     final l$review_count = json['review_count'];
     final l$rating_summary = json['rating_summary'];
     final l$price_range = json['price_range'];
-    final l$$__typename = json['__typename'];
     return Query$FetchProducts$products$items$$SimpleProduct(
+      $__typename: (l$$__typename as String),
       sku: (l$sku as String?),
       name: (l$name as String?),
       image: l$image == null
@@ -8002,9 +8003,10 @@ class Query$FetchProducts$products$items$$SimpleProduct
       rating_summary: (l$rating_summary as num).toDouble(),
       price_range: Query$FetchProducts$products$items$$SimpleProduct$price_range
           .fromJson((l$price_range as Map<String, dynamic>)),
-      $__typename: (l$$__typename as String),
     );
   }
+
+  final String $__typename;
 
   final String? sku;
 
@@ -8019,10 +8021,10 @@ class Query$FetchProducts$products$items$$SimpleProduct
   final Query$FetchProducts$products$items$$SimpleProduct$price_range
       price_range;
 
-  final String $__typename;
-
   Map<String, dynamic> toJson() {
     final _resultData = <String, dynamic>{};
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
     final l$sku = sku;
     _resultData['sku'] = l$sku;
     final l$name = name;
@@ -8035,28 +8037,26 @@ class Query$FetchProducts$products$items$$SimpleProduct
     _resultData['rating_summary'] = l$rating_summary;
     final l$price_range = price_range;
     _resultData['price_range'] = l$price_range.toJson();
-    final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
     return _resultData;
   }
 
   @override
   int get hashCode {
+    final l$$__typename = $__typename;
     final l$sku = sku;
     final l$name = name;
     final l$image = image;
     final l$review_count = review_count;
     final l$rating_summary = rating_summary;
     final l$price_range = price_range;
-    final l$$__typename = $__typename;
     return Object.hashAll([
+      l$$__typename,
       l$sku,
       l$name,
       l$image,
       l$review_count,
       l$rating_summary,
       l$price_range,
-      l$$__typename,
     ]);
   }
 
@@ -8067,6 +8067,11 @@ class Query$FetchProducts$products$items$$SimpleProduct
     }
     if (!(other is Query$FetchProducts$products$items$$SimpleProduct) ||
         runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
       return false;
     }
     final l$sku = sku;
@@ -8099,11 +8104,6 @@ class Query$FetchProducts$products$items$$SimpleProduct
     if (l$price_range != lOther$price_range) {
       return false;
     }
-    final l$$__typename = $__typename;
-    final lOther$$__typename = other.$__typename;
-    if (l$$__typename != lOther$$__typename) {
-      return false;
-    }
     return true;
   }
 }
@@ -8131,13 +8131,13 @@ abstract class CopyWith$Query$FetchProducts$products$items$$SimpleProduct<
       _CopyWithStubImpl$Query$FetchProducts$products$items$$SimpleProduct;
 
   TRes call({
+    String? $__typename,
     String? sku,
     String? name,
     Query$FetchProducts$products$items$$SimpleProduct$image? image,
     int? review_count,
     double? rating_summary,
     Query$FetchProducts$products$items$$SimpleProduct$price_range? price_range,
-    String? $__typename,
   });
   CopyWith$Query$FetchProducts$products$items$$SimpleProduct$image<TRes>
       get image;
@@ -8160,15 +8160,18 @@ class _CopyWithImpl$Query$FetchProducts$products$items$$SimpleProduct<TRes>
   static const _undefined = <dynamic, dynamic>{};
 
   TRes call({
+    Object? $__typename = _undefined,
     Object? sku = _undefined,
     Object? name = _undefined,
     Object? image = _undefined,
     Object? review_count = _undefined,
     Object? rating_summary = _undefined,
     Object? price_range = _undefined,
-    Object? $__typename = _undefined,
   }) =>
       _then(Query$FetchProducts$products$items$$SimpleProduct(
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
         sku: sku == _undefined ? _instance.sku : (sku as String?),
         name: name == _undefined ? _instance.name : (name as String?),
         image: image == _undefined
@@ -8185,9 +8188,6 @@ class _CopyWithImpl$Query$FetchProducts$products$items$$SimpleProduct<TRes>
             ? _instance.price_range
             : (price_range
                 as Query$FetchProducts$products$items$$SimpleProduct$price_range),
-        $__typename: $__typename == _undefined || $__typename == null
-            ? _instance.$__typename
-            : ($__typename as String),
       ));
 
   CopyWith$Query$FetchProducts$products$items$$SimpleProduct$image<TRes>
@@ -8217,13 +8217,13 @@ class _CopyWithStubImpl$Query$FetchProducts$products$items$$SimpleProduct<TRes>
   TRes _res;
 
   call({
+    String? $__typename,
     String? sku,
     String? name,
     Query$FetchProducts$products$items$$SimpleProduct$image? image,
     int? review_count,
     double? rating_summary,
     Query$FetchProducts$products$items$$SimpleProduct$price_range? price_range,
-    String? $__typename,
   }) =>
       _res;
 
@@ -8873,25 +8873,26 @@ class _CopyWithStubImpl$Query$FetchProducts$products$items$$SimpleProduct$price_
 class Query$FetchProducts$products$items$$VirtualProduct
     implements Query$FetchProducts$products$items {
   Query$FetchProducts$products$items$$VirtualProduct({
+    this.$__typename = 'VirtualProduct',
     this.sku,
     this.name,
     this.image,
     required this.review_count,
     required this.rating_summary,
     required this.price_range,
-    this.$__typename = 'VirtualProduct',
   });
 
   factory Query$FetchProducts$products$items$$VirtualProduct.fromJson(
       Map<String, dynamic> json) {
+    final l$$__typename = json['__typename'];
     final l$sku = json['sku'];
     final l$name = json['name'];
     final l$image = json['image'];
     final l$review_count = json['review_count'];
     final l$rating_summary = json['rating_summary'];
     final l$price_range = json['price_range'];
-    final l$$__typename = json['__typename'];
     return Query$FetchProducts$products$items$$VirtualProduct(
+      $__typename: (l$$__typename as String),
       sku: (l$sku as String?),
       name: (l$name as String?),
       image: l$image == null
@@ -8903,9 +8904,10 @@ class Query$FetchProducts$products$items$$VirtualProduct
       price_range:
           Query$FetchProducts$products$items$$VirtualProduct$price_range
               .fromJson((l$price_range as Map<String, dynamic>)),
-      $__typename: (l$$__typename as String),
     );
   }
+
+  final String $__typename;
 
   final String? sku;
 
@@ -8920,10 +8922,10 @@ class Query$FetchProducts$products$items$$VirtualProduct
   final Query$FetchProducts$products$items$$VirtualProduct$price_range
       price_range;
 
-  final String $__typename;
-
   Map<String, dynamic> toJson() {
     final _resultData = <String, dynamic>{};
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
     final l$sku = sku;
     _resultData['sku'] = l$sku;
     final l$name = name;
@@ -8936,28 +8938,26 @@ class Query$FetchProducts$products$items$$VirtualProduct
     _resultData['rating_summary'] = l$rating_summary;
     final l$price_range = price_range;
     _resultData['price_range'] = l$price_range.toJson();
-    final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
     return _resultData;
   }
 
   @override
   int get hashCode {
+    final l$$__typename = $__typename;
     final l$sku = sku;
     final l$name = name;
     final l$image = image;
     final l$review_count = review_count;
     final l$rating_summary = rating_summary;
     final l$price_range = price_range;
-    final l$$__typename = $__typename;
     return Object.hashAll([
+      l$$__typename,
       l$sku,
       l$name,
       l$image,
       l$review_count,
       l$rating_summary,
       l$price_range,
-      l$$__typename,
     ]);
   }
 
@@ -8968,6 +8968,11 @@ class Query$FetchProducts$products$items$$VirtualProduct
     }
     if (!(other is Query$FetchProducts$products$items$$VirtualProduct) ||
         runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
       return false;
     }
     final l$sku = sku;
@@ -9000,11 +9005,6 @@ class Query$FetchProducts$products$items$$VirtualProduct
     if (l$price_range != lOther$price_range) {
       return false;
     }
-    final l$$__typename = $__typename;
-    final lOther$$__typename = other.$__typename;
-    if (l$$__typename != lOther$$__typename) {
-      return false;
-    }
     return true;
   }
 }
@@ -9032,13 +9032,13 @@ abstract class CopyWith$Query$FetchProducts$products$items$$VirtualProduct<
       _CopyWithStubImpl$Query$FetchProducts$products$items$$VirtualProduct;
 
   TRes call({
+    String? $__typename,
     String? sku,
     String? name,
     Query$FetchProducts$products$items$$VirtualProduct$image? image,
     int? review_count,
     double? rating_summary,
     Query$FetchProducts$products$items$$VirtualProduct$price_range? price_range,
-    String? $__typename,
   });
   CopyWith$Query$FetchProducts$products$items$$VirtualProduct$image<TRes>
       get image;
@@ -9061,15 +9061,18 @@ class _CopyWithImpl$Query$FetchProducts$products$items$$VirtualProduct<TRes>
   static const _undefined = <dynamic, dynamic>{};
 
   TRes call({
+    Object? $__typename = _undefined,
     Object? sku = _undefined,
     Object? name = _undefined,
     Object? image = _undefined,
     Object? review_count = _undefined,
     Object? rating_summary = _undefined,
     Object? price_range = _undefined,
-    Object? $__typename = _undefined,
   }) =>
       _then(Query$FetchProducts$products$items$$VirtualProduct(
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
         sku: sku == _undefined ? _instance.sku : (sku as String?),
         name: name == _undefined ? _instance.name : (name as String?),
         image: image == _undefined
@@ -9086,9 +9089,6 @@ class _CopyWithImpl$Query$FetchProducts$products$items$$VirtualProduct<TRes>
             ? _instance.price_range
             : (price_range
                 as Query$FetchProducts$products$items$$VirtualProduct$price_range),
-        $__typename: $__typename == _undefined || $__typename == null
-            ? _instance.$__typename
-            : ($__typename as String),
       ));
 
   CopyWith$Query$FetchProducts$products$items$$VirtualProduct$image<TRes>
@@ -9118,13 +9118,13 @@ class _CopyWithStubImpl$Query$FetchProducts$products$items$$VirtualProduct<TRes>
   TRes _res;
 
   call({
+    String? $__typename,
     String? sku,
     String? name,
     Query$FetchProducts$products$items$$VirtualProduct$image? image,
     int? review_count,
     double? rating_summary,
     Query$FetchProducts$products$items$$VirtualProduct$price_range? price_range,
-    String? $__typename,
   }) =>
       _res;
 

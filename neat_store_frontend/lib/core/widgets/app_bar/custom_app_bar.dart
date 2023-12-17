@@ -34,11 +34,14 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           ? [
               Padding(
                 padding: const EdgeInsets.only(right: 12),
-                child: IconButton(
-                  onPressed: () => context.router.push(const CartRoute()),
-                  icon: const Icon(
-                    Icons.shopping_cart_outlined,
-                    size: 28,
+                child: Badge(
+                  label: const Text('10'),
+                  child: IconButton(
+                    onPressed: () => context.router.push(const CartRoute()),
+                    icon: const Icon(
+                      Icons.shopping_cart_outlined,
+                      size: 28,
+                    ),
                   ),
                 ),
               ),

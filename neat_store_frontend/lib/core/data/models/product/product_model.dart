@@ -1,6 +1,8 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'package:neat_store_frontend/core/data/models/money/money_model.dart';
+import 'package:neat_store_frontend/core/data/models/product/configurable_option_model.dart';
+import 'package:neat_store_frontend/core/data/models/product/configurable_variant_model.dart';
 
 part 'product_model.freezed.dart';
 
@@ -10,13 +12,15 @@ part 'product_model.g.dart';
 class ProductModel with _$ProductModel {
   const factory ProductModel({
     required String sku,
-    required String name,
-    required String? imageUrl,
-    required int reviewCount,
-    required double ratingSummary,
     required MoneyModel price,
+    String? name,
+    String? imageUrl,
+    int? reviewCount,
+    double? ratingSummary,
 
-    // TODO: add configurable product data
+    // on ConfigurableProduct
+    List<ConfigurableOptionModel>? configurableOptions,
+    List<ConfigurableVariantModel>? variants,
   }) = _ProductModel;
 
   factory ProductModel.fromJson(Map<String, dynamic> json) =>
