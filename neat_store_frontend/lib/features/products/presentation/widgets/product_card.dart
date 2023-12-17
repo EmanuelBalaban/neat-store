@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:collection/collection.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'package:neat_store_frontend/core/business_logic/wishlists/wishlists_cubit.dart';
 import 'package:neat_store_frontend/core/data/converters/color_converter.dart';
 import 'package:neat_store_frontend/core/data/models/money/money_model.dart';
 import 'package:neat_store_frontend/core/data/models/product/configurable_attribute_type.dart';
@@ -129,9 +131,42 @@ class ProductCard extends StatelessWidget {
                       ),
                     const Spacer(),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         RegionalPrice(price: _price),
+                        const Spacer(),
+                        Builder(
+                          builder: (context) {
+                            final wishlistItem = context.select(
+                              (WishlistsCubit cubit) => cubit.findWishlistItem(
+                                productSku: data.sku,
+                              ),
+                            );
+
+                            return Align(
+                              alignment: Alignment.bottomRight,
+                              child: IconButton(
+                                onPressed: () {
+                                  final cubit = context.read<WishlistsCubit>();
+
+                                  if (wishlistItem != null) {
+                                    cubit.removeProductFromWishlist(
+                                      wishlistItemId: wishlistItem.id,
+                                    );
+                                  } else {
+                                    cubit.addProductToWishlist(
+                                      productSku: data.sku,
+                                    );
+                                  }
+                                },
+                                icon: Icon(
+                                  wishlistItem != null
+                                      ? Icons.favorite
+                                      : Icons.favorite_outline,
+                                ),
+                              ),
+                            );
+                          },
+                        ),
                         Align(
                           alignment: Alignment.bottomRight,
                           child: IconButton(
@@ -174,4 +209,6 @@ class ProductCard extends StatelessWidget {
       _selectedVariant?.product.imageUrl ?? data.imageUrl ?? '';
 
   MoneyModel get _price => _selectedVariant?.product.price ?? data.price;
+
+  String get _productSku => _selectedVariant?.product.sku ?? data.sku;
 }

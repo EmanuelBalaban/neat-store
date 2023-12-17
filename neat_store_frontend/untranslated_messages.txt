@@ -12,6 +12,7 @@
     "register",
     "loginFailed",
     "products",
+    "wishlists",
     "settings",
     "cart",
     "logout",

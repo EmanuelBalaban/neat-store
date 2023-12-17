@@ -1,0 +1,32 @@
+query FetchWishlists {
+    customer {
+        wishlists {
+            id
+            items_count
+            updated_at
+            sharing_code
+            items_v2 {
+                items {
+                    id
+                    quantity
+                    product {
+                        uid
+                        sku
+                        name
+                        image {
+                            url
+                        }
+                        price_range {
+                            minimum_price {
+                                regular_price {
+                                    value
+                                    currency
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
