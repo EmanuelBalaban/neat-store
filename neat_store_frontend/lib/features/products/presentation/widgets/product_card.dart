@@ -1,18 +1,31 @@
 import 'package:flutter/material.dart';
 
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:collection/collection.dart';
 
 import 'package:neat_store_frontend/core/data/converters/color_converter.dart';
+import 'package:neat_store_frontend/core/data/models/money/money_model.dart';
 import 'package:neat_store_frontend/core/data/models/product/configurable_attribute_type.dart';
+import 'package:neat_store_frontend/core/data/models/product/configurable_variant_model.dart';
 import 'package:neat_store_frontend/core/data/models/product/product_model.dart';
+import 'package:neat_store_frontend/core/widgets/price/regional_price.dart';
 
 class ProductCard extends StatelessWidget {
   const ProductCard({
     required this.data,
+    this.options,
+    this.onOptionSelected,
     super.key,
   });
 
   final ProductModel data;
+
+  final Map<ConfigurableAttributeType, String>? options;
+
+  final void Function({
+    required ConfigurableAttributeType attributeType,
+    required String optionId,
+  })? onOptionSelected;
 
   @override
   Widget build(BuildContext context) {
@@ -33,9 +46,9 @@ class ProductCard extends StatelessWidget {
                   bottomLeft: Radius.circular(12),
                 ),
                 child: CachedNetworkImage(
-                  imageUrl: data.imageUrl ?? '',
+                  imageUrl: _imageUrl,
                   fit: BoxFit.fitHeight,
-                  height: 160,
+                  height: 200,
                   progressIndicatorBuilder: (context, url, progress) {
                     return Center(
                       child: CircularProgressIndicator(
@@ -60,7 +73,7 @@ class ProductCard extends StatelessWidget {
                       data.name ?? '',
                       style: const TextStyle(fontSize: 20),
                     ),
-                    if (data.configurableOptions?.isNotEmpty ?? false)
+                    if (_hasConfigurableOptions)
                       ...data.configurableOptions!.map(
                         (item) => Container(
                           margin: const EdgeInsets.only(top: 4),
@@ -72,41 +85,61 @@ class ProductCard extends StatelessWidget {
                             itemCount: item.values.length,
                             itemBuilder: (context, index) {
                               final value = item.values[index];
+                              final isSelected = _isOptionSelected(
+                                attributeType: item.attributeType,
+                                optionId: value.uid,
+                              );
+                              final isColorAttribute = item.attributeType ==
+                                  ConfigurableAttributeType.color;
 
-                              if (item.attributeType ==
-                                  ConfigurableAttributeType.color) {
-                                return Container(
+                              return InkWell(
+                                onTap: () => onOptionSelected?.call(
+                                  attributeType: item.attributeType,
+                                  optionId: value.uid,
+                                ),
+                                child: Container(
+                                  alignment: Alignment.center,
                                   decoration: BoxDecoration(
-                                    border: Border.all(color: Colors.grey),
-                                    color: ColorConverter.fromHex(
-                                      value.swatchData,
+                                    border: Border.all(
+                                      color: isSelected
+                                          ? Colors.white
+                                          : Colors.grey,
                                     ),
+                                    color: isColorAttribute
+                                        ? ColorConverter.fromHex(
+                                            value.swatchData,
+                                          )
+                                        : null,
                                   ),
                                   width: 24,
                                   height: 24,
-                                );
-                              }
-
-                              return Container(
-                                decoration: BoxDecoration(
-                                  border: Border.all(color: Colors.grey),
+                                  child: Stack(
+                                    alignment: Alignment.center,
+                                    children: [
+                                      if (!isColorAttribute) Text(value.label),
+                                      if (isSelected && isColorAttribute)
+                                        const Text('✓'),
+                                    ],
+                                  ),
                                 ),
-                                width: 24,
-                                height: 24,
-                                alignment: Alignment.center,
-                                child: Text(value.label),
                               );
                             },
                           ),
                         ),
                       ),
                     const Spacer(),
-                    Align(
-                      alignment: Alignment.bottomRight,
-                      child: IconButton(
-                        onPressed: () {},
-                        icon: const Icon(Icons.add_shopping_cart),
-                      ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        RegionalPrice(price: _price),
+                        Align(
+                          alignment: Alignment.bottomRight,
+                          child: IconButton(
+                            onPressed: _canAddToBasket ? () {} : null,
+                            icon: const Icon(Icons.add_shopping_cart),
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
@@ -117,4 +150,28 @@ class ProductCard extends StatelessWidget {
       ),
     );
   }
+
+  bool _isOptionSelected({
+    required ConfigurableAttributeType attributeType,
+    required String optionId,
+  }) =>
+      options?[attributeType] == optionId;
+
+  ConfigurableVariantModel? get _selectedVariant =>
+      data.variants?.firstWhereOrNull(
+        (variant) => variant.isComposedOfOptions(
+          options ?? {},
+        ),
+      );
+
+  bool get _hasConfigurableOptions =>
+      data.configurableOptions?.isNotEmpty ?? false;
+
+  bool get _canAddToBasket =>
+      _selectedVariant != null || !_hasConfigurableOptions;
+
+  String get _imageUrl =>
+      _selectedVariant?.product.imageUrl ?? data.imageUrl ?? '';
+
+  MoneyModel get _price => _selectedVariant?.product.price ?? data.price;
 }

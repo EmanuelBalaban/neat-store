@@ -5,6 +5,7 @@ import 'package:riverpod/riverpod.dart';
 import 'package:skeletons/skeletons.dart';
 
 import 'package:neat_store_frontend/core/business_logic/products/products_cubit.dart';
+import 'package:neat_store_frontend/core/data/models/product/configurable_attribute_type.dart';
 import 'package:neat_store_frontend/features/products/presentation/widgets/product_card.dart';
 
 class ProductsContainer extends StatefulWidget {
@@ -15,6 +16,18 @@ class ProductsContainer extends StatefulWidget {
 }
 
 class _ProductsContainerState extends State<ProductsContainer> {
+  final _selectedOptions = <String, Map<ConfigurableAttributeType, String>>{};
+
+  void _selectOption({
+    required String productId,
+    required ConfigurableAttributeType attributeType,
+    required String optionId,
+  }) =>
+      setState(() {
+        _selectedOptions[productId] ??= {};
+        _selectedOptions[productId]?[attributeType] = optionId;
+      });
+
   @override
   void initState() {
     super.initState();
@@ -82,7 +95,24 @@ class _ProductsContainerState extends State<ProductsContainer> {
       padding: const EdgeInsets.all(12),
       itemCount: products.length,
       separatorBuilder: (context, index) => const SizedBox(height: 12),
-      itemBuilder: (context, index) => ProductCard(data: products[index]),
+      itemBuilder: (context, index) {
+        final product = products[index];
+        final productId = product.uid;
+
+        return ProductCard(
+          data: product,
+          options: _selectedOptions[productId],
+          onOptionSelected: ({
+            required ConfigurableAttributeType attributeType,
+            required String optionId,
+          }) =>
+              _selectOption(
+            productId: productId,
+            attributeType: attributeType,
+            optionId: optionId,
+          ),
+        );
+      },
     );
   }
 }

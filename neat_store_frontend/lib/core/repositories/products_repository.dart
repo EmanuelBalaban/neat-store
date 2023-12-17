@@ -91,6 +91,7 @@ class ProductsRepository {
                         .toList() ??
                     List.empty(),
                 product: ProductModel(
+                  uid: item?.product?.uid ?? '',
                   sku: item?.product?.sku ?? '',
                   imageUrl: imageUri?.toString(),
                   price: MoneyModel(
@@ -106,6 +107,7 @@ class ProductsRepository {
         }
 
         return ProductModel(
+          uid: item?.uid ?? '',
           sku: item?.sku ?? '',
           name: item?.name ?? '',
           imageUrl: imageUri?.toString(),

@@ -3,6 +3,7 @@ query FetchProducts {
         items {
             __typename
 
+            uid
             sku
             name
             image {
@@ -38,6 +39,7 @@ query FetchProducts {
                         label
                     }
                     product {
+                        uid
                         sku
                         image {
                             url

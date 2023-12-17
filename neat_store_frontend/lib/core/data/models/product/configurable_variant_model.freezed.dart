@@ -130,11 +130,13 @@ class __$$ConfigurableVariantModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$ConfigurableVariantModelImpl implements _ConfigurableVariantModel {
+class _$ConfigurableVariantModelImpl extends _ConfigurableVariantModel
+    with DiagnosticableTreeMixin {
   const _$ConfigurableVariantModelImpl(
       {required final List<ConfigurableAttributeOptionModel> attributes,
       required this.product})
-      : _attributes = attributes;
+      : _attributes = attributes,
+        super._();
 
   factory _$ConfigurableVariantModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$ConfigurableVariantModelImplFromJson(json);
@@ -151,8 +153,17 @@ class _$ConfigurableVariantModelImpl implements _ConfigurableVariantModel {
   final ProductModel product;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'ConfigurableVariantModel(attributes: $attributes, product: $product)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ConfigurableVariantModel'))
+      ..add(DiagnosticsProperty('attributes', attributes))
+      ..add(DiagnosticsProperty('product', product));
   }
 
   @override
@@ -185,10 +196,11 @@ class _$ConfigurableVariantModelImpl implements _ConfigurableVariantModel {
   }
 }
 
-abstract class _ConfigurableVariantModel implements ConfigurableVariantModel {
+abstract class _ConfigurableVariantModel extends ConfigurableVariantModel {
   const factory _ConfigurableVariantModel(
       {required final List<ConfigurableAttributeOptionModel> attributes,
       required final ProductModel product}) = _$ConfigurableVariantModelImpl;
+  const _ConfigurableVariantModel._() : super._();
 
   factory _ConfigurableVariantModel.fromJson(Map<String, dynamic> json) =
       _$ConfigurableVariantModelImpl.fromJson;

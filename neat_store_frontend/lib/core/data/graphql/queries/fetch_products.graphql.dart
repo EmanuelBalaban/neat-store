@@ -177,6 +177,13 @@ const documentNodeQueryFetchProducts = DocumentNode(definitions: [
                 selectionSet: null,
               ),
               FieldNode(
+                name: NameNode(value: 'uid'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+              FieldNode(
                 name: NameNode(value: 'sku'),
                 alias: null,
                 arguments: [],
@@ -421,6 +428,13 @@ const documentNodeQueryFetchProducts = DocumentNode(definitions: [
                         arguments: [],
                         directives: [],
                         selectionSet: SelectionSetNode(selections: [
+                          FieldNode(
+                            name: NameNode(value: 'uid'),
+                            alias: null,
+                            arguments: [],
+                            directives: [],
+                            selectionSet: null,
+                          ),
                           FieldNode(
                             name: NameNode(value: 'sku'),
                             alias: null,
@@ -842,6 +856,7 @@ class _CopyWithStubImpl$Query$FetchProducts$products<TRes>
 class Query$FetchProducts$products$items {
   Query$FetchProducts$products$items({
     required this.$__typename,
+    required this.uid,
     this.sku,
     this.name,
     this.image,
@@ -877,6 +892,7 @@ class Query$FetchProducts$products$items {
 
       default:
         final l$$__typename = json['__typename'];
+        final l$uid = json['uid'];
         final l$sku = json['sku'];
         final l$name = json['name'];
         final l$image = json['image'];
@@ -885,6 +901,7 @@ class Query$FetchProducts$products$items {
         final l$price_range = json['price_range'];
         return Query$FetchProducts$products$items(
           $__typename: (l$$__typename as String),
+          uid: (l$uid as String),
           sku: (l$sku as String?),
           name: (l$name as String?),
           image: l$image == null
@@ -900,6 +917,8 @@ class Query$FetchProducts$products$items {
   }
 
   final String $__typename;
+
+  final String uid;
 
   final String? sku;
 
@@ -917,6 +936,8 @@ class Query$FetchProducts$products$items {
     final _resultData = <String, dynamic>{};
     final l$$__typename = $__typename;
     _resultData['__typename'] = l$$__typename;
+    final l$uid = uid;
+    _resultData['uid'] = l$uid;
     final l$sku = sku;
     _resultData['sku'] = l$sku;
     final l$name = name;
@@ -935,6 +956,7 @@ class Query$FetchProducts$products$items {
   @override
   int get hashCode {
     final l$$__typename = $__typename;
+    final l$uid = uid;
     final l$sku = sku;
     final l$name = name;
     final l$image = image;
@@ -943,6 +965,7 @@ class Query$FetchProducts$products$items {
     final l$price_range = price_range;
     return Object.hashAll([
       l$$__typename,
+      l$uid,
       l$sku,
       l$name,
       l$image,
@@ -964,6 +987,11 @@ class Query$FetchProducts$products$items {
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
     if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    final l$uid = uid;
+    final lOther$uid = other.uid;
+    if (l$uid != lOther$uid) {
       return false;
     }
     final l$sku = sku;
@@ -1136,6 +1164,7 @@ abstract class CopyWith$Query$FetchProducts$products$items<TRes> {
 
   TRes call({
     String? $__typename,
+    String? uid,
     String? sku,
     String? name,
     Query$FetchProducts$products$items$image? image,
@@ -1162,6 +1191,7 @@ class _CopyWithImpl$Query$FetchProducts$products$items<TRes>
 
   TRes call({
     Object? $__typename = _undefined,
+    Object? uid = _undefined,
     Object? sku = _undefined,
     Object? name = _undefined,
     Object? image = _undefined,
@@ -1173,6 +1203,7 @@ class _CopyWithImpl$Query$FetchProducts$products$items<TRes>
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
+        uid: uid == _undefined || uid == null ? _instance.uid : (uid as String),
         sku: sku == _undefined ? _instance.sku : (sku as String?),
         name: name == _undefined ? _instance.name : (name as String?),
         image: image == _undefined
@@ -1214,6 +1245,7 @@ class _CopyWithStubImpl$Query$FetchProducts$products$items<TRes>
 
   call({
     String? $__typename,
+    String? uid,
     String? sku,
     String? name,
     Query$FetchProducts$products$items$image? image,
@@ -1835,6 +1867,7 @@ class Query$FetchProducts$products$items$$ConfigurableProduct
     this.configurable_options,
     this.variants,
     this.$__typename = 'ConfigurableProduct',
+    required this.uid,
     this.sku,
     this.name,
     this.image,
@@ -1848,6 +1881,7 @@ class Query$FetchProducts$products$items$$ConfigurableProduct
     final l$configurable_options = json['configurable_options'];
     final l$variants = json['variants'];
     final l$$__typename = json['__typename'];
+    final l$uid = json['uid'];
     final l$sku = json['sku'];
     final l$name = json['name'];
     final l$image = json['image'];
@@ -1868,6 +1902,7 @@ class Query$FetchProducts$products$items$$ConfigurableProduct
                   .fromJson((e as Map<String, dynamic>)))
           .toList(),
       $__typename: (l$$__typename as String),
+      uid: (l$uid as String),
       sku: (l$sku as String?),
       name: (l$name as String?),
       image: l$image == null
@@ -1891,6 +1926,8 @@ class Query$FetchProducts$products$items$$ConfigurableProduct
 
   final String $__typename;
 
+  final String uid;
+
   final String? sku;
 
   final String? name;
@@ -1913,6 +1950,8 @@ class Query$FetchProducts$products$items$$ConfigurableProduct
     _resultData['variants'] = l$variants?.map((e) => e?.toJson()).toList();
     final l$$__typename = $__typename;
     _resultData['__typename'] = l$$__typename;
+    final l$uid = uid;
+    _resultData['uid'] = l$uid;
     final l$sku = sku;
     _resultData['sku'] = l$sku;
     final l$name = name;
@@ -1933,6 +1972,7 @@ class Query$FetchProducts$products$items$$ConfigurableProduct
     final l$configurable_options = configurable_options;
     final l$variants = variants;
     final l$$__typename = $__typename;
+    final l$uid = uid;
     final l$sku = sku;
     final l$name = name;
     final l$image = image;
@@ -1945,6 +1985,7 @@ class Query$FetchProducts$products$items$$ConfigurableProduct
           : Object.hashAll(l$configurable_options.map((v) => v)),
       l$variants == null ? null : Object.hashAll(l$variants.map((v) => v)),
       l$$__typename,
+      l$uid,
       l$sku,
       l$name,
       l$image,
@@ -1999,6 +2040,11 @@ class Query$FetchProducts$products$items$$ConfigurableProduct
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
     if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    final l$uid = uid;
+    final lOther$uid = other.uid;
+    if (l$uid != lOther$uid) {
       return false;
     }
     final l$sku = sku;
@@ -2063,6 +2109,7 @@ abstract class CopyWith$Query$FetchProducts$products$items$$ConfigurableProduct<
     List<Query$FetchProducts$products$items$$ConfigurableProduct$variants?>?
         variants,
     String? $__typename,
+    String? uid,
     String? sku,
     String? name,
     Query$FetchProducts$products$items$$ConfigurableProduct$image? image,
@@ -2109,6 +2156,7 @@ class _CopyWithImpl$Query$FetchProducts$products$items$$ConfigurableProduct<
     Object? configurable_options = _undefined,
     Object? variants = _undefined,
     Object? $__typename = _undefined,
+    Object? uid = _undefined,
     Object? sku = _undefined,
     Object? name = _undefined,
     Object? image = _undefined,
@@ -2128,6 +2176,7 @@ class _CopyWithImpl$Query$FetchProducts$products$items$$ConfigurableProduct<
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
+        uid: uid == _undefined || uid == null ? _instance.uid : (uid as String),
         sku: sku == _undefined ? _instance.sku : (sku as String?),
         name: name == _undefined ? _instance.name : (name as String?),
         image: image == _undefined
@@ -2208,6 +2257,7 @@ class _CopyWithStubImpl$Query$FetchProducts$products$items$$ConfigurableProduct<
     List<Query$FetchProducts$products$items$$ConfigurableProduct$variants?>?
         variants,
     String? $__typename,
+    String? uid,
     String? sku,
     String? name,
     Query$FetchProducts$products$items$$ConfigurableProduct$image? image,
@@ -3741,6 +3791,7 @@ class _CopyWithStubImpl$Query$FetchProducts$products$items$$ConfigurableProduct$
 
 class Query$FetchProducts$products$items$$ConfigurableProduct$variants$product {
   Query$FetchProducts$products$items$$ConfigurableProduct$variants$product({
+    required this.uid,
     this.sku,
     this.image,
     required this.price_range,
@@ -3749,11 +3800,13 @@ class Query$FetchProducts$products$items$$ConfigurableProduct$variants$product {
 
   factory Query$FetchProducts$products$items$$ConfigurableProduct$variants$product.fromJson(
       Map<String, dynamic> json) {
+    final l$uid = json['uid'];
     final l$sku = json['sku'];
     final l$image = json['image'];
     final l$price_range = json['price_range'];
     final l$$__typename = json['__typename'];
     return Query$FetchProducts$products$items$$ConfigurableProduct$variants$product(
+      uid: (l$uid as String),
       sku: (l$sku as String?),
       image: l$image == null
           ? null
@@ -3765,6 +3818,8 @@ class Query$FetchProducts$products$items$$ConfigurableProduct$variants$product {
       $__typename: (l$$__typename as String),
     );
   }
+
+  final String uid;
 
   final String? sku;
 
@@ -3778,6 +3833,8 @@ class Query$FetchProducts$products$items$$ConfigurableProduct$variants$product {
 
   Map<String, dynamic> toJson() {
     final _resultData = <String, dynamic>{};
+    final l$uid = uid;
+    _resultData['uid'] = l$uid;
     final l$sku = sku;
     _resultData['sku'] = l$sku;
     final l$image = image;
@@ -3791,11 +3848,13 @@ class Query$FetchProducts$products$items$$ConfigurableProduct$variants$product {
 
   @override
   int get hashCode {
+    final l$uid = uid;
     final l$sku = sku;
     final l$image = image;
     final l$price_range = price_range;
     final l$$__typename = $__typename;
     return Object.hashAll([
+      l$uid,
       l$sku,
       l$image,
       l$price_range,
@@ -3811,6 +3870,11 @@ class Query$FetchProducts$products$items$$ConfigurableProduct$variants$product {
     if (!(other
             is Query$FetchProducts$products$items$$ConfigurableProduct$variants$product) ||
         runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$uid = uid;
+    final lOther$uid = other.uid;
+    if (l$uid != lOther$uid) {
       return false;
     }
     final l$sku = sku;
@@ -3863,6 +3927,7 @@ abstract class CopyWith$Query$FetchProducts$products$items$$ConfigurableProduct$
       _CopyWithStubImpl$Query$FetchProducts$products$items$$ConfigurableProduct$variants$product;
 
   TRes call({
+    String? uid,
     String? sku,
     Query$FetchProducts$products$items$$ConfigurableProduct$variants$product$image?
         image,
@@ -3896,6 +3961,7 @@ class _CopyWithImpl$Query$FetchProducts$products$items$$ConfigurableProduct$vari
   static const _undefined = <dynamic, dynamic>{};
 
   TRes call({
+    Object? uid = _undefined,
     Object? sku = _undefined,
     Object? image = _undefined,
     Object? price_range = _undefined,
@@ -3903,6 +3969,7 @@ class _CopyWithImpl$Query$FetchProducts$products$items$$ConfigurableProduct$vari
   }) =>
       _then(
           Query$FetchProducts$products$items$$ConfigurableProduct$variants$product(
+        uid: uid == _undefined || uid == null ? _instance.uid : (uid as String),
         sku: sku == _undefined ? _instance.sku : (sku as String?),
         image: image == _undefined
             ? _instance.image
@@ -3946,6 +4013,7 @@ class _CopyWithStubImpl$Query$FetchProducts$products$items$$ConfigurableProduct$
   TRes _res;
 
   call({
+    String? uid,
     String? sku,
     Query$FetchProducts$products$items$$ConfigurableProduct$variants$product$image?
         image,
@@ -4613,6 +4681,7 @@ class Query$FetchProducts$products$items$$BundleProduct
     implements Query$FetchProducts$products$items {
   Query$FetchProducts$products$items$$BundleProduct({
     this.$__typename = 'BundleProduct',
+    required this.uid,
     this.sku,
     this.name,
     this.image,
@@ -4624,6 +4693,7 @@ class Query$FetchProducts$products$items$$BundleProduct
   factory Query$FetchProducts$products$items$$BundleProduct.fromJson(
       Map<String, dynamic> json) {
     final l$$__typename = json['__typename'];
+    final l$uid = json['uid'];
     final l$sku = json['sku'];
     final l$name = json['name'];
     final l$image = json['image'];
@@ -4632,6 +4702,7 @@ class Query$FetchProducts$products$items$$BundleProduct
     final l$price_range = json['price_range'];
     return Query$FetchProducts$products$items$$BundleProduct(
       $__typename: (l$$__typename as String),
+      uid: (l$uid as String),
       sku: (l$sku as String?),
       name: (l$name as String?),
       image: l$image == null
@@ -4646,6 +4717,8 @@ class Query$FetchProducts$products$items$$BundleProduct
   }
 
   final String $__typename;
+
+  final String uid;
 
   final String? sku;
 
@@ -4664,6 +4737,8 @@ class Query$FetchProducts$products$items$$BundleProduct
     final _resultData = <String, dynamic>{};
     final l$$__typename = $__typename;
     _resultData['__typename'] = l$$__typename;
+    final l$uid = uid;
+    _resultData['uid'] = l$uid;
     final l$sku = sku;
     _resultData['sku'] = l$sku;
     final l$name = name;
@@ -4682,6 +4757,7 @@ class Query$FetchProducts$products$items$$BundleProduct
   @override
   int get hashCode {
     final l$$__typename = $__typename;
+    final l$uid = uid;
     final l$sku = sku;
     final l$name = name;
     final l$image = image;
@@ -4690,6 +4766,7 @@ class Query$FetchProducts$products$items$$BundleProduct
     final l$price_range = price_range;
     return Object.hashAll([
       l$$__typename,
+      l$uid,
       l$sku,
       l$name,
       l$image,
@@ -4711,6 +4788,11 @@ class Query$FetchProducts$products$items$$BundleProduct
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
     if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    final l$uid = uid;
+    final lOther$uid = other.uid;
+    if (l$uid != lOther$uid) {
       return false;
     }
     final l$sku = sku;
@@ -4771,6 +4853,7 @@ abstract class CopyWith$Query$FetchProducts$products$items$$BundleProduct<
 
   TRes call({
     String? $__typename,
+    String? uid,
     String? sku,
     String? name,
     Query$FetchProducts$products$items$$BundleProduct$image? image,
@@ -4800,6 +4883,7 @@ class _CopyWithImpl$Query$FetchProducts$products$items$$BundleProduct<TRes>
 
   TRes call({
     Object? $__typename = _undefined,
+    Object? uid = _undefined,
     Object? sku = _undefined,
     Object? name = _undefined,
     Object? image = _undefined,
@@ -4811,6 +4895,7 @@ class _CopyWithImpl$Query$FetchProducts$products$items$$BundleProduct<TRes>
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
+        uid: uid == _undefined || uid == null ? _instance.uid : (uid as String),
         sku: sku == _undefined ? _instance.sku : (sku as String?),
         name: name == _undefined ? _instance.name : (name as String?),
         image: image == _undefined
@@ -4857,6 +4942,7 @@ class _CopyWithStubImpl$Query$FetchProducts$products$items$$BundleProduct<TRes>
 
   call({
     String? $__typename,
+    String? uid,
     String? sku,
     String? name,
     Query$FetchProducts$products$items$$BundleProduct$image? image,
@@ -6153,6 +6239,7 @@ class Query$FetchProducts$products$items$$DownloadableProduct
     implements Query$FetchProducts$products$items {
   Query$FetchProducts$products$items$$DownloadableProduct({
     this.$__typename = 'DownloadableProduct',
+    required this.uid,
     this.sku,
     this.name,
     this.image,
@@ -6164,6 +6251,7 @@ class Query$FetchProducts$products$items$$DownloadableProduct
   factory Query$FetchProducts$products$items$$DownloadableProduct.fromJson(
       Map<String, dynamic> json) {
     final l$$__typename = json['__typename'];
+    final l$uid = json['uid'];
     final l$sku = json['sku'];
     final l$name = json['name'];
     final l$image = json['image'];
@@ -6172,6 +6260,7 @@ class Query$FetchProducts$products$items$$DownloadableProduct
     final l$price_range = json['price_range'];
     return Query$FetchProducts$products$items$$DownloadableProduct(
       $__typename: (l$$__typename as String),
+      uid: (l$uid as String),
       sku: (l$sku as String?),
       name: (l$name as String?),
       image: l$image == null
@@ -6187,6 +6276,8 @@ class Query$FetchProducts$products$items$$DownloadableProduct
   }
 
   final String $__typename;
+
+  final String uid;
 
   final String? sku;
 
@@ -6205,6 +6296,8 @@ class Query$FetchProducts$products$items$$DownloadableProduct
     final _resultData = <String, dynamic>{};
     final l$$__typename = $__typename;
     _resultData['__typename'] = l$$__typename;
+    final l$uid = uid;
+    _resultData['uid'] = l$uid;
     final l$sku = sku;
     _resultData['sku'] = l$sku;
     final l$name = name;
@@ -6223,6 +6316,7 @@ class Query$FetchProducts$products$items$$DownloadableProduct
   @override
   int get hashCode {
     final l$$__typename = $__typename;
+    final l$uid = uid;
     final l$sku = sku;
     final l$name = name;
     final l$image = image;
@@ -6231,6 +6325,7 @@ class Query$FetchProducts$products$items$$DownloadableProduct
     final l$price_range = price_range;
     return Object.hashAll([
       l$$__typename,
+      l$uid,
       l$sku,
       l$name,
       l$image,
@@ -6252,6 +6347,11 @@ class Query$FetchProducts$products$items$$DownloadableProduct
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
     if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    final l$uid = uid;
+    final lOther$uid = other.uid;
+    if (l$uid != lOther$uid) {
       return false;
     }
     final l$sku = sku;
@@ -6312,6 +6412,7 @@ abstract class CopyWith$Query$FetchProducts$products$items$$DownloadableProduct<
 
   TRes call({
     String? $__typename,
+    String? uid,
     String? sku,
     String? name,
     Query$FetchProducts$products$items$$DownloadableProduct$image? image,
@@ -6344,6 +6445,7 @@ class _CopyWithImpl$Query$FetchProducts$products$items$$DownloadableProduct<
 
   TRes call({
     Object? $__typename = _undefined,
+    Object? uid = _undefined,
     Object? sku = _undefined,
     Object? name = _undefined,
     Object? image = _undefined,
@@ -6355,6 +6457,7 @@ class _CopyWithImpl$Query$FetchProducts$products$items$$DownloadableProduct<
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
+        uid: uid == _undefined || uid == null ? _instance.uid : (uid as String),
         sku: sku == _undefined ? _instance.sku : (sku as String?),
         name: name == _undefined ? _instance.name : (name as String?),
         image: image == _undefined
@@ -6402,6 +6505,7 @@ class _CopyWithStubImpl$Query$FetchProducts$products$items$$DownloadableProduct<
 
   call({
     String? $__typename,
+    String? uid,
     String? sku,
     String? name,
     Query$FetchProducts$products$items$$DownloadableProduct$image? image,
@@ -7068,6 +7172,7 @@ class Query$FetchProducts$products$items$$GroupedProduct
     implements Query$FetchProducts$products$items {
   Query$FetchProducts$products$items$$GroupedProduct({
     this.$__typename = 'GroupedProduct',
+    required this.uid,
     this.sku,
     this.name,
     this.image,
@@ -7079,6 +7184,7 @@ class Query$FetchProducts$products$items$$GroupedProduct
   factory Query$FetchProducts$products$items$$GroupedProduct.fromJson(
       Map<String, dynamic> json) {
     final l$$__typename = json['__typename'];
+    final l$uid = json['uid'];
     final l$sku = json['sku'];
     final l$name = json['name'];
     final l$image = json['image'];
@@ -7087,6 +7193,7 @@ class Query$FetchProducts$products$items$$GroupedProduct
     final l$price_range = json['price_range'];
     return Query$FetchProducts$products$items$$GroupedProduct(
       $__typename: (l$$__typename as String),
+      uid: (l$uid as String),
       sku: (l$sku as String?),
       name: (l$name as String?),
       image: l$image == null
@@ -7102,6 +7209,8 @@ class Query$FetchProducts$products$items$$GroupedProduct
   }
 
   final String $__typename;
+
+  final String uid;
 
   final String? sku;
 
@@ -7120,6 +7229,8 @@ class Query$FetchProducts$products$items$$GroupedProduct
     final _resultData = <String, dynamic>{};
     final l$$__typename = $__typename;
     _resultData['__typename'] = l$$__typename;
+    final l$uid = uid;
+    _resultData['uid'] = l$uid;
     final l$sku = sku;
     _resultData['sku'] = l$sku;
     final l$name = name;
@@ -7138,6 +7249,7 @@ class Query$FetchProducts$products$items$$GroupedProduct
   @override
   int get hashCode {
     final l$$__typename = $__typename;
+    final l$uid = uid;
     final l$sku = sku;
     final l$name = name;
     final l$image = image;
@@ -7146,6 +7258,7 @@ class Query$FetchProducts$products$items$$GroupedProduct
     final l$price_range = price_range;
     return Object.hashAll([
       l$$__typename,
+      l$uid,
       l$sku,
       l$name,
       l$image,
@@ -7167,6 +7280,11 @@ class Query$FetchProducts$products$items$$GroupedProduct
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
     if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    final l$uid = uid;
+    final lOther$uid = other.uid;
+    if (l$uid != lOther$uid) {
       return false;
     }
     final l$sku = sku;
@@ -7227,6 +7345,7 @@ abstract class CopyWith$Query$FetchProducts$products$items$$GroupedProduct<
 
   TRes call({
     String? $__typename,
+    String? uid,
     String? sku,
     String? name,
     Query$FetchProducts$products$items$$GroupedProduct$image? image,
@@ -7256,6 +7375,7 @@ class _CopyWithImpl$Query$FetchProducts$products$items$$GroupedProduct<TRes>
 
   TRes call({
     Object? $__typename = _undefined,
+    Object? uid = _undefined,
     Object? sku = _undefined,
     Object? name = _undefined,
     Object? image = _undefined,
@@ -7267,6 +7387,7 @@ class _CopyWithImpl$Query$FetchProducts$products$items$$GroupedProduct<TRes>
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
+        uid: uid == _undefined || uid == null ? _instance.uid : (uid as String),
         sku: sku == _undefined ? _instance.sku : (sku as String?),
         name: name == _undefined ? _instance.name : (name as String?),
         image: image == _undefined
@@ -7313,6 +7434,7 @@ class _CopyWithStubImpl$Query$FetchProducts$products$items$$GroupedProduct<TRes>
 
   call({
     String? $__typename,
+    String? uid,
     String? sku,
     String? name,
     Query$FetchProducts$products$items$$GroupedProduct$image? image,
@@ -7974,6 +8096,7 @@ class Query$FetchProducts$products$items$$SimpleProduct
     implements Query$FetchProducts$products$items {
   Query$FetchProducts$products$items$$SimpleProduct({
     this.$__typename = 'SimpleProduct',
+    required this.uid,
     this.sku,
     this.name,
     this.image,
@@ -7985,6 +8108,7 @@ class Query$FetchProducts$products$items$$SimpleProduct
   factory Query$FetchProducts$products$items$$SimpleProduct.fromJson(
       Map<String, dynamic> json) {
     final l$$__typename = json['__typename'];
+    final l$uid = json['uid'];
     final l$sku = json['sku'];
     final l$name = json['name'];
     final l$image = json['image'];
@@ -7993,6 +8117,7 @@ class Query$FetchProducts$products$items$$SimpleProduct
     final l$price_range = json['price_range'];
     return Query$FetchProducts$products$items$$SimpleProduct(
       $__typename: (l$$__typename as String),
+      uid: (l$uid as String),
       sku: (l$sku as String?),
       name: (l$name as String?),
       image: l$image == null
@@ -8007,6 +8132,8 @@ class Query$FetchProducts$products$items$$SimpleProduct
   }
 
   final String $__typename;
+
+  final String uid;
 
   final String? sku;
 
@@ -8025,6 +8152,8 @@ class Query$FetchProducts$products$items$$SimpleProduct
     final _resultData = <String, dynamic>{};
     final l$$__typename = $__typename;
     _resultData['__typename'] = l$$__typename;
+    final l$uid = uid;
+    _resultData['uid'] = l$uid;
     final l$sku = sku;
     _resultData['sku'] = l$sku;
     final l$name = name;
@@ -8043,6 +8172,7 @@ class Query$FetchProducts$products$items$$SimpleProduct
   @override
   int get hashCode {
     final l$$__typename = $__typename;
+    final l$uid = uid;
     final l$sku = sku;
     final l$name = name;
     final l$image = image;
@@ -8051,6 +8181,7 @@ class Query$FetchProducts$products$items$$SimpleProduct
     final l$price_range = price_range;
     return Object.hashAll([
       l$$__typename,
+      l$uid,
       l$sku,
       l$name,
       l$image,
@@ -8072,6 +8203,11 @@ class Query$FetchProducts$products$items$$SimpleProduct
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
     if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    final l$uid = uid;
+    final lOther$uid = other.uid;
+    if (l$uid != lOther$uid) {
       return false;
     }
     final l$sku = sku;
@@ -8132,6 +8268,7 @@ abstract class CopyWith$Query$FetchProducts$products$items$$SimpleProduct<
 
   TRes call({
     String? $__typename,
+    String? uid,
     String? sku,
     String? name,
     Query$FetchProducts$products$items$$SimpleProduct$image? image,
@@ -8161,6 +8298,7 @@ class _CopyWithImpl$Query$FetchProducts$products$items$$SimpleProduct<TRes>
 
   TRes call({
     Object? $__typename = _undefined,
+    Object? uid = _undefined,
     Object? sku = _undefined,
     Object? name = _undefined,
     Object? image = _undefined,
@@ -8172,6 +8310,7 @@ class _CopyWithImpl$Query$FetchProducts$products$items$$SimpleProduct<TRes>
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
+        uid: uid == _undefined || uid == null ? _instance.uid : (uid as String),
         sku: sku == _undefined ? _instance.sku : (sku as String?),
         name: name == _undefined ? _instance.name : (name as String?),
         image: image == _undefined
@@ -8218,6 +8357,7 @@ class _CopyWithStubImpl$Query$FetchProducts$products$items$$SimpleProduct<TRes>
 
   call({
     String? $__typename,
+    String? uid,
     String? sku,
     String? name,
     Query$FetchProducts$products$items$$SimpleProduct$image? image,
@@ -8874,6 +9014,7 @@ class Query$FetchProducts$products$items$$VirtualProduct
     implements Query$FetchProducts$products$items {
   Query$FetchProducts$products$items$$VirtualProduct({
     this.$__typename = 'VirtualProduct',
+    required this.uid,
     this.sku,
     this.name,
     this.image,
@@ -8885,6 +9026,7 @@ class Query$FetchProducts$products$items$$VirtualProduct
   factory Query$FetchProducts$products$items$$VirtualProduct.fromJson(
       Map<String, dynamic> json) {
     final l$$__typename = json['__typename'];
+    final l$uid = json['uid'];
     final l$sku = json['sku'];
     final l$name = json['name'];
     final l$image = json['image'];
@@ -8893,6 +9035,7 @@ class Query$FetchProducts$products$items$$VirtualProduct
     final l$price_range = json['price_range'];
     return Query$FetchProducts$products$items$$VirtualProduct(
       $__typename: (l$$__typename as String),
+      uid: (l$uid as String),
       sku: (l$sku as String?),
       name: (l$name as String?),
       image: l$image == null
@@ -8908,6 +9051,8 @@ class Query$FetchProducts$products$items$$VirtualProduct
   }
 
   final String $__typename;
+
+  final String uid;
 
   final String? sku;
 
@@ -8926,6 +9071,8 @@ class Query$FetchProducts$products$items$$VirtualProduct
     final _resultData = <String, dynamic>{};
     final l$$__typename = $__typename;
     _resultData['__typename'] = l$$__typename;
+    final l$uid = uid;
+    _resultData['uid'] = l$uid;
     final l$sku = sku;
     _resultData['sku'] = l$sku;
     final l$name = name;
@@ -8944,6 +9091,7 @@ class Query$FetchProducts$products$items$$VirtualProduct
   @override
   int get hashCode {
     final l$$__typename = $__typename;
+    final l$uid = uid;
     final l$sku = sku;
     final l$name = name;
     final l$image = image;
@@ -8952,6 +9100,7 @@ class Query$FetchProducts$products$items$$VirtualProduct
     final l$price_range = price_range;
     return Object.hashAll([
       l$$__typename,
+      l$uid,
       l$sku,
       l$name,
       l$image,
@@ -8973,6 +9122,11 @@ class Query$FetchProducts$products$items$$VirtualProduct
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
     if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    final l$uid = uid;
+    final lOther$uid = other.uid;
+    if (l$uid != lOther$uid) {
       return false;
     }
     final l$sku = sku;
@@ -9033,6 +9187,7 @@ abstract class CopyWith$Query$FetchProducts$products$items$$VirtualProduct<
 
   TRes call({
     String? $__typename,
+    String? uid,
     String? sku,
     String? name,
     Query$FetchProducts$products$items$$VirtualProduct$image? image,
@@ -9062,6 +9217,7 @@ class _CopyWithImpl$Query$FetchProducts$products$items$$VirtualProduct<TRes>
 
   TRes call({
     Object? $__typename = _undefined,
+    Object? uid = _undefined,
     Object? sku = _undefined,
     Object? name = _undefined,
     Object? image = _undefined,
@@ -9073,6 +9229,7 @@ class _CopyWithImpl$Query$FetchProducts$products$items$$VirtualProduct<TRes>
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
+        uid: uid == _undefined || uid == null ? _instance.uid : (uid as String),
         sku: sku == _undefined ? _instance.sku : (sku as String?),
         name: name == _undefined ? _instance.name : (name as String?),
         image: image == _undefined
@@ -9119,6 +9276,7 @@ class _CopyWithStubImpl$Query$FetchProducts$products$items$$VirtualProduct<TRes>
 
   call({
     String? $__typename,
+    String? uid,
     String? sku,
     String? name,
     Query$FetchProducts$products$items$$VirtualProduct$image? image,

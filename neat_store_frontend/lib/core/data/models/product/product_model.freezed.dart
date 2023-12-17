@@ -20,6 +20,7 @@ ProductModel _$ProductModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ProductModel {
+  String get uid => throw _privateConstructorUsedError;
   String get sku => throw _privateConstructorUsedError;
   MoneyModel get price => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
@@ -45,7 +46,8 @@ abstract class $ProductModelCopyWith<$Res> {
       _$ProductModelCopyWithImpl<$Res, ProductModel>;
   @useResult
   $Res call(
-      {String sku,
+      {String uid,
+      String sku,
       MoneyModel price,
       String? name,
       String? imageUrl,
@@ -70,6 +72,7 @@ class _$ProductModelCopyWithImpl<$Res, $Val extends ProductModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? uid = null,
     Object? sku = null,
     Object? price = null,
     Object? name = freezed,
@@ -80,6 +83,10 @@ class _$ProductModelCopyWithImpl<$Res, $Val extends ProductModel>
     Object? variants = freezed,
   }) {
     return _then(_value.copyWith(
+      uid: null == uid
+          ? _value.uid
+          : uid // ignore: cast_nullable_to_non_nullable
+              as String,
       sku: null == sku
           ? _value.sku
           : sku // ignore: cast_nullable_to_non_nullable
@@ -133,7 +140,8 @@ abstract class _$$ProductModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String sku,
+      {String uid,
+      String sku,
       MoneyModel price,
       String? name,
       String? imageUrl,
@@ -157,6 +165,7 @@ class __$$ProductModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? uid = null,
     Object? sku = null,
     Object? price = null,
     Object? name = freezed,
@@ -167,6 +176,10 @@ class __$$ProductModelImplCopyWithImpl<$Res>
     Object? variants = freezed,
   }) {
     return _then(_$ProductModelImpl(
+      uid: null == uid
+          ? _value.uid
+          : uid // ignore: cast_nullable_to_non_nullable
+              as String,
       sku: null == sku
           ? _value.sku
           : sku // ignore: cast_nullable_to_non_nullable
@@ -207,7 +220,8 @@ class __$$ProductModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$ProductModelImpl implements _ProductModel {
   const _$ProductModelImpl(
-      {required this.sku,
+      {required this.uid,
+      required this.sku,
       required this.price,
       this.name,
       this.imageUrl,
@@ -221,6 +235,8 @@ class _$ProductModelImpl implements _ProductModel {
   factory _$ProductModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$ProductModelImplFromJson(json);
 
+  @override
+  final String uid;
   @override
   final String sku;
   @override
@@ -258,7 +274,7 @@ class _$ProductModelImpl implements _ProductModel {
 
   @override
   String toString() {
-    return 'ProductModel(sku: $sku, price: $price, name: $name, imageUrl: $imageUrl, reviewCount: $reviewCount, ratingSummary: $ratingSummary, configurableOptions: $configurableOptions, variants: $variants)';
+    return 'ProductModel(uid: $uid, sku: $sku, price: $price, name: $name, imageUrl: $imageUrl, reviewCount: $reviewCount, ratingSummary: $ratingSummary, configurableOptions: $configurableOptions, variants: $variants)';
   }
 
   @override
@@ -266,6 +282,7 @@ class _$ProductModelImpl implements _ProductModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ProductModelImpl &&
+            (identical(other.uid, uid) || other.uid == uid) &&
             (identical(other.sku, sku) || other.sku == sku) &&
             (identical(other.price, price) || other.price == price) &&
             (identical(other.name, name) || other.name == name) &&
@@ -284,6 +301,7 @@ class _$ProductModelImpl implements _ProductModel {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      uid,
       sku,
       price,
       name,
@@ -309,7 +327,8 @@ class _$ProductModelImpl implements _ProductModel {
 
 abstract class _ProductModel implements ProductModel {
   const factory _ProductModel(
-      {required final String sku,
+      {required final String uid,
+      required final String sku,
       required final MoneyModel price,
       final String? name,
       final String? imageUrl,
@@ -321,6 +340,8 @@ abstract class _ProductModel implements ProductModel {
   factory _ProductModel.fromJson(Map<String, dynamic> json) =
       _$ProductModelImpl.fromJson;
 
+  @override
+  String get uid;
   @override
   String get sku;
   @override
