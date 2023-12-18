@@ -62,6 +62,41 @@ class CartItemCard extends StatelessWidget {
                       data.product.name ?? '',
                       style: const TextStyle(fontSize: 20),
                     ),
+                    const SizedBox(height: 6),
+                    Row(
+                      children: [
+                        InkWell(
+                          customBorder: const CircleBorder(),
+                          onTap: () =>
+                              context.read<CartCubit>().updateProductQuantity(
+                                    sku: _productSku,
+                                    quantity: (data.quantity - 1).clamp(
+                                      0,
+                                      100,
+                                    ),
+                                  ),
+                          child: const Icon(Icons.remove),
+                        ),
+                        const SizedBox(width: 6),
+                        Text(
+                          '${data.quantity.toInt()}',
+                          style: const TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        const SizedBox(width: 6),
+                        InkWell(
+                          customBorder: const CircleBorder(),
+                          onTap: () =>
+                              context.read<CartCubit>().updateProductQuantity(
+                                    sku: _productSku,
+                                    quantity: (data.quantity + 1).clamp(
+                                      0,
+                                      100,
+                                    ),
+                                  ),
+                          child: const Icon(Icons.add),
+                        ),
+                      ],
+                    ),
                     const Spacer(),
                     Row(
                       children: [
