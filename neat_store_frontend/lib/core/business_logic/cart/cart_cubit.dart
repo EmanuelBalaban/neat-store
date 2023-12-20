@@ -27,7 +27,15 @@ class CartCubit extends Cubit<CartState> {
 
   int get totalQuantity => cart?.totalQuantity.toInt() ?? 0;
 
-  Future<void> fetchCart() async {
+  Future<void> fetchCart({bool freshFetch = false}) async {
+    if (freshFetch) {
+      emit(
+        state.copyWith(
+          fetchCartState: const FetchCartState.loading(),
+        ),
+      );
+    }
+
     final fetchCartState =
         await FetchCartState.guard(_cartRepository.fetchCart);
 
@@ -167,5 +175,24 @@ class CartCubit extends Cubit<CartState> {
         ),
       );
     }
+  }
+
+  Future<void> fetchCheckoutData() async {
+    final fetchCartState =
+        await FetchCartState.guard(_cartRepository.fetchCheckoutData);
+
+    emit(
+      state.copyWith(
+        fetchCartState: fetchCartState,
+      ),
+    );
+  }
+
+  bool get canPay {
+    final cart = state.fetchCartState.valueOrNull;
+
+    return cart != null &&
+        cart.selectedShippingMethod != null &&
+        cart.selectedPaymentMethod != null;
   }
 }

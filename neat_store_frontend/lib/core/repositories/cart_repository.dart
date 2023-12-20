@@ -6,13 +6,18 @@ import 'package:neat_store_frontend/core/data/graphql/magento.graphql.dart';
 import 'package:neat_store_frontend/core/data/graphql/mutations/add_configurable_products_to_cart.graphql.dart';
 import 'package:neat_store_frontend/core/data/graphql/mutations/remove_item_from_cart.graphql.dart';
 import 'package:neat_store_frontend/core/data/graphql/mutations/update_cart_items.graphql.dart';
+import 'package:neat_store_frontend/core/data/graphql/queries/fetch_checkout_data.graphql.dart';
 import 'package:neat_store_frontend/core/data/graphql/queries/fetch_customer_cart.graphql.dart';
+import 'package:neat_store_frontend/core/data/models/address/address_model.dart';
 import 'package:neat_store_frontend/core/data/models/cart/cart_item_model.dart';
 import 'package:neat_store_frontend/core/data/models/cart/cart_model.dart';
 import 'package:neat_store_frontend/core/data/models/cart/cart_prices_model.dart';
 import 'package:neat_store_frontend/core/data/models/config/config_model.dart';
 import 'package:neat_store_frontend/core/data/models/money/money_model.dart';
+import 'package:neat_store_frontend/core/data/models/payment/payment_method_code.dart';
+import 'package:neat_store_frontend/core/data/models/payment/payment_method_model.dart';
 import 'package:neat_store_frontend/core/data/models/product/product_model.dart';
+import 'package:neat_store_frontend/core/data/models/shipping/shipping_method_model.dart';
 import 'package:neat_store_frontend/core/dependencies/dependencies.dart';
 
 @injectable
@@ -324,6 +329,123 @@ class CartRepository {
             },
           ).toList() ??
           List.empty(),
+    );
+  }
+
+  Future<CartModel> fetchCheckoutData() async {
+    final result = await _gql.query$FetchCheckoutData();
+
+    if (result.hasException) {
+      throw result.exception!;
+    }
+
+    final cart = result.parsedData?.customerCart;
+    final subTotal = cart?.prices?.subtotal_with_discount_excluding_tax;
+    final grandTotal = cart?.prices?.grand_total;
+
+    final shippingAddress = cart?.shipping_addresses.firstOrNull;
+    final availableShippingMethods =
+        shippingAddress?.available_shipping_methods ?? [];
+    final selectedShippingMethod = shippingAddress?.selected_shipping_method;
+    final billingAddress = cart?.billing_address;
+    final availablePaymentMethods = cart?.available_payment_methods ?? [];
+    final selectedPaymentMethod = cart?.selected_payment_method;
+
+    return CartModel(
+      id: cart?.id ?? '',
+      totalQuantity: cart?.total_quantity ?? 0,
+      prices: CartPricesModel(
+        subTotal: MoneyModel(
+          currency: const CurrencyConverter().fromJson(
+            subTotal?.currency?.name,
+          ),
+          value: subTotal?.value ?? 0,
+        ),
+        grandTotal: MoneyModel(
+          currency: const CurrencyConverter().fromJson(
+            grandTotal?.currency?.name,
+          ),
+          value: grandTotal?.value ?? 0,
+        ),
+      ),
+      shippingAddress: shippingAddress != null
+          ? AddressModel(
+              id: shippingAddress.uid,
+              countryCode: shippingAddress.country.code,
+              regionId: shippingAddress.region?.region_id ?? 0,
+              city: shippingAddress.city,
+              firstName: shippingAddress.firstname,
+              lastName: shippingAddress.lastname,
+              postcode: shippingAddress.postcode ?? '',
+              telephone: shippingAddress.telephone ?? '',
+              street: shippingAddress.street.map((item) => item ?? '').toList(),
+            )
+          : null,
+      availableShippingMethods: availableShippingMethods
+          .map(
+            (item) => ShippingMethodModel(
+              carrierCode: item?.carrier_code ?? '',
+              carrierTitle: item?.carrier_title ?? '',
+              methodCode: item?.method_code ?? '',
+              methodTitle: item?.method_title ?? '',
+              amount: MoneyModel(
+                currency: const CurrencyConverter().fromJson(
+                  item?.amount.currency?.name,
+                ),
+                value: item?.amount.value ?? 0,
+              ),
+            ),
+          )
+          .toList(),
+      selectedShippingMethod: selectedShippingMethod != null
+          ? ShippingMethodModel(
+              carrierCode: selectedShippingMethod.carrier_code,
+              carrierTitle: selectedShippingMethod.carrier_title,
+              methodCode: selectedShippingMethod.method_code,
+              methodTitle: selectedShippingMethod.method_title,
+              amount: MoneyModel(
+                currency: const CurrencyConverter().fromJson(
+                  selectedShippingMethod.amount.currency?.name,
+                ),
+                value: selectedShippingMethod.amount.value ?? 0,
+              ),
+            )
+          : null,
+      availablePaymentMethods: availablePaymentMethods
+          .where(
+            (item) => PaymentMethodCode.values.any(
+              (code) => code.toJson() == item?.code,
+            ),
+          )
+          .map(
+            (item) => PaymentMethodModel(
+              code: PaymentMethodCode.fromJson(item?.code ?? ''),
+              title: item?.title ?? '',
+            ),
+          )
+          .toList(),
+      selectedPaymentMethod: (selectedPaymentMethod != null &&
+              PaymentMethodCode.values.any(
+                (code) => code.toJson() == selectedPaymentMethod.code,
+              ))
+          ? PaymentMethodModel(
+              code: PaymentMethodCode.fromJson(selectedPaymentMethod.code),
+              title: selectedPaymentMethod.title,
+            )
+          : null,
+      billingAddress: billingAddress != null
+          ? AddressModel(
+              id: billingAddress.uid,
+              countryCode: billingAddress.country.code,
+              regionId: billingAddress.region?.region_id ?? 0,
+              city: billingAddress.city,
+              firstName: billingAddress.firstname,
+              lastName: billingAddress.lastname,
+              postcode: billingAddress.postcode ?? '',
+              telephone: billingAddress.telephone ?? '',
+              street: billingAddress.street.map((item) => item ?? '').toList(),
+            )
+          : null,
     );
   }
 }

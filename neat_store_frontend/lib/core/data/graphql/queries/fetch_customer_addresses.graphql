@@ -1,0 +1,15 @@
+query FetchCustomerAddresses {
+    customer {
+        addresses {
+            id
+            country_code
+            region_id
+            city
+            firstname
+            lastname
+            postcode
+            telephone
+            street
+        }
+    }
+}

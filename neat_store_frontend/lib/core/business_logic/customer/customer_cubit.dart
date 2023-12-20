@@ -7,6 +7,7 @@ import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:logger/logger.dart';
 import 'package:riverpod/riverpod.dart';
 
+import 'package:neat_store_frontend/core/data/models/address/address_model.dart';
 import 'package:neat_store_frontend/core/data/models/customer/customer_model.dart';
 import 'package:neat_store_frontend/core/data/models/void.dart';
 import 'package:neat_store_frontend/core/dependencies/dependencies.dart';
@@ -117,11 +118,30 @@ class CustomerCubit extends Cubit<CustomerState> {
       ),
     );
 
+    final fetchCustomerState = await FetchCustomerState.guard(
+      _customerRepository.fetchCustomer,
+    );
+
+    emit(
+      state.copyWith(fetchCustomerState: fetchCustomerState),
+    );
+  }
+
+  Future<void> fetchCustomerAddresses() async {
     emit(
       state.copyWith(
-        fetchCustomerState: await FetchCustomerState.guard(
-          _customerRepository.fetchCustomer,
-        ),
+        fetchCustomerAddressesState:
+            const FetchCustomerAddressesState.loading(),
+      ),
+    );
+
+    final fetchCustomerAddressesState = await FetchCustomerAddressesState.guard(
+      _customerRepository.fetchCustomerAddresses,
+    );
+
+    emit(
+      state.copyWith(
+        fetchCustomerAddressesState: fetchCustomerAddressesState,
       ),
     );
   }

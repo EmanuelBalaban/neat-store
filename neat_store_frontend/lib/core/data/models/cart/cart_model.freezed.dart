@@ -24,6 +24,16 @@ mixin _$CartModel {
   double get totalQuantity => throw _privateConstructorUsedError;
   CartPricesModel get prices => throw _privateConstructorUsedError;
   List<CartItemModel> get items => throw _privateConstructorUsedError;
+  AddressModel? get shippingAddress => throw _privateConstructorUsedError;
+  List<ShippingMethodModel> get availableShippingMethods =>
+      throw _privateConstructorUsedError;
+  ShippingMethodModel? get selectedShippingMethod =>
+      throw _privateConstructorUsedError;
+  AddressModel? get billingAddress => throw _privateConstructorUsedError;
+  List<PaymentMethodModel> get availablePaymentMethods =>
+      throw _privateConstructorUsedError;
+  PaymentMethodModel? get selectedPaymentMethod =>
+      throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -40,9 +50,19 @@ abstract class $CartModelCopyWith<$Res> {
       {String id,
       double totalQuantity,
       CartPricesModel prices,
-      List<CartItemModel> items});
+      List<CartItemModel> items,
+      AddressModel? shippingAddress,
+      List<ShippingMethodModel> availableShippingMethods,
+      ShippingMethodModel? selectedShippingMethod,
+      AddressModel? billingAddress,
+      List<PaymentMethodModel> availablePaymentMethods,
+      PaymentMethodModel? selectedPaymentMethod});
 
   $CartPricesModelCopyWith<$Res> get prices;
+  $AddressModelCopyWith<$Res>? get shippingAddress;
+  $ShippingMethodModelCopyWith<$Res>? get selectedShippingMethod;
+  $AddressModelCopyWith<$Res>? get billingAddress;
+  $PaymentMethodModelCopyWith<$Res>? get selectedPaymentMethod;
 }
 
 /// @nodoc
@@ -62,6 +82,12 @@ class _$CartModelCopyWithImpl<$Res, $Val extends CartModel>
     Object? totalQuantity = null,
     Object? prices = null,
     Object? items = null,
+    Object? shippingAddress = freezed,
+    Object? availableShippingMethods = null,
+    Object? selectedShippingMethod = freezed,
+    Object? billingAddress = freezed,
+    Object? availablePaymentMethods = null,
+    Object? selectedPaymentMethod = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -80,6 +106,30 @@ class _$CartModelCopyWithImpl<$Res, $Val extends CartModel>
           ? _value.items
           : items // ignore: cast_nullable_to_non_nullable
               as List<CartItemModel>,
+      shippingAddress: freezed == shippingAddress
+          ? _value.shippingAddress
+          : shippingAddress // ignore: cast_nullable_to_non_nullable
+              as AddressModel?,
+      availableShippingMethods: null == availableShippingMethods
+          ? _value.availableShippingMethods
+          : availableShippingMethods // ignore: cast_nullable_to_non_nullable
+              as List<ShippingMethodModel>,
+      selectedShippingMethod: freezed == selectedShippingMethod
+          ? _value.selectedShippingMethod
+          : selectedShippingMethod // ignore: cast_nullable_to_non_nullable
+              as ShippingMethodModel?,
+      billingAddress: freezed == billingAddress
+          ? _value.billingAddress
+          : billingAddress // ignore: cast_nullable_to_non_nullable
+              as AddressModel?,
+      availablePaymentMethods: null == availablePaymentMethods
+          ? _value.availablePaymentMethods
+          : availablePaymentMethods // ignore: cast_nullable_to_non_nullable
+              as List<PaymentMethodModel>,
+      selectedPaymentMethod: freezed == selectedPaymentMethod
+          ? _value.selectedPaymentMethod
+          : selectedPaymentMethod // ignore: cast_nullable_to_non_nullable
+              as PaymentMethodModel?,
     ) as $Val);
   }
 
@@ -88,6 +138,56 @@ class _$CartModelCopyWithImpl<$Res, $Val extends CartModel>
   $CartPricesModelCopyWith<$Res> get prices {
     return $CartPricesModelCopyWith<$Res>(_value.prices, (value) {
       return _then(_value.copyWith(prices: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $AddressModelCopyWith<$Res>? get shippingAddress {
+    if (_value.shippingAddress == null) {
+      return null;
+    }
+
+    return $AddressModelCopyWith<$Res>(_value.shippingAddress!, (value) {
+      return _then(_value.copyWith(shippingAddress: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ShippingMethodModelCopyWith<$Res>? get selectedShippingMethod {
+    if (_value.selectedShippingMethod == null) {
+      return null;
+    }
+
+    return $ShippingMethodModelCopyWith<$Res>(_value.selectedShippingMethod!,
+        (value) {
+      return _then(_value.copyWith(selectedShippingMethod: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $AddressModelCopyWith<$Res>? get billingAddress {
+    if (_value.billingAddress == null) {
+      return null;
+    }
+
+    return $AddressModelCopyWith<$Res>(_value.billingAddress!, (value) {
+      return _then(_value.copyWith(billingAddress: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $PaymentMethodModelCopyWith<$Res>? get selectedPaymentMethod {
+    if (_value.selectedPaymentMethod == null) {
+      return null;
+    }
+
+    return $PaymentMethodModelCopyWith<$Res>(_value.selectedPaymentMethod!,
+        (value) {
+      return _then(_value.copyWith(selectedPaymentMethod: value) as $Val);
     });
   }
 }
@@ -104,10 +204,24 @@ abstract class _$$CartModelImplCopyWith<$Res>
       {String id,
       double totalQuantity,
       CartPricesModel prices,
-      List<CartItemModel> items});
+      List<CartItemModel> items,
+      AddressModel? shippingAddress,
+      List<ShippingMethodModel> availableShippingMethods,
+      ShippingMethodModel? selectedShippingMethod,
+      AddressModel? billingAddress,
+      List<PaymentMethodModel> availablePaymentMethods,
+      PaymentMethodModel? selectedPaymentMethod});
 
   @override
   $CartPricesModelCopyWith<$Res> get prices;
+  @override
+  $AddressModelCopyWith<$Res>? get shippingAddress;
+  @override
+  $ShippingMethodModelCopyWith<$Res>? get selectedShippingMethod;
+  @override
+  $AddressModelCopyWith<$Res>? get billingAddress;
+  @override
+  $PaymentMethodModelCopyWith<$Res>? get selectedPaymentMethod;
 }
 
 /// @nodoc
@@ -125,6 +239,12 @@ class __$$CartModelImplCopyWithImpl<$Res>
     Object? totalQuantity = null,
     Object? prices = null,
     Object? items = null,
+    Object? shippingAddress = freezed,
+    Object? availableShippingMethods = null,
+    Object? selectedShippingMethod = freezed,
+    Object? billingAddress = freezed,
+    Object? availablePaymentMethods = null,
+    Object? selectedPaymentMethod = freezed,
   }) {
     return _then(_$CartModelImpl(
       id: null == id
@@ -143,6 +263,30 @@ class __$$CartModelImplCopyWithImpl<$Res>
           ? _value._items
           : items // ignore: cast_nullable_to_non_nullable
               as List<CartItemModel>,
+      shippingAddress: freezed == shippingAddress
+          ? _value.shippingAddress
+          : shippingAddress // ignore: cast_nullable_to_non_nullable
+              as AddressModel?,
+      availableShippingMethods: null == availableShippingMethods
+          ? _value._availableShippingMethods
+          : availableShippingMethods // ignore: cast_nullable_to_non_nullable
+              as List<ShippingMethodModel>,
+      selectedShippingMethod: freezed == selectedShippingMethod
+          ? _value.selectedShippingMethod
+          : selectedShippingMethod // ignore: cast_nullable_to_non_nullable
+              as ShippingMethodModel?,
+      billingAddress: freezed == billingAddress
+          ? _value.billingAddress
+          : billingAddress // ignore: cast_nullable_to_non_nullable
+              as AddressModel?,
+      availablePaymentMethods: null == availablePaymentMethods
+          ? _value._availablePaymentMethods
+          : availablePaymentMethods // ignore: cast_nullable_to_non_nullable
+              as List<PaymentMethodModel>,
+      selectedPaymentMethod: freezed == selectedPaymentMethod
+          ? _value.selectedPaymentMethod
+          : selectedPaymentMethod // ignore: cast_nullable_to_non_nullable
+              as PaymentMethodModel?,
     ));
   }
 }
@@ -154,8 +298,16 @@ class _$CartModelImpl implements _CartModel {
       {required this.id,
       required this.totalQuantity,
       required this.prices,
-      required final List<CartItemModel> items})
-      : _items = items;
+      final List<CartItemModel> items = const [],
+      this.shippingAddress,
+      final List<ShippingMethodModel> availableShippingMethods = const [],
+      this.selectedShippingMethod,
+      this.billingAddress,
+      final List<PaymentMethodModel> availablePaymentMethods = const [],
+      this.selectedPaymentMethod})
+      : _items = items,
+        _availableShippingMethods = availableShippingMethods,
+        _availablePaymentMethods = availablePaymentMethods;
 
   factory _$CartModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$CartModelImplFromJson(json);
@@ -168,6 +320,7 @@ class _$CartModelImpl implements _CartModel {
   final CartPricesModel prices;
   final List<CartItemModel> _items;
   @override
+  @JsonKey()
   List<CartItemModel> get items {
     if (_items is EqualUnmodifiableListView) return _items;
     // ignore: implicit_dynamic_type
@@ -175,8 +328,37 @@ class _$CartModelImpl implements _CartModel {
   }
 
   @override
+  final AddressModel? shippingAddress;
+  final List<ShippingMethodModel> _availableShippingMethods;
+  @override
+  @JsonKey()
+  List<ShippingMethodModel> get availableShippingMethods {
+    if (_availableShippingMethods is EqualUnmodifiableListView)
+      return _availableShippingMethods;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_availableShippingMethods);
+  }
+
+  @override
+  final ShippingMethodModel? selectedShippingMethod;
+  @override
+  final AddressModel? billingAddress;
+  final List<PaymentMethodModel> _availablePaymentMethods;
+  @override
+  @JsonKey()
+  List<PaymentMethodModel> get availablePaymentMethods {
+    if (_availablePaymentMethods is EqualUnmodifiableListView)
+      return _availablePaymentMethods;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_availablePaymentMethods);
+  }
+
+  @override
+  final PaymentMethodModel? selectedPaymentMethod;
+
+  @override
   String toString() {
-    return 'CartModel(id: $id, totalQuantity: $totalQuantity, prices: $prices, items: $items)';
+    return 'CartModel(id: $id, totalQuantity: $totalQuantity, prices: $prices, items: $items, shippingAddress: $shippingAddress, availableShippingMethods: $availableShippingMethods, selectedShippingMethod: $selectedShippingMethod, billingAddress: $billingAddress, availablePaymentMethods: $availablePaymentMethods, selectedPaymentMethod: $selectedPaymentMethod)';
   }
 
   @override
@@ -188,13 +370,35 @@ class _$CartModelImpl implements _CartModel {
             (identical(other.totalQuantity, totalQuantity) ||
                 other.totalQuantity == totalQuantity) &&
             (identical(other.prices, prices) || other.prices == prices) &&
-            const DeepCollectionEquality().equals(other._items, _items));
+            const DeepCollectionEquality().equals(other._items, _items) &&
+            (identical(other.shippingAddress, shippingAddress) ||
+                other.shippingAddress == shippingAddress) &&
+            const DeepCollectionEquality().equals(
+                other._availableShippingMethods, _availableShippingMethods) &&
+            (identical(other.selectedShippingMethod, selectedShippingMethod) ||
+                other.selectedShippingMethod == selectedShippingMethod) &&
+            (identical(other.billingAddress, billingAddress) ||
+                other.billingAddress == billingAddress) &&
+            const DeepCollectionEquality().equals(
+                other._availablePaymentMethods, _availablePaymentMethods) &&
+            (identical(other.selectedPaymentMethod, selectedPaymentMethod) ||
+                other.selectedPaymentMethod == selectedPaymentMethod));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, totalQuantity, prices,
-      const DeepCollectionEquality().hash(_items));
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      totalQuantity,
+      prices,
+      const DeepCollectionEquality().hash(_items),
+      shippingAddress,
+      const DeepCollectionEquality().hash(_availableShippingMethods),
+      selectedShippingMethod,
+      billingAddress,
+      const DeepCollectionEquality().hash(_availablePaymentMethods),
+      selectedPaymentMethod);
 
   @JsonKey(ignore: true)
   @override
@@ -215,7 +419,13 @@ abstract class _CartModel implements CartModel {
       {required final String id,
       required final double totalQuantity,
       required final CartPricesModel prices,
-      required final List<CartItemModel> items}) = _$CartModelImpl;
+      final List<CartItemModel> items,
+      final AddressModel? shippingAddress,
+      final List<ShippingMethodModel> availableShippingMethods,
+      final ShippingMethodModel? selectedShippingMethod,
+      final AddressModel? billingAddress,
+      final List<PaymentMethodModel> availablePaymentMethods,
+      final PaymentMethodModel? selectedPaymentMethod}) = _$CartModelImpl;
 
   factory _CartModel.fromJson(Map<String, dynamic> json) =
       _$CartModelImpl.fromJson;
@@ -228,6 +438,18 @@ abstract class _CartModel implements CartModel {
   CartPricesModel get prices;
   @override
   List<CartItemModel> get items;
+  @override
+  AddressModel? get shippingAddress;
+  @override
+  List<ShippingMethodModel> get availableShippingMethods;
+  @override
+  ShippingMethodModel? get selectedShippingMethod;
+  @override
+  AddressModel? get billingAddress;
+  @override
+  List<PaymentMethodModel> get availablePaymentMethods;
+  @override
+  PaymentMethodModel? get selectedPaymentMethod;
   @override
   @JsonKey(ignore: true)
   _$$CartModelImplCopyWith<_$CartModelImpl> get copyWith =>

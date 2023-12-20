@@ -20,7 +20,7 @@ CartPricesModel _$CartPricesModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$CartPricesModel {
-  MoneyModel get subTotal => throw _privateConstructorUsedError;
+  MoneyModel? get subTotal => throw _privateConstructorUsedError;
   MoneyModel get grandTotal => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -35,9 +35,9 @@ abstract class $CartPricesModelCopyWith<$Res> {
           CartPricesModel value, $Res Function(CartPricesModel) then) =
       _$CartPricesModelCopyWithImpl<$Res, CartPricesModel>;
   @useResult
-  $Res call({MoneyModel subTotal, MoneyModel grandTotal});
+  $Res call({MoneyModel? subTotal, MoneyModel grandTotal});
 
-  $MoneyModelCopyWith<$Res> get subTotal;
+  $MoneyModelCopyWith<$Res>? get subTotal;
   $MoneyModelCopyWith<$Res> get grandTotal;
 }
 
@@ -54,14 +54,14 @@ class _$CartPricesModelCopyWithImpl<$Res, $Val extends CartPricesModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? subTotal = null,
+    Object? subTotal = freezed,
     Object? grandTotal = null,
   }) {
     return _then(_value.copyWith(
-      subTotal: null == subTotal
+      subTotal: freezed == subTotal
           ? _value.subTotal
           : subTotal // ignore: cast_nullable_to_non_nullable
-              as MoneyModel,
+              as MoneyModel?,
       grandTotal: null == grandTotal
           ? _value.grandTotal
           : grandTotal // ignore: cast_nullable_to_non_nullable
@@ -71,8 +71,12 @@ class _$CartPricesModelCopyWithImpl<$Res, $Val extends CartPricesModel>
 
   @override
   @pragma('vm:prefer-inline')
-  $MoneyModelCopyWith<$Res> get subTotal {
-    return $MoneyModelCopyWith<$Res>(_value.subTotal, (value) {
+  $MoneyModelCopyWith<$Res>? get subTotal {
+    if (_value.subTotal == null) {
+      return null;
+    }
+
+    return $MoneyModelCopyWith<$Res>(_value.subTotal!, (value) {
       return _then(_value.copyWith(subTotal: value) as $Val);
     });
   }
@@ -94,10 +98,10 @@ abstract class _$$CartPricesModelImplCopyWith<$Res>
       __$$CartPricesModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({MoneyModel subTotal, MoneyModel grandTotal});
+  $Res call({MoneyModel? subTotal, MoneyModel grandTotal});
 
   @override
-  $MoneyModelCopyWith<$Res> get subTotal;
+  $MoneyModelCopyWith<$Res>? get subTotal;
   @override
   $MoneyModelCopyWith<$Res> get grandTotal;
 }
@@ -113,14 +117,14 @@ class __$$CartPricesModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? subTotal = null,
+    Object? subTotal = freezed,
     Object? grandTotal = null,
   }) {
     return _then(_$CartPricesModelImpl(
-      subTotal: null == subTotal
+      subTotal: freezed == subTotal
           ? _value.subTotal
           : subTotal // ignore: cast_nullable_to_non_nullable
-              as MoneyModel,
+              as MoneyModel?,
       grandTotal: null == grandTotal
           ? _value.grandTotal
           : grandTotal // ignore: cast_nullable_to_non_nullable
@@ -132,14 +136,13 @@ class __$$CartPricesModelImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$CartPricesModelImpl implements _CartPricesModel {
-  const _$CartPricesModelImpl(
-      {required this.subTotal, required this.grandTotal});
+  const _$CartPricesModelImpl({this.subTotal, required this.grandTotal});
 
   factory _$CartPricesModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$CartPricesModelImplFromJson(json);
 
   @override
-  final MoneyModel subTotal;
+  final MoneyModel? subTotal;
   @override
   final MoneyModel grandTotal;
 
@@ -180,14 +183,14 @@ class _$CartPricesModelImpl implements _CartPricesModel {
 
 abstract class _CartPricesModel implements CartPricesModel {
   const factory _CartPricesModel(
-      {required final MoneyModel subTotal,
+      {final MoneyModel? subTotal,
       required final MoneyModel grandTotal}) = _$CartPricesModelImpl;
 
   factory _CartPricesModel.fromJson(Map<String, dynamic> json) =
       _$CartPricesModelImpl.fromJson;
 
   @override
-  MoneyModel get subTotal;
+  MoneyModel? get subTotal;
   @override
   MoneyModel get grandTotal;
   @override

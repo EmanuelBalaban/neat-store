@@ -1,6 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import 'package:neat_store_frontend/core/data/models/money/money_model.dart';
 import 'package:neat_store_frontend/core/data/models/product/product_model.dart';
 
 part 'cart_item_model.freezed.dart';

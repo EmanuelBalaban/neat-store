@@ -19,25 +19,29 @@ import 'package:shared_preferences/shared_preferences.dart' as _i6;
 import 'package:neat_store_frontend/core/routing/app_router.dart' as _i3;
 
 import 'package:neat_store_frontend/core/business_logic/cart/cart_cubit.dart'
-    as _i18;
-import 'package:neat_store_frontend/core/business_logic/customer/customer_cubit.dart'
     as _i19;
+import 'package:neat_store_frontend/core/business_logic/countries/countries_cubit.dart'
+    as _i20;
+import 'package:neat_store_frontend/core/business_logic/customer/customer_cubit.dart'
+    as _i21;
 import 'package:neat_store_frontend/core/business_logic/products/products_cubit.dart'
-    as _i16;
+    as _i17;
 import 'package:neat_store_frontend/core/business_logic/theme/theme_cubit.dart'
     as _i10;
 import 'package:neat_store_frontend/core/business_logic/wishlists/wishlists_cubit.dart'
-    as _i17;
+    as _i18;
 import 'package:neat_store_frontend/core/data/models/config/config_model.dart'
     as _i4;
 import 'package:neat_store_frontend/core/dependencies/register_module.dart'
-    as _i20;
+    as _i22;
 import 'package:neat_store_frontend/core/interfaces/i_local_storage.dart'
     as _i8;
 import 'package:neat_store_frontend/core/repositories/cart_repository.dart'
     as _i14;
-import 'package:neat_store_frontend/core/repositories/customer_repository.dart'
+import 'package:neat_store_frontend/core/repositories/countries_repository.dart'
     as _i15;
+import 'package:neat_store_frontend/core/repositories/customer_repository.dart'
+    as _i16;
 import 'package:neat_store_frontend/core/repositories/products_repository.dart'
     as _i12;
 import 'package:neat_store_frontend/core/repositories/wishlists_repository.dart'
@@ -90,25 +94,29 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i13.WishlistsRepository(gh<_i11.GraphQLClient>()));
     gh.factory<_i14.CartRepository>(
         () => _i14.CartRepository(gh<_i11.GraphQLClient>()));
-    gh.factory<_i15.CustomerRepository>(
-        () => _i15.CustomerRepository(gh<_i11.GraphQLClient>()));
-    gh.factory<_i16.ProductsCubit>(() => _i16.ProductsCubit(
+    gh.factory<_i15.CountriesRepository>(
+        () => _i15.CountriesRepository(gh<_i11.GraphQLClient>()));
+    gh.factory<_i16.CustomerRepository>(
+        () => _i16.CustomerRepository(gh<_i11.GraphQLClient>()));
+    gh.factory<_i17.ProductsCubit>(() => _i17.ProductsCubit(
           gh<_i5.Logger>(),
           gh<_i12.ProductsRepository>(),
         ));
-    gh.factory<_i17.WishlistsCubit>(() => _i17.WishlistsCubit(
+    gh.factory<_i18.WishlistsCubit>(() => _i18.WishlistsCubit(
           gh<_i5.Logger>(),
           gh<_i13.WishlistsRepository>(),
         ));
-    gh.factory<_i18.CartCubit>(() => _i18.CartCubit(
+    gh.factory<_i19.CartCubit>(() => _i19.CartCubit(
           gh<_i5.Logger>(),
           gh<_i14.CartRepository>(),
         ));
-    await gh.factoryAsync<_i19.CustomerCubit>(
-      () => _i19.CustomerCubit.create(
+    gh.factory<_i20.CountriesCubit>(
+        () => _i20.CountriesCubit(gh<_i15.CountriesRepository>()));
+    await gh.factoryAsync<_i21.CustomerCubit>(
+      () => _i21.CustomerCubit.create(
         gh<_i5.Logger>(),
         gh<_i8.ILocalStorage>(),
-        gh<_i15.CustomerRepository>(),
+        gh<_i16.CustomerRepository>(),
       ),
       preResolve: true,
     );
@@ -116,4 +124,4 @@ extension GetItInjectableX on _i1.GetIt {
   }
 }
 
-class _$RegisterModule extends _i20.RegisterModule {}
+class _$RegisterModule extends _i22.RegisterModule {}

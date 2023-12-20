@@ -30,6 +30,7 @@ dependencies:
   json_annotation: ^4.8.1
   jwt_decoder: ^2.0.1
   logger: ^2.0.2+1
+  recase: ^4.1.0
   rive: ^0.12.3
   riverpod: ^2.4.9
   shared_preferences: ^2.2.2

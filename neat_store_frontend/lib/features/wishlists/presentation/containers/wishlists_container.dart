@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:riverpod/riverpod.dart';
 
 import 'package:neat_store_frontend/core/business_logic/wishlists/wishlists_cubit.dart';
+import 'package:neat_store_frontend/core/utils/translations.dart';
 import 'package:neat_store_frontend/features/wishlists/presentation/widgets/wishlist_product_card.dart';
 
 class WishlistsContainer extends StatelessWidget {
@@ -22,6 +23,8 @@ class WishlistsContainer extends StatelessWidget {
       );
     }
 
+    final l10n = context.l10n;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -32,7 +35,7 @@ class WishlistsContainer extends StatelessWidget {
             children: [
               Text.rich(
                 TextSpan(
-                  text: 'Number of items: ',
+                  text: '${l10n.numberOfItems}: ',
                   style: const TextStyle(fontWeight: FontWeight.bold),
                   children: [
                     TextSpan(
@@ -44,7 +47,7 @@ class WishlistsContainer extends StatelessWidget {
               ),
               Text.rich(
                 TextSpan(
-                  text: 'Sharing code: ',
+                  text: '${l10n.sharingCode}: ',
                   style: const TextStyle(fontWeight: FontWeight.bold),
                   children: [
                     TextSpan(
@@ -56,7 +59,7 @@ class WishlistsContainer extends StatelessWidget {
               ),
               Text.rich(
                 TextSpan(
-                  text: 'Updated at: ',
+                  text: '${l10n.updatedAt}: ',
                   style: const TextStyle(fontWeight: FontWeight.bold),
                   children: [
                     TextSpan(

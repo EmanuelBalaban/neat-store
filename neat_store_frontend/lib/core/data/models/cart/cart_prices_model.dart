@@ -9,7 +9,7 @@ part 'cart_prices_model.g.dart';
 @freezed
 class CartPricesModel with _$CartPricesModel {
   const factory CartPricesModel({
-    required MoneyModel subTotal,
+    MoneyModel? subTotal,
     required MoneyModel grandTotal,
   }) = _CartPricesModel;
 

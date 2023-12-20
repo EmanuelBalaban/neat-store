@@ -20,6 +20,8 @@ mixin _$CustomerState {
       throw _privateConstructorUsedError;
   AsyncValue<CustomerModel?> get fetchCustomerState =>
       throw _privateConstructorUsedError;
+  AsyncValue<List<AddressModel>> get fetchCustomerAddressesState =>
+      throw _privateConstructorUsedError;
   AsyncValue<Void?> get registerCustomerState =>
       throw _privateConstructorUsedError;
 
@@ -37,6 +39,7 @@ abstract class $CustomerStateCopyWith<$Res> {
   $Res call(
       {AsyncValue<String?> authorizationState,
       AsyncValue<CustomerModel?> fetchCustomerState,
+      AsyncValue<List<AddressModel>> fetchCustomerAddressesState,
       AsyncValue<Void?> registerCustomerState});
 }
 
@@ -55,6 +58,7 @@ class _$CustomerStateCopyWithImpl<$Res, $Val extends CustomerState>
   $Res call({
     Object? authorizationState = null,
     Object? fetchCustomerState = null,
+    Object? fetchCustomerAddressesState = null,
     Object? registerCustomerState = null,
   }) {
     return _then(_value.copyWith(
@@ -66,6 +70,10 @@ class _$CustomerStateCopyWithImpl<$Res, $Val extends CustomerState>
           ? _value.fetchCustomerState
           : fetchCustomerState // ignore: cast_nullable_to_non_nullable
               as AsyncValue<CustomerModel?>,
+      fetchCustomerAddressesState: null == fetchCustomerAddressesState
+          ? _value.fetchCustomerAddressesState
+          : fetchCustomerAddressesState // ignore: cast_nullable_to_non_nullable
+              as AsyncValue<List<AddressModel>>,
       registerCustomerState: null == registerCustomerState
           ? _value.registerCustomerState
           : registerCustomerState // ignore: cast_nullable_to_non_nullable
@@ -85,6 +93,7 @@ abstract class _$$CustomerStateImplCopyWith<$Res>
   $Res call(
       {AsyncValue<String?> authorizationState,
       AsyncValue<CustomerModel?> fetchCustomerState,
+      AsyncValue<List<AddressModel>> fetchCustomerAddressesState,
       AsyncValue<Void?> registerCustomerState});
 }
 
@@ -101,6 +110,7 @@ class __$$CustomerStateImplCopyWithImpl<$Res>
   $Res call({
     Object? authorizationState = null,
     Object? fetchCustomerState = null,
+    Object? fetchCustomerAddressesState = null,
     Object? registerCustomerState = null,
   }) {
     return _then(_$CustomerStateImpl(
@@ -112,6 +122,10 @@ class __$$CustomerStateImplCopyWithImpl<$Res>
           ? _value.fetchCustomerState
           : fetchCustomerState // ignore: cast_nullable_to_non_nullable
               as AsyncValue<CustomerModel?>,
+      fetchCustomerAddressesState: null == fetchCustomerAddressesState
+          ? _value.fetchCustomerAddressesState
+          : fetchCustomerAddressesState // ignore: cast_nullable_to_non_nullable
+              as AsyncValue<List<AddressModel>>,
       registerCustomerState: null == registerCustomerState
           ? _value.registerCustomerState
           : registerCustomerState // ignore: cast_nullable_to_non_nullable
@@ -126,6 +140,7 @@ class _$CustomerStateImpl extends _CustomerState {
   const _$CustomerStateImpl(
       {required this.authorizationState,
       required this.fetchCustomerState,
+      required this.fetchCustomerAddressesState,
       required this.registerCustomerState})
       : super._();
 
@@ -134,11 +149,13 @@ class _$CustomerStateImpl extends _CustomerState {
   @override
   final AsyncValue<CustomerModel?> fetchCustomerState;
   @override
+  final AsyncValue<List<AddressModel>> fetchCustomerAddressesState;
+  @override
   final AsyncValue<Void?> registerCustomerState;
 
   @override
   String toString() {
-    return 'CustomerState(authorizationState: $authorizationState, fetchCustomerState: $fetchCustomerState, registerCustomerState: $registerCustomerState)';
+    return 'CustomerState(authorizationState: $authorizationState, fetchCustomerState: $fetchCustomerState, fetchCustomerAddressesState: $fetchCustomerAddressesState, registerCustomerState: $registerCustomerState)';
   }
 
   @override
@@ -150,13 +167,17 @@ class _$CustomerStateImpl extends _CustomerState {
                 other.authorizationState == authorizationState) &&
             (identical(other.fetchCustomerState, fetchCustomerState) ||
                 other.fetchCustomerState == fetchCustomerState) &&
+            (identical(other.fetchCustomerAddressesState,
+                    fetchCustomerAddressesState) ||
+                other.fetchCustomerAddressesState ==
+                    fetchCustomerAddressesState) &&
             (identical(other.registerCustomerState, registerCustomerState) ||
                 other.registerCustomerState == registerCustomerState));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, authorizationState,
-      fetchCustomerState, registerCustomerState);
+      fetchCustomerState, fetchCustomerAddressesState, registerCustomerState);
 
   @JsonKey(ignore: true)
   @override
@@ -167,16 +188,19 @@ class _$CustomerStateImpl extends _CustomerState {
 
 abstract class _CustomerState extends CustomerState {
   const factory _CustomerState(
-          {required final AsyncValue<String?> authorizationState,
-          required final AsyncValue<CustomerModel?> fetchCustomerState,
-          required final AsyncValue<Void?> registerCustomerState}) =
-      _$CustomerStateImpl;
+      {required final AsyncValue<String?> authorizationState,
+      required final AsyncValue<CustomerModel?> fetchCustomerState,
+      required final AsyncValue<List<AddressModel>> fetchCustomerAddressesState,
+      required final AsyncValue<Void?>
+          registerCustomerState}) = _$CustomerStateImpl;
   const _CustomerState._() : super._();
 
   @override
   AsyncValue<String?> get authorizationState;
   @override
   AsyncValue<CustomerModel?> get fetchCustomerState;
+  @override
+  AsyncValue<List<AddressModel>> get fetchCustomerAddressesState;
   @override
   AsyncValue<Void?> get registerCustomerState;
   @override
