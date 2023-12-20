@@ -42,11 +42,11 @@ class CheckoutPage extends StatelessWidget {
         Positioned.fill(
           child: Builder(
             builder: (context) {
-              // TODO: update logic
               final isLoading = context.select(
                 (CartCubit cubit) =>
                     cubit.state.setShippingMethodState.isLoading ||
-                    cubit.state.setPaymentMethodState.isLoading,
+                    cubit.state.setPaymentMethodState.isLoading ||
+                    cubit.state.placeOrderState.isLoading,
               );
 
               return Visibility(

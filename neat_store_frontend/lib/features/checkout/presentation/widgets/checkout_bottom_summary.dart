@@ -71,7 +71,7 @@ class CheckoutBottomSummary extends StatelessWidget {
           ),
           const Spacer(),
           OutlinedButton(
-            onPressed: canPay ? () {} : null,
+            onPressed: canPay ? context.read<CartCubit>().placeOrder : null,
             child: Row(
               children: [
                 Padding(
@@ -82,7 +82,10 @@ class CheckoutBottomSummary extends StatelessWidget {
                   const SizedBox(width: 6),
                   Opacity(
                     opacity: canPay ? 1.0 : 0.4,
-                    child: RegionalPrice(price: grandTotal),
+                    child: RegionalPrice(
+                      price: grandTotal,
+                      color: Colors.green,
+                    ),
                   ),
                 ],
               ],

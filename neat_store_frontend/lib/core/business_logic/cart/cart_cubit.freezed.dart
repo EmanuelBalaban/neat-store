@@ -28,6 +28,9 @@ mixin _$CartState {
       throw _privateConstructorUsedError;
   AsyncValue<Void?> get setPaymentMethodState =>
       throw _privateConstructorUsedError;
+  AsyncValue<String?> get placeOrderState => throw _privateConstructorUsedError;
+  String? get stripeClientSecret => throw _privateConstructorUsedError;
+  String? get stripePaymentMethodId => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $CartStateCopyWith<CartState> get copyWith =>
@@ -45,7 +48,10 @@ abstract class $CartStateCopyWith<$Res> {
       AsyncValue<Void?> removeProductFromCartState,
       AsyncValue<Void?> updateProductQuantityState,
       AsyncValue<Void?> setShippingMethodState,
-      AsyncValue<Void?> setPaymentMethodState});
+      AsyncValue<Void?> setPaymentMethodState,
+      AsyncValue<String?> placeOrderState,
+      String? stripeClientSecret,
+      String? stripePaymentMethodId});
 }
 
 /// @nodoc
@@ -67,6 +73,9 @@ class _$CartStateCopyWithImpl<$Res, $Val extends CartState>
     Object? updateProductQuantityState = null,
     Object? setShippingMethodState = null,
     Object? setPaymentMethodState = null,
+    Object? placeOrderState = null,
+    Object? stripeClientSecret = freezed,
+    Object? stripePaymentMethodId = freezed,
   }) {
     return _then(_value.copyWith(
       fetchCartState: null == fetchCartState
@@ -93,6 +102,18 @@ class _$CartStateCopyWithImpl<$Res, $Val extends CartState>
           ? _value.setPaymentMethodState
           : setPaymentMethodState // ignore: cast_nullable_to_non_nullable
               as AsyncValue<Void?>,
+      placeOrderState: null == placeOrderState
+          ? _value.placeOrderState
+          : placeOrderState // ignore: cast_nullable_to_non_nullable
+              as AsyncValue<String?>,
+      stripeClientSecret: freezed == stripeClientSecret
+          ? _value.stripeClientSecret
+          : stripeClientSecret // ignore: cast_nullable_to_non_nullable
+              as String?,
+      stripePaymentMethodId: freezed == stripePaymentMethodId
+          ? _value.stripePaymentMethodId
+          : stripePaymentMethodId // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -111,7 +132,10 @@ abstract class _$$CartStateImplCopyWith<$Res>
       AsyncValue<Void?> removeProductFromCartState,
       AsyncValue<Void?> updateProductQuantityState,
       AsyncValue<Void?> setShippingMethodState,
-      AsyncValue<Void?> setPaymentMethodState});
+      AsyncValue<Void?> setPaymentMethodState,
+      AsyncValue<String?> placeOrderState,
+      String? stripeClientSecret,
+      String? stripePaymentMethodId});
 }
 
 /// @nodoc
@@ -131,6 +155,9 @@ class __$$CartStateImplCopyWithImpl<$Res>
     Object? updateProductQuantityState = null,
     Object? setShippingMethodState = null,
     Object? setPaymentMethodState = null,
+    Object? placeOrderState = null,
+    Object? stripeClientSecret = freezed,
+    Object? stripePaymentMethodId = freezed,
   }) {
     return _then(_$CartStateImpl(
       fetchCartState: null == fetchCartState
@@ -157,6 +184,18 @@ class __$$CartStateImplCopyWithImpl<$Res>
           ? _value.setPaymentMethodState
           : setPaymentMethodState // ignore: cast_nullable_to_non_nullable
               as AsyncValue<Void?>,
+      placeOrderState: null == placeOrderState
+          ? _value.placeOrderState
+          : placeOrderState // ignore: cast_nullable_to_non_nullable
+              as AsyncValue<String?>,
+      stripeClientSecret: freezed == stripeClientSecret
+          ? _value.stripeClientSecret
+          : stripeClientSecret // ignore: cast_nullable_to_non_nullable
+              as String?,
+      stripePaymentMethodId: freezed == stripePaymentMethodId
+          ? _value.stripePaymentMethodId
+          : stripePaymentMethodId // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -170,7 +209,10 @@ class _$CartStateImpl extends _CartState {
       required this.removeProductFromCartState,
       required this.updateProductQuantityState,
       required this.setShippingMethodState,
-      required this.setPaymentMethodState})
+      required this.setPaymentMethodState,
+      required this.placeOrderState,
+      required this.stripeClientSecret,
+      required this.stripePaymentMethodId})
       : super._();
 
   @override
@@ -185,10 +227,16 @@ class _$CartStateImpl extends _CartState {
   final AsyncValue<Void?> setShippingMethodState;
   @override
   final AsyncValue<Void?> setPaymentMethodState;
+  @override
+  final AsyncValue<String?> placeOrderState;
+  @override
+  final String? stripeClientSecret;
+  @override
+  final String? stripePaymentMethodId;
 
   @override
   String toString() {
-    return 'CartState(fetchCartState: $fetchCartState, addProductToCartState: $addProductToCartState, removeProductFromCartState: $removeProductFromCartState, updateProductQuantityState: $updateProductQuantityState, setShippingMethodState: $setShippingMethodState, setPaymentMethodState: $setPaymentMethodState)';
+    return 'CartState(fetchCartState: $fetchCartState, addProductToCartState: $addProductToCartState, removeProductFromCartState: $removeProductFromCartState, updateProductQuantityState: $updateProductQuantityState, setShippingMethodState: $setShippingMethodState, setPaymentMethodState: $setPaymentMethodState, placeOrderState: $placeOrderState, stripeClientSecret: $stripeClientSecret, stripePaymentMethodId: $stripePaymentMethodId)';
   }
 
   @override
@@ -211,7 +259,13 @@ class _$CartStateImpl extends _CartState {
             (identical(other.setShippingMethodState, setShippingMethodState) ||
                 other.setShippingMethodState == setShippingMethodState) &&
             (identical(other.setPaymentMethodState, setPaymentMethodState) ||
-                other.setPaymentMethodState == setPaymentMethodState));
+                other.setPaymentMethodState == setPaymentMethodState) &&
+            (identical(other.placeOrderState, placeOrderState) ||
+                other.placeOrderState == placeOrderState) &&
+            (identical(other.stripeClientSecret, stripeClientSecret) ||
+                other.stripeClientSecret == stripeClientSecret) &&
+            (identical(other.stripePaymentMethodId, stripePaymentMethodId) ||
+                other.stripePaymentMethodId == stripePaymentMethodId));
   }
 
   @override
@@ -222,7 +276,10 @@ class _$CartStateImpl extends _CartState {
       removeProductFromCartState,
       updateProductQuantityState,
       setShippingMethodState,
-      setPaymentMethodState);
+      setPaymentMethodState,
+      placeOrderState,
+      stripeClientSecret,
+      stripePaymentMethodId);
 
   @JsonKey(ignore: true)
   @override
@@ -233,13 +290,15 @@ class _$CartStateImpl extends _CartState {
 
 abstract class _CartState extends CartState {
   const factory _CartState(
-          {required final AsyncValue<CartModel?> fetchCartState,
-          required final AsyncValue<Void?> addProductToCartState,
-          required final AsyncValue<Void?> removeProductFromCartState,
-          required final AsyncValue<Void?> updateProductQuantityState,
-          required final AsyncValue<Void?> setShippingMethodState,
-          required final AsyncValue<Void?> setPaymentMethodState}) =
-      _$CartStateImpl;
+      {required final AsyncValue<CartModel?> fetchCartState,
+      required final AsyncValue<Void?> addProductToCartState,
+      required final AsyncValue<Void?> removeProductFromCartState,
+      required final AsyncValue<Void?> updateProductQuantityState,
+      required final AsyncValue<Void?> setShippingMethodState,
+      required final AsyncValue<Void?> setPaymentMethodState,
+      required final AsyncValue<String?> placeOrderState,
+      required final String? stripeClientSecret,
+      required final String? stripePaymentMethodId}) = _$CartStateImpl;
   const _CartState._() : super._();
 
   @override
@@ -254,6 +313,12 @@ abstract class _CartState extends CartState {
   AsyncValue<Void?> get setShippingMethodState;
   @override
   AsyncValue<Void?> get setPaymentMethodState;
+  @override
+  AsyncValue<String?> get placeOrderState;
+  @override
+  String? get stripeClientSecret;
+  @override
+  String? get stripePaymentMethodId;
   @override
   @JsonKey(ignore: true)
   _$$CartStateImplCopyWith<_$CartStateImpl> get copyWith =>

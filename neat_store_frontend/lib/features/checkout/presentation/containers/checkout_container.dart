@@ -26,6 +26,7 @@ class _CheckoutContainerState extends State<CheckoutContainer> {
 
     _cartCubit.fetchCheckoutData();
     context.read<CustomerCubit>().fetchCustomerAddresses();
+    context.read<CountriesCubit>().fetchCountries();
   }
 
   @override
@@ -295,7 +296,8 @@ class _CheckoutContainerState extends State<CheckoutContainer> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    if (cart.availablePaymentMethods.isEmpty)
+                    if (cart.availablePaymentMethods.isEmpty ||
+                        cart.shippingAddress == null)
                       Text(l10n.noPaymentMethodsAvailable)
                     else ...[
                       Text(

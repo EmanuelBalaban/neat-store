@@ -6,6 +6,7 @@ typedef RemoveProductFromCartState = AsyncValue<Void?>;
 typedef UpdateProductQuantityState = AsyncValue<Void?>;
 typedef SetShippingMethodState = AsyncValue<Void?>;
 typedef SetPaymentMethodState = AsyncValue<Void?>;
+typedef PlaceOrderState = AsyncValue<String?>;
 
 @freezed
 class CartState with _$CartState {
@@ -18,6 +19,9 @@ class CartState with _$CartState {
     required UpdateProductQuantityState updateProductQuantityState,
     required SetShippingMethodState setShippingMethodState,
     required SetPaymentMethodState setPaymentMethodState,
+    required PlaceOrderState placeOrderState,
+    required String? stripeClientSecret,
+    required String? stripePaymentMethodId,
   }) = _CartState;
 
   factory CartState.initial() => const CartState(
@@ -27,5 +31,8 @@ class CartState with _$CartState {
         updateProductQuantityState: UpdateProductQuantityState.data(null),
         setShippingMethodState: SetShippingMethodState.data(null),
         setPaymentMethodState: SetPaymentMethodState.data(null),
+        placeOrderState: PlaceOrderState.data(null),
+        stripeClientSecret: null,
+        stripePaymentMethodId: null,
       );
 }

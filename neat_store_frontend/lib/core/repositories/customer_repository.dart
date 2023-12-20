@@ -72,6 +72,7 @@ class CustomerRepository {
     return CustomerModel(
       firstName: customer?.firstname ?? '',
       lastName: customer?.lastname ?? '',
+      email: customer?.email,
     );
   }
 

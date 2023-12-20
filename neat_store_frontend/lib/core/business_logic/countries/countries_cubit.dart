@@ -19,6 +19,10 @@ class CountriesCubit extends Cubit<FetchCountriesState> {
   final CountriesRepository _countriesRepository;
 
   Future<void> fetchCountries() async {
+    if (state.valueOrNull?.isNotEmpty ?? false) {
+      return;
+    }
+
     final fetchCountriesState =
         await FetchCountriesState.guard(_countriesRepository.fetchCountries);
 

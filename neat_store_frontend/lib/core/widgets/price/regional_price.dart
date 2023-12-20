@@ -14,19 +14,22 @@ import 'package:neat_store_frontend/core/utils/fractional_digits.dart';
 class RegionalPrice extends StatelessWidget {
   const RegionalPrice({
     required this.price,
+    this.color,
     super.key,
   });
 
   /// [price] is the price to be formatted in a regional price fashion
   final MoneyModel price;
 
+  final Color? color;
+
   @override
   Widget build(BuildContext context) {
     // Text styles
     final textTheme = Theme.of(context).textTheme;
-    final currencySignStyle = textTheme.bodyMedium;
-    final integerStyle = textTheme.titleMedium;
-    final superscriptStyle = textTheme.bodyMedium;
+    final currencySignStyle = textTheme.bodyMedium?.copyWith(color: color);
+    final integerStyle = textTheme.titleMedium?.copyWith(color: color);
+    final superscriptStyle = textTheme.bodyMedium?.copyWith(color: color);
 
     final currencySign = Text(
       price.currency.sign,

@@ -19,11 +19,11 @@ import 'package:shared_preferences/shared_preferences.dart' as _i6;
 import 'package:neat_store_frontend/core/routing/app_router.dart' as _i3;
 
 import 'package:neat_store_frontend/core/business_logic/cart/cart_cubit.dart'
-    as _i20;
-import 'package:neat_store_frontend/core/business_logic/countries/countries_cubit.dart'
-    as _i21;
-import 'package:neat_store_frontend/core/business_logic/customer/customer_cubit.dart'
     as _i22;
+import 'package:neat_store_frontend/core/business_logic/countries/countries_cubit.dart'
+    as _i20;
+import 'package:neat_store_frontend/core/business_logic/customer/customer_cubit.dart'
+    as _i21;
 import 'package:neat_store_frontend/core/business_logic/products/products_cubit.dart'
     as _i18;
 import 'package:neat_store_frontend/core/business_logic/theme/theme_cubit.dart'
@@ -110,21 +110,25 @@ extension GetItInjectableX on _i1.GetIt {
           gh<_i5.Logger>(),
           gh<_i14.WishlistsRepository>(),
         ));
-    gh.factory<_i20.CartCubit>(() => _i20.CartCubit(
-          gh<_i5.Logger>(),
-          gh<_i15.CartRepository>(),
-          gh<_i12.PaymentsRepository>(),
-        ));
-    gh.factory<_i21.CountriesCubit>(
-        () => _i21.CountriesCubit(gh<_i16.CountriesRepository>()));
-    await gh.factoryAsync<_i22.CustomerCubit>(
-      () => _i22.CustomerCubit.create(
+    gh.factory<_i20.CountriesCubit>(
+        () => _i20.CountriesCubit(gh<_i16.CountriesRepository>()));
+    await gh.factoryAsync<_i21.CustomerCubit>(
+      () => _i21.CustomerCubit.create(
         gh<_i5.Logger>(),
         gh<_i8.ILocalStorage>(),
         gh<_i17.CustomerRepository>(),
       ),
       preResolve: true,
     );
+    gh.factory<_i22.CartCubit>(() => _i22.CartCubit(
+          gh<_i5.Logger>(),
+          gh<_i15.CartRepository>(),
+          gh<_i12.PaymentsRepository>(),
+          gh<_i7.Stripe>(),
+          gh<_i3.AppRouter>(),
+          gh<_i21.CustomerCubit>(),
+          gh<_i20.CountriesCubit>(),
+        ));
     return this;
   }
 }

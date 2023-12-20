@@ -1,15 +1,26 @@
+import 'package:flutter/material.dart';
+
 import 'package:collection/collection.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:logger/logger.dart';
 import 'package:riverpod/riverpod.dart';
 
+import 'package:neat_store_frontend/core/business_logic/countries/countries_cubit.dart';
+import 'package:neat_store_frontend/core/business_logic/customer/customer_cubit.dart';
+import 'package:neat_store_frontend/core/data/models/address/address_model.dart';
 import 'package:neat_store_frontend/core/data/models/cart/cart_model.dart';
+import 'package:neat_store_frontend/core/data/models/customer/customer_model.dart';
+import 'package:neat_store_frontend/core/data/models/payment/payment_method_code.dart';
 import 'package:neat_store_frontend/core/data/models/payment/payment_method_input_model.dart';
+import 'package:neat_store_frontend/core/data/models/payment/stripe_payment_input_model.dart';
 import 'package:neat_store_frontend/core/data/models/void.dart';
 import 'package:neat_store_frontend/core/repositories/cart_repository.dart';
 import 'package:neat_store_frontend/core/repositories/payments_repository.dart';
+import 'package:neat_store_frontend/core/routing/app_router.dart';
+import 'package:neat_store_frontend/features/checkout/presentation/widgets/stripe_credit_card_dialog.dart';
 
 part 'cart_state.dart';
 
@@ -21,11 +32,19 @@ class CartCubit extends Cubit<CartState> {
     this._logger,
     this._cartRepository,
     this._paymentsRepository,
+    this._stripe,
+    this._appRouter,
+    this._customerCubit,
+    this._countriesCubit,
   ) : super(CartState.initial());
 
   final Logger _logger;
   final CartRepository _cartRepository;
   final PaymentsRepository _paymentsRepository;
+  final Stripe _stripe;
+  final AppRouter _appRouter;
+  final CustomerCubit _customerCubit;
+  final CountriesCubit _countriesCubit;
 
   CartModel? get cart => state.fetchCartState.valueOrNull;
 
@@ -249,6 +268,36 @@ class CartCubit extends Cubit<CartState> {
     );
 
     try {
+      // Stripe payments
+      if (paymentMethod.code == PaymentMethodCode.stripePayments.toJson()) {
+        final paymentIntent =
+            await _paymentsRepository.fetchStripePaymentIntent(cartId: cartId);
+
+        if (paymentIntent == null) {
+          throw Exception('Failed to retrieve stripe payment intent.');
+        }
+
+        _logger.w('Getting card info from user...');
+
+        final result = await _appRouter.pushWidget(
+          const Dialog(child: StripeCreditCardDialog()),
+        );
+        final stripePaymentMethod = result! as PaymentMethod;
+
+        emit(
+          state.copyWith(
+            stripeClientSecret: paymentIntent.clientSecret,
+            stripePaymentMethodId: stripePaymentMethod.id,
+          ),
+        );
+
+        paymentMethod = paymentMethod.copyWith(
+          stripePayment: StripePaymentInputModel(
+            ccStripeJsToken: stripePaymentMethod.id,
+          ),
+        );
+      }
+
       final cart = await _cartRepository.setPaymentMethod(
         cartId: cartId,
         paymentMethod: paymentMethod,
@@ -261,6 +310,12 @@ class CartCubit extends Cubit<CartState> {
         ),
       );
     } catch (error, stackTrace) {
+      _logger.e(
+        'Failed to set payment method.',
+        error: error,
+        stackTrace: stackTrace,
+      );
+
       emit(
         state.copyWith(
           setPaymentMethodState: SetPaymentMethodState.error(
@@ -270,5 +325,131 @@ class CartCubit extends Cubit<CartState> {
         ),
       );
     }
+  }
+
+  Future<void> placeOrder() async {
+    final cartId = cart?.id ?? '';
+
+    emit(
+      state.copyWith(
+        placeOrderState: const PlaceOrderState.loading(),
+      ),
+    );
+
+    try {
+      // Stripe payments
+      final paymentMethod = cart?.selectedPaymentMethod;
+      if (paymentMethod?.code == PaymentMethodCode.stripePayments) {
+        final (shippingDetails, billingDetails) = stripePaymentDetails;
+
+        _logger.w('Confirming payment with Stripe...');
+
+        await _stripe.confirmPayment(
+          paymentIntentClientSecret: state.stripeClientSecret ?? '',
+          options: const PaymentMethodOptions(
+            setupFutureUsage: PaymentIntentsFutureUsage.OffSession,
+          ),
+          data: PaymentMethodParams.cardFromMethodId(
+            paymentMethodData: PaymentMethodDataCardFromMethod(
+              paymentMethodId: state.stripePaymentMethodId ?? '',
+              billingDetails: billingDetails,
+            ),
+          ),
+        );
+      }
+
+      final orderId = await _cartRepository.placeOrder(
+        cartId: cartId,
+      );
+
+      emit(
+        state.copyWith(
+          placeOrderState: PlaceOrderState.data(orderId),
+        ),
+      );
+
+      // TODO: go to order placed page
+      await _appRouter.replaceAll([const HomeRoute()]);
+    } catch (error, stackTrace) {
+      _logger.e(
+        'Failed to place order.',
+        error: error,
+        stackTrace: stackTrace,
+      );
+
+      emit(
+        state.copyWith(
+          placeOrderState: PlaceOrderState.error(
+            error,
+            stackTrace,
+          ),
+        ),
+      );
+    }
+  }
+
+  /// Computes the payment details provided to Stripe for the current customer
+  /// and order.
+  (ShippingDetails, BillingDetails) get stripePaymentDetails {
+    final customer = _customerCubit.state.fetchCustomerState.valueOrNull ??
+        const CustomerModel(
+          firstName: '',
+          lastName: '',
+        );
+    final shippingAddress = cart?.shippingAddress ??
+        const AddressModel(
+          id: '',
+          countryCode: '',
+          street: [],
+          city: '',
+          firstName: '',
+          lastName: '',
+        );
+    final shippingRegion = _countriesCubit.findRegionById(
+      shippingAddress.regionId,
+      countryCode: shippingAddress.countryCode,
+    );
+    final billingAddress = cart?.billingAddress ??
+        const AddressModel(
+          id: '',
+          countryCode: '',
+          street: [],
+          city: '',
+          firstName: '',
+          lastName: '',
+        );
+    final billingRegion = _countriesCubit.findRegionById(
+      shippingAddress.regionId,
+      countryCode: shippingAddress.countryCode,
+    );
+
+    return (
+      ShippingDetails(
+        name: '${customer.firstName} ${customer.lastName}',
+        phone: shippingAddress.telephone,
+        carrier: cart?.selectedShippingMethod?.carrierTitle,
+        address: Address(
+          city: shippingAddress.city,
+          country: shippingAddress.countryCode,
+          line1: shippingAddress.street.firstOrNull,
+          line2: shippingAddress.street.skip(1).firstOrNull,
+          postalCode: shippingAddress.postcode,
+          state: shippingRegion?.name,
+        ),
+      ),
+      BillingDetails(
+        email: customer.email,
+        name: '${customer.firstName} ${customer.lastName}',
+        phone: shippingAddress.telephone,
+        address: Address(
+          city: billingAddress.city,
+          country: billingAddress.countryCode,
+          line1: billingAddress.street.firstOrNull,
+          line2: billingAddress.street.skip(1).firstOrNull,
+          postalCode: billingAddress.postcode,
+          state: billingRegion?.name,
+        ),
+      ),
+    );
   }
 }
