@@ -4,6 +4,8 @@ typedef FetchCartState = AsyncValue<CartModel?>;
 typedef AddProductToCartState = AsyncValue<Void?>;
 typedef RemoveProductFromCartState = AsyncValue<Void?>;
 typedef UpdateProductQuantityState = AsyncValue<Void?>;
+typedef SetShippingMethodState = AsyncValue<Void?>;
+typedef SetPaymentMethodState = AsyncValue<Void?>;
 
 @freezed
 class CartState with _$CartState {
@@ -14,6 +16,8 @@ class CartState with _$CartState {
     required AddProductToCartState addProductToCartState,
     required RemoveProductFromCartState removeProductFromCartState,
     required UpdateProductQuantityState updateProductQuantityState,
+    required SetShippingMethodState setShippingMethodState,
+    required SetPaymentMethodState setPaymentMethodState,
   }) = _CartState;
 
   factory CartState.initial() => const CartState(
@@ -21,5 +25,7 @@ class CartState with _$CartState {
         addProductToCartState: AddProductToCartState.data(null),
         removeProductFromCartState: RemoveProductFromCartState.data(null),
         updateProductQuantityState: UpdateProductQuantityState.data(null),
+        setShippingMethodState: SetShippingMethodState.data(null),
+        setPaymentMethodState: SetPaymentMethodState.data(null),
       );
 }

@@ -45,8 +45,8 @@ class CheckoutPage extends StatelessWidget {
               // TODO: update logic
               final isLoading = context.select(
                 (CartCubit cubit) =>
-                    cubit.state.removeProductFromCartState.isLoading ||
-                    cubit.state.updateProductQuantityState.isLoading,
+                    cubit.state.setShippingMethodState.isLoading ||
+                    cubit.state.setPaymentMethodState.isLoading,
               );
 
               return Visibility(

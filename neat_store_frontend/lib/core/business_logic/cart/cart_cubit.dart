@@ -6,6 +6,7 @@ import 'package:logger/logger.dart';
 import 'package:riverpod/riverpod.dart';
 
 import 'package:neat_store_frontend/core/data/models/cart/cart_model.dart';
+import 'package:neat_store_frontend/core/data/models/payment/payment_method_input_model.dart';
 import 'package:neat_store_frontend/core/data/models/void.dart';
 import 'package:neat_store_frontend/core/repositories/cart_repository.dart';
 import 'package:neat_store_frontend/core/repositories/payments_repository.dart';
@@ -180,6 +181,14 @@ class CartCubit extends Cubit<CartState> {
     }
   }
 
+  bool get canPay {
+    final cart = state.fetchCartState.valueOrNull;
+
+    return cart != null &&
+        cart.selectedShippingMethod != null &&
+        cart.selectedPaymentMethod != null;
+  }
+
   Future<void> fetchCheckoutData() async {
     final fetchCartState =
         await FetchCartState.guard(_cartRepository.fetchCheckoutData);
@@ -191,11 +200,75 @@ class CartCubit extends Cubit<CartState> {
     );
   }
 
-  bool get canPay {
-    final cart = state.fetchCartState.valueOrNull;
+  Future<void> setShippingMethod({
+    required String carrierCode,
+    required String methodCode,
+  }) async {
+    final cartId = cart?.id ?? '';
 
-    return cart != null &&
-        cart.selectedShippingMethod != null &&
-        cart.selectedPaymentMethod != null;
+    emit(
+      state.copyWith(
+        setShippingMethodState: const SetShippingMethodState.loading(),
+      ),
+    );
+
+    try {
+      final cart = await _cartRepository.setShippingMethod(
+        cartId: cartId,
+        carrierCode: carrierCode,
+        methodCode: methodCode,
+      );
+
+      emit(
+        state.copyWith(
+          fetchCartState: FetchCartState.data(cart),
+          setShippingMethodState: const SetShippingMethodState.data(Void()),
+        ),
+      );
+    } catch (error, stackTrace) {
+      emit(
+        state.copyWith(
+          setShippingMethodState: SetShippingMethodState.error(
+            error,
+            stackTrace,
+          ),
+        ),
+      );
+    }
+  }
+
+  Future<void> setPaymentMethod({
+    required PaymentMethodInputModel paymentMethod,
+  }) async {
+    final cartId = cart?.id ?? '';
+
+    emit(
+      state.copyWith(
+        setPaymentMethodState: const SetPaymentMethodState.loading(),
+      ),
+    );
+
+    try {
+      final cart = await _cartRepository.setPaymentMethod(
+        cartId: cartId,
+        paymentMethod: paymentMethod,
+      );
+
+      emit(
+        state.copyWith(
+          fetchCartState: FetchCartState.data(cart),
+          setPaymentMethodState: const SetPaymentMethodState.data(Void()),
+        ),
+      );
+    } catch (error, stackTrace) {
+      emit(
+        state.copyWith(
+          setPaymentMethodState: SetPaymentMethodState.error(
+            error,
+            stackTrace,
+          ),
+        ),
+      );
+    }
   }
 }

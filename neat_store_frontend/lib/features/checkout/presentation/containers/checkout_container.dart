@@ -6,6 +6,7 @@ import 'package:riverpod/riverpod.dart';
 import 'package:neat_store_frontend/core/business_logic/cart/cart_cubit.dart';
 import 'package:neat_store_frontend/core/business_logic/countries/countries_cubit.dart';
 import 'package:neat_store_frontend/core/business_logic/customer/customer_cubit.dart';
+import 'package:neat_store_frontend/core/data/models/payment/payment_method_input_model.dart';
 import 'package:neat_store_frontend/core/utils/translations.dart';
 import 'package:neat_store_frontend/core/widgets/address/address_view.dart';
 
@@ -188,7 +189,10 @@ class _CheckoutContainerState extends State<CheckoutContainer> {
 
                                       final (carrierCode, methodCode) = value;
 
-                                      // TODO: update selected shipping method
+                                      _cartCubit.setShippingMethod(
+                                        carrierCode: carrierCode,
+                                        methodCode: methodCode,
+                                      );
                                     },
                                   ),
                                   Text(
@@ -316,7 +320,12 @@ class _CheckoutContainerState extends State<CheckoutContainer> {
                                   onChanged: (value) {
                                     if (value == null) return;
 
-                                    // TODO: update selected payment method
+                                    // TODO: handle stripe payments
+                                    _cartCubit.setPaymentMethod(
+                                      paymentMethod: PaymentMethodInputModel(
+                                        code: value.toJson(),
+                                      ),
+                                    );
                                   },
                                 ),
                                 Text(paymentMethod.customTitle),
