@@ -8,6 +8,7 @@ import 'package:riverpod/riverpod.dart';
 import 'package:neat_store_frontend/core/data/models/cart/cart_model.dart';
 import 'package:neat_store_frontend/core/data/models/void.dart';
 import 'package:neat_store_frontend/core/repositories/cart_repository.dart';
+import 'package:neat_store_frontend/core/repositories/payments_repository.dart';
 
 part 'cart_state.dart';
 
@@ -18,10 +19,12 @@ class CartCubit extends Cubit<CartState> {
   CartCubit(
     this._logger,
     this._cartRepository,
+    this._paymentsRepository,
   ) : super(CartState.initial());
 
   final Logger _logger;
   final CartRepository _cartRepository;
+  final PaymentsRepository _paymentsRepository;
 
   CartModel? get cart => state.fetchCartState.valueOrNull;
 

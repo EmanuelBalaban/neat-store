@@ -1,0 +1,79 @@
+mutation SetShippingMethodsOnCart($input: SetShippingMethodsOnCartInput) {
+    setShippingMethodsOnCart(input: $input) {
+        cart {
+            id
+            total_quantity
+            prices {
+                subtotal_with_discount_excluding_tax {
+                    currency
+                    value
+                }
+                grand_total {
+                    currency
+                    value
+                }
+            }
+            shipping_addresses {
+                uid
+                country {
+                    code
+                }
+                region {
+                    region_id
+                    code
+                }
+                city
+                firstname
+                lastname
+                postcode
+                telephone
+                street
+                available_shipping_methods {
+                    available
+                    carrier_code
+                    carrier_title
+                    method_code
+                    method_title
+                    amount {
+                        currency
+                        value
+                    }
+                }
+                selected_shipping_method {
+                    carrier_code
+                    carrier_title
+                    method_code
+                    method_title
+                    amount {
+                        currency
+                        value
+                    }
+                }
+            }
+            billing_address {
+                uid
+                country {
+                    code
+                }
+                region {
+                    region_id
+                    code
+                }
+                city
+                firstname
+                lastname
+                postcode
+                telephone
+                street
+            }
+            available_payment_methods {
+                code
+                title
+            }
+            selected_payment_method {
+                code
+                title
+            }
+        }
+    }
+}

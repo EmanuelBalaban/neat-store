@@ -1,0 +1,9 @@
+query GetStripePaymentIntent($cartId: String!) {
+    getPaymentIntent(cart_id: $cartId) {
+        id
+        status
+        amount
+        currency
+        clientSecret
+    }
+}
