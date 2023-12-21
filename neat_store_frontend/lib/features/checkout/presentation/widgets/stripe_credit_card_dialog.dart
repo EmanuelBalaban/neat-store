@@ -29,59 +29,71 @@ class _StripeCreditCardDialogState extends State<StripeCreditCardDialog> {
         card.validCVC == CardValidationState.Valid &&
         card.validNumber == CardValidationState.Valid;
 
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        CardField(
-          onCardChanged: (card) {
-            if (card == null) {
-              return;
-            }
+    return Padding(
+      // Note: Fix for keyboard not raising up
+      padding: MediaQuery.of(context).viewInsets,
+      child: SafeArea(
+        bottom: false,
+        child: Padding(
+          padding: const EdgeInsets.all(24),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              CardField(
+                onCardChanged: (card) {
+                  if (card == null) {
+                    return;
+                  }
 
-            setState(() {
-              this.card = card;
-            });
-          },
+                  setState(() {
+                    this.card = card;
+                  });
+                },
+              ),
+              const SizedBox(height: 24),
+              OutlinedButton(
+                onPressed: enablePayButton
+                    ? () async {
+                        // Close keyboard
+                        FocusManager.instance.primaryFocus?.unfocus();
+
+                        final navigator = Navigator.of(context);
+
+                        final logger = getIt.get<Logger>();
+                        final stripe = getIt.get<Stripe>();
+
+                        final (shippingDetails, billingDetails) =
+                            context.read<CartCubit>().stripePaymentDetails;
+
+                        // TODO: add error handling
+
+                        logger.w('Creating Stripe payment method...');
+
+                        final paymentMethod = await stripe.createPaymentMethod(
+                          options: const PaymentMethodOptions(
+                            setupFutureUsage:
+                                PaymentIntentsFutureUsage.OffSession,
+                          ),
+                          params: PaymentMethodParams.card(
+                            paymentMethodData: PaymentMethodData(
+                              billingDetails: billingDetails,
+                              shippingDetails: shippingDetails,
+                            ),
+                          ),
+                        );
+
+                        // Save payment method id
+                        navigator.pop(paymentMethod);
+                      }
+                    : null,
+                child: Text(l10n.addCard),
+              ),
+              const SizedBox(height: 24),
+            ],
+          ),
         ),
-        const SizedBox(height: 200),
-        OutlinedButton(
-          onPressed: enablePayButton
-              ? () async {
-                  // Close keyboard
-                  FocusManager.instance.primaryFocus?.unfocus();
-
-                  final navigator = Navigator.of(context);
-
-                  final logger = getIt.get<Logger>();
-                  final stripe = getIt.get<Stripe>();
-
-                  final (shippingDetails, billingDetails) =
-                      context.read<CartCubit>().stripePaymentDetails;
-
-                  // TODO: add error handling
-
-                  logger.w('Creating Stripe payment method...');
-
-                  final paymentMethod = await stripe.createPaymentMethod(
-                    options: const PaymentMethodOptions(
-                      setupFutureUsage: PaymentIntentsFutureUsage.OffSession,
-                    ),
-                    params: PaymentMethodParams.card(
-                      paymentMethodData: PaymentMethodData(
-                        billingDetails: billingDetails,
-                        shippingDetails: shippingDetails,
-                      ),
-                    ),
-                  );
-
-                  // Save payment method id
-                  navigator.pop(paymentMethod);
-                }
-              : null,
-          child: Text(l10n.pay),
-        ),
-      ],
+      ),
     );
   }
 }

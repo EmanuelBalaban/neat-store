@@ -209,6 +209,12 @@ class CartCubit extends Cubit<CartState> {
   }
 
   Future<void> fetchCheckoutData() async {
+    emit(
+      state.copyWith(
+        fetchCartState: const FetchCartState.loading(),
+      ),
+    );
+
     final fetchCartState =
         await FetchCartState.guard(_cartRepository.fetchCheckoutData);
 
@@ -279,8 +285,14 @@ class CartCubit extends Cubit<CartState> {
 
         _logger.w('Getting card info from user...');
 
-        final result = await _appRouter.pushWidget(
-          const Dialog(child: StripeCreditCardDialog()),
+        final result = await _appRouter.pushNativeRoute(
+          ModalBottomSheetRoute(
+            useSafeArea: true,
+            builder: (context) => const Material(
+              child: StripeCreditCardDialog(),
+            ),
+            isScrollControlled: true,
+          ),
         );
         final stripePaymentMethod = result! as PaymentMethod;
 
@@ -340,7 +352,7 @@ class CartCubit extends Cubit<CartState> {
       // Stripe payments
       final paymentMethod = cart?.selectedPaymentMethod;
       if (paymentMethod?.code == PaymentMethodCode.stripePayments) {
-        final (shippingDetails, billingDetails) = stripePaymentDetails;
+        final (_, billingDetails) = stripePaymentDetails;
 
         _logger.w('Confirming payment with Stripe...');
 

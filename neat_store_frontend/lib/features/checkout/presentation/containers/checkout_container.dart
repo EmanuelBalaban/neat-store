@@ -310,6 +310,15 @@ class _CheckoutContainerState extends State<CheckoutContainer> {
                           final paymentMethod =
                               cart.availablePaymentMethods[index];
 
+                          void onSelected() {
+                            // TODO: handle stripe payments
+                            _cartCubit.setPaymentMethod(
+                              paymentMethod: PaymentMethodInputModel(
+                                code: paymentMethod.code.toJson(),
+                              ),
+                            );
+                          }
+
                           return Container(
                             margin: index == 0
                                 ? null
@@ -322,15 +331,13 @@ class _CheckoutContainerState extends State<CheckoutContainer> {
                                   onChanged: (value) {
                                     if (value == null) return;
 
-                                    // TODO: handle stripe payments
-                                    _cartCubit.setPaymentMethod(
-                                      paymentMethod: PaymentMethodInputModel(
-                                        code: value.toJson(),
-                                      ),
-                                    );
+                                    onSelected();
                                   },
                                 ),
-                                Text(paymentMethod.customTitle),
+                                GestureDetector(
+                                  onTap: onSelected,
+                                  child: Text(paymentMethod.customTitle),
+                                ),
                               ],
                             ),
                           );

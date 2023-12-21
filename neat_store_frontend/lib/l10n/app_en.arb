@@ -42,5 +42,6 @@
   "noShippingMethodsAvailable": "No shipping methods available for the selected address!",
   "noPaymentMethodsAvailable": "Fill the rest of the information to see the available payment methods!",
   "pay": "Pay",
-  "order": "Order"
+  "order": "Order",
+  "addCard": "Add card"
 }
