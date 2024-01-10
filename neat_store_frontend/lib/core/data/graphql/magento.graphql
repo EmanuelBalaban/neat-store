@@ -1900,6 +1900,8 @@ type CustomerOrder {
     shipping_method: String
     "The current status of the order."
     status: String!
+    "Order Status Code"
+    status_code: String!
     "Details about the calculated totals for this order."
     total: OrderTotal
 }

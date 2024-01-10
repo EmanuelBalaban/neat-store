@@ -19,35 +19,39 @@ import 'package:shared_preferences/shared_preferences.dart' as _i6;
 import 'package:neat_store_frontend/core/routing/app_router.dart' as _i3;
 
 import 'package:neat_store_frontend/core/business_logic/cart/cart_cubit.dart'
-    as _i22;
+    as _i24;
 import 'package:neat_store_frontend/core/business_logic/countries/countries_cubit.dart'
-    as _i20;
+    as _i22;
 import 'package:neat_store_frontend/core/business_logic/customer/customer_cubit.dart'
-    as _i21;
+    as _i23;
+import 'package:neat_store_frontend/core/business_logic/orders/orders_cubit.dart'
+    as _i19;
 import 'package:neat_store_frontend/core/business_logic/products/products_cubit.dart'
-    as _i18;
+    as _i20;
 import 'package:neat_store_frontend/core/business_logic/theme/theme_cubit.dart'
     as _i10;
 import 'package:neat_store_frontend/core/business_logic/wishlists/wishlists_cubit.dart'
-    as _i19;
+    as _i21;
 import 'package:neat_store_frontend/core/data/models/config/config_model.dart'
     as _i4;
 import 'package:neat_store_frontend/core/dependencies/register_module.dart'
-    as _i23;
+    as _i25;
 import 'package:neat_store_frontend/core/interfaces/i_local_storage.dart'
     as _i8;
 import 'package:neat_store_frontend/core/repositories/cart_repository.dart'
-    as _i15;
-import 'package:neat_store_frontend/core/repositories/countries_repository.dart'
     as _i16;
-import 'package:neat_store_frontend/core/repositories/customer_repository.dart'
+import 'package:neat_store_frontend/core/repositories/countries_repository.dart'
     as _i17;
-import 'package:neat_store_frontend/core/repositories/payments_repository.dart'
+import 'package:neat_store_frontend/core/repositories/customer_repository.dart'
+    as _i18;
+import 'package:neat_store_frontend/core/repositories/orders_repository.dart'
     as _i12;
-import 'package:neat_store_frontend/core/repositories/products_repository.dart'
+import 'package:neat_store_frontend/core/repositories/payments_repository.dart'
     as _i13;
-import 'package:neat_store_frontend/core/repositories/wishlists_repository.dart'
+import 'package:neat_store_frontend/core/repositories/products_repository.dart'
     as _i14;
+import 'package:neat_store_frontend/core/repositories/wishlists_repository.dart'
+    as _i15;
 import 'package:neat_store_frontend/core/services/shared_preferences_service.dart'
     as _i9;
 
@@ -90,47 +94,53 @@ extension GetItInjectableX on _i1.GetIt {
           gh<_i8.ILocalStorage>(),
           gh<_i4.ConfigModel>(),
         ));
-    gh.factory<_i12.PaymentsRepository>(
-        () => _i12.PaymentsRepository(gh<_i11.GraphQLClient>()));
-    gh.factory<_i13.ProductsRepository>(
-        () => _i13.ProductsRepository(gh<_i11.GraphQLClient>()));
-    gh.factory<_i14.WishlistsRepository>(
-        () => _i14.WishlistsRepository(gh<_i11.GraphQLClient>()));
-    gh.factory<_i15.CartRepository>(
-        () => _i15.CartRepository(gh<_i11.GraphQLClient>()));
-    gh.factory<_i16.CountriesRepository>(
-        () => _i16.CountriesRepository(gh<_i11.GraphQLClient>()));
-    gh.factory<_i17.CustomerRepository>(
-        () => _i17.CustomerRepository(gh<_i11.GraphQLClient>()));
-    gh.factory<_i18.ProductsCubit>(() => _i18.ProductsCubit(
+    gh.factory<_i12.OrdersRepository>(
+        () => _i12.OrdersRepository(gh<_i11.GraphQLClient>()));
+    gh.factory<_i13.PaymentsRepository>(
+        () => _i13.PaymentsRepository(gh<_i11.GraphQLClient>()));
+    gh.factory<_i14.ProductsRepository>(
+        () => _i14.ProductsRepository(gh<_i11.GraphQLClient>()));
+    gh.factory<_i15.WishlistsRepository>(
+        () => _i15.WishlistsRepository(gh<_i11.GraphQLClient>()));
+    gh.factory<_i16.CartRepository>(
+        () => _i16.CartRepository(gh<_i11.GraphQLClient>()));
+    gh.factory<_i17.CountriesRepository>(
+        () => _i17.CountriesRepository(gh<_i11.GraphQLClient>()));
+    gh.factory<_i18.CustomerRepository>(
+        () => _i18.CustomerRepository(gh<_i11.GraphQLClient>()));
+    gh.factory<_i19.OrdersCubit>(() => _i19.OrdersCubit(
           gh<_i5.Logger>(),
-          gh<_i13.ProductsRepository>(),
+          gh<_i12.OrdersRepository>(),
         ));
-    gh.factory<_i19.WishlistsCubit>(() => _i19.WishlistsCubit(
+    gh.factory<_i20.ProductsCubit>(() => _i20.ProductsCubit(
           gh<_i5.Logger>(),
-          gh<_i14.WishlistsRepository>(),
+          gh<_i14.ProductsRepository>(),
         ));
-    gh.factory<_i20.CountriesCubit>(
-        () => _i20.CountriesCubit(gh<_i16.CountriesRepository>()));
-    await gh.factoryAsync<_i21.CustomerCubit>(
-      () => _i21.CustomerCubit.create(
+    gh.factory<_i21.WishlistsCubit>(() => _i21.WishlistsCubit(
+          gh<_i5.Logger>(),
+          gh<_i15.WishlistsRepository>(),
+        ));
+    gh.factory<_i22.CountriesCubit>(
+        () => _i22.CountriesCubit(gh<_i17.CountriesRepository>()));
+    await gh.factoryAsync<_i23.CustomerCubit>(
+      () => _i23.CustomerCubit.create(
         gh<_i5.Logger>(),
         gh<_i8.ILocalStorage>(),
-        gh<_i17.CustomerRepository>(),
+        gh<_i18.CustomerRepository>(),
       ),
       preResolve: true,
     );
-    gh.factory<_i22.CartCubit>(() => _i22.CartCubit(
+    gh.factory<_i24.CartCubit>(() => _i24.CartCubit(
           gh<_i5.Logger>(),
-          gh<_i15.CartRepository>(),
-          gh<_i12.PaymentsRepository>(),
+          gh<_i16.CartRepository>(),
+          gh<_i13.PaymentsRepository>(),
           gh<_i7.Stripe>(),
           gh<_i3.AppRouter>(),
-          gh<_i21.CustomerCubit>(),
-          gh<_i20.CountriesCubit>(),
+          gh<_i23.CustomerCubit>(),
+          gh<_i22.CountriesCubit>(),
         ));
     return this;
   }
 }
 
-class _$RegisterModule extends _i23.RegisterModule {}
+class _$RegisterModule extends _i25.RegisterModule {}

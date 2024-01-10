@@ -1,0 +1,20 @@
+query FetchOrders {
+    customer {
+        orders {
+            items {
+                number
+                status_code
+                order_date
+                items {
+                    id
+                }
+                total {
+                    grand_total {
+                        currency
+                        value
+                    }
+                }
+            }
+        }
+    }
+}
