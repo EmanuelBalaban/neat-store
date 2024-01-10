@@ -1,0 +1,26 @@
+{
+    "name": "neatstore/order-status-code",
+    "version": "1.0.0",
+    "description": "N/A",
+    "type": "magento2-module",
+    "require": {
+        "magento/framework": ">=2.3.0",
+        "magento/sales": ">=100.4.0"
+    },
+    "license": [
+        "Proprietary"
+    ],
+    "config": {
+        "platform": {
+            "php": "~7.3.0||~7.4.0"
+        }
+    },
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "NeatStore\\OrderStatusCode\\": ""
+        }
+    }
+}

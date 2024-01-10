@@ -1,0 +1,3 @@
+extend type CustomerOrder {
+    status_code: String! @doc(description: "Order Status Code") @resolver(class: "NeatStore\\OrderStatusCode\\Model\\Resolver\\OrderStatusCode") @cache(cacheable: false)
+}
