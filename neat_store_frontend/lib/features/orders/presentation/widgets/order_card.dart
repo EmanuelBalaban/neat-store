@@ -6,6 +6,7 @@ import 'package:neat_store_frontend/core/data/models/order/order_model.dart';
 import 'package:neat_store_frontend/core/utils/locale.dart';
 import 'package:neat_store_frontend/core/utils/translations.dart';
 import 'package:neat_store_frontend/core/widgets/price/regional_price.dart';
+import 'package:neat_store_frontend/features/orders/presentation/widgets/order_status.dart';
 
 class OrderCard extends StatelessWidget {
   const OrderCard({required this.order, super.key});
@@ -36,16 +37,29 @@ class OrderCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              '#${order.number}',
-              style: const TextStyle(
-                fontWeight: FontWeight.bold,
-              ),
+            Row(
+              children: [
+                Expanded(
+                  flex: 2,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        '#${order.number}',
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Text(
+                        '${l10n.orderDate}: $humanizedDate',
+                      ),
+                      Text('${l10n.numberOfItems}: ${order.itemsCount}'),
+                    ],
+                  ),
+                ),
+                Expanded(child: OrderStatus(code: order.status)),
+              ],
             ),
-            Text(
-              '${l10n.orderDate}: $humanizedDate',
-            ),
-            Text('${l10n.numberOfItems}: ${order.itemsCount}'),
             const Divider(),
             Row(
               children: [

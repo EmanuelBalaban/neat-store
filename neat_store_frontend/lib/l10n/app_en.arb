@@ -47,5 +47,14 @@
   "orders": "Your Orders",
   "language": "Language",
   "theme": "Theme",
-  "orderDate": "Order date"
+  "orderDate": "Order date",
+  "processing": "Processing",
+  "fraud": "Fraud",
+  "pendingPayment": "Pending payment",
+  "paymentReview": "Payment review",
+  "pending": "Pending",
+  "holded": "On hold",
+  "complete": "Complete",
+  "closed": "Closed",
+  "canceled": "Canceled"
 }

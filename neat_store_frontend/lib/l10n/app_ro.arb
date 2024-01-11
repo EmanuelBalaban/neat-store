@@ -47,5 +47,14 @@
   "orders": "Comenzile tale",
   "language": "Limbă",
   "theme": "Temă",
-  "orderDate": "Data comenzii"
+  "orderDate": "Data comenzii",
+  "processing": "În procesare",
+  "fraud": "Fraudă",
+  "pendingPayment": "Se așteaptă plata",
+  "paymentReview": "Verificare plată",
+  "pending": "În așteptare",
+  "holded": "Întreruptă",
+  "complete": "Finalizată",
+  "closed": "Închisă",
+  "canceled": "Anulată"
 }
