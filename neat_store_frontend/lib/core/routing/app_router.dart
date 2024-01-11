@@ -9,6 +9,7 @@ import 'package:neat_store_frontend/features/cart/presentation/pages/cart_page.d
 import 'package:neat_store_frontend/features/checkout/presentation/pages/checkout_page.dart';
 import 'package:neat_store_frontend/features/home/presentation/pages/home_page.dart';
 import 'package:neat_store_frontend/features/login/presentation/pages/login_page.dart';
+import 'package:neat_store_frontend/features/orders/presentation/pages/orders_page.dart';
 import 'package:neat_store_frontend/features/products/presentation/pages/products_page.dart';
 import 'package:neat_store_frontend/features/register/presentation/pages/register_page.dart';
 import 'package:neat_store_frontend/features/settings/presentation/pages/settings_page.dart';
@@ -39,6 +40,10 @@ class AppRouter extends _$AppRouter implements AutoRouteGuard {
             AutoRoute(
               path: 'wishlists',
               page: WishlistsRoute.page,
+            ),
+            AutoRoute(
+              path: 'orders',
+              page: OrdersRoute.page,
             ),
             AutoRoute(
               path: 'settings',

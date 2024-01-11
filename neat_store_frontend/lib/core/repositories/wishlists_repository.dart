@@ -36,7 +36,9 @@ class WishlistsRepository {
           (item) => WishlistModel(
             id: int.parse(item?.id ?? ''),
             itemsCount: item?.items_count ?? 0,
-            updatedAt: DateTime.parse(item?.updated_at ?? ''),
+            updatedAt: DateTime.parse(
+              '${item?.updated_at ?? ' '}Z',
+            ).toLocal(),
             sharingCode: item?.sharing_code ?? '',
             items: item?.items_v2?.items.map(
                   (item) {
@@ -111,7 +113,9 @@ class WishlistsRepository {
     return WishlistModel(
       id: int.parse(wishlist?.id ?? ''),
       itemsCount: wishlist?.items_count ?? 0,
-      updatedAt: DateTime.parse(wishlist?.updated_at ?? ''),
+      updatedAt: DateTime.parse(
+        '${wishlist?.updated_at ?? ' '}Z',
+      ).toLocal(),
       sharingCode: wishlist?.sharing_code ?? '',
       items: wishlist?.items_v2?.items.map(
             (item) {
@@ -182,7 +186,9 @@ class WishlistsRepository {
     return WishlistModel(
       id: int.parse(wishlist?.id ?? ''),
       itemsCount: wishlist?.items_count ?? 0,
-      updatedAt: DateTime.parse(wishlist?.updated_at ?? ''),
+      updatedAt: DateTime.parse(
+        '${wishlist?.updated_at ?? ' '}Z',
+      ).toLocal(),
       sharingCode: wishlist?.sharing_code ?? '',
       items: wishlist?.items_v2?.items.map(
             (item) {

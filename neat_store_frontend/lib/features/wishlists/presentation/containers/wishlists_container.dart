@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:riverpod/riverpod.dart';
+import 'package:timeago/timeago.dart' as timeago;
 
 import 'package:neat_store_frontend/core/business_logic/wishlists/wishlists_cubit.dart';
+import 'package:neat_store_frontend/core/utils/locale.dart';
 import 'package:neat_store_frontend/core/utils/translations.dart';
 import 'package:neat_store_frontend/features/wishlists/presentation/widgets/wishlist_product_card.dart';
 
@@ -63,7 +65,10 @@ class WishlistsContainer extends StatelessWidget {
                   style: const TextStyle(fontWeight: FontWeight.bold),
                   children: [
                     TextSpan(
-                      text: '${wishlist.updatedAt}',
+                      text: timeago.format(
+                        wishlist.updatedAt,
+                        locale: context.locale.languageCode,
+                      ),
                       style: const TextStyle(fontWeight: FontWeight.normal),
                     ),
                   ],

@@ -6,6 +6,7 @@ import 'package:skeletons/skeletons.dart';
 
 import 'package:neat_store_frontend/core/business_logic/customer/customer_cubit.dart';
 import 'package:neat_store_frontend/core/utils/translations.dart';
+import 'package:neat_store_frontend/features/settings/presentation/widgets/locale_dropdown.dart';
 import 'package:neat_store_frontend/features/theme/presentation/widgets/theme_switch.dart';
 
 class SettingsContainer extends StatefulWidget {
@@ -61,7 +62,23 @@ class _SettingsContainerState extends State<SettingsContainer> {
             ),
           ),
         const SizedBox(height: 24),
-        const ThemeSwitch(),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text('${l10n.language}:'),
+            const SizedBox(width: 6),
+            const LocaleDropdown(),
+          ],
+        ),
+        const SizedBox(height: 6),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text('${l10n.theme}:'),
+            const SizedBox(width: 2),
+            const ThemeSwitch(),
+          ],
+        ),
         const SizedBox(height: 24),
         Directionality(
           textDirection: TextDirection.rtl,

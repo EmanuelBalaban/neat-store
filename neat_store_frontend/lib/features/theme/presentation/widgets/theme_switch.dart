@@ -40,7 +40,7 @@ class _ThemeSwitchState extends State<ThemeSwitch> {
       },
       borderRadius: BorderRadius.circular(150),
       child: SizedBox(
-        width: 100,
+        width: 60,
         child: RiveAnimation.asset(
           Animations.switchTheme,
           fit: BoxFit.fitWidth,

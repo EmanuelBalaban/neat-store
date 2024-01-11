@@ -21,7 +21,7 @@
   "emptyCartMessage": "There are no items in the cart.\nPlease add some to continue.",
   "numberOfItems": "Number of items",
   "sharingCode": "Sharing code",
-  "updatedAt": "Updated at",
+  "updatedAt": "Updated",
   "subTotal": "Subtotal",
   "grandTotal": "Total",
   "logout": "Logout",
@@ -43,5 +43,9 @@
   "noPaymentMethodsAvailable": "Fill the rest of the information to see the available payment methods!",
   "pay": "Pay",
   "order": "Order",
-  "addCard": "Add card"
+  "addCard": "Add card",
+  "orders": "Your Orders",
+  "language": "Language",
+  "theme": "Theme",
+  "orderDate": "Order date"
 }

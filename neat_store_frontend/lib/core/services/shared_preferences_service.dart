@@ -51,4 +51,35 @@ class SharedPreferencesService implements ILocalStorage {
           return ThemeMode.values[index];
         },
       );
+
+  @override
+  Future<void> writeLocale(Locale locale) {
+    final buffer = StringBuffer(locale.languageCode);
+    if (locale.countryCode != null) {
+      buffer.write(',${locale.countryCode}');
+    }
+
+    return _lock.synchronized(
+      () => _sharedPreferences.setString(
+        'locale',
+        buffer.toString(),
+      ),
+    );
+  }
+
+  @override
+  FutureOr<Locale?> readLocale() => _lock.synchronized(
+        () async {
+          final locale = _sharedPreferences.getString('locale');
+
+          if (locale?.isEmpty ?? true) return null;
+
+          final data = locale!.split(',');
+
+          return Locale(
+            data.first,
+            data.length > 1 ? data.last : null,
+          );
+        },
+      );
 }

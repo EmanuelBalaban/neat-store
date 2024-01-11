@@ -35,17 +35,20 @@ class _HomePageState extends State<HomePage> {
             routes: const [
               ProductsRoute(),
               WishlistsRoute(),
+              OrdersRoute(),
               SettingsRoute(),
             ],
             appBarBuilder: (context, tabsRouter) =>
                 const CustomAppBar(showCart: true),
             bottomNavigationBuilder: (context, tabsRouter) {
               final l10n = context.l10n;
+              final backgroundColor = Theme.of(context).colorScheme.onPrimary;
 
               return BottomNavigationBar(
                 currentIndex: tabsRouter.activeIndex,
                 onTap: tabsRouter.setActiveIndex,
-                backgroundColor: Theme.of(context).colorScheme.onPrimary,
+                backgroundColor: backgroundColor,
+                useLegacyColorScheme: false,
                 items: [
                   BottomNavigationBarItem(
                     label: l10n.products,
@@ -68,6 +71,10 @@ class _HomePageState extends State<HomePage> {
                         );
                       },
                     ),
+                  ),
+                  BottomNavigationBarItem(
+                    label: l10n.orders,
+                    icon: const Icon(Icons.shopping_bag_outlined),
                   ),
                   BottomNavigationBarItem(
                     label: l10n.settings,

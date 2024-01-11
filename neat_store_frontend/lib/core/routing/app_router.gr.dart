@@ -44,6 +44,12 @@ abstract class _$AppRouter extends RootStackRouter {
         ),
       );
     },
+    OrdersRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const OrdersPage(),
+      );
+    },
     ProductsRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -148,6 +154,20 @@ class LoginRouteArgs {
   String toString() {
     return 'LoginRouteArgs{onResult: $onResult, key: $key}';
   }
+}
+
+/// generated route for
+/// [OrdersPage]
+class OrdersRoute extends PageRouteInfo<void> {
+  const OrdersRoute({List<PageRouteInfo>? children})
+      : super(
+          OrdersRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'OrdersRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for

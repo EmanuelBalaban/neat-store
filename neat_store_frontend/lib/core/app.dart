@@ -6,6 +6,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:neat_store_frontend/core/business_logic/customer/customer_cubit.dart';
 import 'package:neat_store_frontend/core/dependencies/dependencies.dart';
 import 'package:neat_store_frontend/core/routing/app_router.dart';
+import 'package:neat_store_frontend/core/utils/locale.dart';
 import 'package:neat_store_frontend/core/utils/theme.dart';
 import 'package:neat_store_frontend/core/utils/translations.dart';
 
@@ -47,6 +48,7 @@ class App extends StatelessWidget {
       ),
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
+      locale: context.locale,
     );
   }
 }

@@ -12,4 +12,8 @@ abstract class ILocalStorage {
   Future<void> writeThemeMode(ThemeMode themeMode);
 
   FutureOr<ThemeMode?> readThemeMode();
+
+  Future<void> writeLocale(Locale locale);
+
+  FutureOr<Locale?> readLocale();
 }

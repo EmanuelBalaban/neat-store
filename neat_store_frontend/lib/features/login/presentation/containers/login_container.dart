@@ -109,53 +109,60 @@ class _LoginContainerState extends State<LoginContainer> {
                 children: [
                   Builder(
                     builder: (context) {
-                      return ElevatedButton(
-                        onPressed: () async {
-                          final form = Form.maybeOf(context);
+                      return Flexible(
+                        child: ElevatedButton(
+                          onPressed: () async {
+                            final form = Form.maybeOf(context);
 
-                          if (form?.validate() ?? false) {
-                            final customerCubit = context.read<CustomerCubit>();
+                            if (form?.validate() ?? false) {
+                              final customerCubit =
+                                  context.read<CustomerCubit>();
 
-                            await customerCubit.login(
-                              email: _emailController.text,
-                              password: _passwordController.text,
-                            );
+                              await customerCubit.login(
+                                email: _emailController.text,
+                                password: _passwordController.text,
+                              );
 
-                            if (customerCubit.isAuthenticated) {
-                              widget.onResult?.call(isAuthenticated: true);
+                              if (customerCubit.isAuthenticated) {
+                                widget.onResult?.call(isAuthenticated: true);
+                              }
                             }
-                          }
-                        },
-                        style: ElevatedButton.styleFrom(
-                          foregroundColor: Colors.white,
-                          backgroundColor: Colors.green,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
+                          },
+                          style: ElevatedButton.styleFrom(
+                            foregroundColor: Colors.white,
+                            backgroundColor: Colors.green,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
                           ),
-                        ),
-                        child: Text(
-                          l10n.login,
-                          style: const TextStyle(
-                            fontSize: 20,
+                          child: Text(
+                            l10n.login,
+                            overflow: TextOverflow.ellipsis,
+                            style: const TextStyle(
+                              fontSize: 20,
+                            ),
                           ),
                         ),
                       );
                     },
                   ),
                   const SizedBox(width: 12),
-                  ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      foregroundColor: Colors.white,
-                      backgroundColor: Colors.red,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
+                  Flexible(
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                        foregroundColor: Colors.white,
+                        backgroundColor: Colors.red,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
                       ),
-                    ),
-                    child: Text(
-                      l10n.register,
-                      style: const TextStyle(
-                        fontSize: 20,
+                      child: Text(
+                        l10n.register,
+                        overflow: TextOverflow.ellipsis,
+                        style: const TextStyle(
+                          fontSize: 20,
+                        ),
                       ),
                     ),
                   ),

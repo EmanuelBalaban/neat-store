@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import 'package:collection/collection.dart';
@@ -10,6 +12,7 @@ import 'package:riverpod/riverpod.dart';
 
 import 'package:neat_store_frontend/core/business_logic/countries/countries_cubit.dart';
 import 'package:neat_store_frontend/core/business_logic/customer/customer_cubit.dart';
+import 'package:neat_store_frontend/core/business_logic/orders/orders_cubit.dart';
 import 'package:neat_store_frontend/core/data/models/address/address_model.dart';
 import 'package:neat_store_frontend/core/data/models/cart/cart_model.dart';
 import 'package:neat_store_frontend/core/data/models/customer/customer_model.dart';
@@ -17,6 +20,7 @@ import 'package:neat_store_frontend/core/data/models/payment/payment_method_code
 import 'package:neat_store_frontend/core/data/models/payment/payment_method_input_model.dart';
 import 'package:neat_store_frontend/core/data/models/payment/stripe_payment_input_model.dart';
 import 'package:neat_store_frontend/core/data/models/void.dart';
+import 'package:neat_store_frontend/core/dependencies/dependencies.dart';
 import 'package:neat_store_frontend/core/repositories/cart_repository.dart';
 import 'package:neat_store_frontend/core/repositories/payments_repository.dart';
 import 'package:neat_store_frontend/core/routing/app_router.dart';
@@ -381,6 +385,9 @@ class CartCubit extends Cubit<CartState> {
       );
 
       // TODO: go to order placed page
+      unawaited(
+        getIt.get<OrdersCubit>(instanceName: '$OrdersCubit').fetchOrders(),
+      );
       await _appRouter.replaceAll([const HomeRoute()]);
     } catch (error, stackTrace) {
       _logger.e(

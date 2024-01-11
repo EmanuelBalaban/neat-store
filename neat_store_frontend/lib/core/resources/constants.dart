@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class Constants {
   const Constants._();
 
@@ -17,4 +19,6 @@ class Constants {
     '\u2078',
     '\u2079',
   ];
+
+  static const defaultLocale = Locale('en');
 }
