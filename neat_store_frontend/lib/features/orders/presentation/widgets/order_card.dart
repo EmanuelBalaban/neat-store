@@ -29,7 +29,9 @@ class OrderCard extends StatelessWidget {
     );
 
     return Card(
-      shape: const RoundedRectangleBorder(),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(6),
+      ),
       color: backgroundColor,
       surfaceTintColor: surfaceTintColor,
       child: Padding(
@@ -40,7 +42,7 @@ class OrderCard extends StatelessWidget {
             Row(
               children: [
                 Expanded(
-                  flex: 2,
+                  flex: 3,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
