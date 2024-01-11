@@ -28,6 +28,10 @@ mixin _$CartState {
       throw _privateConstructorUsedError;
   AsyncValue<Void?> get setPaymentMethodState =>
       throw _privateConstructorUsedError;
+  AsyncValue<Void?> get applyCouponCodeState =>
+      throw _privateConstructorUsedError;
+  AsyncValue<Void?> get removeCouponCodeState =>
+      throw _privateConstructorUsedError;
   AsyncValue<String?> get placeOrderState => throw _privateConstructorUsedError;
   String? get stripeClientSecret => throw _privateConstructorUsedError;
   String? get stripePaymentMethodId => throw _privateConstructorUsedError;
@@ -49,6 +53,8 @@ abstract class $CartStateCopyWith<$Res> {
       AsyncValue<Void?> updateProductQuantityState,
       AsyncValue<Void?> setShippingMethodState,
       AsyncValue<Void?> setPaymentMethodState,
+      AsyncValue<Void?> applyCouponCodeState,
+      AsyncValue<Void?> removeCouponCodeState,
       AsyncValue<String?> placeOrderState,
       String? stripeClientSecret,
       String? stripePaymentMethodId});
@@ -73,6 +79,8 @@ class _$CartStateCopyWithImpl<$Res, $Val extends CartState>
     Object? updateProductQuantityState = null,
     Object? setShippingMethodState = null,
     Object? setPaymentMethodState = null,
+    Object? applyCouponCodeState = null,
+    Object? removeCouponCodeState = null,
     Object? placeOrderState = null,
     Object? stripeClientSecret = freezed,
     Object? stripePaymentMethodId = freezed,
@@ -101,6 +109,14 @@ class _$CartStateCopyWithImpl<$Res, $Val extends CartState>
       setPaymentMethodState: null == setPaymentMethodState
           ? _value.setPaymentMethodState
           : setPaymentMethodState // ignore: cast_nullable_to_non_nullable
+              as AsyncValue<Void?>,
+      applyCouponCodeState: null == applyCouponCodeState
+          ? _value.applyCouponCodeState
+          : applyCouponCodeState // ignore: cast_nullable_to_non_nullable
+              as AsyncValue<Void?>,
+      removeCouponCodeState: null == removeCouponCodeState
+          ? _value.removeCouponCodeState
+          : removeCouponCodeState // ignore: cast_nullable_to_non_nullable
               as AsyncValue<Void?>,
       placeOrderState: null == placeOrderState
           ? _value.placeOrderState
@@ -133,6 +149,8 @@ abstract class _$$CartStateImplCopyWith<$Res>
       AsyncValue<Void?> updateProductQuantityState,
       AsyncValue<Void?> setShippingMethodState,
       AsyncValue<Void?> setPaymentMethodState,
+      AsyncValue<Void?> applyCouponCodeState,
+      AsyncValue<Void?> removeCouponCodeState,
       AsyncValue<String?> placeOrderState,
       String? stripeClientSecret,
       String? stripePaymentMethodId});
@@ -155,6 +173,8 @@ class __$$CartStateImplCopyWithImpl<$Res>
     Object? updateProductQuantityState = null,
     Object? setShippingMethodState = null,
     Object? setPaymentMethodState = null,
+    Object? applyCouponCodeState = null,
+    Object? removeCouponCodeState = null,
     Object? placeOrderState = null,
     Object? stripeClientSecret = freezed,
     Object? stripePaymentMethodId = freezed,
@@ -184,6 +204,14 @@ class __$$CartStateImplCopyWithImpl<$Res>
           ? _value.setPaymentMethodState
           : setPaymentMethodState // ignore: cast_nullable_to_non_nullable
               as AsyncValue<Void?>,
+      applyCouponCodeState: null == applyCouponCodeState
+          ? _value.applyCouponCodeState
+          : applyCouponCodeState // ignore: cast_nullable_to_non_nullable
+              as AsyncValue<Void?>,
+      removeCouponCodeState: null == removeCouponCodeState
+          ? _value.removeCouponCodeState
+          : removeCouponCodeState // ignore: cast_nullable_to_non_nullable
+              as AsyncValue<Void?>,
       placeOrderState: null == placeOrderState
           ? _value.placeOrderState
           : placeOrderState // ignore: cast_nullable_to_non_nullable
@@ -210,6 +238,8 @@ class _$CartStateImpl extends _CartState {
       required this.updateProductQuantityState,
       required this.setShippingMethodState,
       required this.setPaymentMethodState,
+      required this.applyCouponCodeState,
+      required this.removeCouponCodeState,
       required this.placeOrderState,
       required this.stripeClientSecret,
       required this.stripePaymentMethodId})
@@ -228,6 +258,10 @@ class _$CartStateImpl extends _CartState {
   @override
   final AsyncValue<Void?> setPaymentMethodState;
   @override
+  final AsyncValue<Void?> applyCouponCodeState;
+  @override
+  final AsyncValue<Void?> removeCouponCodeState;
+  @override
   final AsyncValue<String?> placeOrderState;
   @override
   final String? stripeClientSecret;
@@ -236,7 +270,7 @@ class _$CartStateImpl extends _CartState {
 
   @override
   String toString() {
-    return 'CartState(fetchCartState: $fetchCartState, addProductToCartState: $addProductToCartState, removeProductFromCartState: $removeProductFromCartState, updateProductQuantityState: $updateProductQuantityState, setShippingMethodState: $setShippingMethodState, setPaymentMethodState: $setPaymentMethodState, placeOrderState: $placeOrderState, stripeClientSecret: $stripeClientSecret, stripePaymentMethodId: $stripePaymentMethodId)';
+    return 'CartState(fetchCartState: $fetchCartState, addProductToCartState: $addProductToCartState, removeProductFromCartState: $removeProductFromCartState, updateProductQuantityState: $updateProductQuantityState, setShippingMethodState: $setShippingMethodState, setPaymentMethodState: $setPaymentMethodState, applyCouponCodeState: $applyCouponCodeState, removeCouponCodeState: $removeCouponCodeState, placeOrderState: $placeOrderState, stripeClientSecret: $stripeClientSecret, stripePaymentMethodId: $stripePaymentMethodId)';
   }
 
   @override
@@ -260,6 +294,10 @@ class _$CartStateImpl extends _CartState {
                 other.setShippingMethodState == setShippingMethodState) &&
             (identical(other.setPaymentMethodState, setPaymentMethodState) ||
                 other.setPaymentMethodState == setPaymentMethodState) &&
+            (identical(other.applyCouponCodeState, applyCouponCodeState) ||
+                other.applyCouponCodeState == applyCouponCodeState) &&
+            (identical(other.removeCouponCodeState, removeCouponCodeState) ||
+                other.removeCouponCodeState == removeCouponCodeState) &&
             (identical(other.placeOrderState, placeOrderState) ||
                 other.placeOrderState == placeOrderState) &&
             (identical(other.stripeClientSecret, stripeClientSecret) ||
@@ -277,6 +315,8 @@ class _$CartStateImpl extends _CartState {
       updateProductQuantityState,
       setShippingMethodState,
       setPaymentMethodState,
+      applyCouponCodeState,
+      removeCouponCodeState,
       placeOrderState,
       stripeClientSecret,
       stripePaymentMethodId);
@@ -296,6 +336,8 @@ abstract class _CartState extends CartState {
       required final AsyncValue<Void?> updateProductQuantityState,
       required final AsyncValue<Void?> setShippingMethodState,
       required final AsyncValue<Void?> setPaymentMethodState,
+      required final AsyncValue<Void?> applyCouponCodeState,
+      required final AsyncValue<Void?> removeCouponCodeState,
       required final AsyncValue<String?> placeOrderState,
       required final String? stripeClientSecret,
       required final String? stripePaymentMethodId}) = _$CartStateImpl;
@@ -313,6 +355,10 @@ abstract class _CartState extends CartState {
   AsyncValue<Void?> get setShippingMethodState;
   @override
   AsyncValue<Void?> get setPaymentMethodState;
+  @override
+  AsyncValue<Void?> get applyCouponCodeState;
+  @override
+  AsyncValue<Void?> get removeCouponCodeState;
   @override
   AsyncValue<String?> get placeOrderState;
   @override

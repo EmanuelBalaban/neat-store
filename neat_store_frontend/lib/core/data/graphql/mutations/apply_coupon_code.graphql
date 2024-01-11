@@ -1,5 +1,5 @@
-mutation SetShippingMethodsOnCart($input: SetShippingMethodsOnCartInput) {
-    setShippingMethodsOnCart(input: $input) {
+mutation ApplyCouponCode($input: ApplyCouponToCartInput!) {
+    applyCouponToCart(input: $input) {
         cart {
             id
             total_quantity

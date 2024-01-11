@@ -3,7 +3,7 @@ query FetchCustomerCart {
         id
         total_quantity
         prices {
-            subtotal_with_discount_excluding_tax {
+            subtotal_excluding_tax {
                 currency
                 value
             }

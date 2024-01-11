@@ -1,5 +1,5 @@
-mutation SetShippingMethodsOnCart($input: SetShippingMethodsOnCartInput) {
-    setShippingMethodsOnCart(input: $input) {
+mutation RemoveCouponCode($cartId: String!) {
+    removeCouponFromCart(input: { cart_id: $cartId }) {
         cart {
             id
             total_quantity

@@ -47,7 +47,7 @@
   "orders": "Comenzile tale",
   "language": "Limbă",
   "theme": "Temă",
-  "orderDate": "Data comenzii",
+  "orderDate": "Data",
   "processing": "În procesare",
   "fraud": "Fraudă",
   "pendingPayment": "Se așteaptă plata",
@@ -56,5 +56,11 @@
   "holded": "Întreruptă",
   "complete": "Finalizată",
   "closed": "Închisă",
-  "canceled": "Anulată"
+  "canceled": "Anulată",
+  "discounts": "Reduceri",
+  "couponCode": "Cod Cupon",
+  "couponCodeHint": "ABC 10",
+  "discount": "Reducere",
+  "apply": "Aplică",
+  "remove": "Șterge"
 }

@@ -310,8 +310,7 @@ const documentNodeMutationRemoveItemFromCart = DocumentNode(definitions: [
                 directives: [],
                 selectionSet: SelectionSetNode(selections: [
                   FieldNode(
-                    name:
-                        NameNode(value: 'subtotal_with_discount_excluding_tax'),
+                    name: NameNode(value: 'subtotal_excluding_tax'),
                     alias: null,
                     arguments: [],
                     directives: [],
@@ -1030,24 +1029,21 @@ class _CopyWithStubImpl$Mutation$RemoveItemFromCart$removeItemFromCart$cart<
 
 class Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices {
   Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices({
-    this.subtotal_with_discount_excluding_tax,
+    this.subtotal_excluding_tax,
     this.grand_total,
     this.$__typename = 'CartPrices',
   });
 
   factory Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices.fromJson(
       Map<String, dynamic> json) {
-    final l$subtotal_with_discount_excluding_tax =
-        json['subtotal_with_discount_excluding_tax'];
+    final l$subtotal_excluding_tax = json['subtotal_excluding_tax'];
     final l$grand_total = json['grand_total'];
     final l$$__typename = json['__typename'];
     return Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices(
-      subtotal_with_discount_excluding_tax:
-          l$subtotal_with_discount_excluding_tax == null
-              ? null
-              : Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$subtotal_with_discount_excluding_tax
-                  .fromJson((l$subtotal_with_discount_excluding_tax
-                      as Map<String, dynamic>)),
+      subtotal_excluding_tax: l$subtotal_excluding_tax == null
+          ? null
+          : Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$subtotal_excluding_tax
+              .fromJson((l$subtotal_excluding_tax as Map<String, dynamic>)),
       grand_total: l$grand_total == null
           ? null
           : Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$grand_total
@@ -1056,8 +1052,8 @@ class Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices {
     );
   }
 
-  final Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$subtotal_with_discount_excluding_tax?
-      subtotal_with_discount_excluding_tax;
+  final Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$subtotal_excluding_tax?
+      subtotal_excluding_tax;
 
   final Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$grand_total?
       grand_total;
@@ -1066,10 +1062,8 @@ class Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices {
 
   Map<String, dynamic> toJson() {
     final _resultData = <String, dynamic>{};
-    final l$subtotal_with_discount_excluding_tax =
-        subtotal_with_discount_excluding_tax;
-    _resultData['subtotal_with_discount_excluding_tax'] =
-        l$subtotal_with_discount_excluding_tax?.toJson();
+    final l$subtotal_excluding_tax = subtotal_excluding_tax;
+    _resultData['subtotal_excluding_tax'] = l$subtotal_excluding_tax?.toJson();
     final l$grand_total = grand_total;
     _resultData['grand_total'] = l$grand_total?.toJson();
     final l$$__typename = $__typename;
@@ -1079,12 +1073,11 @@ class Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices {
 
   @override
   int get hashCode {
-    final l$subtotal_with_discount_excluding_tax =
-        subtotal_with_discount_excluding_tax;
+    final l$subtotal_excluding_tax = subtotal_excluding_tax;
     final l$grand_total = grand_total;
     final l$$__typename = $__typename;
     return Object.hashAll([
-      l$subtotal_with_discount_excluding_tax,
+      l$subtotal_excluding_tax,
       l$grand_total,
       l$$__typename,
     ]);
@@ -1100,12 +1093,9 @@ class Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices {
         runtimeType != other.runtimeType) {
       return false;
     }
-    final l$subtotal_with_discount_excluding_tax =
-        subtotal_with_discount_excluding_tax;
-    final lOther$subtotal_with_discount_excluding_tax =
-        other.subtotal_with_discount_excluding_tax;
-    if (l$subtotal_with_discount_excluding_tax !=
-        lOther$subtotal_with_discount_excluding_tax) {
+    final l$subtotal_excluding_tax = subtotal_excluding_tax;
+    final lOther$subtotal_excluding_tax = other.subtotal_excluding_tax;
+    if (l$subtotal_excluding_tax != lOther$subtotal_excluding_tax) {
       return false;
     }
     final l$grand_total = grand_total;
@@ -1146,14 +1136,14 @@ abstract class CopyWith$Mutation$RemoveItemFromCart$removeItemFromCart$cart$pric
       _CopyWithStubImpl$Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices;
 
   TRes call({
-    Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$subtotal_with_discount_excluding_tax?
-        subtotal_with_discount_excluding_tax,
+    Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$subtotal_excluding_tax?
+        subtotal_excluding_tax,
     Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$grand_total?
         grand_total,
     String? $__typename,
   });
-  CopyWith$Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$subtotal_with_discount_excluding_tax<
-      TRes> get subtotal_with_discount_excluding_tax;
+  CopyWith$Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$subtotal_excluding_tax<
+      TRes> get subtotal_excluding_tax;
   CopyWith$Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$grand_total<
       TRes> get grand_total;
 }
@@ -1176,16 +1166,15 @@ class _CopyWithImpl$Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices<
   static const _undefined = <dynamic, dynamic>{};
 
   TRes call({
-    Object? subtotal_with_discount_excluding_tax = _undefined,
+    Object? subtotal_excluding_tax = _undefined,
     Object? grand_total = _undefined,
     Object? $__typename = _undefined,
   }) =>
       _then(Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices(
-        subtotal_with_discount_excluding_tax:
-            subtotal_with_discount_excluding_tax == _undefined
-                ? _instance.subtotal_with_discount_excluding_tax
-                : (subtotal_with_discount_excluding_tax
-                    as Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$subtotal_with_discount_excluding_tax?),
+        subtotal_excluding_tax: subtotal_excluding_tax == _undefined
+            ? _instance.subtotal_excluding_tax
+            : (subtotal_excluding_tax
+                as Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$subtotal_excluding_tax?),
         grand_total: grand_total == _undefined
             ? _instance.grand_total
             : (grand_total
@@ -1195,16 +1184,15 @@ class _CopyWithImpl$Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices<
             : ($__typename as String),
       ));
 
-  CopyWith$Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$subtotal_with_discount_excluding_tax<
-      TRes> get subtotal_with_discount_excluding_tax {
-    final local$subtotal_with_discount_excluding_tax =
-        _instance.subtotal_with_discount_excluding_tax;
-    return local$subtotal_with_discount_excluding_tax == null
-        ? CopyWith$Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$subtotal_with_discount_excluding_tax
+  CopyWith$Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$subtotal_excluding_tax<
+      TRes> get subtotal_excluding_tax {
+    final local$subtotal_excluding_tax = _instance.subtotal_excluding_tax;
+    return local$subtotal_excluding_tax == null
+        ? CopyWith$Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$subtotal_excluding_tax
             .stub(_then(_instance))
-        : CopyWith$Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$subtotal_with_discount_excluding_tax(
-            local$subtotal_with_discount_excluding_tax,
-            (e) => call(subtotal_with_discount_excluding_tax: e));
+        : CopyWith$Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$subtotal_excluding_tax(
+            local$subtotal_excluding_tax,
+            (e) => call(subtotal_excluding_tax: e));
   }
 
   CopyWith$Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$grand_total<
@@ -1229,18 +1217,18 @@ class _CopyWithStubImpl$Mutation$RemoveItemFromCart$removeItemFromCart$cart$pric
   TRes _res;
 
   call({
-    Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$subtotal_with_discount_excluding_tax?
-        subtotal_with_discount_excluding_tax,
+    Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$subtotal_excluding_tax?
+        subtotal_excluding_tax,
     Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$grand_total?
         grand_total,
     String? $__typename,
   }) =>
       _res;
 
-  CopyWith$Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$subtotal_with_discount_excluding_tax<
+  CopyWith$Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$subtotal_excluding_tax<
           TRes>
-      get subtotal_with_discount_excluding_tax =>
-          CopyWith$Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$subtotal_with_discount_excluding_tax
+      get subtotal_excluding_tax =>
+          CopyWith$Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$subtotal_excluding_tax
               .stub(_res);
 
   CopyWith$Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$grand_total<
@@ -1250,19 +1238,19 @@ class _CopyWithStubImpl$Mutation$RemoveItemFromCart$removeItemFromCart$cart$pric
               .stub(_res);
 }
 
-class Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$subtotal_with_discount_excluding_tax {
-  Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$subtotal_with_discount_excluding_tax({
+class Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$subtotal_excluding_tax {
+  Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$subtotal_excluding_tax({
     this.currency,
     this.value,
     this.$__typename = 'Money',
   });
 
-  factory Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$subtotal_with_discount_excluding_tax.fromJson(
+  factory Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$subtotal_excluding_tax.fromJson(
       Map<String, dynamic> json) {
     final l$currency = json['currency'];
     final l$value = json['value'];
     final l$$__typename = json['__typename'];
-    return Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$subtotal_with_discount_excluding_tax(
+    return Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$subtotal_excluding_tax(
       currency: l$currency == null
           ? null
           : fromJson$Enum$CurrencyEnum((l$currency as String)),
@@ -1307,7 +1295,7 @@ class Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$subtotal_with_d
       return true;
     }
     if (!(other
-            is Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$subtotal_with_discount_excluding_tax) ||
+            is Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$subtotal_excluding_tax) ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -1330,30 +1318,30 @@ class Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$subtotal_with_d
   }
 }
 
-extension UtilityExtension$Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$subtotal_with_discount_excluding_tax
-    on Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$subtotal_with_discount_excluding_tax {
-  CopyWith$Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$subtotal_with_discount_excluding_tax<
-          Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$subtotal_with_discount_excluding_tax>
+extension UtilityExtension$Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$subtotal_excluding_tax
+    on Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$subtotal_excluding_tax {
+  CopyWith$Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$subtotal_excluding_tax<
+          Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$subtotal_excluding_tax>
       get copyWith =>
-          CopyWith$Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$subtotal_with_discount_excluding_tax(
+          CopyWith$Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$subtotal_excluding_tax(
             this,
             (i) => i,
           );
 }
 
-abstract class CopyWith$Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$subtotal_with_discount_excluding_tax<
+abstract class CopyWith$Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$subtotal_excluding_tax<
     TRes> {
-  factory CopyWith$Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$subtotal_with_discount_excluding_tax(
-    Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$subtotal_with_discount_excluding_tax
+  factory CopyWith$Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$subtotal_excluding_tax(
+    Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$subtotal_excluding_tax
         instance,
     TRes Function(
-            Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$subtotal_with_discount_excluding_tax)
+            Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$subtotal_excluding_tax)
         then,
-  ) = _CopyWithImpl$Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$subtotal_with_discount_excluding_tax;
+  ) = _CopyWithImpl$Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$subtotal_excluding_tax;
 
-  factory CopyWith$Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$subtotal_with_discount_excluding_tax.stub(
+  factory CopyWith$Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$subtotal_excluding_tax.stub(
           TRes res) =
-      _CopyWithStubImpl$Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$subtotal_with_discount_excluding_tax;
+      _CopyWithStubImpl$Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$subtotal_excluding_tax;
 
   TRes call({
     Enum$CurrencyEnum? currency,
@@ -1362,21 +1350,21 @@ abstract class CopyWith$Mutation$RemoveItemFromCart$removeItemFromCart$cart$pric
   });
 }
 
-class _CopyWithImpl$Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$subtotal_with_discount_excluding_tax<
+class _CopyWithImpl$Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$subtotal_excluding_tax<
         TRes>
     implements
-        CopyWith$Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$subtotal_with_discount_excluding_tax<
+        CopyWith$Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$subtotal_excluding_tax<
             TRes> {
-  _CopyWithImpl$Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$subtotal_with_discount_excluding_tax(
+  _CopyWithImpl$Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$subtotal_excluding_tax(
     this._instance,
     this._then,
   );
 
-  final Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$subtotal_with_discount_excluding_tax
+  final Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$subtotal_excluding_tax
       _instance;
 
   final TRes Function(
-          Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$subtotal_with_discount_excluding_tax)
+          Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$subtotal_excluding_tax)
       _then;
 
   static const _undefined = <dynamic, dynamic>{};
@@ -1387,7 +1375,7 @@ class _CopyWithImpl$Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$s
     Object? $__typename = _undefined,
   }) =>
       _then(
-          Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$subtotal_with_discount_excluding_tax(
+          Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$subtotal_excluding_tax(
         currency: currency == _undefined
             ? _instance.currency
             : (currency as Enum$CurrencyEnum?),
@@ -1398,12 +1386,12 @@ class _CopyWithImpl$Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$s
       ));
 }
 
-class _CopyWithStubImpl$Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$subtotal_with_discount_excluding_tax<
+class _CopyWithStubImpl$Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$subtotal_excluding_tax<
         TRes>
     implements
-        CopyWith$Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$subtotal_with_discount_excluding_tax<
+        CopyWith$Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$subtotal_excluding_tax<
             TRes> {
-  _CopyWithStubImpl$Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$subtotal_with_discount_excluding_tax(
+  _CopyWithStubImpl$Mutation$RemoveItemFromCart$removeItemFromCart$cart$prices$subtotal_excluding_tax(
       this._res);
 
   TRes _res;

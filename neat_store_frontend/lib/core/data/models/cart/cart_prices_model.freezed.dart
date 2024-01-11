@@ -20,8 +20,9 @@ CartPricesModel _$CartPricesModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$CartPricesModel {
-  MoneyModel? get subTotal => throw _privateConstructorUsedError;
   MoneyModel get grandTotal => throw _privateConstructorUsedError;
+  MoneyModel? get subTotal => throw _privateConstructorUsedError;
+  DiscountModel? get discount => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,10 +36,12 @@ abstract class $CartPricesModelCopyWith<$Res> {
           CartPricesModel value, $Res Function(CartPricesModel) then) =
       _$CartPricesModelCopyWithImpl<$Res, CartPricesModel>;
   @useResult
-  $Res call({MoneyModel? subTotal, MoneyModel grandTotal});
+  $Res call(
+      {MoneyModel grandTotal, MoneyModel? subTotal, DiscountModel? discount});
 
-  $MoneyModelCopyWith<$Res>? get subTotal;
   $MoneyModelCopyWith<$Res> get grandTotal;
+  $MoneyModelCopyWith<$Res>? get subTotal;
+  $DiscountModelCopyWith<$Res>? get discount;
 }
 
 /// @nodoc
@@ -54,19 +57,32 @@ class _$CartPricesModelCopyWithImpl<$Res, $Val extends CartPricesModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? subTotal = freezed,
     Object? grandTotal = null,
+    Object? subTotal = freezed,
+    Object? discount = freezed,
   }) {
     return _then(_value.copyWith(
-      subTotal: freezed == subTotal
-          ? _value.subTotal
-          : subTotal // ignore: cast_nullable_to_non_nullable
-              as MoneyModel?,
       grandTotal: null == grandTotal
           ? _value.grandTotal
           : grandTotal // ignore: cast_nullable_to_non_nullable
               as MoneyModel,
+      subTotal: freezed == subTotal
+          ? _value.subTotal
+          : subTotal // ignore: cast_nullable_to_non_nullable
+              as MoneyModel?,
+      discount: freezed == discount
+          ? _value.discount
+          : discount // ignore: cast_nullable_to_non_nullable
+              as DiscountModel?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $MoneyModelCopyWith<$Res> get grandTotal {
+    return $MoneyModelCopyWith<$Res>(_value.grandTotal, (value) {
+      return _then(_value.copyWith(grandTotal: value) as $Val);
+    });
   }
 
   @override
@@ -83,9 +99,13 @@ class _$CartPricesModelCopyWithImpl<$Res, $Val extends CartPricesModel>
 
   @override
   @pragma('vm:prefer-inline')
-  $MoneyModelCopyWith<$Res> get grandTotal {
-    return $MoneyModelCopyWith<$Res>(_value.grandTotal, (value) {
-      return _then(_value.copyWith(grandTotal: value) as $Val);
+  $DiscountModelCopyWith<$Res>? get discount {
+    if (_value.discount == null) {
+      return null;
+    }
+
+    return $DiscountModelCopyWith<$Res>(_value.discount!, (value) {
+      return _then(_value.copyWith(discount: value) as $Val);
     });
   }
 }
@@ -98,12 +118,15 @@ abstract class _$$CartPricesModelImplCopyWith<$Res>
       __$$CartPricesModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({MoneyModel? subTotal, MoneyModel grandTotal});
+  $Res call(
+      {MoneyModel grandTotal, MoneyModel? subTotal, DiscountModel? discount});
 
+  @override
+  $MoneyModelCopyWith<$Res> get grandTotal;
   @override
   $MoneyModelCopyWith<$Res>? get subTotal;
   @override
-  $MoneyModelCopyWith<$Res> get grandTotal;
+  $DiscountModelCopyWith<$Res>? get discount;
 }
 
 /// @nodoc
@@ -117,18 +140,23 @@ class __$$CartPricesModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? subTotal = freezed,
     Object? grandTotal = null,
+    Object? subTotal = freezed,
+    Object? discount = freezed,
   }) {
     return _then(_$CartPricesModelImpl(
-      subTotal: freezed == subTotal
-          ? _value.subTotal
-          : subTotal // ignore: cast_nullable_to_non_nullable
-              as MoneyModel?,
       grandTotal: null == grandTotal
           ? _value.grandTotal
           : grandTotal // ignore: cast_nullable_to_non_nullable
               as MoneyModel,
+      subTotal: freezed == subTotal
+          ? _value.subTotal
+          : subTotal // ignore: cast_nullable_to_non_nullable
+              as MoneyModel?,
+      discount: freezed == discount
+          ? _value.discount
+          : discount // ignore: cast_nullable_to_non_nullable
+              as DiscountModel?,
     ));
   }
 }
@@ -136,19 +164,22 @@ class __$$CartPricesModelImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$CartPricesModelImpl implements _CartPricesModel {
-  const _$CartPricesModelImpl({this.subTotal, required this.grandTotal});
+  const _$CartPricesModelImpl(
+      {required this.grandTotal, this.subTotal, this.discount});
 
   factory _$CartPricesModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$CartPricesModelImplFromJson(json);
 
   @override
+  final MoneyModel grandTotal;
+  @override
   final MoneyModel? subTotal;
   @override
-  final MoneyModel grandTotal;
+  final DiscountModel? discount;
 
   @override
   String toString() {
-    return 'CartPricesModel(subTotal: $subTotal, grandTotal: $grandTotal)';
+    return 'CartPricesModel(grandTotal: $grandTotal, subTotal: $subTotal, discount: $discount)';
   }
 
   @override
@@ -156,15 +187,17 @@ class _$CartPricesModelImpl implements _CartPricesModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CartPricesModelImpl &&
+            (identical(other.grandTotal, grandTotal) ||
+                other.grandTotal == grandTotal) &&
             (identical(other.subTotal, subTotal) ||
                 other.subTotal == subTotal) &&
-            (identical(other.grandTotal, grandTotal) ||
-                other.grandTotal == grandTotal));
+            (identical(other.discount, discount) ||
+                other.discount == discount));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, subTotal, grandTotal);
+  int get hashCode => Object.hash(runtimeType, grandTotal, subTotal, discount);
 
   @JsonKey(ignore: true)
   @override
@@ -183,16 +216,19 @@ class _$CartPricesModelImpl implements _CartPricesModel {
 
 abstract class _CartPricesModel implements CartPricesModel {
   const factory _CartPricesModel(
-      {final MoneyModel? subTotal,
-      required final MoneyModel grandTotal}) = _$CartPricesModelImpl;
+      {required final MoneyModel grandTotal,
+      final MoneyModel? subTotal,
+      final DiscountModel? discount}) = _$CartPricesModelImpl;
 
   factory _CartPricesModel.fromJson(Map<String, dynamic> json) =
       _$CartPricesModelImpl.fromJson;
 
   @override
+  MoneyModel get grandTotal;
+  @override
   MoneyModel? get subTotal;
   @override
-  MoneyModel get grandTotal;
+  DiscountModel? get discount;
   @override
   @JsonKey(ignore: true)
   _$$CartPricesModelImplCopyWith<_$CartPricesModelImpl> get copyWith =>

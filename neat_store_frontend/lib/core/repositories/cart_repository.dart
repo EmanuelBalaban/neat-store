@@ -4,7 +4,9 @@ import 'package:injectable/injectable.dart';
 import 'package:neat_store_frontend/core/data/converters/currency_converter.dart';
 import 'package:neat_store_frontend/core/data/graphql/magento.graphql.dart';
 import 'package:neat_store_frontend/core/data/graphql/mutations/add_configurable_products_to_cart.graphql.dart';
+import 'package:neat_store_frontend/core/data/graphql/mutations/apply_coupon_code.graphql.dart';
 import 'package:neat_store_frontend/core/data/graphql/mutations/place_order.graphql.dart';
+import 'package:neat_store_frontend/core/data/graphql/mutations/remove_coupon_code.graphql.dart';
 import 'package:neat_store_frontend/core/data/graphql/mutations/remove_item_from_cart.graphql.dart';
 import 'package:neat_store_frontend/core/data/graphql/mutations/set_payment_method_on_cart.graphql.dart';
 import 'package:neat_store_frontend/core/data/graphql/mutations/set_shipping_method_on_cart.graphql.dart';
@@ -16,6 +18,7 @@ import 'package:neat_store_frontend/core/data/models/cart/cart_item_model.dart';
 import 'package:neat_store_frontend/core/data/models/cart/cart_model.dart';
 import 'package:neat_store_frontend/core/data/models/cart/cart_prices_model.dart';
 import 'package:neat_store_frontend/core/data/models/config/config_model.dart';
+import 'package:neat_store_frontend/core/data/models/discounts/discount_model.dart';
 import 'package:neat_store_frontend/core/data/models/money/money_model.dart';
 import 'package:neat_store_frontend/core/data/models/payment/payment_method_code.dart';
 import 'package:neat_store_frontend/core/data/models/payment/payment_method_input_model.dart';
@@ -38,7 +41,7 @@ class CartRepository {
     }
 
     final cart = result.parsedData?.customerCart;
-    final subTotal = cart?.prices?.subtotal_with_discount_excluding_tax;
+    final subTotal = cart?.prices?.subtotal_excluding_tax;
     final grandTotal = cart?.prices?.grand_total;
 
     final apiUrl = getIt.get<ConfigModel>().apiUrl;
@@ -122,7 +125,7 @@ class CartRepository {
     }
 
     final cart = result.parsedData?.addConfigurableProductsToCart?.cart;
-    final subTotal = cart?.prices?.subtotal_with_discount_excluding_tax;
+    final subTotal = cart?.prices?.subtotal_excluding_tax;
     final grandTotal = cart?.prices?.grand_total;
 
     final apiUrl = getIt.get<ConfigModel>().apiUrl;
@@ -198,7 +201,7 @@ class CartRepository {
     }
 
     final cart = result.parsedData?.removeItemFromCart?.cart;
-    final subTotal = cart?.prices?.subtotal_with_discount_excluding_tax;
+    final subTotal = cart?.prices?.subtotal_excluding_tax;
     final grandTotal = cart?.prices?.grand_total;
 
     final apiUrl = getIt.get<ConfigModel>().apiUrl;
@@ -280,7 +283,7 @@ class CartRepository {
     }
 
     final cart = result.parsedData?.updateCartItems?.cart;
-    final subTotal = cart?.prices?.subtotal_with_discount_excluding_tax;
+    final subTotal = cart?.prices?.subtotal_excluding_tax;
     final grandTotal = cart?.prices?.grand_total;
 
     final apiUrl = getIt.get<ConfigModel>().apiUrl;
@@ -344,8 +347,10 @@ class CartRepository {
     }
 
     final cart = result.parsedData?.customerCart;
-    final subTotal = cart?.prices?.subtotal_with_discount_excluding_tax;
+    final subTotal = cart?.prices?.subtotal_excluding_tax;
     final grandTotal = cart?.prices?.grand_total;
+    final discount = cart?.prices?.discounts?.firstOrNull;
+    final appliedCouponCode = cart?.applied_coupons?.firstOrNull?.code;
 
     final shippingAddress = cart?.shipping_addresses.firstOrNull;
     final availableShippingMethods =
@@ -371,6 +376,18 @@ class CartRepository {
           ),
           value: grandTotal?.value ?? 0,
         ),
+        discount: discount != null
+            ? DiscountModel(
+                code: appliedCouponCode ?? '',
+                label: discount.label,
+                amount: MoneyModel(
+                  currency: const CurrencyConverter().fromJson(
+                    discount.amount.currency?.name,
+                  ),
+                  value: discount.amount.value ?? 0,
+                ),
+              )
+            : null,
       ),
       shippingAddress: shippingAddress != null
           ? AddressModel(
@@ -479,8 +496,10 @@ class CartRepository {
     }
 
     final cart = result.parsedData?.setShippingMethodsOnCart?.cart;
-    final subTotal = cart?.prices?.subtotal_with_discount_excluding_tax;
+    final subTotal = cart?.prices?.subtotal_excluding_tax;
     final grandTotal = cart?.prices?.grand_total;
+    final discount = cart?.prices?.discounts?.firstOrNull;
+    final appliedCouponCode = cart?.applied_coupons?.firstOrNull?.code;
 
     final shippingAddress = cart?.shipping_addresses.firstOrNull;
     final availableShippingMethods =
@@ -506,6 +525,18 @@ class CartRepository {
           ),
           value: grandTotal?.value ?? 0,
         ),
+        discount: discount != null
+            ? DiscountModel(
+                code: appliedCouponCode ?? '',
+                label: discount.label,
+                amount: MoneyModel(
+                  currency: const CurrencyConverter().fromJson(
+                    discount.amount.currency?.name,
+                  ),
+                  value: discount.amount.value ?? 0,
+                ),
+              )
+            : null,
       ),
       shippingAddress: shippingAddress != null
           ? AddressModel(
@@ -622,8 +653,10 @@ class CartRepository {
     }
 
     final cart = result.parsedData?.setPaymentMethodOnCart?.cart;
-    final subTotal = cart?.prices?.subtotal_with_discount_excluding_tax;
+    final subTotal = cart?.prices?.subtotal_excluding_tax;
     final grandTotal = cart?.prices?.grand_total;
+    final discount = cart?.prices?.discounts?.firstOrNull;
+    final appliedCouponCode = cart?.applied_coupons?.firstOrNull?.code;
 
     final shippingAddress = cart?.shipping_addresses.firstOrNull;
     final availableShippingMethods =
@@ -649,6 +682,298 @@ class CartRepository {
           ),
           value: grandTotal?.value ?? 0,
         ),
+        discount: discount != null
+            ? DiscountModel(
+                code: appliedCouponCode ?? '',
+                label: discount.label,
+                amount: MoneyModel(
+                  currency: const CurrencyConverter().fromJson(
+                    discount.amount.currency?.name,
+                  ),
+                  value: discount.amount.value ?? 0,
+                ),
+              )
+            : null,
+      ),
+      shippingAddress: shippingAddress != null
+          ? AddressModel(
+              id: shippingAddress.uid,
+              countryCode: shippingAddress.country.code,
+              regionId: shippingAddress.region?.region_id ?? 0,
+              city: shippingAddress.city,
+              firstName: shippingAddress.firstname,
+              lastName: shippingAddress.lastname,
+              postcode: shippingAddress.postcode ?? '',
+              telephone: shippingAddress.telephone ?? '',
+              street: shippingAddress.street.map((item) => item ?? '').toList(),
+            )
+          : null,
+      availableShippingMethods: availableShippingMethods
+          .map(
+            (item) => ShippingMethodModel(
+              carrierCode: item?.carrier_code ?? '',
+              carrierTitle: item?.carrier_title ?? '',
+              methodCode: item?.method_code ?? '',
+              methodTitle: item?.method_title ?? '',
+              amount: MoneyModel(
+                currency: const CurrencyConverter().fromJson(
+                  item?.amount.currency?.name,
+                ),
+                value: item?.amount.value ?? 0,
+              ),
+            ),
+          )
+          .toList(),
+      selectedShippingMethod: selectedShippingMethod != null
+          ? ShippingMethodModel(
+              carrierCode: selectedShippingMethod.carrier_code,
+              carrierTitle: selectedShippingMethod.carrier_title,
+              methodCode: selectedShippingMethod.method_code,
+              methodTitle: selectedShippingMethod.method_title,
+              amount: MoneyModel(
+                currency: const CurrencyConverter().fromJson(
+                  selectedShippingMethod.amount.currency?.name,
+                ),
+                value: selectedShippingMethod.amount.value ?? 0,
+              ),
+            )
+          : null,
+      availablePaymentMethods: availablePaymentMethods
+          .where(
+            (item) => PaymentMethodCode.values.any(
+              (code) => code.toJson() == item?.code,
+            ),
+          )
+          .map(
+            (item) => PaymentMethodModel(
+              code: PaymentMethodCode.fromJson(item?.code ?? ''),
+              title: item?.title ?? '',
+            ),
+          )
+          .toList(),
+      selectedPaymentMethod: (selectedPaymentMethod != null &&
+              PaymentMethodCode.values.any(
+                (code) => code.toJson() == selectedPaymentMethod.code,
+              ))
+          ? PaymentMethodModel(
+              code: PaymentMethodCode.fromJson(selectedPaymentMethod.code),
+              title: selectedPaymentMethod.title,
+            )
+          : null,
+      billingAddress: billingAddress != null
+          ? AddressModel(
+              id: billingAddress.uid,
+              countryCode: billingAddress.country.code,
+              regionId: billingAddress.region?.region_id ?? 0,
+              city: billingAddress.city,
+              firstName: billingAddress.firstname,
+              lastName: billingAddress.lastname,
+              postcode: billingAddress.postcode ?? '',
+              telephone: billingAddress.telephone ?? '',
+              street: billingAddress.street.map((item) => item ?? '').toList(),
+            )
+          : null,
+    );
+  }
+
+  Future<CartModel> applyCouponCode({
+    required String cartId,
+    required String couponCode,
+  }) async {
+    final result = await _gql.mutate$ApplyCouponCode(
+      Options$Mutation$ApplyCouponCode(
+        variables: Variables$Mutation$ApplyCouponCode(
+          input: Input$ApplyCouponToCartInput(
+            cart_id: cartId,
+            coupon_code: couponCode,
+          ),
+        ),
+      ),
+    );
+
+    if (result.hasException) {
+      throw result.exception!;
+    }
+
+    final cart = result.parsedData?.applyCouponToCart?.cart;
+    final subTotal = cart?.prices?.subtotal_excluding_tax;
+    final grandTotal = cart?.prices?.grand_total;
+    final discount = cart?.prices?.discounts?.firstOrNull;
+    final appliedCouponCode = cart?.applied_coupons?.firstOrNull?.code;
+
+    final shippingAddress = cart?.shipping_addresses.firstOrNull;
+    final availableShippingMethods =
+        shippingAddress?.available_shipping_methods ?? [];
+    final selectedShippingMethod = shippingAddress?.selected_shipping_method;
+    final billingAddress = cart?.billing_address;
+    final availablePaymentMethods = cart?.available_payment_methods ?? [];
+    final selectedPaymentMethod = cart?.selected_payment_method;
+
+    return CartModel(
+      id: cart?.id ?? '',
+      totalQuantity: cart?.total_quantity ?? 0,
+      prices: CartPricesModel(
+        subTotal: MoneyModel(
+          currency: const CurrencyConverter().fromJson(
+            subTotal?.currency?.name,
+          ),
+          value: subTotal?.value ?? 0,
+        ),
+        grandTotal: MoneyModel(
+          currency: const CurrencyConverter().fromJson(
+            grandTotal?.currency?.name,
+          ),
+          value: grandTotal?.value ?? 0,
+        ),
+        discount: discount != null
+            ? DiscountModel(
+                code: appliedCouponCode ?? '',
+                label: discount.label,
+                amount: MoneyModel(
+                  currency: const CurrencyConverter().fromJson(
+                    discount.amount.currency?.name,
+                  ),
+                  value: discount.amount.value ?? 0,
+                ),
+              )
+            : null,
+      ),
+      shippingAddress: shippingAddress != null
+          ? AddressModel(
+              id: shippingAddress.uid,
+              countryCode: shippingAddress.country.code,
+              regionId: shippingAddress.region?.region_id ?? 0,
+              city: shippingAddress.city,
+              firstName: shippingAddress.firstname,
+              lastName: shippingAddress.lastname,
+              postcode: shippingAddress.postcode ?? '',
+              telephone: shippingAddress.telephone ?? '',
+              street: shippingAddress.street.map((item) => item ?? '').toList(),
+            )
+          : null,
+      availableShippingMethods: availableShippingMethods
+          .map(
+            (item) => ShippingMethodModel(
+              carrierCode: item?.carrier_code ?? '',
+              carrierTitle: item?.carrier_title ?? '',
+              methodCode: item?.method_code ?? '',
+              methodTitle: item?.method_title ?? '',
+              amount: MoneyModel(
+                currency: const CurrencyConverter().fromJson(
+                  item?.amount.currency?.name,
+                ),
+                value: item?.amount.value ?? 0,
+              ),
+            ),
+          )
+          .toList(),
+      selectedShippingMethod: selectedShippingMethod != null
+          ? ShippingMethodModel(
+              carrierCode: selectedShippingMethod.carrier_code,
+              carrierTitle: selectedShippingMethod.carrier_title,
+              methodCode: selectedShippingMethod.method_code,
+              methodTitle: selectedShippingMethod.method_title,
+              amount: MoneyModel(
+                currency: const CurrencyConverter().fromJson(
+                  selectedShippingMethod.amount.currency?.name,
+                ),
+                value: selectedShippingMethod.amount.value ?? 0,
+              ),
+            )
+          : null,
+      availablePaymentMethods: availablePaymentMethods
+          .where(
+            (item) => PaymentMethodCode.values.any(
+              (code) => code.toJson() == item?.code,
+            ),
+          )
+          .map(
+            (item) => PaymentMethodModel(
+              code: PaymentMethodCode.fromJson(item?.code ?? ''),
+              title: item?.title ?? '',
+            ),
+          )
+          .toList(),
+      selectedPaymentMethod: (selectedPaymentMethod != null &&
+              PaymentMethodCode.values.any(
+                (code) => code.toJson() == selectedPaymentMethod.code,
+              ))
+          ? PaymentMethodModel(
+              code: PaymentMethodCode.fromJson(selectedPaymentMethod.code),
+              title: selectedPaymentMethod.title,
+            )
+          : null,
+      billingAddress: billingAddress != null
+          ? AddressModel(
+              id: billingAddress.uid,
+              countryCode: billingAddress.country.code,
+              regionId: billingAddress.region?.region_id ?? 0,
+              city: billingAddress.city,
+              firstName: billingAddress.firstname,
+              lastName: billingAddress.lastname,
+              postcode: billingAddress.postcode ?? '',
+              telephone: billingAddress.telephone ?? '',
+              street: billingAddress.street.map((item) => item ?? '').toList(),
+            )
+          : null,
+    );
+  }
+
+  Future<CartModel> removeCouponCode({required String cartId}) async {
+    final result = await _gql.mutate$RemoveCouponCode(
+      Options$Mutation$RemoveCouponCode(
+        variables: Variables$Mutation$RemoveCouponCode(
+          cartId: cartId,
+        ),
+      ),
+    );
+
+    if (result.hasException) {
+      throw result.exception!;
+    }
+
+    final cart = result.parsedData?.removeCouponFromCart?.cart;
+    final subTotal = cart?.prices?.subtotal_excluding_tax;
+    final grandTotal = cart?.prices?.grand_total;
+    final discount = cart?.prices?.discounts?.firstOrNull;
+    final appliedCouponCode = cart?.applied_coupons?.firstOrNull?.code;
+
+    final shippingAddress = cart?.shipping_addresses.firstOrNull;
+    final availableShippingMethods =
+        shippingAddress?.available_shipping_methods ?? [];
+    final selectedShippingMethod = shippingAddress?.selected_shipping_method;
+    final billingAddress = cart?.billing_address;
+    final availablePaymentMethods = cart?.available_payment_methods ?? [];
+    final selectedPaymentMethod = cart?.selected_payment_method;
+
+    return CartModel(
+      id: cart?.id ?? '',
+      totalQuantity: cart?.total_quantity ?? 0,
+      prices: CartPricesModel(
+        subTotal: MoneyModel(
+          currency: const CurrencyConverter().fromJson(
+            subTotal?.currency?.name,
+          ),
+          value: subTotal?.value ?? 0,
+        ),
+        grandTotal: MoneyModel(
+          currency: const CurrencyConverter().fromJson(
+            grandTotal?.currency?.name,
+          ),
+          value: grandTotal?.value ?? 0,
+        ),
+        discount: discount != null
+            ? DiscountModel(
+                code: appliedCouponCode ?? '',
+                label: discount.label,
+                amount: MoneyModel(
+                  currency: const CurrencyConverter().fromJson(
+                    discount.amount.currency?.name,
+                  ),
+                  value: discount.amount.value ?? 0,
+                ),
+              )
+            : null,
       ),
       shippingAddress: shippingAddress != null
           ? AddressModel(

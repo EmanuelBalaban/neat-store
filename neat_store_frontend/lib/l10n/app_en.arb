@@ -47,7 +47,7 @@
   "orders": "Your Orders",
   "language": "Language",
   "theme": "Theme",
-  "orderDate": "Order date",
+  "orderDate": "Date",
   "processing": "Processing",
   "fraud": "Fraud",
   "pendingPayment": "Pending payment",
@@ -56,5 +56,11 @@
   "holded": "On hold",
   "complete": "Complete",
   "closed": "Closed",
-  "canceled": "Canceled"
+  "canceled": "Canceled",
+  "discounts": "Discounts",
+  "couponCode": "Coupon Code",
+  "couponCodeHint": "ABC 10",
+  "discount": "Discount",
+  "apply": "Apply",
+  "remove": "Remove"
 }

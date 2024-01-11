@@ -7,45 +7,36 @@ import 'package:graphql/client.dart' as graphql;
 
 import '../magento.graphql.dart';
 
-class Variables$Mutation$SetShippingMethodsOnCart {
-  factory Variables$Mutation$SetShippingMethodsOnCart(
-          {Input$SetShippingMethodsOnCartInput? input}) =>
-      Variables$Mutation$SetShippingMethodsOnCart._({
-        if (input != null) r'input': input,
+class Variables$Mutation$RemoveCouponCode {
+  factory Variables$Mutation$RemoveCouponCode({required String cartId}) =>
+      Variables$Mutation$RemoveCouponCode._({
+        r'cartId': cartId,
       });
 
-  Variables$Mutation$SetShippingMethodsOnCart._(this._$data);
+  Variables$Mutation$RemoveCouponCode._(this._$data);
 
-  factory Variables$Mutation$SetShippingMethodsOnCart.fromJson(
+  factory Variables$Mutation$RemoveCouponCode.fromJson(
       Map<String, dynamic> data) {
     final result$data = <String, dynamic>{};
-    if (data.containsKey('input')) {
-      final l$input = data['input'];
-      result$data['input'] = l$input == null
-          ? null
-          : Input$SetShippingMethodsOnCartInput.fromJson(
-              (l$input as Map<String, dynamic>));
-    }
-    return Variables$Mutation$SetShippingMethodsOnCart._(result$data);
+    final l$cartId = data['cartId'];
+    result$data['cartId'] = (l$cartId as String);
+    return Variables$Mutation$RemoveCouponCode._(result$data);
   }
 
   Map<String, dynamic> _$data;
 
-  Input$SetShippingMethodsOnCartInput? get input =>
-      (_$data['input'] as Input$SetShippingMethodsOnCartInput?);
+  String get cartId => (_$data['cartId'] as String);
 
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
-    if (_$data.containsKey('input')) {
-      final l$input = input;
-      result$data['input'] = l$input?.toJson();
-    }
+    final l$cartId = cartId;
+    result$data['cartId'] = l$cartId;
     return result$data;
   }
 
-  CopyWith$Variables$Mutation$SetShippingMethodsOnCart<
-          Variables$Mutation$SetShippingMethodsOnCart>
-      get copyWith => CopyWith$Variables$Mutation$SetShippingMethodsOnCart(
+  CopyWith$Variables$Mutation$RemoveCouponCode<
+          Variables$Mutation$RemoveCouponCode>
+      get copyWith => CopyWith$Variables$Mutation$RemoveCouponCode(
             this,
             (i) => i,
           );
@@ -55,16 +46,13 @@ class Variables$Mutation$SetShippingMethodsOnCart {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Variables$Mutation$SetShippingMethodsOnCart) ||
+    if (!(other is Variables$Mutation$RemoveCouponCode) ||
         runtimeType != other.runtimeType) {
       return false;
     }
-    final l$input = input;
-    final lOther$input = other.input;
-    if (_$data.containsKey('input') != other._$data.containsKey('input')) {
-      return false;
-    }
-    if (l$input != lOther$input) {
+    final l$cartId = cartId;
+    final lOther$cartId = other.cartId;
+    if (l$cartId != lOther$cartId) {
       return false;
     }
     return true;
@@ -72,82 +60,79 @@ class Variables$Mutation$SetShippingMethodsOnCart {
 
   @override
   int get hashCode {
-    final l$input = input;
-    return Object.hashAll([_$data.containsKey('input') ? l$input : const {}]);
+    final l$cartId = cartId;
+    return Object.hashAll([l$cartId]);
   }
 }
 
-abstract class CopyWith$Variables$Mutation$SetShippingMethodsOnCart<TRes> {
-  factory CopyWith$Variables$Mutation$SetShippingMethodsOnCart(
-    Variables$Mutation$SetShippingMethodsOnCart instance,
-    TRes Function(Variables$Mutation$SetShippingMethodsOnCart) then,
-  ) = _CopyWithImpl$Variables$Mutation$SetShippingMethodsOnCart;
+abstract class CopyWith$Variables$Mutation$RemoveCouponCode<TRes> {
+  factory CopyWith$Variables$Mutation$RemoveCouponCode(
+    Variables$Mutation$RemoveCouponCode instance,
+    TRes Function(Variables$Mutation$RemoveCouponCode) then,
+  ) = _CopyWithImpl$Variables$Mutation$RemoveCouponCode;
 
-  factory CopyWith$Variables$Mutation$SetShippingMethodsOnCart.stub(TRes res) =
-      _CopyWithStubImpl$Variables$Mutation$SetShippingMethodsOnCart;
+  factory CopyWith$Variables$Mutation$RemoveCouponCode.stub(TRes res) =
+      _CopyWithStubImpl$Variables$Mutation$RemoveCouponCode;
 
-  TRes call({Input$SetShippingMethodsOnCartInput? input});
+  TRes call({String? cartId});
 }
 
-class _CopyWithImpl$Variables$Mutation$SetShippingMethodsOnCart<TRes>
-    implements CopyWith$Variables$Mutation$SetShippingMethodsOnCart<TRes> {
-  _CopyWithImpl$Variables$Mutation$SetShippingMethodsOnCart(
+class _CopyWithImpl$Variables$Mutation$RemoveCouponCode<TRes>
+    implements CopyWith$Variables$Mutation$RemoveCouponCode<TRes> {
+  _CopyWithImpl$Variables$Mutation$RemoveCouponCode(
     this._instance,
     this._then,
   );
 
-  final Variables$Mutation$SetShippingMethodsOnCart _instance;
+  final Variables$Mutation$RemoveCouponCode _instance;
 
-  final TRes Function(Variables$Mutation$SetShippingMethodsOnCart) _then;
+  final TRes Function(Variables$Mutation$RemoveCouponCode) _then;
 
   static const _undefined = <dynamic, dynamic>{};
 
-  TRes call({Object? input = _undefined}) =>
-      _then(Variables$Mutation$SetShippingMethodsOnCart._({
+  TRes call({Object? cartId = _undefined}) =>
+      _then(Variables$Mutation$RemoveCouponCode._({
         ..._instance._$data,
-        if (input != _undefined)
-          'input': (input as Input$SetShippingMethodsOnCartInput?),
+        if (cartId != _undefined && cartId != null)
+          'cartId': (cartId as String),
       }));
 }
 
-class _CopyWithStubImpl$Variables$Mutation$SetShippingMethodsOnCart<TRes>
-    implements CopyWith$Variables$Mutation$SetShippingMethodsOnCart<TRes> {
-  _CopyWithStubImpl$Variables$Mutation$SetShippingMethodsOnCart(this._res);
+class _CopyWithStubImpl$Variables$Mutation$RemoveCouponCode<TRes>
+    implements CopyWith$Variables$Mutation$RemoveCouponCode<TRes> {
+  _CopyWithStubImpl$Variables$Mutation$RemoveCouponCode(this._res);
 
   TRes _res;
 
-  call({Input$SetShippingMethodsOnCartInput? input}) => _res;
+  call({String? cartId}) => _res;
 }
 
-class Mutation$SetShippingMethodsOnCart {
-  Mutation$SetShippingMethodsOnCart({
-    this.setShippingMethodsOnCart,
+class Mutation$RemoveCouponCode {
+  Mutation$RemoveCouponCode({
+    this.removeCouponFromCart,
     this.$__typename = 'Mutation',
   });
 
-  factory Mutation$SetShippingMethodsOnCart.fromJson(
-      Map<String, dynamic> json) {
-    final l$setShippingMethodsOnCart = json['setShippingMethodsOnCart'];
+  factory Mutation$RemoveCouponCode.fromJson(Map<String, dynamic> json) {
+    final l$removeCouponFromCart = json['removeCouponFromCart'];
     final l$$__typename = json['__typename'];
-    return Mutation$SetShippingMethodsOnCart(
-      setShippingMethodsOnCart: l$setShippingMethodsOnCart == null
+    return Mutation$RemoveCouponCode(
+      removeCouponFromCart: l$removeCouponFromCart == null
           ? null
-          : Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart.fromJson(
-              (l$setShippingMethodsOnCart as Map<String, dynamic>)),
+          : Mutation$RemoveCouponCode$removeCouponFromCart.fromJson(
+              (l$removeCouponFromCart as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
   }
 
-  final Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart?
-      setShippingMethodsOnCart;
+  final Mutation$RemoveCouponCode$removeCouponFromCart? removeCouponFromCart;
 
   final String $__typename;
 
   Map<String, dynamic> toJson() {
     final _resultData = <String, dynamic>{};
-    final l$setShippingMethodsOnCart = setShippingMethodsOnCart;
-    _resultData['setShippingMethodsOnCart'] =
-        l$setShippingMethodsOnCart?.toJson();
+    final l$removeCouponFromCart = removeCouponFromCart;
+    _resultData['removeCouponFromCart'] = l$removeCouponFromCart?.toJson();
     final l$$__typename = $__typename;
     _resultData['__typename'] = l$$__typename;
     return _resultData;
@@ -155,10 +140,10 @@ class Mutation$SetShippingMethodsOnCart {
 
   @override
   int get hashCode {
-    final l$setShippingMethodsOnCart = setShippingMethodsOnCart;
+    final l$removeCouponFromCart = removeCouponFromCart;
     final l$$__typename = $__typename;
     return Object.hashAll([
-      l$setShippingMethodsOnCart,
+      l$removeCouponFromCart,
       l$$__typename,
     ]);
   }
@@ -168,13 +153,13 @@ class Mutation$SetShippingMethodsOnCart {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Mutation$SetShippingMethodsOnCart) ||
+    if (!(other is Mutation$RemoveCouponCode) ||
         runtimeType != other.runtimeType) {
       return false;
     }
-    final l$setShippingMethodsOnCart = setShippingMethodsOnCart;
-    final lOther$setShippingMethodsOnCart = other.setShippingMethodsOnCart;
-    if (l$setShippingMethodsOnCart != lOther$setShippingMethodsOnCart) {
+    final l$removeCouponFromCart = removeCouponFromCart;
+    final lOther$removeCouponFromCart = other.removeCouponFromCart;
+    if (l$removeCouponFromCart != lOther$removeCouponFromCart) {
       return false;
     }
     final l$$__typename = $__typename;
@@ -186,101 +171,97 @@ class Mutation$SetShippingMethodsOnCart {
   }
 }
 
-extension UtilityExtension$Mutation$SetShippingMethodsOnCart
-    on Mutation$SetShippingMethodsOnCart {
-  CopyWith$Mutation$SetShippingMethodsOnCart<Mutation$SetShippingMethodsOnCart>
-      get copyWith => CopyWith$Mutation$SetShippingMethodsOnCart(
-            this,
-            (i) => i,
-          );
+extension UtilityExtension$Mutation$RemoveCouponCode
+    on Mutation$RemoveCouponCode {
+  CopyWith$Mutation$RemoveCouponCode<Mutation$RemoveCouponCode> get copyWith =>
+      CopyWith$Mutation$RemoveCouponCode(
+        this,
+        (i) => i,
+      );
 }
 
-abstract class CopyWith$Mutation$SetShippingMethodsOnCart<TRes> {
-  factory CopyWith$Mutation$SetShippingMethodsOnCart(
-    Mutation$SetShippingMethodsOnCart instance,
-    TRes Function(Mutation$SetShippingMethodsOnCart) then,
-  ) = _CopyWithImpl$Mutation$SetShippingMethodsOnCart;
+abstract class CopyWith$Mutation$RemoveCouponCode<TRes> {
+  factory CopyWith$Mutation$RemoveCouponCode(
+    Mutation$RemoveCouponCode instance,
+    TRes Function(Mutation$RemoveCouponCode) then,
+  ) = _CopyWithImpl$Mutation$RemoveCouponCode;
 
-  factory CopyWith$Mutation$SetShippingMethodsOnCart.stub(TRes res) =
-      _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart;
+  factory CopyWith$Mutation$RemoveCouponCode.stub(TRes res) =
+      _CopyWithStubImpl$Mutation$RemoveCouponCode;
 
   TRes call({
-    Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart?
-        setShippingMethodsOnCart,
+    Mutation$RemoveCouponCode$removeCouponFromCart? removeCouponFromCart,
     String? $__typename,
   });
-  CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart<TRes>
-      get setShippingMethodsOnCart;
+  CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart<TRes>
+      get removeCouponFromCart;
 }
 
-class _CopyWithImpl$Mutation$SetShippingMethodsOnCart<TRes>
-    implements CopyWith$Mutation$SetShippingMethodsOnCart<TRes> {
-  _CopyWithImpl$Mutation$SetShippingMethodsOnCart(
+class _CopyWithImpl$Mutation$RemoveCouponCode<TRes>
+    implements CopyWith$Mutation$RemoveCouponCode<TRes> {
+  _CopyWithImpl$Mutation$RemoveCouponCode(
     this._instance,
     this._then,
   );
 
-  final Mutation$SetShippingMethodsOnCart _instance;
+  final Mutation$RemoveCouponCode _instance;
 
-  final TRes Function(Mutation$SetShippingMethodsOnCart) _then;
+  final TRes Function(Mutation$RemoveCouponCode) _then;
 
   static const _undefined = <dynamic, dynamic>{};
 
   TRes call({
-    Object? setShippingMethodsOnCart = _undefined,
+    Object? removeCouponFromCart = _undefined,
     Object? $__typename = _undefined,
   }) =>
-      _then(Mutation$SetShippingMethodsOnCart(
-        setShippingMethodsOnCart: setShippingMethodsOnCart == _undefined
-            ? _instance.setShippingMethodsOnCart
-            : (setShippingMethodsOnCart
-                as Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart?),
+      _then(Mutation$RemoveCouponCode(
+        removeCouponFromCart: removeCouponFromCart == _undefined
+            ? _instance.removeCouponFromCart
+            : (removeCouponFromCart
+                as Mutation$RemoveCouponCode$removeCouponFromCart?),
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
       ));
 
-  CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart<TRes>
-      get setShippingMethodsOnCart {
-    final local$setShippingMethodsOnCart = _instance.setShippingMethodsOnCart;
-    return local$setShippingMethodsOnCart == null
-        ? CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart
-            .stub(_then(_instance))
-        : CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart(
-            local$setShippingMethodsOnCart,
-            (e) => call(setShippingMethodsOnCart: e));
+  CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart<TRes>
+      get removeCouponFromCart {
+    final local$removeCouponFromCart = _instance.removeCouponFromCart;
+    return local$removeCouponFromCart == null
+        ? CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart.stub(
+            _then(_instance))
+        : CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart(
+            local$removeCouponFromCart, (e) => call(removeCouponFromCart: e));
   }
 }
 
-class _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart<TRes>
-    implements CopyWith$Mutation$SetShippingMethodsOnCart<TRes> {
-  _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart(this._res);
+class _CopyWithStubImpl$Mutation$RemoveCouponCode<TRes>
+    implements CopyWith$Mutation$RemoveCouponCode<TRes> {
+  _CopyWithStubImpl$Mutation$RemoveCouponCode(this._res);
 
   TRes _res;
 
   call({
-    Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart?
-        setShippingMethodsOnCart,
+    Mutation$RemoveCouponCode$removeCouponFromCart? removeCouponFromCart,
     String? $__typename,
   }) =>
       _res;
 
-  CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart<TRes>
-      get setShippingMethodsOnCart =>
-          CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart
-              .stub(_res);
+  CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart<TRes>
+      get removeCouponFromCart =>
+          CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart.stub(_res);
 }
 
-const documentNodeMutationSetShippingMethodsOnCart = DocumentNode(definitions: [
+const documentNodeMutationRemoveCouponCode = DocumentNode(definitions: [
   OperationDefinitionNode(
     type: OperationType.mutation,
-    name: NameNode(value: 'SetShippingMethodsOnCart'),
+    name: NameNode(value: 'RemoveCouponCode'),
     variableDefinitions: [
       VariableDefinitionNode(
-        variable: VariableNode(name: NameNode(value: 'input')),
+        variable: VariableNode(name: NameNode(value: 'cartId')),
         type: NamedTypeNode(
-          name: NameNode(value: 'SetShippingMethodsOnCartInput'),
-          isNonNull: false,
+          name: NameNode(value: 'String'),
+          isNonNull: true,
         ),
         defaultValue: DefaultValueNode(value: null),
         directives: [],
@@ -289,12 +270,17 @@ const documentNodeMutationSetShippingMethodsOnCart = DocumentNode(definitions: [
     directives: [],
     selectionSet: SelectionSetNode(selections: [
       FieldNode(
-        name: NameNode(value: 'setShippingMethodsOnCart'),
+        name: NameNode(value: 'removeCouponFromCart'),
         alias: null,
         arguments: [
           ArgumentNode(
             name: NameNode(value: 'input'),
-            value: VariableNode(name: NameNode(value: 'input')),
+            value: ObjectValueNode(fields: [
+              ObjectFieldNode(
+                name: NameNode(value: 'cart_id'),
+                value: VariableNode(name: NameNode(value: 'cartId')),
+              )
+            ]),
           )
         ],
         directives: [],
@@ -932,32 +918,31 @@ const documentNodeMutationSetShippingMethodsOnCart = DocumentNode(definitions: [
     ]),
   ),
 ]);
-Mutation$SetShippingMethodsOnCart _parserFn$Mutation$SetShippingMethodsOnCart(
+Mutation$RemoveCouponCode _parserFn$Mutation$RemoveCouponCode(
         Map<String, dynamic> data) =>
-    Mutation$SetShippingMethodsOnCart.fromJson(data);
-typedef OnMutationCompleted$Mutation$SetShippingMethodsOnCart = FutureOr<void>
-    Function(
+    Mutation$RemoveCouponCode.fromJson(data);
+typedef OnMutationCompleted$Mutation$RemoveCouponCode = FutureOr<void> Function(
   Map<String, dynamic>?,
-  Mutation$SetShippingMethodsOnCart?,
+  Mutation$RemoveCouponCode?,
 );
 
-class Options$Mutation$SetShippingMethodsOnCart
-    extends graphql.MutationOptions<Mutation$SetShippingMethodsOnCart> {
-  Options$Mutation$SetShippingMethodsOnCart({
+class Options$Mutation$RemoveCouponCode
+    extends graphql.MutationOptions<Mutation$RemoveCouponCode> {
+  Options$Mutation$RemoveCouponCode({
     String? operationName,
-    Variables$Mutation$SetShippingMethodsOnCart? variables,
+    required Variables$Mutation$RemoveCouponCode variables,
     graphql.FetchPolicy? fetchPolicy,
     graphql.ErrorPolicy? errorPolicy,
     graphql.CacheRereadPolicy? cacheRereadPolicy,
     Object? optimisticResult,
-    Mutation$SetShippingMethodsOnCart? typedOptimisticResult,
+    Mutation$RemoveCouponCode? typedOptimisticResult,
     graphql.Context? context,
-    OnMutationCompleted$Mutation$SetShippingMethodsOnCart? onCompleted,
-    graphql.OnMutationUpdate<Mutation$SetShippingMethodsOnCart>? update,
+    OnMutationCompleted$Mutation$RemoveCouponCode? onCompleted,
+    graphql.OnMutationUpdate<Mutation$RemoveCouponCode>? update,
     graphql.OnError? onError,
   })  : onCompletedWithParsed = onCompleted,
         super(
-          variables: variables?.toJson() ?? {},
+          variables: variables.toJson(),
           operationName: operationName,
           fetchPolicy: fetchPolicy,
           errorPolicy: errorPolicy,
@@ -970,16 +955,15 @@ class Options$Mutation$SetShippingMethodsOnCart
                     data,
                     data == null
                         ? null
-                        : _parserFn$Mutation$SetShippingMethodsOnCart(data),
+                        : _parserFn$Mutation$RemoveCouponCode(data),
                   ),
           update: update,
           onError: onError,
-          document: documentNodeMutationSetShippingMethodsOnCart,
-          parserFn: _parserFn$Mutation$SetShippingMethodsOnCart,
+          document: documentNodeMutationRemoveCouponCode,
+          parserFn: _parserFn$Mutation$RemoveCouponCode,
         );
 
-  final OnMutationCompleted$Mutation$SetShippingMethodsOnCart?
-      onCompletedWithParsed;
+  final OnMutationCompleted$Mutation$RemoveCouponCode? onCompletedWithParsed;
 
   @override
   List<Object?> get properties => [
@@ -990,77 +974,76 @@ class Options$Mutation$SetShippingMethodsOnCart
       ];
 }
 
-class WatchOptions$Mutation$SetShippingMethodsOnCart
-    extends graphql.WatchQueryOptions<Mutation$SetShippingMethodsOnCart> {
-  WatchOptions$Mutation$SetShippingMethodsOnCart({
+class WatchOptions$Mutation$RemoveCouponCode
+    extends graphql.WatchQueryOptions<Mutation$RemoveCouponCode> {
+  WatchOptions$Mutation$RemoveCouponCode({
     String? operationName,
-    Variables$Mutation$SetShippingMethodsOnCart? variables,
+    required Variables$Mutation$RemoveCouponCode variables,
     graphql.FetchPolicy? fetchPolicy,
     graphql.ErrorPolicy? errorPolicy,
     graphql.CacheRereadPolicy? cacheRereadPolicy,
     Object? optimisticResult,
-    Mutation$SetShippingMethodsOnCart? typedOptimisticResult,
+    Mutation$RemoveCouponCode? typedOptimisticResult,
     graphql.Context? context,
     Duration? pollInterval,
     bool? eagerlyFetchResults,
     bool carryForwardDataOnException = true,
     bool fetchResults = false,
   }) : super(
-          variables: variables?.toJson() ?? {},
+          variables: variables.toJson(),
           operationName: operationName,
           fetchPolicy: fetchPolicy,
           errorPolicy: errorPolicy,
           cacheRereadPolicy: cacheRereadPolicy,
           optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
           context: context,
-          document: documentNodeMutationSetShippingMethodsOnCart,
+          document: documentNodeMutationRemoveCouponCode,
           pollInterval: pollInterval,
           eagerlyFetchResults: eagerlyFetchResults,
           carryForwardDataOnException: carryForwardDataOnException,
           fetchResults: fetchResults,
-          parserFn: _parserFn$Mutation$SetShippingMethodsOnCart,
+          parserFn: _parserFn$Mutation$RemoveCouponCode,
         );
 }
 
-extension ClientExtension$Mutation$SetShippingMethodsOnCart
-    on graphql.GraphQLClient {
-  Future<graphql.QueryResult<Mutation$SetShippingMethodsOnCart>>
-      mutate$SetShippingMethodsOnCart(
-              [Options$Mutation$SetShippingMethodsOnCart? options]) async =>
-          await this
-              .mutate(options ?? Options$Mutation$SetShippingMethodsOnCart());
-  graphql.ObservableQuery<Mutation$SetShippingMethodsOnCart>
-      watchMutation$SetShippingMethodsOnCart(
-              [WatchOptions$Mutation$SetShippingMethodsOnCart? options]) =>
-          this.watchMutation(
-              options ?? WatchOptions$Mutation$SetShippingMethodsOnCart());
+extension ClientExtension$Mutation$RemoveCouponCode on graphql.GraphQLClient {
+  Future<graphql.QueryResult<Mutation$RemoveCouponCode>>
+      mutate$RemoveCouponCode(
+              Options$Mutation$RemoveCouponCode options) async =>
+          await this.mutate(options);
+  graphql.ObservableQuery<Mutation$RemoveCouponCode>
+      watchMutation$RemoveCouponCode(
+              WatchOptions$Mutation$RemoveCouponCode options) =>
+          this.watchMutation(options);
 }
 
-class Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart {
-  Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart({
-    required this.cart,
-    this.$__typename = 'SetShippingMethodsOnCartOutput',
+class Mutation$RemoveCouponCode$removeCouponFromCart {
+  Mutation$RemoveCouponCode$removeCouponFromCart({
+    this.cart,
+    this.$__typename = 'RemoveCouponFromCartOutput',
   });
 
-  factory Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart.fromJson(
+  factory Mutation$RemoveCouponCode$removeCouponFromCart.fromJson(
       Map<String, dynamic> json) {
     final l$cart = json['cart'];
     final l$$__typename = json['__typename'];
-    return Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart(
-      cart: Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart
-          .fromJson((l$cart as Map<String, dynamic>)),
+    return Mutation$RemoveCouponCode$removeCouponFromCart(
+      cart: l$cart == null
+          ? null
+          : Mutation$RemoveCouponCode$removeCouponFromCart$cart.fromJson(
+              (l$cart as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
   }
 
-  final Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart cart;
+  final Mutation$RemoveCouponCode$removeCouponFromCart$cart? cart;
 
   final String $__typename;
 
   Map<String, dynamic> toJson() {
     final _resultData = <String, dynamic>{};
     final l$cart = cart;
-    _resultData['cart'] = l$cart.toJson();
+    _resultData['cart'] = l$cart?.toJson();
     final l$$__typename = $__typename;
     _resultData['__typename'] = l$$__typename;
     return _resultData;
@@ -1081,8 +1064,7 @@ class Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other
-            is Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart) ||
+    if (!(other is Mutation$RemoveCouponCode$removeCouponFromCart) ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -1100,51 +1082,43 @@ class Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart {
   }
 }
 
-extension UtilityExtension$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart
-    on Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart {
-  CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart<
-          Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart>
-      get copyWith =>
-          CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart(
+extension UtilityExtension$Mutation$RemoveCouponCode$removeCouponFromCart
+    on Mutation$RemoveCouponCode$removeCouponFromCart {
+  CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart<
+          Mutation$RemoveCouponCode$removeCouponFromCart>
+      get copyWith => CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart(
             this,
             (i) => i,
           );
 }
 
-abstract class CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart<
-    TRes> {
-  factory CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart(
-    Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart instance,
-    TRes Function(Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart)
-        then,
-  ) = _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart;
+abstract class CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart<TRes> {
+  factory CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart(
+    Mutation$RemoveCouponCode$removeCouponFromCart instance,
+    TRes Function(Mutation$RemoveCouponCode$removeCouponFromCart) then,
+  ) = _CopyWithImpl$Mutation$RemoveCouponCode$removeCouponFromCart;
 
-  factory CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart.stub(
+  factory CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart.stub(
           TRes res) =
-      _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart;
+      _CopyWithStubImpl$Mutation$RemoveCouponCode$removeCouponFromCart;
 
   TRes call({
-    Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart? cart,
+    Mutation$RemoveCouponCode$removeCouponFromCart$cart? cart,
     String? $__typename,
   });
-  CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart<TRes>
-      get cart;
+  CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart<TRes> get cart;
 }
 
-class _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart<
-        TRes>
-    implements
-        CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart<
-            TRes> {
-  _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart(
+class _CopyWithImpl$Mutation$RemoveCouponCode$removeCouponFromCart<TRes>
+    implements CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart<TRes> {
+  _CopyWithImpl$Mutation$RemoveCouponCode$removeCouponFromCart(
     this._instance,
     this._then,
   );
 
-  final Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart _instance;
+  final Mutation$RemoveCouponCode$removeCouponFromCart _instance;
 
-  final TRes Function(
-      Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart) _then;
+  final TRes Function(Mutation$RemoveCouponCode$removeCouponFromCart) _then;
 
   static const _undefined = <dynamic, dynamic>{};
 
@@ -1152,48 +1126,43 @@ class _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart<
     Object? cart = _undefined,
     Object? $__typename = _undefined,
   }) =>
-      _then(Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart(
-        cart: cart == _undefined || cart == null
+      _then(Mutation$RemoveCouponCode$removeCouponFromCart(
+        cart: cart == _undefined
             ? _instance.cart
-            : (cart
-                as Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart),
+            : (cart as Mutation$RemoveCouponCode$removeCouponFromCart$cart?),
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
       ));
 
-  CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart<TRes>
-      get cart {
+  CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart<TRes> get cart {
     final local$cart = _instance.cart;
-    return CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart(
-        local$cart, (e) => call(cart: e));
+    return local$cart == null
+        ? CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart.stub(
+            _then(_instance))
+        : CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart(
+            local$cart, (e) => call(cart: e));
   }
 }
 
-class _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart<
-        TRes>
-    implements
-        CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart<
-            TRes> {
-  _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart(
-      this._res);
+class _CopyWithStubImpl$Mutation$RemoveCouponCode$removeCouponFromCart<TRes>
+    implements CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart<TRes> {
+  _CopyWithStubImpl$Mutation$RemoveCouponCode$removeCouponFromCart(this._res);
 
   TRes _res;
 
   call({
-    Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart? cart,
+    Mutation$RemoveCouponCode$removeCouponFromCart$cart? cart,
     String? $__typename,
   }) =>
       _res;
 
-  CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart<TRes>
-      get cart =>
-          CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart
-              .stub(_res);
+  CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart<TRes> get cart =>
+      CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart.stub(_res);
 }
 
-class Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart {
-  Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart({
+class Mutation$RemoveCouponCode$removeCouponFromCart$cart {
+  Mutation$RemoveCouponCode$removeCouponFromCart$cart({
     required this.id,
     required this.total_quantity,
     this.applied_coupons,
@@ -1205,7 +1174,7 @@ class Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart {
     this.$__typename = 'Cart',
   });
 
-  factory Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart.fromJson(
+  factory Mutation$RemoveCouponCode$removeCouponFromCart$cart.fromJson(
       Map<String, dynamic> json) {
     final l$id = json['id'];
     final l$total_quantity = json['total_quantity'];
@@ -1216,38 +1185,38 @@ class Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart {
     final l$available_payment_methods = json['available_payment_methods'];
     final l$selected_payment_method = json['selected_payment_method'];
     final l$$__typename = json['__typename'];
-    return Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart(
+    return Mutation$RemoveCouponCode$removeCouponFromCart$cart(
       id: (l$id as String),
       total_quantity: (l$total_quantity as num).toDouble(),
       applied_coupons: (l$applied_coupons as List<dynamic>?)
           ?.map((e) => e == null
               ? null
-              : Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$applied_coupons
+              : Mutation$RemoveCouponCode$removeCouponFromCart$cart$applied_coupons
                   .fromJson((e as Map<String, dynamic>)))
           .toList(),
       prices: l$prices == null
           ? null
-          : Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices
-              .fromJson((l$prices as Map<String, dynamic>)),
+          : Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices.fromJson(
+              (l$prices as Map<String, dynamic>)),
       shipping_addresses: (l$shipping_addresses as List<dynamic>)
           .map((e) => e == null
               ? null
-              : Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses
+              : Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses
                   .fromJson((e as Map<String, dynamic>)))
           .toList(),
       billing_address: l$billing_address == null
           ? null
-          : Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address
+          : Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address
               .fromJson((l$billing_address as Map<String, dynamic>)),
       available_payment_methods: (l$available_payment_methods as List<dynamic>?)
           ?.map((e) => e == null
               ? null
-              : Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$available_payment_methods
+              : Mutation$RemoveCouponCode$removeCouponFromCart$cart$available_payment_methods
                   .fromJson((e as Map<String, dynamic>)))
           .toList(),
       selected_payment_method: l$selected_payment_method == null
           ? null
-          : Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$selected_payment_method
+          : Mutation$RemoveCouponCode$removeCouponFromCart$cart$selected_payment_method
               .fromJson((l$selected_payment_method as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
@@ -1258,24 +1227,23 @@ class Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart {
   final double total_quantity;
 
   final List<
-          Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$applied_coupons?>?
+          Mutation$RemoveCouponCode$removeCouponFromCart$cart$applied_coupons?>?
       applied_coupons;
 
-  final Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices?
-      prices;
+  final Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices? prices;
 
   final List<
-          Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses?>
+          Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses?>
       shipping_addresses;
 
-  final Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address?
+  final Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address?
       billing_address;
 
   final List<
-          Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$available_payment_methods?>?
+          Mutation$RemoveCouponCode$removeCouponFromCart$cart$available_payment_methods?>?
       available_payment_methods;
 
-  final Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$selected_payment_method?
+  final Mutation$RemoveCouponCode$removeCouponFromCart$cart$selected_payment_method?
       selected_payment_method;
 
   final String $__typename;
@@ -1340,8 +1308,7 @@ class Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other
-            is Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart) ||
+    if (!(other is Mutation$RemoveCouponCode$removeCouponFromCart$cart) ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -1429,88 +1396,82 @@ class Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart {
   }
 }
 
-extension UtilityExtension$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart
-    on Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart {
-  CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart<
-          Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart>
+extension UtilityExtension$Mutation$RemoveCouponCode$removeCouponFromCart$cart
+    on Mutation$RemoveCouponCode$removeCouponFromCart$cart {
+  CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart<
+          Mutation$RemoveCouponCode$removeCouponFromCart$cart>
       get copyWith =>
-          CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart(
+          CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart(
             this,
             (i) => i,
           );
 }
 
-abstract class CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart<
+abstract class CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart<
     TRes> {
-  factory CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart(
-    Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart instance,
-    TRes Function(
-            Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart)
-        then,
-  ) = _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart;
+  factory CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart(
+    Mutation$RemoveCouponCode$removeCouponFromCart$cart instance,
+    TRes Function(Mutation$RemoveCouponCode$removeCouponFromCart$cart) then,
+  ) = _CopyWithImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart;
 
-  factory CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart.stub(
+  factory CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart.stub(
           TRes res) =
-      _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart;
+      _CopyWithStubImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart;
 
   TRes call({
     String? id,
     double? total_quantity,
-    List<Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$applied_coupons?>?
+    List<Mutation$RemoveCouponCode$removeCouponFromCart$cart$applied_coupons?>?
         applied_coupons,
-    Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices?
-        prices,
-    List<Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses?>?
+    Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices? prices,
+    List<Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses?>?
         shipping_addresses,
-    Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address?
+    Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address?
         billing_address,
-    List<Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$available_payment_methods?>?
+    List<Mutation$RemoveCouponCode$removeCouponFromCart$cart$available_payment_methods?>?
         available_payment_methods,
-    Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$selected_payment_method?
+    Mutation$RemoveCouponCode$removeCouponFromCart$cart$selected_payment_method?
         selected_payment_method,
     String? $__typename,
   });
   TRes applied_coupons(
-      Iterable<Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$applied_coupons?>? Function(
+      Iterable<Mutation$RemoveCouponCode$removeCouponFromCart$cart$applied_coupons?>? Function(
               Iterable<
-                  CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$applied_coupons<
-                      Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$applied_coupons>?>?)
+                  CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$applied_coupons<
+                      Mutation$RemoveCouponCode$removeCouponFromCart$cart$applied_coupons>?>?)
           _fn);
-  CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices<
-      TRes> get prices;
+  CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices<TRes>
+      get prices;
   TRes shipping_addresses(
-      Iterable<Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses?> Function(
+      Iterable<Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses?> Function(
               Iterable<
-                  CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses<
-                      Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses>?>)
+                  CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses<
+                      Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses>?>)
           _fn);
-  CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address<
+  CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address<
       TRes> get billing_address;
   TRes available_payment_methods(
-      Iterable<Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$available_payment_methods?>? Function(
+      Iterable<Mutation$RemoveCouponCode$removeCouponFromCart$cart$available_payment_methods?>? Function(
               Iterable<
-                  CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$available_payment_methods<
-                      Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$available_payment_methods>?>?)
+                  CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$available_payment_methods<
+                      Mutation$RemoveCouponCode$removeCouponFromCart$cart$available_payment_methods>?>?)
           _fn);
-  CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$selected_payment_method<
+  CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$selected_payment_method<
       TRes> get selected_payment_method;
 }
 
-class _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart<
-        TRes>
+class _CopyWithImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart<TRes>
     implements
-        CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart<
-            TRes> {
-  _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart(
+        CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart<TRes> {
+  _CopyWithImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart(
     this._instance,
     this._then,
   );
 
-  final Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart
-      _instance;
+  final Mutation$RemoveCouponCode$removeCouponFromCart$cart _instance;
 
-  final TRes Function(
-      Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart) _then;
+  final TRes Function(Mutation$RemoveCouponCode$removeCouponFromCart$cart)
+      _then;
 
   static const _undefined = <dynamic, dynamic>{};
 
@@ -1525,7 +1486,7 @@ class _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$c
     Object? selected_payment_method = _undefined,
     Object? $__typename = _undefined,
   }) =>
-      _then(Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart(
+      _then(Mutation$RemoveCouponCode$removeCouponFromCart$cart(
         id: id == _undefined || id == null ? _instance.id : (id as String),
         total_quantity: total_quantity == _undefined || total_quantity == null
             ? _instance.total_quantity
@@ -1533,115 +1494,114 @@ class _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$c
         applied_coupons: applied_coupons == _undefined
             ? _instance.applied_coupons
             : (applied_coupons as List<
-                Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$applied_coupons?>?),
+                Mutation$RemoveCouponCode$removeCouponFromCart$cart$applied_coupons?>?),
         prices: prices == _undefined
             ? _instance.prices
             : (prices
-                as Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices?),
+                as Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices?),
         shipping_addresses: shipping_addresses == _undefined ||
                 shipping_addresses == null
             ? _instance.shipping_addresses
             : (shipping_addresses as List<
-                Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses?>),
+                Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses?>),
         billing_address: billing_address == _undefined
             ? _instance.billing_address
             : (billing_address
-                as Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address?),
+                as Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address?),
         available_payment_methods: available_payment_methods == _undefined
             ? _instance.available_payment_methods
             : (available_payment_methods as List<
-                Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$available_payment_methods?>?),
+                Mutation$RemoveCouponCode$removeCouponFromCart$cart$available_payment_methods?>?),
         selected_payment_method: selected_payment_method == _undefined
             ? _instance.selected_payment_method
             : (selected_payment_method
-                as Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$selected_payment_method?),
+                as Mutation$RemoveCouponCode$removeCouponFromCart$cart$selected_payment_method?),
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
       ));
 
   TRes applied_coupons(
-          Iterable<Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$applied_coupons?>? Function(
+          Iterable<Mutation$RemoveCouponCode$removeCouponFromCart$cart$applied_coupons?>? Function(
                   Iterable<
-                      CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$applied_coupons<
-                          Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$applied_coupons>?>?)
+                      CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$applied_coupons<
+                          Mutation$RemoveCouponCode$removeCouponFromCart$cart$applied_coupons>?>?)
               _fn) =>
       call(
           applied_coupons: _fn(_instance.applied_coupons?.map((e) => e == null
               ? null
-              : CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$applied_coupons(
+              : CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$applied_coupons(
                   e,
                   (i) => i,
                 )))?.toList());
 
-  CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices<
-      TRes> get prices {
+  CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices<TRes>
+      get prices {
     final local$prices = _instance.prices;
     return local$prices == null
-        ? CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices
+        ? CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices
             .stub(_then(_instance))
-        : CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices(
+        : CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices(
             local$prices, (e) => call(prices: e));
   }
 
   TRes shipping_addresses(
-          Iterable<Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses?> Function(
+          Iterable<Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses?> Function(
                   Iterable<
-                      CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses<
-                          Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses>?>)
+                      CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses<
+                          Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses>?>)
               _fn) =>
       call(
           shipping_addresses: _fn(_instance.shipping_addresses.map((e) => e ==
                   null
               ? null
-              : CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses(
+              : CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses(
                   e,
                   (i) => i,
                 ))).toList());
 
-  CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address<
+  CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address<
       TRes> get billing_address {
     final local$billing_address = _instance.billing_address;
     return local$billing_address == null
-        ? CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address
+        ? CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address
             .stub(_then(_instance))
-        : CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address(
+        : CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address(
             local$billing_address, (e) => call(billing_address: e));
   }
 
   TRes available_payment_methods(
-          Iterable<Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$available_payment_methods?>? Function(
+          Iterable<Mutation$RemoveCouponCode$removeCouponFromCart$cart$available_payment_methods?>? Function(
                   Iterable<
-                      CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$available_payment_methods<
-                          Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$available_payment_methods>?>?)
+                      CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$available_payment_methods<
+                          Mutation$RemoveCouponCode$removeCouponFromCart$cart$available_payment_methods>?>?)
               _fn) =>
       call(
           available_payment_methods:
               _fn(_instance.available_payment_methods?.map((e) => e == null
                   ? null
-                  : CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$available_payment_methods(
+                  : CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$available_payment_methods(
                       e,
                       (i) => i,
                     )))?.toList());
 
-  CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$selected_payment_method<
+  CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$selected_payment_method<
       TRes> get selected_payment_method {
     final local$selected_payment_method = _instance.selected_payment_method;
     return local$selected_payment_method == null
-        ? CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$selected_payment_method
+        ? CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$selected_payment_method
             .stub(_then(_instance))
-        : CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$selected_payment_method(
+        : CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$selected_payment_method(
             local$selected_payment_method,
             (e) => call(selected_payment_method: e));
   }
 }
 
-class _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart<
+class _CopyWithStubImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart<
         TRes>
     implements
-        CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart<
-            TRes> {
-  _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart(
+        CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart<TRes> {
+  _CopyWithStubImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart(
       this._res);
 
   TRes _res;
@@ -1649,17 +1609,16 @@ class _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCa
   call({
     String? id,
     double? total_quantity,
-    List<Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$applied_coupons?>?
+    List<Mutation$RemoveCouponCode$removeCouponFromCart$cart$applied_coupons?>?
         applied_coupons,
-    Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices?
-        prices,
-    List<Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses?>?
+    Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices? prices,
+    List<Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses?>?
         shipping_addresses,
-    Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address?
+    Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address?
         billing_address,
-    List<Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$available_payment_methods?>?
+    List<Mutation$RemoveCouponCode$removeCouponFromCart$cart$available_payment_methods?>?
         available_payment_methods,
-    Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$selected_payment_method?
+    Mutation$RemoveCouponCode$removeCouponFromCart$cart$selected_payment_method?
         selected_payment_method,
     String? $__typename,
   }) =>
@@ -1667,40 +1626,39 @@ class _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCa
 
   applied_coupons(_fn) => _res;
 
-  CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices<
-          TRes>
+  CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices<TRes>
       get prices =>
-          CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices
+          CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices
               .stub(_res);
 
   shipping_addresses(_fn) => _res;
 
-  CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address<
+  CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address<
           TRes>
       get billing_address =>
-          CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address
+          CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address
               .stub(_res);
 
   available_payment_methods(_fn) => _res;
 
-  CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$selected_payment_method<
+  CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$selected_payment_method<
           TRes>
       get selected_payment_method =>
-          CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$selected_payment_method
+          CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$selected_payment_method
               .stub(_res);
 }
 
-class Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$applied_coupons {
-  Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$applied_coupons({
+class Mutation$RemoveCouponCode$removeCouponFromCart$cart$applied_coupons {
+  Mutation$RemoveCouponCode$removeCouponFromCart$cart$applied_coupons({
     required this.code,
     this.$__typename = 'AppliedCoupon',
   });
 
-  factory Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$applied_coupons.fromJson(
+  factory Mutation$RemoveCouponCode$removeCouponFromCart$cart$applied_coupons.fromJson(
       Map<String, dynamic> json) {
     final l$code = json['code'];
     final l$$__typename = json['__typename'];
-    return Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$applied_coupons(
+    return Mutation$RemoveCouponCode$removeCouponFromCart$cart$applied_coupons(
       code: (l$code as String),
       $__typename: (l$$__typename as String),
     );
@@ -1735,7 +1693,7 @@ class Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$applied_co
       return true;
     }
     if (!(other
-            is Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$applied_coupons) ||
+            is Mutation$RemoveCouponCode$removeCouponFromCart$cart$applied_coupons) ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -1753,30 +1711,30 @@ class Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$applied_co
   }
 }
 
-extension UtilityExtension$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$applied_coupons
-    on Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$applied_coupons {
-  CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$applied_coupons<
-          Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$applied_coupons>
+extension UtilityExtension$Mutation$RemoveCouponCode$removeCouponFromCart$cart$applied_coupons
+    on Mutation$RemoveCouponCode$removeCouponFromCart$cart$applied_coupons {
+  CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$applied_coupons<
+          Mutation$RemoveCouponCode$removeCouponFromCart$cart$applied_coupons>
       get copyWith =>
-          CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$applied_coupons(
+          CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$applied_coupons(
             this,
             (i) => i,
           );
 }
 
-abstract class CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$applied_coupons<
+abstract class CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$applied_coupons<
     TRes> {
-  factory CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$applied_coupons(
-    Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$applied_coupons
+  factory CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$applied_coupons(
+    Mutation$RemoveCouponCode$removeCouponFromCart$cart$applied_coupons
         instance,
     TRes Function(
-            Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$applied_coupons)
+            Mutation$RemoveCouponCode$removeCouponFromCart$cart$applied_coupons)
         then,
-  ) = _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$applied_coupons;
+  ) = _CopyWithImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$applied_coupons;
 
-  factory CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$applied_coupons.stub(
+  factory CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$applied_coupons.stub(
           TRes res) =
-      _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$applied_coupons;
+      _CopyWithStubImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$applied_coupons;
 
   TRes call({
     String? code,
@@ -1784,21 +1742,21 @@ abstract class CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCa
   });
 }
 
-class _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$applied_coupons<
+class _CopyWithImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$applied_coupons<
         TRes>
     implements
-        CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$applied_coupons<
+        CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$applied_coupons<
             TRes> {
-  _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$applied_coupons(
+  _CopyWithImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$applied_coupons(
     this._instance,
     this._then,
   );
 
-  final Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$applied_coupons
+  final Mutation$RemoveCouponCode$removeCouponFromCart$cart$applied_coupons
       _instance;
 
   final TRes Function(
-          Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$applied_coupons)
+          Mutation$RemoveCouponCode$removeCouponFromCart$cart$applied_coupons)
       _then;
 
   static const _undefined = <dynamic, dynamic>{};
@@ -1807,8 +1765,7 @@ class _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$c
     Object? code = _undefined,
     Object? $__typename = _undefined,
   }) =>
-      _then(
-          Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$applied_coupons(
+      _then(Mutation$RemoveCouponCode$removeCouponFromCart$cart$applied_coupons(
         code: code == _undefined || code == null
             ? _instance.code
             : (code as String),
@@ -1818,12 +1775,12 @@ class _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$c
       ));
 }
 
-class _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$applied_coupons<
+class _CopyWithStubImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$applied_coupons<
         TRes>
     implements
-        CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$applied_coupons<
+        CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$applied_coupons<
             TRes> {
-  _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$applied_coupons(
+  _CopyWithStubImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$applied_coupons(
       this._res);
 
   TRes _res;
@@ -1835,47 +1792,47 @@ class _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCa
       _res;
 }
 
-class Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices {
-  Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices({
+class Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices {
+  Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices({
     this.discounts,
     this.subtotal_excluding_tax,
     this.grand_total,
     this.$__typename = 'CartPrices',
   });
 
-  factory Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices.fromJson(
+  factory Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices.fromJson(
       Map<String, dynamic> json) {
     final l$discounts = json['discounts'];
     final l$subtotal_excluding_tax = json['subtotal_excluding_tax'];
     final l$grand_total = json['grand_total'];
     final l$$__typename = json['__typename'];
-    return Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices(
+    return Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices(
       discounts: (l$discounts as List<dynamic>?)
           ?.map((e) => e == null
               ? null
-              : Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$discounts
+              : Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$discounts
                   .fromJson((e as Map<String, dynamic>)))
           .toList(),
       subtotal_excluding_tax: l$subtotal_excluding_tax == null
           ? null
-          : Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$subtotal_excluding_tax
+          : Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$subtotal_excluding_tax
               .fromJson((l$subtotal_excluding_tax as Map<String, dynamic>)),
       grand_total: l$grand_total == null
           ? null
-          : Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$grand_total
+          : Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$grand_total
               .fromJson((l$grand_total as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
   }
 
   final List<
-          Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$discounts?>?
+          Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$discounts?>?
       discounts;
 
-  final Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$subtotal_excluding_tax?
+  final Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$subtotal_excluding_tax?
       subtotal_excluding_tax;
 
-  final Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$grand_total?
+  final Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$grand_total?
       grand_total;
 
   final String $__typename;
@@ -1913,7 +1870,7 @@ class Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices {
       return true;
     }
     if (!(other
-            is Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices) ||
+            is Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices) ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -1952,68 +1909,64 @@ class Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices {
   }
 }
 
-extension UtilityExtension$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices
-    on Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices {
-  CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices<
-          Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices>
+extension UtilityExtension$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices
+    on Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices {
+  CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices<
+          Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices>
       get copyWith =>
-          CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices(
+          CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices(
             this,
             (i) => i,
           );
 }
 
-abstract class CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices<
+abstract class CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices<
     TRes> {
-  factory CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices(
-    Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices
-        instance,
-    TRes Function(
-            Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices)
+  factory CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices(
+    Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices instance,
+    TRes Function(Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices)
         then,
-  ) = _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices;
+  ) = _CopyWithImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices;
 
-  factory CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices.stub(
+  factory CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices.stub(
           TRes res) =
-      _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices;
+      _CopyWithStubImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices;
 
   TRes call({
-    List<Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$discounts?>?
+    List<Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$discounts?>?
         discounts,
-    Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$subtotal_excluding_tax?
+    Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$subtotal_excluding_tax?
         subtotal_excluding_tax,
-    Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$grand_total?
+    Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$grand_total?
         grand_total,
     String? $__typename,
   });
   TRes discounts(
-      Iterable<Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$discounts?>? Function(
+      Iterable<Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$discounts?>? Function(
               Iterable<
-                  CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$discounts<
-                      Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$discounts>?>?)
+                  CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$discounts<
+                      Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$discounts>?>?)
           _fn);
-  CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$subtotal_excluding_tax<
+  CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$subtotal_excluding_tax<
       TRes> get subtotal_excluding_tax;
-  CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$grand_total<
+  CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$grand_total<
       TRes> get grand_total;
 }
 
-class _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices<
+class _CopyWithImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices<
         TRes>
     implements
-        CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices<
+        CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices<
             TRes> {
-  _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices(
+  _CopyWithImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices(
     this._instance,
     this._then,
   );
 
-  final Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices
-      _instance;
+  final Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices _instance;
 
   final TRes Function(
-          Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices)
-      _then;
+      Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices) _then;
 
   static const _undefined = <dynamic, dynamic>{};
 
@@ -2023,77 +1976,76 @@ class _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$c
     Object? grand_total = _undefined,
     Object? $__typename = _undefined,
   }) =>
-      _then(
-          Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices(
+      _then(Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices(
         discounts: discounts == _undefined
             ? _instance.discounts
             : (discounts as List<
-                Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$discounts?>?),
+                Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$discounts?>?),
         subtotal_excluding_tax: subtotal_excluding_tax == _undefined
             ? _instance.subtotal_excluding_tax
             : (subtotal_excluding_tax
-                as Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$subtotal_excluding_tax?),
+                as Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$subtotal_excluding_tax?),
         grand_total: grand_total == _undefined
             ? _instance.grand_total
             : (grand_total
-                as Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$grand_total?),
+                as Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$grand_total?),
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
       ));
 
   TRes discounts(
-          Iterable<Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$discounts?>? Function(
+          Iterable<Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$discounts?>? Function(
                   Iterable<
-                      CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$discounts<
-                          Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$discounts>?>?)
+                      CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$discounts<
+                          Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$discounts>?>?)
               _fn) =>
       call(
           discounts: _fn(_instance.discounts?.map((e) => e == null
               ? null
-              : CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$discounts(
+              : CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$discounts(
                   e,
                   (i) => i,
                 )))?.toList());
 
-  CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$subtotal_excluding_tax<
+  CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$subtotal_excluding_tax<
       TRes> get subtotal_excluding_tax {
     final local$subtotal_excluding_tax = _instance.subtotal_excluding_tax;
     return local$subtotal_excluding_tax == null
-        ? CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$subtotal_excluding_tax
+        ? CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$subtotal_excluding_tax
             .stub(_then(_instance))
-        : CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$subtotal_excluding_tax(
+        : CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$subtotal_excluding_tax(
             local$subtotal_excluding_tax,
             (e) => call(subtotal_excluding_tax: e));
   }
 
-  CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$grand_total<
+  CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$grand_total<
       TRes> get grand_total {
     final local$grand_total = _instance.grand_total;
     return local$grand_total == null
-        ? CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$grand_total
+        ? CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$grand_total
             .stub(_then(_instance))
-        : CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$grand_total(
+        : CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$grand_total(
             local$grand_total, (e) => call(grand_total: e));
   }
 }
 
-class _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices<
+class _CopyWithStubImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices<
         TRes>
     implements
-        CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices<
+        CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices<
             TRes> {
-  _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices(
+  _CopyWithStubImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices(
       this._res);
 
   TRes _res;
 
   call({
-    List<Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$discounts?>?
+    List<Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$discounts?>?
         discounts,
-    Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$subtotal_excluding_tax?
+    Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$subtotal_excluding_tax?
         subtotal_excluding_tax,
-    Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$grand_total?
+    Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$grand_total?
         grand_total,
     String? $__typename,
   }) =>
@@ -2101,41 +2053,41 @@ class _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCa
 
   discounts(_fn) => _res;
 
-  CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$subtotal_excluding_tax<
+  CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$subtotal_excluding_tax<
           TRes>
       get subtotal_excluding_tax =>
-          CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$subtotal_excluding_tax
+          CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$subtotal_excluding_tax
               .stub(_res);
 
-  CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$grand_total<
+  CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$grand_total<
           TRes>
       get grand_total =>
-          CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$grand_total
+          CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$grand_total
               .stub(_res);
 }
 
-class Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$discounts {
-  Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$discounts({
+class Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$discounts {
+  Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$discounts({
     required this.amount,
     required this.label,
     this.$__typename = 'Discount',
   });
 
-  factory Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$discounts.fromJson(
+  factory Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$discounts.fromJson(
       Map<String, dynamic> json) {
     final l$amount = json['amount'];
     final l$label = json['label'];
     final l$$__typename = json['__typename'];
-    return Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$discounts(
+    return Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$discounts(
       amount:
-          Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$discounts$amount
+          Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$discounts$amount
               .fromJson((l$amount as Map<String, dynamic>)),
       label: (l$label as String),
       $__typename: (l$$__typename as String),
     );
   }
 
-  final Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$discounts$amount
+  final Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$discounts$amount
       amount;
 
   final String label;
@@ -2171,7 +2123,7 @@ class Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$dis
       return true;
     }
     if (!(other
-            is Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$discounts) ||
+            is Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$discounts) ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -2194,56 +2146,56 @@ class Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$dis
   }
 }
 
-extension UtilityExtension$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$discounts
-    on Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$discounts {
-  CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$discounts<
-          Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$discounts>
+extension UtilityExtension$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$discounts
+    on Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$discounts {
+  CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$discounts<
+          Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$discounts>
       get copyWith =>
-          CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$discounts(
+          CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$discounts(
             this,
             (i) => i,
           );
 }
 
-abstract class CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$discounts<
+abstract class CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$discounts<
     TRes> {
-  factory CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$discounts(
-    Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$discounts
+  factory CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$discounts(
+    Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$discounts
         instance,
     TRes Function(
-            Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$discounts)
+            Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$discounts)
         then,
-  ) = _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$discounts;
+  ) = _CopyWithImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$discounts;
 
-  factory CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$discounts.stub(
+  factory CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$discounts.stub(
           TRes res) =
-      _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$discounts;
+      _CopyWithStubImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$discounts;
 
   TRes call({
-    Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$discounts$amount?
+    Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$discounts$amount?
         amount,
     String? label,
     String? $__typename,
   });
-  CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$discounts$amount<
+  CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$discounts$amount<
       TRes> get amount;
 }
 
-class _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$discounts<
+class _CopyWithImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$discounts<
         TRes>
     implements
-        CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$discounts<
+        CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$discounts<
             TRes> {
-  _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$discounts(
+  _CopyWithImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$discounts(
     this._instance,
     this._then,
   );
 
-  final Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$discounts
+  final Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$discounts
       _instance;
 
   final TRes Function(
-          Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$discounts)
+          Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$discounts)
       _then;
 
   static const _undefined = <dynamic, dynamic>{};
@@ -2254,11 +2206,11 @@ class _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$c
     Object? $__typename = _undefined,
   }) =>
       _then(
-          Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$discounts(
+          Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$discounts(
         amount: amount == _undefined || amount == null
             ? _instance.amount
             : (amount
-                as Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$discounts$amount),
+                as Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$discounts$amount),
         label: label == _undefined || label == null
             ? _instance.label
             : (label as String),
@@ -2267,52 +2219,52 @@ class _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$c
             : ($__typename as String),
       ));
 
-  CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$discounts$amount<
+  CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$discounts$amount<
       TRes> get amount {
     final local$amount = _instance.amount;
-    return CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$discounts$amount(
+    return CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$discounts$amount(
         local$amount, (e) => call(amount: e));
   }
 }
 
-class _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$discounts<
+class _CopyWithStubImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$discounts<
         TRes>
     implements
-        CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$discounts<
+        CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$discounts<
             TRes> {
-  _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$discounts(
+  _CopyWithStubImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$discounts(
       this._res);
 
   TRes _res;
 
   call({
-    Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$discounts$amount?
+    Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$discounts$amount?
         amount,
     String? label,
     String? $__typename,
   }) =>
       _res;
 
-  CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$discounts$amount<
+  CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$discounts$amount<
           TRes>
       get amount =>
-          CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$discounts$amount
+          CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$discounts$amount
               .stub(_res);
 }
 
-class Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$discounts$amount {
-  Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$discounts$amount({
+class Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$discounts$amount {
+  Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$discounts$amount({
     this.currency,
     this.value,
     this.$__typename = 'Money',
   });
 
-  factory Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$discounts$amount.fromJson(
+  factory Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$discounts$amount.fromJson(
       Map<String, dynamic> json) {
     final l$currency = json['currency'];
     final l$value = json['value'];
     final l$$__typename = json['__typename'];
-    return Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$discounts$amount(
+    return Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$discounts$amount(
       currency: l$currency == null
           ? null
           : fromJson$Enum$CurrencyEnum((l$currency as String)),
@@ -2357,7 +2309,7 @@ class Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$dis
       return true;
     }
     if (!(other
-            is Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$discounts$amount) ||
+            is Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$discounts$amount) ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -2380,30 +2332,30 @@ class Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$dis
   }
 }
 
-extension UtilityExtension$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$discounts$amount
-    on Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$discounts$amount {
-  CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$discounts$amount<
-          Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$discounts$amount>
+extension UtilityExtension$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$discounts$amount
+    on Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$discounts$amount {
+  CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$discounts$amount<
+          Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$discounts$amount>
       get copyWith =>
-          CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$discounts$amount(
+          CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$discounts$amount(
             this,
             (i) => i,
           );
 }
 
-abstract class CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$discounts$amount<
+abstract class CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$discounts$amount<
     TRes> {
-  factory CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$discounts$amount(
-    Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$discounts$amount
+  factory CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$discounts$amount(
+    Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$discounts$amount
         instance,
     TRes Function(
-            Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$discounts$amount)
+            Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$discounts$amount)
         then,
-  ) = _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$discounts$amount;
+  ) = _CopyWithImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$discounts$amount;
 
-  factory CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$discounts$amount.stub(
+  factory CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$discounts$amount.stub(
           TRes res) =
-      _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$discounts$amount;
+      _CopyWithStubImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$discounts$amount;
 
   TRes call({
     Enum$CurrencyEnum? currency,
@@ -2412,21 +2364,21 @@ abstract class CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCa
   });
 }
 
-class _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$discounts$amount<
+class _CopyWithImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$discounts$amount<
         TRes>
     implements
-        CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$discounts$amount<
+        CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$discounts$amount<
             TRes> {
-  _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$discounts$amount(
+  _CopyWithImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$discounts$amount(
     this._instance,
     this._then,
   );
 
-  final Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$discounts$amount
+  final Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$discounts$amount
       _instance;
 
   final TRes Function(
-          Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$discounts$amount)
+          Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$discounts$amount)
       _then;
 
   static const _undefined = <dynamic, dynamic>{};
@@ -2437,7 +2389,7 @@ class _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$c
     Object? $__typename = _undefined,
   }) =>
       _then(
-          Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$discounts$amount(
+          Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$discounts$amount(
         currency: currency == _undefined
             ? _instance.currency
             : (currency as Enum$CurrencyEnum?),
@@ -2448,12 +2400,12 @@ class _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$c
       ));
 }
 
-class _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$discounts$amount<
+class _CopyWithStubImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$discounts$amount<
         TRes>
     implements
-        CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$discounts$amount<
+        CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$discounts$amount<
             TRes> {
-  _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$discounts$amount(
+  _CopyWithStubImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$discounts$amount(
       this._res);
 
   TRes _res;
@@ -2466,19 +2418,19 @@ class _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCa
       _res;
 }
 
-class Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$subtotal_excluding_tax {
-  Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$subtotal_excluding_tax({
+class Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$subtotal_excluding_tax {
+  Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$subtotal_excluding_tax({
     this.currency,
     this.value,
     this.$__typename = 'Money',
   });
 
-  factory Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$subtotal_excluding_tax.fromJson(
+  factory Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$subtotal_excluding_tax.fromJson(
       Map<String, dynamic> json) {
     final l$currency = json['currency'];
     final l$value = json['value'];
     final l$$__typename = json['__typename'];
-    return Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$subtotal_excluding_tax(
+    return Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$subtotal_excluding_tax(
       currency: l$currency == null
           ? null
           : fromJson$Enum$CurrencyEnum((l$currency as String)),
@@ -2523,7 +2475,7 @@ class Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$sub
       return true;
     }
     if (!(other
-            is Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$subtotal_excluding_tax) ||
+            is Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$subtotal_excluding_tax) ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -2546,30 +2498,30 @@ class Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$sub
   }
 }
 
-extension UtilityExtension$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$subtotal_excluding_tax
-    on Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$subtotal_excluding_tax {
-  CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$subtotal_excluding_tax<
-          Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$subtotal_excluding_tax>
+extension UtilityExtension$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$subtotal_excluding_tax
+    on Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$subtotal_excluding_tax {
+  CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$subtotal_excluding_tax<
+          Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$subtotal_excluding_tax>
       get copyWith =>
-          CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$subtotal_excluding_tax(
+          CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$subtotal_excluding_tax(
             this,
             (i) => i,
           );
 }
 
-abstract class CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$subtotal_excluding_tax<
+abstract class CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$subtotal_excluding_tax<
     TRes> {
-  factory CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$subtotal_excluding_tax(
-    Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$subtotal_excluding_tax
+  factory CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$subtotal_excluding_tax(
+    Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$subtotal_excluding_tax
         instance,
     TRes Function(
-            Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$subtotal_excluding_tax)
+            Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$subtotal_excluding_tax)
         then,
-  ) = _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$subtotal_excluding_tax;
+  ) = _CopyWithImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$subtotal_excluding_tax;
 
-  factory CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$subtotal_excluding_tax.stub(
+  factory CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$subtotal_excluding_tax.stub(
           TRes res) =
-      _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$subtotal_excluding_tax;
+      _CopyWithStubImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$subtotal_excluding_tax;
 
   TRes call({
     Enum$CurrencyEnum? currency,
@@ -2578,21 +2530,21 @@ abstract class CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCa
   });
 }
 
-class _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$subtotal_excluding_tax<
+class _CopyWithImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$subtotal_excluding_tax<
         TRes>
     implements
-        CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$subtotal_excluding_tax<
+        CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$subtotal_excluding_tax<
             TRes> {
-  _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$subtotal_excluding_tax(
+  _CopyWithImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$subtotal_excluding_tax(
     this._instance,
     this._then,
   );
 
-  final Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$subtotal_excluding_tax
+  final Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$subtotal_excluding_tax
       _instance;
 
   final TRes Function(
-          Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$subtotal_excluding_tax)
+          Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$subtotal_excluding_tax)
       _then;
 
   static const _undefined = <dynamic, dynamic>{};
@@ -2603,7 +2555,7 @@ class _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$c
     Object? $__typename = _undefined,
   }) =>
       _then(
-          Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$subtotal_excluding_tax(
+          Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$subtotal_excluding_tax(
         currency: currency == _undefined
             ? _instance.currency
             : (currency as Enum$CurrencyEnum?),
@@ -2614,12 +2566,12 @@ class _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$c
       ));
 }
 
-class _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$subtotal_excluding_tax<
+class _CopyWithStubImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$subtotal_excluding_tax<
         TRes>
     implements
-        CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$subtotal_excluding_tax<
+        CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$subtotal_excluding_tax<
             TRes> {
-  _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$subtotal_excluding_tax(
+  _CopyWithStubImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$subtotal_excluding_tax(
       this._res);
 
   TRes _res;
@@ -2632,19 +2584,19 @@ class _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCa
       _res;
 }
 
-class Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$grand_total {
-  Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$grand_total({
+class Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$grand_total {
+  Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$grand_total({
     this.currency,
     this.value,
     this.$__typename = 'Money',
   });
 
-  factory Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$grand_total.fromJson(
+  factory Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$grand_total.fromJson(
       Map<String, dynamic> json) {
     final l$currency = json['currency'];
     final l$value = json['value'];
     final l$$__typename = json['__typename'];
-    return Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$grand_total(
+    return Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$grand_total(
       currency: l$currency == null
           ? null
           : fromJson$Enum$CurrencyEnum((l$currency as String)),
@@ -2689,7 +2641,7 @@ class Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$gra
       return true;
     }
     if (!(other
-            is Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$grand_total) ||
+            is Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$grand_total) ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -2712,30 +2664,30 @@ class Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$gra
   }
 }
 
-extension UtilityExtension$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$grand_total
-    on Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$grand_total {
-  CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$grand_total<
-          Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$grand_total>
+extension UtilityExtension$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$grand_total
+    on Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$grand_total {
+  CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$grand_total<
+          Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$grand_total>
       get copyWith =>
-          CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$grand_total(
+          CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$grand_total(
             this,
             (i) => i,
           );
 }
 
-abstract class CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$grand_total<
+abstract class CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$grand_total<
     TRes> {
-  factory CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$grand_total(
-    Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$grand_total
+  factory CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$grand_total(
+    Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$grand_total
         instance,
     TRes Function(
-            Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$grand_total)
+            Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$grand_total)
         then,
-  ) = _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$grand_total;
+  ) = _CopyWithImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$grand_total;
 
-  factory CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$grand_total.stub(
+  factory CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$grand_total.stub(
           TRes res) =
-      _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$grand_total;
+      _CopyWithStubImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$grand_total;
 
   TRes call({
     Enum$CurrencyEnum? currency,
@@ -2744,21 +2696,21 @@ abstract class CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCa
   });
 }
 
-class _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$grand_total<
+class _CopyWithImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$grand_total<
         TRes>
     implements
-        CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$grand_total<
+        CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$grand_total<
             TRes> {
-  _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$grand_total(
+  _CopyWithImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$grand_total(
     this._instance,
     this._then,
   );
 
-  final Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$grand_total
+  final Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$grand_total
       _instance;
 
   final TRes Function(
-          Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$grand_total)
+          Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$grand_total)
       _then;
 
   static const _undefined = <dynamic, dynamic>{};
@@ -2769,7 +2721,7 @@ class _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$c
     Object? $__typename = _undefined,
   }) =>
       _then(
-          Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$grand_total(
+          Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$grand_total(
         currency: currency == _undefined
             ? _instance.currency
             : (currency as Enum$CurrencyEnum?),
@@ -2780,12 +2732,12 @@ class _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$c
       ));
 }
 
-class _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$grand_total<
+class _CopyWithStubImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$grand_total<
         TRes>
     implements
-        CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$grand_total<
+        CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$grand_total<
             TRes> {
-  _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$prices$grand_total(
+  _CopyWithStubImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$prices$grand_total(
       this._res);
 
   TRes _res;
@@ -2798,8 +2750,8 @@ class _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCa
       _res;
 }
 
-class Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses {
-  Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses({
+class Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses {
+  Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses({
     required this.uid,
     required this.country,
     this.region,
@@ -2814,7 +2766,7 @@ class Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_a
     this.$__typename = 'ShippingCartAddress',
   });
 
-  factory Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses.fromJson(
+  factory Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses.fromJson(
       Map<String, dynamic> json) {
     final l$uid = json['uid'];
     final l$country = json['country'];
@@ -2828,14 +2780,14 @@ class Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_a
     final l$available_shipping_methods = json['available_shipping_methods'];
     final l$selected_shipping_method = json['selected_shipping_method'];
     final l$$__typename = json['__typename'];
-    return Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses(
+    return Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses(
       uid: (l$uid as String),
       country:
-          Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$country
+          Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$country
               .fromJson((l$country as Map<String, dynamic>)),
       region: l$region == null
           ? null
-          : Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$region
+          : Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$region
               .fromJson((l$region as Map<String, dynamic>)),
       city: (l$city as String),
       firstname: (l$firstname as String),
@@ -2847,12 +2799,12 @@ class Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_a
               as List<dynamic>?)
           ?.map((e) => e == null
               ? null
-              : Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$available_shipping_methods
+              : Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$available_shipping_methods
                   .fromJson((e as Map<String, dynamic>)))
           .toList(),
       selected_shipping_method: l$selected_shipping_method == null
           ? null
-          : Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$selected_shipping_method
+          : Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$selected_shipping_method
               .fromJson((l$selected_shipping_method as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
@@ -2860,10 +2812,10 @@ class Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_a
 
   final String uid;
 
-  final Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$country
+  final Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$country
       country;
 
-  final Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$region?
+  final Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$region?
       region;
 
   final String city;
@@ -2879,10 +2831,10 @@ class Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_a
   final List<String?> street;
 
   final List<
-          Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$available_shipping_methods?>?
+          Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$available_shipping_methods?>?
       available_shipping_methods;
 
-  final Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$selected_shipping_method?
+  final Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$selected_shipping_method?
       selected_shipping_method;
 
   final String $__typename;
@@ -2956,7 +2908,7 @@ class Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_a
       return true;
     }
     if (!(other
-            is Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses) ||
+            is Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses) ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -3048,36 +3000,36 @@ class Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_a
   }
 }
 
-extension UtilityExtension$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses
-    on Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses {
-  CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses<
-          Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses>
+extension UtilityExtension$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses
+    on Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses {
+  CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses<
+          Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses>
       get copyWith =>
-          CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses(
+          CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses(
             this,
             (i) => i,
           );
 }
 
-abstract class CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses<
+abstract class CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses<
     TRes> {
-  factory CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses(
-    Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses
+  factory CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses(
+    Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses
         instance,
     TRes Function(
-            Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses)
+            Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses)
         then,
-  ) = _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses;
+  ) = _CopyWithImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses;
 
-  factory CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses.stub(
+  factory CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses.stub(
           TRes res) =
-      _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses;
+      _CopyWithStubImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses;
 
   TRes call({
     String? uid,
-    Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$country?
+    Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$country?
         country,
-    Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$region?
+    Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$region?
         region,
     String? city,
     String? firstname,
@@ -3085,41 +3037,41 @@ abstract class CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCa
     String? postcode,
     String? telephone,
     List<String?>? street,
-    List<Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$available_shipping_methods?>?
+    List<Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$available_shipping_methods?>?
         available_shipping_methods,
-    Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$selected_shipping_method?
+    Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$selected_shipping_method?
         selected_shipping_method,
     String? $__typename,
   });
-  CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$country<
+  CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$country<
       TRes> get country;
-  CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$region<
+  CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$region<
       TRes> get region;
   TRes available_shipping_methods(
-      Iterable<Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$available_shipping_methods?>? Function(
+      Iterable<Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$available_shipping_methods?>? Function(
               Iterable<
-                  CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$available_shipping_methods<
-                      Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$available_shipping_methods>?>?)
+                  CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$available_shipping_methods<
+                      Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$available_shipping_methods>?>?)
           _fn);
-  CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$selected_shipping_method<
+  CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$selected_shipping_method<
       TRes> get selected_shipping_method;
 }
 
-class _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses<
+class _CopyWithImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses<
         TRes>
     implements
-        CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses<
+        CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses<
             TRes> {
-  _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses(
+  _CopyWithImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses(
     this._instance,
     this._then,
   );
 
-  final Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses
+  final Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses
       _instance;
 
   final TRes Function(
-          Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses)
+          Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses)
       _then;
 
   static const _undefined = <dynamic, dynamic>{};
@@ -3139,16 +3091,16 @@ class _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$c
     Object? $__typename = _undefined,
   }) =>
       _then(
-          Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses(
+          Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses(
         uid: uid == _undefined || uid == null ? _instance.uid : (uid as String),
         country: country == _undefined || country == null
             ? _instance.country
             : (country
-                as Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$country),
+                as Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$country),
         region: region == _undefined
             ? _instance.region
             : (region
-                as Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$region?),
+                as Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$region?),
         city: city == _undefined || city == null
             ? _instance.city
             : (city as String),
@@ -3169,75 +3121,75 @@ class _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$c
         available_shipping_methods: available_shipping_methods == _undefined
             ? _instance.available_shipping_methods
             : (available_shipping_methods as List<
-                Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$available_shipping_methods?>?),
+                Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$available_shipping_methods?>?),
         selected_shipping_method: selected_shipping_method == _undefined
             ? _instance.selected_shipping_method
             : (selected_shipping_method
-                as Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$selected_shipping_method?),
+                as Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$selected_shipping_method?),
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
       ));
 
-  CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$country<
+  CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$country<
       TRes> get country {
     final local$country = _instance.country;
-    return CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$country(
+    return CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$country(
         local$country, (e) => call(country: e));
   }
 
-  CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$region<
+  CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$region<
       TRes> get region {
     final local$region = _instance.region;
     return local$region == null
-        ? CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$region
+        ? CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$region
             .stub(_then(_instance))
-        : CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$region(
+        : CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$region(
             local$region, (e) => call(region: e));
   }
 
   TRes available_shipping_methods(
-          Iterable<Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$available_shipping_methods?>? Function(
+          Iterable<Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$available_shipping_methods?>? Function(
                   Iterable<
-                      CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$available_shipping_methods<
-                          Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$available_shipping_methods>?>?)
+                      CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$available_shipping_methods<
+                          Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$available_shipping_methods>?>?)
               _fn) =>
       call(
           available_shipping_methods:
               _fn(_instance.available_shipping_methods?.map((e) => e == null
                   ? null
-                  : CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$available_shipping_methods(
+                  : CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$available_shipping_methods(
                       e,
                       (i) => i,
                     )))?.toList());
 
-  CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$selected_shipping_method<
+  CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$selected_shipping_method<
       TRes> get selected_shipping_method {
     final local$selected_shipping_method = _instance.selected_shipping_method;
     return local$selected_shipping_method == null
-        ? CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$selected_shipping_method
+        ? CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$selected_shipping_method
             .stub(_then(_instance))
-        : CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$selected_shipping_method(
+        : CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$selected_shipping_method(
             local$selected_shipping_method,
             (e) => call(selected_shipping_method: e));
   }
 }
 
-class _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses<
+class _CopyWithStubImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses<
         TRes>
     implements
-        CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses<
+        CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses<
             TRes> {
-  _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses(
+  _CopyWithStubImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses(
       this._res);
 
   TRes _res;
 
   call({
     String? uid,
-    Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$country?
+    Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$country?
         country,
-    Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$region?
+    Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$region?
         region,
     String? city,
     String? firstname,
@@ -3245,46 +3197,46 @@ class _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCa
     String? postcode,
     String? telephone,
     List<String?>? street,
-    List<Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$available_shipping_methods?>?
+    List<Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$available_shipping_methods?>?
         available_shipping_methods,
-    Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$selected_shipping_method?
+    Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$selected_shipping_method?
         selected_shipping_method,
     String? $__typename,
   }) =>
       _res;
 
-  CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$country<
+  CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$country<
           TRes>
       get country =>
-          CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$country
+          CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$country
               .stub(_res);
 
-  CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$region<
+  CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$region<
           TRes>
       get region =>
-          CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$region
+          CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$region
               .stub(_res);
 
   available_shipping_methods(_fn) => _res;
 
-  CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$selected_shipping_method<
+  CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$selected_shipping_method<
           TRes>
       get selected_shipping_method =>
-          CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$selected_shipping_method
+          CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$selected_shipping_method
               .stub(_res);
 }
 
-class Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$country {
-  Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$country({
+class Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$country {
+  Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$country({
     required this.code,
     this.$__typename = 'CartAddressCountry',
   });
 
-  factory Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$country.fromJson(
+  factory Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$country.fromJson(
       Map<String, dynamic> json) {
     final l$code = json['code'];
     final l$$__typename = json['__typename'];
-    return Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$country(
+    return Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$country(
       code: (l$code as String),
       $__typename: (l$$__typename as String),
     );
@@ -3319,7 +3271,7 @@ class Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_a
       return true;
     }
     if (!(other
-            is Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$country) ||
+            is Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$country) ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -3337,30 +3289,30 @@ class Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_a
   }
 }
 
-extension UtilityExtension$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$country
-    on Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$country {
-  CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$country<
-          Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$country>
+extension UtilityExtension$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$country
+    on Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$country {
+  CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$country<
+          Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$country>
       get copyWith =>
-          CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$country(
+          CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$country(
             this,
             (i) => i,
           );
 }
 
-abstract class CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$country<
+abstract class CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$country<
     TRes> {
-  factory CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$country(
-    Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$country
+  factory CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$country(
+    Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$country
         instance,
     TRes Function(
-            Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$country)
+            Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$country)
         then,
-  ) = _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$country;
+  ) = _CopyWithImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$country;
 
-  factory CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$country.stub(
+  factory CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$country.stub(
           TRes res) =
-      _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$country;
+      _CopyWithStubImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$country;
 
   TRes call({
     String? code,
@@ -3368,21 +3320,21 @@ abstract class CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCa
   });
 }
 
-class _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$country<
+class _CopyWithImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$country<
         TRes>
     implements
-        CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$country<
+        CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$country<
             TRes> {
-  _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$country(
+  _CopyWithImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$country(
     this._instance,
     this._then,
   );
 
-  final Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$country
+  final Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$country
       _instance;
 
   final TRes Function(
-          Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$country)
+          Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$country)
       _then;
 
   static const _undefined = <dynamic, dynamic>{};
@@ -3392,7 +3344,7 @@ class _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$c
     Object? $__typename = _undefined,
   }) =>
       _then(
-          Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$country(
+          Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$country(
         code: code == _undefined || code == null
             ? _instance.code
             : (code as String),
@@ -3402,12 +3354,12 @@ class _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$c
       ));
 }
 
-class _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$country<
+class _CopyWithStubImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$country<
         TRes>
     implements
-        CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$country<
+        CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$country<
             TRes> {
-  _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$country(
+  _CopyWithStubImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$country(
       this._res);
 
   TRes _res;
@@ -3419,19 +3371,19 @@ class _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCa
       _res;
 }
 
-class Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$region {
-  Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$region({
+class Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$region {
+  Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$region({
     this.region_id,
     this.code,
     this.$__typename = 'CartAddressRegion',
   });
 
-  factory Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$region.fromJson(
+  factory Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$region.fromJson(
       Map<String, dynamic> json) {
     final l$region_id = json['region_id'];
     final l$code = json['code'];
     final l$$__typename = json['__typename'];
-    return Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$region(
+    return Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$region(
       region_id: (l$region_id as int?),
       code: (l$code as String?),
       $__typename: (l$$__typename as String),
@@ -3473,7 +3425,7 @@ class Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_a
       return true;
     }
     if (!(other
-            is Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$region) ||
+            is Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$region) ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -3496,30 +3448,30 @@ class Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_a
   }
 }
 
-extension UtilityExtension$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$region
-    on Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$region {
-  CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$region<
-          Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$region>
+extension UtilityExtension$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$region
+    on Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$region {
+  CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$region<
+          Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$region>
       get copyWith =>
-          CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$region(
+          CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$region(
             this,
             (i) => i,
           );
 }
 
-abstract class CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$region<
+abstract class CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$region<
     TRes> {
-  factory CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$region(
-    Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$region
+  factory CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$region(
+    Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$region
         instance,
     TRes Function(
-            Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$region)
+            Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$region)
         then,
-  ) = _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$region;
+  ) = _CopyWithImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$region;
 
-  factory CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$region.stub(
+  factory CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$region.stub(
           TRes res) =
-      _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$region;
+      _CopyWithStubImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$region;
 
   TRes call({
     int? region_id,
@@ -3528,21 +3480,21 @@ abstract class CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCa
   });
 }
 
-class _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$region<
+class _CopyWithImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$region<
         TRes>
     implements
-        CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$region<
+        CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$region<
             TRes> {
-  _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$region(
+  _CopyWithImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$region(
     this._instance,
     this._then,
   );
 
-  final Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$region
+  final Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$region
       _instance;
 
   final TRes Function(
-          Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$region)
+          Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$region)
       _then;
 
   static const _undefined = <dynamic, dynamic>{};
@@ -3553,7 +3505,7 @@ class _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$c
     Object? $__typename = _undefined,
   }) =>
       _then(
-          Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$region(
+          Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$region(
         region_id:
             region_id == _undefined ? _instance.region_id : (region_id as int?),
         code: code == _undefined ? _instance.code : (code as String?),
@@ -3563,12 +3515,12 @@ class _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$c
       ));
 }
 
-class _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$region<
+class _CopyWithStubImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$region<
         TRes>
     implements
-        CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$region<
+        CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$region<
             TRes> {
-  _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$region(
+  _CopyWithStubImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$region(
       this._res);
 
   TRes _res;
@@ -3581,8 +3533,8 @@ class _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCa
       _res;
 }
 
-class Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$available_shipping_methods {
-  Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$available_shipping_methods({
+class Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$available_shipping_methods {
+  Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$available_shipping_methods({
     required this.available,
     required this.carrier_code,
     required this.carrier_title,
@@ -3592,7 +3544,7 @@ class Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_a
     this.$__typename = 'AvailableShippingMethod',
   });
 
-  factory Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$available_shipping_methods.fromJson(
+  factory Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$available_shipping_methods.fromJson(
       Map<String, dynamic> json) {
     final l$available = json['available'];
     final l$carrier_code = json['carrier_code'];
@@ -3601,14 +3553,14 @@ class Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_a
     final l$method_title = json['method_title'];
     final l$amount = json['amount'];
     final l$$__typename = json['__typename'];
-    return Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$available_shipping_methods(
+    return Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$available_shipping_methods(
       available: (l$available as bool),
       carrier_code: (l$carrier_code as String),
       carrier_title: (l$carrier_title as String),
       method_code: (l$method_code as String?),
       method_title: (l$method_title as String?),
       amount:
-          Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$available_shipping_methods$amount
+          Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$available_shipping_methods$amount
               .fromJson((l$amount as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
@@ -3624,7 +3576,7 @@ class Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_a
 
   final String? method_title;
 
-  final Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$available_shipping_methods$amount
+  final Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$available_shipping_methods$amount
       amount;
 
   final String $__typename;
@@ -3674,7 +3626,7 @@ class Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_a
       return true;
     }
     if (!(other
-            is Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$available_shipping_methods) ||
+            is Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$available_shipping_methods) ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -3717,30 +3669,30 @@ class Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_a
   }
 }
 
-extension UtilityExtension$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$available_shipping_methods
-    on Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$available_shipping_methods {
-  CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$available_shipping_methods<
-          Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$available_shipping_methods>
+extension UtilityExtension$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$available_shipping_methods
+    on Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$available_shipping_methods {
+  CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$available_shipping_methods<
+          Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$available_shipping_methods>
       get copyWith =>
-          CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$available_shipping_methods(
+          CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$available_shipping_methods(
             this,
             (i) => i,
           );
 }
 
-abstract class CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$available_shipping_methods<
+abstract class CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$available_shipping_methods<
     TRes> {
-  factory CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$available_shipping_methods(
-    Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$available_shipping_methods
+  factory CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$available_shipping_methods(
+    Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$available_shipping_methods
         instance,
     TRes Function(
-            Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$available_shipping_methods)
+            Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$available_shipping_methods)
         then,
-  ) = _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$available_shipping_methods;
+  ) = _CopyWithImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$available_shipping_methods;
 
-  factory CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$available_shipping_methods.stub(
+  factory CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$available_shipping_methods.stub(
           TRes res) =
-      _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$available_shipping_methods;
+      _CopyWithStubImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$available_shipping_methods;
 
   TRes call({
     bool? available,
@@ -3748,29 +3700,29 @@ abstract class CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCa
     String? carrier_title,
     String? method_code,
     String? method_title,
-    Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$available_shipping_methods$amount?
+    Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$available_shipping_methods$amount?
         amount,
     String? $__typename,
   });
-  CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$available_shipping_methods$amount<
+  CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$available_shipping_methods$amount<
       TRes> get amount;
 }
 
-class _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$available_shipping_methods<
+class _CopyWithImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$available_shipping_methods<
         TRes>
     implements
-        CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$available_shipping_methods<
+        CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$available_shipping_methods<
             TRes> {
-  _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$available_shipping_methods(
+  _CopyWithImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$available_shipping_methods(
     this._instance,
     this._then,
   );
 
-  final Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$available_shipping_methods
+  final Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$available_shipping_methods
       _instance;
 
   final TRes Function(
-          Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$available_shipping_methods)
+          Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$available_shipping_methods)
       _then;
 
   static const _undefined = <dynamic, dynamic>{};
@@ -3785,7 +3737,7 @@ class _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$c
     Object? $__typename = _undefined,
   }) =>
       _then(
-          Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$available_shipping_methods(
+          Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$available_shipping_methods(
         available: available == _undefined || available == null
             ? _instance.available
             : (available as bool),
@@ -3804,26 +3756,26 @@ class _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$c
         amount: amount == _undefined || amount == null
             ? _instance.amount
             : (amount
-                as Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$available_shipping_methods$amount),
+                as Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$available_shipping_methods$amount),
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
       ));
 
-  CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$available_shipping_methods$amount<
+  CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$available_shipping_methods$amount<
       TRes> get amount {
     final local$amount = _instance.amount;
-    return CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$available_shipping_methods$amount(
+    return CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$available_shipping_methods$amount(
         local$amount, (e) => call(amount: e));
   }
 }
 
-class _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$available_shipping_methods<
+class _CopyWithStubImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$available_shipping_methods<
         TRes>
     implements
-        CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$available_shipping_methods<
+        CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$available_shipping_methods<
             TRes> {
-  _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$available_shipping_methods(
+  _CopyWithStubImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$available_shipping_methods(
       this._res);
 
   TRes _res;
@@ -3834,32 +3786,32 @@ class _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCa
     String? carrier_title,
     String? method_code,
     String? method_title,
-    Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$available_shipping_methods$amount?
+    Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$available_shipping_methods$amount?
         amount,
     String? $__typename,
   }) =>
       _res;
 
-  CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$available_shipping_methods$amount<
+  CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$available_shipping_methods$amount<
           TRes>
       get amount =>
-          CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$available_shipping_methods$amount
+          CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$available_shipping_methods$amount
               .stub(_res);
 }
 
-class Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$available_shipping_methods$amount {
-  Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$available_shipping_methods$amount({
+class Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$available_shipping_methods$amount {
+  Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$available_shipping_methods$amount({
     this.currency,
     this.value,
     this.$__typename = 'Money',
   });
 
-  factory Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$available_shipping_methods$amount.fromJson(
+  factory Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$available_shipping_methods$amount.fromJson(
       Map<String, dynamic> json) {
     final l$currency = json['currency'];
     final l$value = json['value'];
     final l$$__typename = json['__typename'];
-    return Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$available_shipping_methods$amount(
+    return Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$available_shipping_methods$amount(
       currency: l$currency == null
           ? null
           : fromJson$Enum$CurrencyEnum((l$currency as String)),
@@ -3904,7 +3856,7 @@ class Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_a
       return true;
     }
     if (!(other
-            is Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$available_shipping_methods$amount) ||
+            is Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$available_shipping_methods$amount) ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -3927,30 +3879,30 @@ class Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_a
   }
 }
 
-extension UtilityExtension$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$available_shipping_methods$amount
-    on Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$available_shipping_methods$amount {
-  CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$available_shipping_methods$amount<
-          Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$available_shipping_methods$amount>
+extension UtilityExtension$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$available_shipping_methods$amount
+    on Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$available_shipping_methods$amount {
+  CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$available_shipping_methods$amount<
+          Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$available_shipping_methods$amount>
       get copyWith =>
-          CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$available_shipping_methods$amount(
+          CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$available_shipping_methods$amount(
             this,
             (i) => i,
           );
 }
 
-abstract class CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$available_shipping_methods$amount<
+abstract class CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$available_shipping_methods$amount<
     TRes> {
-  factory CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$available_shipping_methods$amount(
-    Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$available_shipping_methods$amount
+  factory CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$available_shipping_methods$amount(
+    Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$available_shipping_methods$amount
         instance,
     TRes Function(
-            Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$available_shipping_methods$amount)
+            Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$available_shipping_methods$amount)
         then,
-  ) = _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$available_shipping_methods$amount;
+  ) = _CopyWithImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$available_shipping_methods$amount;
 
-  factory CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$available_shipping_methods$amount.stub(
+  factory CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$available_shipping_methods$amount.stub(
           TRes res) =
-      _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$available_shipping_methods$amount;
+      _CopyWithStubImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$available_shipping_methods$amount;
 
   TRes call({
     Enum$CurrencyEnum? currency,
@@ -3959,21 +3911,21 @@ abstract class CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCa
   });
 }
 
-class _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$available_shipping_methods$amount<
+class _CopyWithImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$available_shipping_methods$amount<
         TRes>
     implements
-        CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$available_shipping_methods$amount<
+        CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$available_shipping_methods$amount<
             TRes> {
-  _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$available_shipping_methods$amount(
+  _CopyWithImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$available_shipping_methods$amount(
     this._instance,
     this._then,
   );
 
-  final Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$available_shipping_methods$amount
+  final Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$available_shipping_methods$amount
       _instance;
 
   final TRes Function(
-          Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$available_shipping_methods$amount)
+          Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$available_shipping_methods$amount)
       _then;
 
   static const _undefined = <dynamic, dynamic>{};
@@ -3984,7 +3936,7 @@ class _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$c
     Object? $__typename = _undefined,
   }) =>
       _then(
-          Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$available_shipping_methods$amount(
+          Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$available_shipping_methods$amount(
         currency: currency == _undefined
             ? _instance.currency
             : (currency as Enum$CurrencyEnum?),
@@ -3995,12 +3947,12 @@ class _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$c
       ));
 }
 
-class _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$available_shipping_methods$amount<
+class _CopyWithStubImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$available_shipping_methods$amount<
         TRes>
     implements
-        CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$available_shipping_methods$amount<
+        CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$available_shipping_methods$amount<
             TRes> {
-  _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$available_shipping_methods$amount(
+  _CopyWithStubImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$available_shipping_methods$amount(
       this._res);
 
   TRes _res;
@@ -4013,8 +3965,8 @@ class _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCa
       _res;
 }
 
-class Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$selected_shipping_method {
-  Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$selected_shipping_method({
+class Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$selected_shipping_method {
+  Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$selected_shipping_method({
     required this.carrier_code,
     required this.carrier_title,
     required this.method_code,
@@ -4023,7 +3975,7 @@ class Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_a
     this.$__typename = 'SelectedShippingMethod',
   });
 
-  factory Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$selected_shipping_method.fromJson(
+  factory Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$selected_shipping_method.fromJson(
       Map<String, dynamic> json) {
     final l$carrier_code = json['carrier_code'];
     final l$carrier_title = json['carrier_title'];
@@ -4031,13 +3983,13 @@ class Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_a
     final l$method_title = json['method_title'];
     final l$amount = json['amount'];
     final l$$__typename = json['__typename'];
-    return Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$selected_shipping_method(
+    return Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$selected_shipping_method(
       carrier_code: (l$carrier_code as String),
       carrier_title: (l$carrier_title as String),
       method_code: (l$method_code as String),
       method_title: (l$method_title as String),
       amount:
-          Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$selected_shipping_method$amount
+          Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$selected_shipping_method$amount
               .fromJson((l$amount as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
@@ -4051,7 +4003,7 @@ class Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_a
 
   final String method_title;
 
-  final Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$selected_shipping_method$amount
+  final Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$selected_shipping_method$amount
       amount;
 
   final String $__typename;
@@ -4097,7 +4049,7 @@ class Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_a
       return true;
     }
     if (!(other
-            is Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$selected_shipping_method) ||
+            is Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$selected_shipping_method) ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -4135,59 +4087,59 @@ class Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_a
   }
 }
 
-extension UtilityExtension$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$selected_shipping_method
-    on Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$selected_shipping_method {
-  CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$selected_shipping_method<
-          Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$selected_shipping_method>
+extension UtilityExtension$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$selected_shipping_method
+    on Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$selected_shipping_method {
+  CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$selected_shipping_method<
+          Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$selected_shipping_method>
       get copyWith =>
-          CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$selected_shipping_method(
+          CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$selected_shipping_method(
             this,
             (i) => i,
           );
 }
 
-abstract class CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$selected_shipping_method<
+abstract class CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$selected_shipping_method<
     TRes> {
-  factory CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$selected_shipping_method(
-    Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$selected_shipping_method
+  factory CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$selected_shipping_method(
+    Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$selected_shipping_method
         instance,
     TRes Function(
-            Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$selected_shipping_method)
+            Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$selected_shipping_method)
         then,
-  ) = _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$selected_shipping_method;
+  ) = _CopyWithImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$selected_shipping_method;
 
-  factory CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$selected_shipping_method.stub(
+  factory CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$selected_shipping_method.stub(
           TRes res) =
-      _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$selected_shipping_method;
+      _CopyWithStubImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$selected_shipping_method;
 
   TRes call({
     String? carrier_code,
     String? carrier_title,
     String? method_code,
     String? method_title,
-    Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$selected_shipping_method$amount?
+    Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$selected_shipping_method$amount?
         amount,
     String? $__typename,
   });
-  CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$selected_shipping_method$amount<
+  CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$selected_shipping_method$amount<
       TRes> get amount;
 }
 
-class _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$selected_shipping_method<
+class _CopyWithImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$selected_shipping_method<
         TRes>
     implements
-        CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$selected_shipping_method<
+        CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$selected_shipping_method<
             TRes> {
-  _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$selected_shipping_method(
+  _CopyWithImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$selected_shipping_method(
     this._instance,
     this._then,
   );
 
-  final Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$selected_shipping_method
+  final Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$selected_shipping_method
       _instance;
 
   final TRes Function(
-          Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$selected_shipping_method)
+          Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$selected_shipping_method)
       _then;
 
   static const _undefined = <dynamic, dynamic>{};
@@ -4201,7 +4153,7 @@ class _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$c
     Object? $__typename = _undefined,
   }) =>
       _then(
-          Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$selected_shipping_method(
+          Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$selected_shipping_method(
         carrier_code: carrier_code == _undefined || carrier_code == null
             ? _instance.carrier_code
             : (carrier_code as String),
@@ -4217,26 +4169,26 @@ class _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$c
         amount: amount == _undefined || amount == null
             ? _instance.amount
             : (amount
-                as Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$selected_shipping_method$amount),
+                as Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$selected_shipping_method$amount),
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
       ));
 
-  CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$selected_shipping_method$amount<
+  CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$selected_shipping_method$amount<
       TRes> get amount {
     final local$amount = _instance.amount;
-    return CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$selected_shipping_method$amount(
+    return CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$selected_shipping_method$amount(
         local$amount, (e) => call(amount: e));
   }
 }
 
-class _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$selected_shipping_method<
+class _CopyWithStubImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$selected_shipping_method<
         TRes>
     implements
-        CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$selected_shipping_method<
+        CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$selected_shipping_method<
             TRes> {
-  _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$selected_shipping_method(
+  _CopyWithStubImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$selected_shipping_method(
       this._res);
 
   TRes _res;
@@ -4246,32 +4198,32 @@ class _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCa
     String? carrier_title,
     String? method_code,
     String? method_title,
-    Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$selected_shipping_method$amount?
+    Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$selected_shipping_method$amount?
         amount,
     String? $__typename,
   }) =>
       _res;
 
-  CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$selected_shipping_method$amount<
+  CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$selected_shipping_method$amount<
           TRes>
       get amount =>
-          CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$selected_shipping_method$amount
+          CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$selected_shipping_method$amount
               .stub(_res);
 }
 
-class Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$selected_shipping_method$amount {
-  Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$selected_shipping_method$amount({
+class Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$selected_shipping_method$amount {
+  Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$selected_shipping_method$amount({
     this.currency,
     this.value,
     this.$__typename = 'Money',
   });
 
-  factory Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$selected_shipping_method$amount.fromJson(
+  factory Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$selected_shipping_method$amount.fromJson(
       Map<String, dynamic> json) {
     final l$currency = json['currency'];
     final l$value = json['value'];
     final l$$__typename = json['__typename'];
-    return Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$selected_shipping_method$amount(
+    return Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$selected_shipping_method$amount(
       currency: l$currency == null
           ? null
           : fromJson$Enum$CurrencyEnum((l$currency as String)),
@@ -4316,7 +4268,7 @@ class Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_a
       return true;
     }
     if (!(other
-            is Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$selected_shipping_method$amount) ||
+            is Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$selected_shipping_method$amount) ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -4339,30 +4291,30 @@ class Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_a
   }
 }
 
-extension UtilityExtension$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$selected_shipping_method$amount
-    on Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$selected_shipping_method$amount {
-  CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$selected_shipping_method$amount<
-          Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$selected_shipping_method$amount>
+extension UtilityExtension$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$selected_shipping_method$amount
+    on Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$selected_shipping_method$amount {
+  CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$selected_shipping_method$amount<
+          Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$selected_shipping_method$amount>
       get copyWith =>
-          CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$selected_shipping_method$amount(
+          CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$selected_shipping_method$amount(
             this,
             (i) => i,
           );
 }
 
-abstract class CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$selected_shipping_method$amount<
+abstract class CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$selected_shipping_method$amount<
     TRes> {
-  factory CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$selected_shipping_method$amount(
-    Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$selected_shipping_method$amount
+  factory CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$selected_shipping_method$amount(
+    Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$selected_shipping_method$amount
         instance,
     TRes Function(
-            Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$selected_shipping_method$amount)
+            Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$selected_shipping_method$amount)
         then,
-  ) = _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$selected_shipping_method$amount;
+  ) = _CopyWithImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$selected_shipping_method$amount;
 
-  factory CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$selected_shipping_method$amount.stub(
+  factory CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$selected_shipping_method$amount.stub(
           TRes res) =
-      _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$selected_shipping_method$amount;
+      _CopyWithStubImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$selected_shipping_method$amount;
 
   TRes call({
     Enum$CurrencyEnum? currency,
@@ -4371,21 +4323,21 @@ abstract class CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCa
   });
 }
 
-class _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$selected_shipping_method$amount<
+class _CopyWithImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$selected_shipping_method$amount<
         TRes>
     implements
-        CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$selected_shipping_method$amount<
+        CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$selected_shipping_method$amount<
             TRes> {
-  _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$selected_shipping_method$amount(
+  _CopyWithImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$selected_shipping_method$amount(
     this._instance,
     this._then,
   );
 
-  final Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$selected_shipping_method$amount
+  final Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$selected_shipping_method$amount
       _instance;
 
   final TRes Function(
-          Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$selected_shipping_method$amount)
+          Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$selected_shipping_method$amount)
       _then;
 
   static const _undefined = <dynamic, dynamic>{};
@@ -4396,7 +4348,7 @@ class _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$c
     Object? $__typename = _undefined,
   }) =>
       _then(
-          Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$selected_shipping_method$amount(
+          Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$selected_shipping_method$amount(
         currency: currency == _undefined
             ? _instance.currency
             : (currency as Enum$CurrencyEnum?),
@@ -4407,12 +4359,12 @@ class _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$c
       ));
 }
 
-class _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$selected_shipping_method$amount<
+class _CopyWithStubImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$selected_shipping_method$amount<
         TRes>
     implements
-        CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$selected_shipping_method$amount<
+        CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$selected_shipping_method$amount<
             TRes> {
-  _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$shipping_addresses$selected_shipping_method$amount(
+  _CopyWithStubImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$shipping_addresses$selected_shipping_method$amount(
       this._res);
 
   TRes _res;
@@ -4425,8 +4377,8 @@ class _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCa
       _res;
 }
 
-class Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address {
-  Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address({
+class Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address {
+  Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address({
     required this.uid,
     required this.country,
     this.region,
@@ -4439,7 +4391,7 @@ class Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_ad
     this.$__typename = 'BillingCartAddress',
   });
 
-  factory Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address.fromJson(
+  factory Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address.fromJson(
       Map<String, dynamic> json) {
     final l$uid = json['uid'];
     final l$country = json['country'];
@@ -4451,14 +4403,14 @@ class Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_ad
     final l$telephone = json['telephone'];
     final l$street = json['street'];
     final l$$__typename = json['__typename'];
-    return Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address(
+    return Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address(
       uid: (l$uid as String),
       country:
-          Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address$country
+          Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address$country
               .fromJson((l$country as Map<String, dynamic>)),
       region: l$region == null
           ? null
-          : Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address$region
+          : Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address$region
               .fromJson((l$region as Map<String, dynamic>)),
       city: (l$city as String),
       firstname: (l$firstname as String),
@@ -4472,10 +4424,10 @@ class Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_ad
 
   final String uid;
 
-  final Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address$country
+  final Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address$country
       country;
 
-  final Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address$region?
+  final Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address$region?
       region;
 
   final String city;
@@ -4549,7 +4501,7 @@ class Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_ad
       return true;
     }
     if (!(other
-            is Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address) ||
+            is Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address) ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -4614,36 +4566,36 @@ class Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_ad
   }
 }
 
-extension UtilityExtension$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address
-    on Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address {
-  CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address<
-          Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address>
+extension UtilityExtension$Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address
+    on Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address {
+  CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address<
+          Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address>
       get copyWith =>
-          CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address(
+          CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address(
             this,
             (i) => i,
           );
 }
 
-abstract class CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address<
+abstract class CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address<
     TRes> {
-  factory CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address(
-    Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address
+  factory CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address(
+    Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address
         instance,
     TRes Function(
-            Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address)
+            Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address)
         then,
-  ) = _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address;
+  ) = _CopyWithImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address;
 
-  factory CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address.stub(
+  factory CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address.stub(
           TRes res) =
-      _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address;
+      _CopyWithStubImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address;
 
   TRes call({
     String? uid,
-    Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address$country?
+    Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address$country?
         country,
-    Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address$region?
+    Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address$region?
         region,
     String? city,
     String? firstname,
@@ -4653,27 +4605,27 @@ abstract class CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCa
     List<String?>? street,
     String? $__typename,
   });
-  CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address$country<
+  CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address$country<
       TRes> get country;
-  CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address$region<
+  CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address$region<
       TRes> get region;
 }
 
-class _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address<
+class _CopyWithImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address<
         TRes>
     implements
-        CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address<
+        CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address<
             TRes> {
-  _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address(
+  _CopyWithImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address(
     this._instance,
     this._then,
   );
 
-  final Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address
+  final Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address
       _instance;
 
   final TRes Function(
-          Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address)
+          Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address)
       _then;
 
   static const _undefined = <dynamic, dynamic>{};
@@ -4690,17 +4642,16 @@ class _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$c
     Object? street = _undefined,
     Object? $__typename = _undefined,
   }) =>
-      _then(
-          Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address(
+      _then(Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address(
         uid: uid == _undefined || uid == null ? _instance.uid : (uid as String),
         country: country == _undefined || country == null
             ? _instance.country
             : (country
-                as Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address$country),
+                as Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address$country),
         region: region == _undefined
             ? _instance.region
             : (region
-                as Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address$region?),
+                as Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address$region?),
         city: city == _undefined || city == null
             ? _instance.city
             : (city as String),
@@ -4723,39 +4674,39 @@ class _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$c
             : ($__typename as String),
       ));
 
-  CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address$country<
+  CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address$country<
       TRes> get country {
     final local$country = _instance.country;
-    return CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address$country(
+    return CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address$country(
         local$country, (e) => call(country: e));
   }
 
-  CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address$region<
+  CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address$region<
       TRes> get region {
     final local$region = _instance.region;
     return local$region == null
-        ? CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address$region
+        ? CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address$region
             .stub(_then(_instance))
-        : CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address$region(
+        : CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address$region(
             local$region, (e) => call(region: e));
   }
 }
 
-class _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address<
+class _CopyWithStubImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address<
         TRes>
     implements
-        CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address<
+        CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address<
             TRes> {
-  _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address(
+  _CopyWithStubImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address(
       this._res);
 
   TRes _res;
 
   call({
     String? uid,
-    Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address$country?
+    Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address$country?
         country,
-    Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address$region?
+    Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address$region?
         region,
     String? city,
     String? firstname,
@@ -4767,30 +4718,30 @@ class _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCa
   }) =>
       _res;
 
-  CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address$country<
+  CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address$country<
           TRes>
       get country =>
-          CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address$country
+          CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address$country
               .stub(_res);
 
-  CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address$region<
+  CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address$region<
           TRes>
       get region =>
-          CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address$region
+          CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address$region
               .stub(_res);
 }
 
-class Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address$country {
-  Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address$country({
+class Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address$country {
+  Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address$country({
     required this.code,
     this.$__typename = 'CartAddressCountry',
   });
 
-  factory Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address$country.fromJson(
+  factory Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address$country.fromJson(
       Map<String, dynamic> json) {
     final l$code = json['code'];
     final l$$__typename = json['__typename'];
-    return Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address$country(
+    return Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address$country(
       code: (l$code as String),
       $__typename: (l$$__typename as String),
     );
@@ -4825,7 +4776,7 @@ class Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_ad
       return true;
     }
     if (!(other
-            is Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address$country) ||
+            is Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address$country) ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -4843,30 +4794,30 @@ class Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_ad
   }
 }
 
-extension UtilityExtension$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address$country
-    on Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address$country {
-  CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address$country<
-          Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address$country>
+extension UtilityExtension$Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address$country
+    on Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address$country {
+  CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address$country<
+          Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address$country>
       get copyWith =>
-          CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address$country(
+          CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address$country(
             this,
             (i) => i,
           );
 }
 
-abstract class CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address$country<
+abstract class CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address$country<
     TRes> {
-  factory CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address$country(
-    Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address$country
+  factory CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address$country(
+    Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address$country
         instance,
     TRes Function(
-            Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address$country)
+            Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address$country)
         then,
-  ) = _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address$country;
+  ) = _CopyWithImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address$country;
 
-  factory CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address$country.stub(
+  factory CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address$country.stub(
           TRes res) =
-      _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address$country;
+      _CopyWithStubImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address$country;
 
   TRes call({
     String? code,
@@ -4874,21 +4825,21 @@ abstract class CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCa
   });
 }
 
-class _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address$country<
+class _CopyWithImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address$country<
         TRes>
     implements
-        CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address$country<
+        CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address$country<
             TRes> {
-  _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address$country(
+  _CopyWithImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address$country(
     this._instance,
     this._then,
   );
 
-  final Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address$country
+  final Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address$country
       _instance;
 
   final TRes Function(
-          Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address$country)
+          Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address$country)
       _then;
 
   static const _undefined = <dynamic, dynamic>{};
@@ -4898,7 +4849,7 @@ class _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$c
     Object? $__typename = _undefined,
   }) =>
       _then(
-          Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address$country(
+          Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address$country(
         code: code == _undefined || code == null
             ? _instance.code
             : (code as String),
@@ -4908,12 +4859,12 @@ class _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$c
       ));
 }
 
-class _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address$country<
+class _CopyWithStubImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address$country<
         TRes>
     implements
-        CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address$country<
+        CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address$country<
             TRes> {
-  _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address$country(
+  _CopyWithStubImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address$country(
       this._res);
 
   TRes _res;
@@ -4925,19 +4876,19 @@ class _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCa
       _res;
 }
 
-class Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address$region {
-  Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address$region({
+class Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address$region {
+  Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address$region({
     this.region_id,
     this.code,
     this.$__typename = 'CartAddressRegion',
   });
 
-  factory Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address$region.fromJson(
+  factory Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address$region.fromJson(
       Map<String, dynamic> json) {
     final l$region_id = json['region_id'];
     final l$code = json['code'];
     final l$$__typename = json['__typename'];
-    return Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address$region(
+    return Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address$region(
       region_id: (l$region_id as int?),
       code: (l$code as String?),
       $__typename: (l$$__typename as String),
@@ -4979,7 +4930,7 @@ class Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_ad
       return true;
     }
     if (!(other
-            is Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address$region) ||
+            is Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address$region) ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -5002,30 +4953,30 @@ class Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_ad
   }
 }
 
-extension UtilityExtension$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address$region
-    on Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address$region {
-  CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address$region<
-          Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address$region>
+extension UtilityExtension$Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address$region
+    on Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address$region {
+  CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address$region<
+          Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address$region>
       get copyWith =>
-          CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address$region(
+          CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address$region(
             this,
             (i) => i,
           );
 }
 
-abstract class CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address$region<
+abstract class CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address$region<
     TRes> {
-  factory CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address$region(
-    Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address$region
+  factory CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address$region(
+    Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address$region
         instance,
     TRes Function(
-            Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address$region)
+            Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address$region)
         then,
-  ) = _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address$region;
+  ) = _CopyWithImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address$region;
 
-  factory CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address$region.stub(
+  factory CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address$region.stub(
           TRes res) =
-      _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address$region;
+      _CopyWithStubImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address$region;
 
   TRes call({
     int? region_id,
@@ -5034,21 +4985,21 @@ abstract class CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCa
   });
 }
 
-class _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address$region<
+class _CopyWithImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address$region<
         TRes>
     implements
-        CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address$region<
+        CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address$region<
             TRes> {
-  _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address$region(
+  _CopyWithImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address$region(
     this._instance,
     this._then,
   );
 
-  final Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address$region
+  final Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address$region
       _instance;
 
   final TRes Function(
-          Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address$region)
+          Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address$region)
       _then;
 
   static const _undefined = <dynamic, dynamic>{};
@@ -5059,7 +5010,7 @@ class _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$c
     Object? $__typename = _undefined,
   }) =>
       _then(
-          Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address$region(
+          Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address$region(
         region_id:
             region_id == _undefined ? _instance.region_id : (region_id as int?),
         code: code == _undefined ? _instance.code : (code as String?),
@@ -5069,12 +5020,12 @@ class _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$c
       ));
 }
 
-class _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address$region<
+class _CopyWithStubImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address$region<
         TRes>
     implements
-        CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address$region<
+        CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address$region<
             TRes> {
-  _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$billing_address$region(
+  _CopyWithStubImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$billing_address$region(
       this._res);
 
   TRes _res;
@@ -5087,19 +5038,19 @@ class _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCa
       _res;
 }
 
-class Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$available_payment_methods {
-  Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$available_payment_methods({
+class Mutation$RemoveCouponCode$removeCouponFromCart$cart$available_payment_methods {
+  Mutation$RemoveCouponCode$removeCouponFromCart$cart$available_payment_methods({
     required this.code,
     required this.title,
     this.$__typename = 'AvailablePaymentMethod',
   });
 
-  factory Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$available_payment_methods.fromJson(
+  factory Mutation$RemoveCouponCode$removeCouponFromCart$cart$available_payment_methods.fromJson(
       Map<String, dynamic> json) {
     final l$code = json['code'];
     final l$title = json['title'];
     final l$$__typename = json['__typename'];
-    return Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$available_payment_methods(
+    return Mutation$RemoveCouponCode$removeCouponFromCart$cart$available_payment_methods(
       code: (l$code as String),
       title: (l$title as String),
       $__typename: (l$$__typename as String),
@@ -5141,7 +5092,7 @@ class Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$available_
       return true;
     }
     if (!(other
-            is Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$available_payment_methods) ||
+            is Mutation$RemoveCouponCode$removeCouponFromCart$cart$available_payment_methods) ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -5164,30 +5115,30 @@ class Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$available_
   }
 }
 
-extension UtilityExtension$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$available_payment_methods
-    on Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$available_payment_methods {
-  CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$available_payment_methods<
-          Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$available_payment_methods>
+extension UtilityExtension$Mutation$RemoveCouponCode$removeCouponFromCart$cart$available_payment_methods
+    on Mutation$RemoveCouponCode$removeCouponFromCart$cart$available_payment_methods {
+  CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$available_payment_methods<
+          Mutation$RemoveCouponCode$removeCouponFromCart$cart$available_payment_methods>
       get copyWith =>
-          CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$available_payment_methods(
+          CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$available_payment_methods(
             this,
             (i) => i,
           );
 }
 
-abstract class CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$available_payment_methods<
+abstract class CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$available_payment_methods<
     TRes> {
-  factory CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$available_payment_methods(
-    Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$available_payment_methods
+  factory CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$available_payment_methods(
+    Mutation$RemoveCouponCode$removeCouponFromCart$cart$available_payment_methods
         instance,
     TRes Function(
-            Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$available_payment_methods)
+            Mutation$RemoveCouponCode$removeCouponFromCart$cart$available_payment_methods)
         then,
-  ) = _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$available_payment_methods;
+  ) = _CopyWithImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$available_payment_methods;
 
-  factory CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$available_payment_methods.stub(
+  factory CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$available_payment_methods.stub(
           TRes res) =
-      _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$available_payment_methods;
+      _CopyWithStubImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$available_payment_methods;
 
   TRes call({
     String? code,
@@ -5196,21 +5147,21 @@ abstract class CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCa
   });
 }
 
-class _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$available_payment_methods<
+class _CopyWithImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$available_payment_methods<
         TRes>
     implements
-        CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$available_payment_methods<
+        CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$available_payment_methods<
             TRes> {
-  _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$available_payment_methods(
+  _CopyWithImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$available_payment_methods(
     this._instance,
     this._then,
   );
 
-  final Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$available_payment_methods
+  final Mutation$RemoveCouponCode$removeCouponFromCart$cart$available_payment_methods
       _instance;
 
   final TRes Function(
-          Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$available_payment_methods)
+          Mutation$RemoveCouponCode$removeCouponFromCart$cart$available_payment_methods)
       _then;
 
   static const _undefined = <dynamic, dynamic>{};
@@ -5221,7 +5172,7 @@ class _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$c
     Object? $__typename = _undefined,
   }) =>
       _then(
-          Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$available_payment_methods(
+          Mutation$RemoveCouponCode$removeCouponFromCart$cart$available_payment_methods(
         code: code == _undefined || code == null
             ? _instance.code
             : (code as String),
@@ -5234,12 +5185,12 @@ class _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$c
       ));
 }
 
-class _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$available_payment_methods<
+class _CopyWithStubImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$available_payment_methods<
         TRes>
     implements
-        CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$available_payment_methods<
+        CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$available_payment_methods<
             TRes> {
-  _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$available_payment_methods(
+  _CopyWithStubImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$available_payment_methods(
       this._res);
 
   TRes _res;
@@ -5252,19 +5203,19 @@ class _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCa
       _res;
 }
 
-class Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$selected_payment_method {
-  Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$selected_payment_method({
+class Mutation$RemoveCouponCode$removeCouponFromCart$cart$selected_payment_method {
+  Mutation$RemoveCouponCode$removeCouponFromCart$cart$selected_payment_method({
     required this.code,
     required this.title,
     this.$__typename = 'SelectedPaymentMethod',
   });
 
-  factory Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$selected_payment_method.fromJson(
+  factory Mutation$RemoveCouponCode$removeCouponFromCart$cart$selected_payment_method.fromJson(
       Map<String, dynamic> json) {
     final l$code = json['code'];
     final l$title = json['title'];
     final l$$__typename = json['__typename'];
-    return Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$selected_payment_method(
+    return Mutation$RemoveCouponCode$removeCouponFromCart$cart$selected_payment_method(
       code: (l$code as String),
       title: (l$title as String),
       $__typename: (l$$__typename as String),
@@ -5306,7 +5257,7 @@ class Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$selected_p
       return true;
     }
     if (!(other
-            is Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$selected_payment_method) ||
+            is Mutation$RemoveCouponCode$removeCouponFromCart$cart$selected_payment_method) ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -5329,30 +5280,30 @@ class Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$selected_p
   }
 }
 
-extension UtilityExtension$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$selected_payment_method
-    on Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$selected_payment_method {
-  CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$selected_payment_method<
-          Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$selected_payment_method>
+extension UtilityExtension$Mutation$RemoveCouponCode$removeCouponFromCart$cart$selected_payment_method
+    on Mutation$RemoveCouponCode$removeCouponFromCart$cart$selected_payment_method {
+  CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$selected_payment_method<
+          Mutation$RemoveCouponCode$removeCouponFromCart$cart$selected_payment_method>
       get copyWith =>
-          CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$selected_payment_method(
+          CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$selected_payment_method(
             this,
             (i) => i,
           );
 }
 
-abstract class CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$selected_payment_method<
+abstract class CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$selected_payment_method<
     TRes> {
-  factory CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$selected_payment_method(
-    Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$selected_payment_method
+  factory CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$selected_payment_method(
+    Mutation$RemoveCouponCode$removeCouponFromCart$cart$selected_payment_method
         instance,
     TRes Function(
-            Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$selected_payment_method)
+            Mutation$RemoveCouponCode$removeCouponFromCart$cart$selected_payment_method)
         then,
-  ) = _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$selected_payment_method;
+  ) = _CopyWithImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$selected_payment_method;
 
-  factory CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$selected_payment_method.stub(
+  factory CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$selected_payment_method.stub(
           TRes res) =
-      _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$selected_payment_method;
+      _CopyWithStubImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$selected_payment_method;
 
   TRes call({
     String? code,
@@ -5361,21 +5312,21 @@ abstract class CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCa
   });
 }
 
-class _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$selected_payment_method<
+class _CopyWithImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$selected_payment_method<
         TRes>
     implements
-        CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$selected_payment_method<
+        CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$selected_payment_method<
             TRes> {
-  _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$selected_payment_method(
+  _CopyWithImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$selected_payment_method(
     this._instance,
     this._then,
   );
 
-  final Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$selected_payment_method
+  final Mutation$RemoveCouponCode$removeCouponFromCart$cart$selected_payment_method
       _instance;
 
   final TRes Function(
-          Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$selected_payment_method)
+          Mutation$RemoveCouponCode$removeCouponFromCart$cart$selected_payment_method)
       _then;
 
   static const _undefined = <dynamic, dynamic>{};
@@ -5386,7 +5337,7 @@ class _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$c
     Object? $__typename = _undefined,
   }) =>
       _then(
-          Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$selected_payment_method(
+          Mutation$RemoveCouponCode$removeCouponFromCart$cart$selected_payment_method(
         code: code == _undefined || code == null
             ? _instance.code
             : (code as String),
@@ -5399,12 +5350,12 @@ class _CopyWithImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$c
       ));
 }
 
-class _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$selected_payment_method<
+class _CopyWithStubImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$selected_payment_method<
         TRes>
     implements
-        CopyWith$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$selected_payment_method<
+        CopyWith$Mutation$RemoveCouponCode$removeCouponFromCart$cart$selected_payment_method<
             TRes> {
-  _CopyWithStubImpl$Mutation$SetShippingMethodsOnCart$setShippingMethodsOnCart$cart$selected_payment_method(
+  _CopyWithStubImpl$Mutation$RemoveCouponCode$removeCouponFromCart$cart$selected_payment_method(
       this._res);
 
   TRes _res;

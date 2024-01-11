@@ -170,13 +170,86 @@ const documentNodeQueryFetchCheckoutData = DocumentNode(definitions: [
             selectionSet: null,
           ),
           FieldNode(
+            name: NameNode(value: 'applied_coupons'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: SelectionSetNode(selections: [
+              FieldNode(
+                name: NameNode(value: 'code'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+              FieldNode(
+                name: NameNode(value: '__typename'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+            ]),
+          ),
+          FieldNode(
             name: NameNode(value: 'prices'),
             alias: null,
             arguments: [],
             directives: [],
             selectionSet: SelectionSetNode(selections: [
               FieldNode(
-                name: NameNode(value: 'subtotal_with_discount_excluding_tax'),
+                name: NameNode(value: 'discounts'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: SelectionSetNode(selections: [
+                  FieldNode(
+                    name: NameNode(value: 'amount'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: SelectionSetNode(selections: [
+                      FieldNode(
+                        name: NameNode(value: 'currency'),
+                        alias: null,
+                        arguments: [],
+                        directives: [],
+                        selectionSet: null,
+                      ),
+                      FieldNode(
+                        name: NameNode(value: 'value'),
+                        alias: null,
+                        arguments: [],
+                        directives: [],
+                        selectionSet: null,
+                      ),
+                      FieldNode(
+                        name: NameNode(value: '__typename'),
+                        alias: null,
+                        arguments: [],
+                        directives: [],
+                        selectionSet: null,
+                      ),
+                    ]),
+                  ),
+                  FieldNode(
+                    name: NameNode(value: 'label'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                  FieldNode(
+                    name: NameNode(value: '__typename'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                ]),
+              ),
+              FieldNode(
+                name: NameNode(value: 'subtotal_excluding_tax'),
                 alias: null,
                 arguments: [],
                 directives: [],
@@ -828,6 +901,7 @@ class Query$FetchCheckoutData$customerCart {
   Query$FetchCheckoutData$customerCart({
     required this.id,
     required this.total_quantity,
+    this.applied_coupons,
     this.prices,
     required this.shipping_addresses,
     this.billing_address,
@@ -840,6 +914,7 @@ class Query$FetchCheckoutData$customerCart {
       Map<String, dynamic> json) {
     final l$id = json['id'];
     final l$total_quantity = json['total_quantity'];
+    final l$applied_coupons = json['applied_coupons'];
     final l$prices = json['prices'];
     final l$shipping_addresses = json['shipping_addresses'];
     final l$billing_address = json['billing_address'];
@@ -849,6 +924,12 @@ class Query$FetchCheckoutData$customerCart {
     return Query$FetchCheckoutData$customerCart(
       id: (l$id as String),
       total_quantity: (l$total_quantity as num).toDouble(),
+      applied_coupons: (l$applied_coupons as List<dynamic>?)
+          ?.map((e) => e == null
+              ? null
+              : Query$FetchCheckoutData$customerCart$applied_coupons.fromJson(
+                  (e as Map<String, dynamic>)))
+          .toList(),
       prices: l$prices == null
           ? null
           : Query$FetchCheckoutData$customerCart$prices.fromJson(
@@ -881,6 +962,9 @@ class Query$FetchCheckoutData$customerCart {
 
   final double total_quantity;
 
+  final List<Query$FetchCheckoutData$customerCart$applied_coupons?>?
+      applied_coupons;
+
   final Query$FetchCheckoutData$customerCart$prices? prices;
 
   final List<Query$FetchCheckoutData$customerCart$shipping_addresses?>
@@ -902,6 +986,9 @@ class Query$FetchCheckoutData$customerCart {
     _resultData['id'] = l$id;
     final l$total_quantity = total_quantity;
     _resultData['total_quantity'] = l$total_quantity;
+    final l$applied_coupons = applied_coupons;
+    _resultData['applied_coupons'] =
+        l$applied_coupons?.map((e) => e?.toJson()).toList();
     final l$prices = prices;
     _resultData['prices'] = l$prices?.toJson();
     final l$shipping_addresses = shipping_addresses;
@@ -924,6 +1011,7 @@ class Query$FetchCheckoutData$customerCart {
   int get hashCode {
     final l$id = id;
     final l$total_quantity = total_quantity;
+    final l$applied_coupons = applied_coupons;
     final l$prices = prices;
     final l$shipping_addresses = shipping_addresses;
     final l$billing_address = billing_address;
@@ -933,6 +1021,9 @@ class Query$FetchCheckoutData$customerCart {
     return Object.hashAll([
       l$id,
       l$total_quantity,
+      l$applied_coupons == null
+          ? null
+          : Object.hashAll(l$applied_coupons.map((v) => v)),
       l$prices,
       Object.hashAll(l$shipping_addresses.map((v) => v)),
       l$billing_address,
@@ -961,6 +1052,22 @@ class Query$FetchCheckoutData$customerCart {
     final l$total_quantity = total_quantity;
     final lOther$total_quantity = other.total_quantity;
     if (l$total_quantity != lOther$total_quantity) {
+      return false;
+    }
+    final l$applied_coupons = applied_coupons;
+    final lOther$applied_coupons = other.applied_coupons;
+    if (l$applied_coupons != null && lOther$applied_coupons != null) {
+      if (l$applied_coupons.length != lOther$applied_coupons.length) {
+        return false;
+      }
+      for (int i = 0; i < l$applied_coupons.length; i++) {
+        final l$applied_coupons$entry = l$applied_coupons[i];
+        final lOther$applied_coupons$entry = lOther$applied_coupons[i];
+        if (l$applied_coupons$entry != lOther$applied_coupons$entry) {
+          return false;
+        }
+      }
+    } else if (l$applied_coupons != lOther$applied_coupons) {
       return false;
     }
     final l$prices = prices;
@@ -1043,6 +1150,8 @@ abstract class CopyWith$Query$FetchCheckoutData$customerCart<TRes> {
   TRes call({
     String? id,
     double? total_quantity,
+    List<Query$FetchCheckoutData$customerCart$applied_coupons?>?
+        applied_coupons,
     Query$FetchCheckoutData$customerCart$prices? prices,
     List<Query$FetchCheckoutData$customerCart$shipping_addresses?>?
         shipping_addresses,
@@ -1053,6 +1162,12 @@ abstract class CopyWith$Query$FetchCheckoutData$customerCart<TRes> {
         selected_payment_method,
     String? $__typename,
   });
+  TRes applied_coupons(
+      Iterable<Query$FetchCheckoutData$customerCart$applied_coupons?>? Function(
+              Iterable<
+                  CopyWith$Query$FetchCheckoutData$customerCart$applied_coupons<
+                      Query$FetchCheckoutData$customerCart$applied_coupons>?>?)
+          _fn);
   CopyWith$Query$FetchCheckoutData$customerCart$prices<TRes> get prices;
   TRes shipping_addresses(
       Iterable<Query$FetchCheckoutData$customerCart$shipping_addresses?> Function(
@@ -1088,6 +1203,7 @@ class _CopyWithImpl$Query$FetchCheckoutData$customerCart<TRes>
   TRes call({
     Object? id = _undefined,
     Object? total_quantity = _undefined,
+    Object? applied_coupons = _undefined,
     Object? prices = _undefined,
     Object? shipping_addresses = _undefined,
     Object? billing_address = _undefined,
@@ -1100,6 +1216,10 @@ class _CopyWithImpl$Query$FetchCheckoutData$customerCart<TRes>
         total_quantity: total_quantity == _undefined || total_quantity == null
             ? _instance.total_quantity
             : (total_quantity as double),
+        applied_coupons: applied_coupons == _undefined
+            ? _instance.applied_coupons
+            : (applied_coupons as List<
+                Query$FetchCheckoutData$customerCart$applied_coupons?>?),
         prices: prices == _undefined
             ? _instance.prices
             : (prices as Query$FetchCheckoutData$customerCart$prices?),
@@ -1124,6 +1244,20 @@ class _CopyWithImpl$Query$FetchCheckoutData$customerCart<TRes>
             ? _instance.$__typename
             : ($__typename as String),
       ));
+
+  TRes applied_coupons(
+          Iterable<Query$FetchCheckoutData$customerCart$applied_coupons?>? Function(
+                  Iterable<
+                      CopyWith$Query$FetchCheckoutData$customerCart$applied_coupons<
+                          Query$FetchCheckoutData$customerCart$applied_coupons>?>?)
+              _fn) =>
+      call(
+          applied_coupons: _fn(_instance.applied_coupons?.map((e) => e == null
+              ? null
+              : CopyWith$Query$FetchCheckoutData$customerCart$applied_coupons(
+                  e,
+                  (i) => i,
+                )))?.toList());
 
   CopyWith$Query$FetchCheckoutData$customerCart$prices<TRes> get prices {
     final local$prices = _instance.prices;
@@ -1195,6 +1329,8 @@ class _CopyWithStubImpl$Query$FetchCheckoutData$customerCart<TRes>
   call({
     String? id,
     double? total_quantity,
+    List<Query$FetchCheckoutData$customerCart$applied_coupons?>?
+        applied_coupons,
     Query$FetchCheckoutData$customerCart$prices? prices,
     List<Query$FetchCheckoutData$customerCart$shipping_addresses?>?
         shipping_addresses,
@@ -1206,6 +1342,8 @@ class _CopyWithStubImpl$Query$FetchCheckoutData$customerCart<TRes>
     String? $__typename,
   }) =>
       _res;
+
+  applied_coupons(_fn) => _res;
 
   CopyWith$Query$FetchCheckoutData$customerCart$prices<TRes> get prices =>
       CopyWith$Query$FetchCheckoutData$customerCart$prices.stub(_res);
@@ -1225,26 +1363,166 @@ class _CopyWithStubImpl$Query$FetchCheckoutData$customerCart<TRes>
               .stub(_res);
 }
 
+class Query$FetchCheckoutData$customerCart$applied_coupons {
+  Query$FetchCheckoutData$customerCart$applied_coupons({
+    required this.code,
+    this.$__typename = 'AppliedCoupon',
+  });
+
+  factory Query$FetchCheckoutData$customerCart$applied_coupons.fromJson(
+      Map<String, dynamic> json) {
+    final l$code = json['code'];
+    final l$$__typename = json['__typename'];
+    return Query$FetchCheckoutData$customerCart$applied_coupons(
+      code: (l$code as String),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final String code;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$code = code;
+    _resultData['code'] = l$code;
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$code = code;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$code,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Query$FetchCheckoutData$customerCart$applied_coupons) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$code = code;
+    final lOther$code = other.code;
+    if (l$code != lOther$code) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$FetchCheckoutData$customerCart$applied_coupons
+    on Query$FetchCheckoutData$customerCart$applied_coupons {
+  CopyWith$Query$FetchCheckoutData$customerCart$applied_coupons<
+          Query$FetchCheckoutData$customerCart$applied_coupons>
+      get copyWith =>
+          CopyWith$Query$FetchCheckoutData$customerCart$applied_coupons(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Query$FetchCheckoutData$customerCart$applied_coupons<
+    TRes> {
+  factory CopyWith$Query$FetchCheckoutData$customerCart$applied_coupons(
+    Query$FetchCheckoutData$customerCart$applied_coupons instance,
+    TRes Function(Query$FetchCheckoutData$customerCart$applied_coupons) then,
+  ) = _CopyWithImpl$Query$FetchCheckoutData$customerCart$applied_coupons;
+
+  factory CopyWith$Query$FetchCheckoutData$customerCart$applied_coupons.stub(
+          TRes res) =
+      _CopyWithStubImpl$Query$FetchCheckoutData$customerCart$applied_coupons;
+
+  TRes call({
+    String? code,
+    String? $__typename,
+  });
+}
+
+class _CopyWithImpl$Query$FetchCheckoutData$customerCart$applied_coupons<TRes>
+    implements
+        CopyWith$Query$FetchCheckoutData$customerCart$applied_coupons<TRes> {
+  _CopyWithImpl$Query$FetchCheckoutData$customerCart$applied_coupons(
+    this._instance,
+    this._then,
+  );
+
+  final Query$FetchCheckoutData$customerCart$applied_coupons _instance;
+
+  final TRes Function(Query$FetchCheckoutData$customerCart$applied_coupons)
+      _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? code = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Query$FetchCheckoutData$customerCart$applied_coupons(
+        code: code == _undefined || code == null
+            ? _instance.code
+            : (code as String),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+}
+
+class _CopyWithStubImpl$Query$FetchCheckoutData$customerCart$applied_coupons<
+        TRes>
+    implements
+        CopyWith$Query$FetchCheckoutData$customerCart$applied_coupons<TRes> {
+  _CopyWithStubImpl$Query$FetchCheckoutData$customerCart$applied_coupons(
+      this._res);
+
+  TRes _res;
+
+  call({
+    String? code,
+    String? $__typename,
+  }) =>
+      _res;
+}
+
 class Query$FetchCheckoutData$customerCart$prices {
   Query$FetchCheckoutData$customerCart$prices({
-    this.subtotal_with_discount_excluding_tax,
+    this.discounts,
+    this.subtotal_excluding_tax,
     this.grand_total,
     this.$__typename = 'CartPrices',
   });
 
   factory Query$FetchCheckoutData$customerCart$prices.fromJson(
       Map<String, dynamic> json) {
-    final l$subtotal_with_discount_excluding_tax =
-        json['subtotal_with_discount_excluding_tax'];
+    final l$discounts = json['discounts'];
+    final l$subtotal_excluding_tax = json['subtotal_excluding_tax'];
     final l$grand_total = json['grand_total'];
     final l$$__typename = json['__typename'];
     return Query$FetchCheckoutData$customerCart$prices(
-      subtotal_with_discount_excluding_tax:
-          l$subtotal_with_discount_excluding_tax == null
+      discounts: (l$discounts as List<dynamic>?)
+          ?.map((e) => e == null
               ? null
-              : Query$FetchCheckoutData$customerCart$prices$subtotal_with_discount_excluding_tax
-                  .fromJson((l$subtotal_with_discount_excluding_tax
-                      as Map<String, dynamic>)),
+              : Query$FetchCheckoutData$customerCart$prices$discounts.fromJson(
+                  (e as Map<String, dynamic>)))
+          .toList(),
+      subtotal_excluding_tax: l$subtotal_excluding_tax == null
+          ? null
+          : Query$FetchCheckoutData$customerCart$prices$subtotal_excluding_tax
+              .fromJson((l$subtotal_excluding_tax as Map<String, dynamic>)),
       grand_total: l$grand_total == null
           ? null
           : Query$FetchCheckoutData$customerCart$prices$grand_total.fromJson(
@@ -1253,8 +1531,10 @@ class Query$FetchCheckoutData$customerCart$prices {
     );
   }
 
-  final Query$FetchCheckoutData$customerCart$prices$subtotal_with_discount_excluding_tax?
-      subtotal_with_discount_excluding_tax;
+  final List<Query$FetchCheckoutData$customerCart$prices$discounts?>? discounts;
+
+  final Query$FetchCheckoutData$customerCart$prices$subtotal_excluding_tax?
+      subtotal_excluding_tax;
 
   final Query$FetchCheckoutData$customerCart$prices$grand_total? grand_total;
 
@@ -1262,10 +1542,10 @@ class Query$FetchCheckoutData$customerCart$prices {
 
   Map<String, dynamic> toJson() {
     final _resultData = <String, dynamic>{};
-    final l$subtotal_with_discount_excluding_tax =
-        subtotal_with_discount_excluding_tax;
-    _resultData['subtotal_with_discount_excluding_tax'] =
-        l$subtotal_with_discount_excluding_tax?.toJson();
+    final l$discounts = discounts;
+    _resultData['discounts'] = l$discounts?.map((e) => e?.toJson()).toList();
+    final l$subtotal_excluding_tax = subtotal_excluding_tax;
+    _resultData['subtotal_excluding_tax'] = l$subtotal_excluding_tax?.toJson();
     final l$grand_total = grand_total;
     _resultData['grand_total'] = l$grand_total?.toJson();
     final l$$__typename = $__typename;
@@ -1275,12 +1555,13 @@ class Query$FetchCheckoutData$customerCart$prices {
 
   @override
   int get hashCode {
-    final l$subtotal_with_discount_excluding_tax =
-        subtotal_with_discount_excluding_tax;
+    final l$discounts = discounts;
+    final l$subtotal_excluding_tax = subtotal_excluding_tax;
     final l$grand_total = grand_total;
     final l$$__typename = $__typename;
     return Object.hashAll([
-      l$subtotal_with_discount_excluding_tax,
+      l$discounts == null ? null : Object.hashAll(l$discounts.map((v) => v)),
+      l$subtotal_excluding_tax,
       l$grand_total,
       l$$__typename,
     ]);
@@ -1295,12 +1576,25 @@ class Query$FetchCheckoutData$customerCart$prices {
         runtimeType != other.runtimeType) {
       return false;
     }
-    final l$subtotal_with_discount_excluding_tax =
-        subtotal_with_discount_excluding_tax;
-    final lOther$subtotal_with_discount_excluding_tax =
-        other.subtotal_with_discount_excluding_tax;
-    if (l$subtotal_with_discount_excluding_tax !=
-        lOther$subtotal_with_discount_excluding_tax) {
+    final l$discounts = discounts;
+    final lOther$discounts = other.discounts;
+    if (l$discounts != null && lOther$discounts != null) {
+      if (l$discounts.length != lOther$discounts.length) {
+        return false;
+      }
+      for (int i = 0; i < l$discounts.length; i++) {
+        final l$discounts$entry = l$discounts[i];
+        final lOther$discounts$entry = lOther$discounts[i];
+        if (l$discounts$entry != lOther$discounts$entry) {
+          return false;
+        }
+      }
+    } else if (l$discounts != lOther$discounts) {
+      return false;
+    }
+    final l$subtotal_excluding_tax = subtotal_excluding_tax;
+    final lOther$subtotal_excluding_tax = other.subtotal_excluding_tax;
+    if (l$subtotal_excluding_tax != lOther$subtotal_excluding_tax) {
       return false;
     }
     final l$grand_total = grand_total;
@@ -1337,13 +1631,20 @@ abstract class CopyWith$Query$FetchCheckoutData$customerCart$prices<TRes> {
       _CopyWithStubImpl$Query$FetchCheckoutData$customerCart$prices;
 
   TRes call({
-    Query$FetchCheckoutData$customerCart$prices$subtotal_with_discount_excluding_tax?
-        subtotal_with_discount_excluding_tax,
+    List<Query$FetchCheckoutData$customerCart$prices$discounts?>? discounts,
+    Query$FetchCheckoutData$customerCart$prices$subtotal_excluding_tax?
+        subtotal_excluding_tax,
     Query$FetchCheckoutData$customerCart$prices$grand_total? grand_total,
     String? $__typename,
   });
-  CopyWith$Query$FetchCheckoutData$customerCart$prices$subtotal_with_discount_excluding_tax<
-      TRes> get subtotal_with_discount_excluding_tax;
+  TRes discounts(
+      Iterable<Query$FetchCheckoutData$customerCart$prices$discounts?>? Function(
+              Iterable<
+                  CopyWith$Query$FetchCheckoutData$customerCart$prices$discounts<
+                      Query$FetchCheckoutData$customerCart$prices$discounts>?>?)
+          _fn);
+  CopyWith$Query$FetchCheckoutData$customerCart$prices$subtotal_excluding_tax<
+      TRes> get subtotal_excluding_tax;
   CopyWith$Query$FetchCheckoutData$customerCart$prices$grand_total<TRes>
       get grand_total;
 }
@@ -1362,16 +1663,20 @@ class _CopyWithImpl$Query$FetchCheckoutData$customerCart$prices<TRes>
   static const _undefined = <dynamic, dynamic>{};
 
   TRes call({
-    Object? subtotal_with_discount_excluding_tax = _undefined,
+    Object? discounts = _undefined,
+    Object? subtotal_excluding_tax = _undefined,
     Object? grand_total = _undefined,
     Object? $__typename = _undefined,
   }) =>
       _then(Query$FetchCheckoutData$customerCart$prices(
-        subtotal_with_discount_excluding_tax:
-            subtotal_with_discount_excluding_tax == _undefined
-                ? _instance.subtotal_with_discount_excluding_tax
-                : (subtotal_with_discount_excluding_tax
-                    as Query$FetchCheckoutData$customerCart$prices$subtotal_with_discount_excluding_tax?),
+        discounts: discounts == _undefined
+            ? _instance.discounts
+            : (discounts as List<
+                Query$FetchCheckoutData$customerCart$prices$discounts?>?),
+        subtotal_excluding_tax: subtotal_excluding_tax == _undefined
+            ? _instance.subtotal_excluding_tax
+            : (subtotal_excluding_tax
+                as Query$FetchCheckoutData$customerCart$prices$subtotal_excluding_tax?),
         grand_total: grand_total == _undefined
             ? _instance.grand_total
             : (grand_total
@@ -1381,16 +1686,29 @@ class _CopyWithImpl$Query$FetchCheckoutData$customerCart$prices<TRes>
             : ($__typename as String),
       ));
 
-  CopyWith$Query$FetchCheckoutData$customerCart$prices$subtotal_with_discount_excluding_tax<
-      TRes> get subtotal_with_discount_excluding_tax {
-    final local$subtotal_with_discount_excluding_tax =
-        _instance.subtotal_with_discount_excluding_tax;
-    return local$subtotal_with_discount_excluding_tax == null
-        ? CopyWith$Query$FetchCheckoutData$customerCart$prices$subtotal_with_discount_excluding_tax
+  TRes discounts(
+          Iterable<Query$FetchCheckoutData$customerCart$prices$discounts?>? Function(
+                  Iterable<
+                      CopyWith$Query$FetchCheckoutData$customerCart$prices$discounts<
+                          Query$FetchCheckoutData$customerCart$prices$discounts>?>?)
+              _fn) =>
+      call(
+          discounts: _fn(_instance.discounts?.map((e) => e == null
+              ? null
+              : CopyWith$Query$FetchCheckoutData$customerCart$prices$discounts(
+                  e,
+                  (i) => i,
+                )))?.toList());
+
+  CopyWith$Query$FetchCheckoutData$customerCart$prices$subtotal_excluding_tax<
+      TRes> get subtotal_excluding_tax {
+    final local$subtotal_excluding_tax = _instance.subtotal_excluding_tax;
+    return local$subtotal_excluding_tax == null
+        ? CopyWith$Query$FetchCheckoutData$customerCart$prices$subtotal_excluding_tax
             .stub(_then(_instance))
-        : CopyWith$Query$FetchCheckoutData$customerCart$prices$subtotal_with_discount_excluding_tax(
-            local$subtotal_with_discount_excluding_tax,
-            (e) => call(subtotal_with_discount_excluding_tax: e));
+        : CopyWith$Query$FetchCheckoutData$customerCart$prices$subtotal_excluding_tax(
+            local$subtotal_excluding_tax,
+            (e) => call(subtotal_excluding_tax: e));
   }
 
   CopyWith$Query$FetchCheckoutData$customerCart$prices$grand_total<TRes>
@@ -1411,17 +1729,20 @@ class _CopyWithStubImpl$Query$FetchCheckoutData$customerCart$prices<TRes>
   TRes _res;
 
   call({
-    Query$FetchCheckoutData$customerCart$prices$subtotal_with_discount_excluding_tax?
-        subtotal_with_discount_excluding_tax,
+    List<Query$FetchCheckoutData$customerCart$prices$discounts?>? discounts,
+    Query$FetchCheckoutData$customerCart$prices$subtotal_excluding_tax?
+        subtotal_excluding_tax,
     Query$FetchCheckoutData$customerCart$prices$grand_total? grand_total,
     String? $__typename,
   }) =>
       _res;
 
-  CopyWith$Query$FetchCheckoutData$customerCart$prices$subtotal_with_discount_excluding_tax<
+  discounts(_fn) => _res;
+
+  CopyWith$Query$FetchCheckoutData$customerCart$prices$subtotal_excluding_tax<
           TRes>
-      get subtotal_with_discount_excluding_tax =>
-          CopyWith$Query$FetchCheckoutData$customerCart$prices$subtotal_with_discount_excluding_tax
+      get subtotal_excluding_tax =>
+          CopyWith$Query$FetchCheckoutData$customerCart$prices$subtotal_excluding_tax
               .stub(_res);
 
   CopyWith$Query$FetchCheckoutData$customerCart$prices$grand_total<TRes>
@@ -1430,19 +1751,191 @@ class _CopyWithStubImpl$Query$FetchCheckoutData$customerCart$prices<TRes>
               _res);
 }
 
-class Query$FetchCheckoutData$customerCart$prices$subtotal_with_discount_excluding_tax {
-  Query$FetchCheckoutData$customerCart$prices$subtotal_with_discount_excluding_tax({
+class Query$FetchCheckoutData$customerCart$prices$discounts {
+  Query$FetchCheckoutData$customerCart$prices$discounts({
+    required this.amount,
+    required this.label,
+    this.$__typename = 'Discount',
+  });
+
+  factory Query$FetchCheckoutData$customerCart$prices$discounts.fromJson(
+      Map<String, dynamic> json) {
+    final l$amount = json['amount'];
+    final l$label = json['label'];
+    final l$$__typename = json['__typename'];
+    return Query$FetchCheckoutData$customerCart$prices$discounts(
+      amount:
+          Query$FetchCheckoutData$customerCart$prices$discounts$amount.fromJson(
+              (l$amount as Map<String, dynamic>)),
+      label: (l$label as String),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final Query$FetchCheckoutData$customerCart$prices$discounts$amount amount;
+
+  final String label;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$amount = amount;
+    _resultData['amount'] = l$amount.toJson();
+    final l$label = label;
+    _resultData['label'] = l$label;
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$amount = amount;
+    final l$label = label;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$amount,
+      l$label,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Query$FetchCheckoutData$customerCart$prices$discounts) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$amount = amount;
+    final lOther$amount = other.amount;
+    if (l$amount != lOther$amount) {
+      return false;
+    }
+    final l$label = label;
+    final lOther$label = other.label;
+    if (l$label != lOther$label) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$FetchCheckoutData$customerCart$prices$discounts
+    on Query$FetchCheckoutData$customerCart$prices$discounts {
+  CopyWith$Query$FetchCheckoutData$customerCart$prices$discounts<
+          Query$FetchCheckoutData$customerCart$prices$discounts>
+      get copyWith =>
+          CopyWith$Query$FetchCheckoutData$customerCart$prices$discounts(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Query$FetchCheckoutData$customerCart$prices$discounts<
+    TRes> {
+  factory CopyWith$Query$FetchCheckoutData$customerCart$prices$discounts(
+    Query$FetchCheckoutData$customerCart$prices$discounts instance,
+    TRes Function(Query$FetchCheckoutData$customerCart$prices$discounts) then,
+  ) = _CopyWithImpl$Query$FetchCheckoutData$customerCart$prices$discounts;
+
+  factory CopyWith$Query$FetchCheckoutData$customerCart$prices$discounts.stub(
+          TRes res) =
+      _CopyWithStubImpl$Query$FetchCheckoutData$customerCart$prices$discounts;
+
+  TRes call({
+    Query$FetchCheckoutData$customerCart$prices$discounts$amount? amount,
+    String? label,
+    String? $__typename,
+  });
+  CopyWith$Query$FetchCheckoutData$customerCart$prices$discounts$amount<TRes>
+      get amount;
+}
+
+class _CopyWithImpl$Query$FetchCheckoutData$customerCart$prices$discounts<TRes>
+    implements
+        CopyWith$Query$FetchCheckoutData$customerCart$prices$discounts<TRes> {
+  _CopyWithImpl$Query$FetchCheckoutData$customerCart$prices$discounts(
+    this._instance,
+    this._then,
+  );
+
+  final Query$FetchCheckoutData$customerCart$prices$discounts _instance;
+
+  final TRes Function(Query$FetchCheckoutData$customerCart$prices$discounts)
+      _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? amount = _undefined,
+    Object? label = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Query$FetchCheckoutData$customerCart$prices$discounts(
+        amount: amount == _undefined || amount == null
+            ? _instance.amount
+            : (amount
+                as Query$FetchCheckoutData$customerCart$prices$discounts$amount),
+        label: label == _undefined || label == null
+            ? _instance.label
+            : (label as String),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  CopyWith$Query$FetchCheckoutData$customerCart$prices$discounts$amount<TRes>
+      get amount {
+    final local$amount = _instance.amount;
+    return CopyWith$Query$FetchCheckoutData$customerCart$prices$discounts$amount(
+        local$amount, (e) => call(amount: e));
+  }
+}
+
+class _CopyWithStubImpl$Query$FetchCheckoutData$customerCart$prices$discounts<
+        TRes>
+    implements
+        CopyWith$Query$FetchCheckoutData$customerCart$prices$discounts<TRes> {
+  _CopyWithStubImpl$Query$FetchCheckoutData$customerCart$prices$discounts(
+      this._res);
+
+  TRes _res;
+
+  call({
+    Query$FetchCheckoutData$customerCart$prices$discounts$amount? amount,
+    String? label,
+    String? $__typename,
+  }) =>
+      _res;
+
+  CopyWith$Query$FetchCheckoutData$customerCart$prices$discounts$amount<TRes>
+      get amount =>
+          CopyWith$Query$FetchCheckoutData$customerCart$prices$discounts$amount
+              .stub(_res);
+}
+
+class Query$FetchCheckoutData$customerCart$prices$discounts$amount {
+  Query$FetchCheckoutData$customerCart$prices$discounts$amount({
     this.currency,
     this.value,
     this.$__typename = 'Money',
   });
 
-  factory Query$FetchCheckoutData$customerCart$prices$subtotal_with_discount_excluding_tax.fromJson(
+  factory Query$FetchCheckoutData$customerCart$prices$discounts$amount.fromJson(
       Map<String, dynamic> json) {
     final l$currency = json['currency'];
     final l$value = json['value'];
     final l$$__typename = json['__typename'];
-    return Query$FetchCheckoutData$customerCart$prices$subtotal_with_discount_excluding_tax(
+    return Query$FetchCheckoutData$customerCart$prices$discounts$amount(
       currency: l$currency == null
           ? null
           : fromJson$Enum$CurrencyEnum((l$currency as String)),
@@ -1487,7 +1980,7 @@ class Query$FetchCheckoutData$customerCart$prices$subtotal_with_discount_excludi
       return true;
     }
     if (!(other
-            is Query$FetchCheckoutData$customerCart$prices$subtotal_with_discount_excluding_tax) ||
+            is Query$FetchCheckoutData$customerCart$prices$discounts$amount) ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -1510,30 +2003,28 @@ class Query$FetchCheckoutData$customerCart$prices$subtotal_with_discount_excludi
   }
 }
 
-extension UtilityExtension$Query$FetchCheckoutData$customerCart$prices$subtotal_with_discount_excluding_tax
-    on Query$FetchCheckoutData$customerCart$prices$subtotal_with_discount_excluding_tax {
-  CopyWith$Query$FetchCheckoutData$customerCart$prices$subtotal_with_discount_excluding_tax<
-          Query$FetchCheckoutData$customerCart$prices$subtotal_with_discount_excluding_tax>
+extension UtilityExtension$Query$FetchCheckoutData$customerCart$prices$discounts$amount
+    on Query$FetchCheckoutData$customerCart$prices$discounts$amount {
+  CopyWith$Query$FetchCheckoutData$customerCart$prices$discounts$amount<
+          Query$FetchCheckoutData$customerCart$prices$discounts$amount>
       get copyWith =>
-          CopyWith$Query$FetchCheckoutData$customerCart$prices$subtotal_with_discount_excluding_tax(
+          CopyWith$Query$FetchCheckoutData$customerCart$prices$discounts$amount(
             this,
             (i) => i,
           );
 }
 
-abstract class CopyWith$Query$FetchCheckoutData$customerCart$prices$subtotal_with_discount_excluding_tax<
+abstract class CopyWith$Query$FetchCheckoutData$customerCart$prices$discounts$amount<
     TRes> {
-  factory CopyWith$Query$FetchCheckoutData$customerCart$prices$subtotal_with_discount_excluding_tax(
-    Query$FetchCheckoutData$customerCart$prices$subtotal_with_discount_excluding_tax
-        instance,
-    TRes Function(
-            Query$FetchCheckoutData$customerCart$prices$subtotal_with_discount_excluding_tax)
+  factory CopyWith$Query$FetchCheckoutData$customerCart$prices$discounts$amount(
+    Query$FetchCheckoutData$customerCart$prices$discounts$amount instance,
+    TRes Function(Query$FetchCheckoutData$customerCart$prices$discounts$amount)
         then,
-  ) = _CopyWithImpl$Query$FetchCheckoutData$customerCart$prices$subtotal_with_discount_excluding_tax;
+  ) = _CopyWithImpl$Query$FetchCheckoutData$customerCart$prices$discounts$amount;
 
-  factory CopyWith$Query$FetchCheckoutData$customerCart$prices$subtotal_with_discount_excluding_tax.stub(
+  factory CopyWith$Query$FetchCheckoutData$customerCart$prices$discounts$amount.stub(
           TRes res) =
-      _CopyWithStubImpl$Query$FetchCheckoutData$customerCart$prices$subtotal_with_discount_excluding_tax;
+      _CopyWithStubImpl$Query$FetchCheckoutData$customerCart$prices$discounts$amount;
 
   TRes call({
     Enum$CurrencyEnum? currency,
@@ -1542,22 +2033,20 @@ abstract class CopyWith$Query$FetchCheckoutData$customerCart$prices$subtotal_wit
   });
 }
 
-class _CopyWithImpl$Query$FetchCheckoutData$customerCart$prices$subtotal_with_discount_excluding_tax<
+class _CopyWithImpl$Query$FetchCheckoutData$customerCart$prices$discounts$amount<
         TRes>
     implements
-        CopyWith$Query$FetchCheckoutData$customerCart$prices$subtotal_with_discount_excluding_tax<
+        CopyWith$Query$FetchCheckoutData$customerCart$prices$discounts$amount<
             TRes> {
-  _CopyWithImpl$Query$FetchCheckoutData$customerCart$prices$subtotal_with_discount_excluding_tax(
+  _CopyWithImpl$Query$FetchCheckoutData$customerCart$prices$discounts$amount(
     this._instance,
     this._then,
   );
 
-  final Query$FetchCheckoutData$customerCart$prices$subtotal_with_discount_excluding_tax
-      _instance;
+  final Query$FetchCheckoutData$customerCart$prices$discounts$amount _instance;
 
   final TRes Function(
-          Query$FetchCheckoutData$customerCart$prices$subtotal_with_discount_excluding_tax)
-      _then;
+      Query$FetchCheckoutData$customerCart$prices$discounts$amount) _then;
 
   static const _undefined = <dynamic, dynamic>{};
 
@@ -1566,8 +2055,7 @@ class _CopyWithImpl$Query$FetchCheckoutData$customerCart$prices$subtotal_with_di
     Object? value = _undefined,
     Object? $__typename = _undefined,
   }) =>
-      _then(
-          Query$FetchCheckoutData$customerCart$prices$subtotal_with_discount_excluding_tax(
+      _then(Query$FetchCheckoutData$customerCart$prices$discounts$amount(
         currency: currency == _undefined
             ? _instance.currency
             : (currency as Enum$CurrencyEnum?),
@@ -1578,12 +2066,175 @@ class _CopyWithImpl$Query$FetchCheckoutData$customerCart$prices$subtotal_with_di
       ));
 }
 
-class _CopyWithStubImpl$Query$FetchCheckoutData$customerCart$prices$subtotal_with_discount_excluding_tax<
+class _CopyWithStubImpl$Query$FetchCheckoutData$customerCart$prices$discounts$amount<
         TRes>
     implements
-        CopyWith$Query$FetchCheckoutData$customerCart$prices$subtotal_with_discount_excluding_tax<
+        CopyWith$Query$FetchCheckoutData$customerCart$prices$discounts$amount<
             TRes> {
-  _CopyWithStubImpl$Query$FetchCheckoutData$customerCart$prices$subtotal_with_discount_excluding_tax(
+  _CopyWithStubImpl$Query$FetchCheckoutData$customerCart$prices$discounts$amount(
+      this._res);
+
+  TRes _res;
+
+  call({
+    Enum$CurrencyEnum? currency,
+    double? value,
+    String? $__typename,
+  }) =>
+      _res;
+}
+
+class Query$FetchCheckoutData$customerCart$prices$subtotal_excluding_tax {
+  Query$FetchCheckoutData$customerCart$prices$subtotal_excluding_tax({
+    this.currency,
+    this.value,
+    this.$__typename = 'Money',
+  });
+
+  factory Query$FetchCheckoutData$customerCart$prices$subtotal_excluding_tax.fromJson(
+      Map<String, dynamic> json) {
+    final l$currency = json['currency'];
+    final l$value = json['value'];
+    final l$$__typename = json['__typename'];
+    return Query$FetchCheckoutData$customerCart$prices$subtotal_excluding_tax(
+      currency: l$currency == null
+          ? null
+          : fromJson$Enum$CurrencyEnum((l$currency as String)),
+      value: (l$value as num?)?.toDouble(),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final Enum$CurrencyEnum? currency;
+
+  final double? value;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$currency = currency;
+    _resultData['currency'] =
+        l$currency == null ? null : toJson$Enum$CurrencyEnum(l$currency);
+    final l$value = value;
+    _resultData['value'] = l$value;
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$currency = currency;
+    final l$value = value;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$currency,
+      l$value,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other
+            is Query$FetchCheckoutData$customerCart$prices$subtotal_excluding_tax) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$currency = currency;
+    final lOther$currency = other.currency;
+    if (l$currency != lOther$currency) {
+      return false;
+    }
+    final l$value = value;
+    final lOther$value = other.value;
+    if (l$value != lOther$value) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$FetchCheckoutData$customerCart$prices$subtotal_excluding_tax
+    on Query$FetchCheckoutData$customerCart$prices$subtotal_excluding_tax {
+  CopyWith$Query$FetchCheckoutData$customerCart$prices$subtotal_excluding_tax<
+          Query$FetchCheckoutData$customerCart$prices$subtotal_excluding_tax>
+      get copyWith =>
+          CopyWith$Query$FetchCheckoutData$customerCart$prices$subtotal_excluding_tax(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Query$FetchCheckoutData$customerCart$prices$subtotal_excluding_tax<
+    TRes> {
+  factory CopyWith$Query$FetchCheckoutData$customerCart$prices$subtotal_excluding_tax(
+    Query$FetchCheckoutData$customerCart$prices$subtotal_excluding_tax instance,
+    TRes Function(
+            Query$FetchCheckoutData$customerCart$prices$subtotal_excluding_tax)
+        then,
+  ) = _CopyWithImpl$Query$FetchCheckoutData$customerCart$prices$subtotal_excluding_tax;
+
+  factory CopyWith$Query$FetchCheckoutData$customerCart$prices$subtotal_excluding_tax.stub(
+          TRes res) =
+      _CopyWithStubImpl$Query$FetchCheckoutData$customerCart$prices$subtotal_excluding_tax;
+
+  TRes call({
+    Enum$CurrencyEnum? currency,
+    double? value,
+    String? $__typename,
+  });
+}
+
+class _CopyWithImpl$Query$FetchCheckoutData$customerCart$prices$subtotal_excluding_tax<
+        TRes>
+    implements
+        CopyWith$Query$FetchCheckoutData$customerCart$prices$subtotal_excluding_tax<
+            TRes> {
+  _CopyWithImpl$Query$FetchCheckoutData$customerCart$prices$subtotal_excluding_tax(
+    this._instance,
+    this._then,
+  );
+
+  final Query$FetchCheckoutData$customerCart$prices$subtotal_excluding_tax
+      _instance;
+
+  final TRes Function(
+      Query$FetchCheckoutData$customerCart$prices$subtotal_excluding_tax) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? currency = _undefined,
+    Object? value = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Query$FetchCheckoutData$customerCart$prices$subtotal_excluding_tax(
+        currency: currency == _undefined
+            ? _instance.currency
+            : (currency as Enum$CurrencyEnum?),
+        value: value == _undefined ? _instance.value : (value as double?),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+}
+
+class _CopyWithStubImpl$Query$FetchCheckoutData$customerCart$prices$subtotal_excluding_tax<
+        TRes>
+    implements
+        CopyWith$Query$FetchCheckoutData$customerCart$prices$subtotal_excluding_tax<
+            TRes> {
+  _CopyWithStubImpl$Query$FetchCheckoutData$customerCart$prices$subtotal_excluding_tax(
       this._res);
 
   TRes _res;

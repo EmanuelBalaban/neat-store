@@ -318,14 +318,86 @@ const documentNodeMutationSetPaymentMethodOnCart = DocumentNode(definitions: [
                 selectionSet: null,
               ),
               FieldNode(
+                name: NameNode(value: 'applied_coupons'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: SelectionSetNode(selections: [
+                  FieldNode(
+                    name: NameNode(value: 'code'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                  FieldNode(
+                    name: NameNode(value: '__typename'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                ]),
+              ),
+              FieldNode(
                 name: NameNode(value: 'prices'),
                 alias: null,
                 arguments: [],
                 directives: [],
                 selectionSet: SelectionSetNode(selections: [
                   FieldNode(
-                    name:
-                        NameNode(value: 'subtotal_with_discount_excluding_tax'),
+                    name: NameNode(value: 'discounts'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: SelectionSetNode(selections: [
+                      FieldNode(
+                        name: NameNode(value: 'amount'),
+                        alias: null,
+                        arguments: [],
+                        directives: [],
+                        selectionSet: SelectionSetNode(selections: [
+                          FieldNode(
+                            name: NameNode(value: 'currency'),
+                            alias: null,
+                            arguments: [],
+                            directives: [],
+                            selectionSet: null,
+                          ),
+                          FieldNode(
+                            name: NameNode(value: 'value'),
+                            alias: null,
+                            arguments: [],
+                            directives: [],
+                            selectionSet: null,
+                          ),
+                          FieldNode(
+                            name: NameNode(value: '__typename'),
+                            alias: null,
+                            arguments: [],
+                            directives: [],
+                            selectionSet: null,
+                          ),
+                        ]),
+                      ),
+                      FieldNode(
+                        name: NameNode(value: 'label'),
+                        alias: null,
+                        arguments: [],
+                        directives: [],
+                        selectionSet: null,
+                      ),
+                      FieldNode(
+                        name: NameNode(value: '__typename'),
+                        alias: null,
+                        arguments: [],
+                        directives: [],
+                        selectionSet: null,
+                      ),
+                    ]),
+                  ),
+                  FieldNode(
+                    name: NameNode(value: 'subtotal_excluding_tax'),
                     alias: null,
                     arguments: [],
                     directives: [],
@@ -1118,6 +1190,7 @@ class Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart {
   Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart({
     required this.id,
     required this.total_quantity,
+    this.applied_coupons,
     this.prices,
     required this.shipping_addresses,
     this.billing_address,
@@ -1130,6 +1203,7 @@ class Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart {
       Map<String, dynamic> json) {
     final l$id = json['id'];
     final l$total_quantity = json['total_quantity'];
+    final l$applied_coupons = json['applied_coupons'];
     final l$prices = json['prices'];
     final l$shipping_addresses = json['shipping_addresses'];
     final l$billing_address = json['billing_address'];
@@ -1139,6 +1213,12 @@ class Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart {
     return Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart(
       id: (l$id as String),
       total_quantity: (l$total_quantity as num).toDouble(),
+      applied_coupons: (l$applied_coupons as List<dynamic>?)
+          ?.map((e) => e == null
+              ? null
+              : Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$applied_coupons
+                  .fromJson((e as Map<String, dynamic>)))
+          .toList(),
       prices: l$prices == null
           ? null
           : Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices
@@ -1171,6 +1251,10 @@ class Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart {
 
   final double total_quantity;
 
+  final List<
+          Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$applied_coupons?>?
+      applied_coupons;
+
   final Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices?
       prices;
 
@@ -1196,6 +1280,9 @@ class Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart {
     _resultData['id'] = l$id;
     final l$total_quantity = total_quantity;
     _resultData['total_quantity'] = l$total_quantity;
+    final l$applied_coupons = applied_coupons;
+    _resultData['applied_coupons'] =
+        l$applied_coupons?.map((e) => e?.toJson()).toList();
     final l$prices = prices;
     _resultData['prices'] = l$prices?.toJson();
     final l$shipping_addresses = shipping_addresses;
@@ -1218,6 +1305,7 @@ class Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart {
   int get hashCode {
     final l$id = id;
     final l$total_quantity = total_quantity;
+    final l$applied_coupons = applied_coupons;
     final l$prices = prices;
     final l$shipping_addresses = shipping_addresses;
     final l$billing_address = billing_address;
@@ -1227,6 +1315,9 @@ class Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart {
     return Object.hashAll([
       l$id,
       l$total_quantity,
+      l$applied_coupons == null
+          ? null
+          : Object.hashAll(l$applied_coupons.map((v) => v)),
       l$prices,
       Object.hashAll(l$shipping_addresses.map((v) => v)),
       l$billing_address,
@@ -1256,6 +1347,22 @@ class Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart {
     final l$total_quantity = total_quantity;
     final lOther$total_quantity = other.total_quantity;
     if (l$total_quantity != lOther$total_quantity) {
+      return false;
+    }
+    final l$applied_coupons = applied_coupons;
+    final lOther$applied_coupons = other.applied_coupons;
+    if (l$applied_coupons != null && lOther$applied_coupons != null) {
+      if (l$applied_coupons.length != lOther$applied_coupons.length) {
+        return false;
+      }
+      for (int i = 0; i < l$applied_coupons.length; i++) {
+        final l$applied_coupons$entry = l$applied_coupons[i];
+        final lOther$applied_coupons$entry = lOther$applied_coupons[i];
+        if (l$applied_coupons$entry != lOther$applied_coupons$entry) {
+          return false;
+        }
+      }
+    } else if (l$applied_coupons != lOther$applied_coupons) {
       return false;
     }
     final l$prices = prices;
@@ -1342,6 +1449,8 @@ abstract class CopyWith$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$c
   TRes call({
     String? id,
     double? total_quantity,
+    List<Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$applied_coupons?>?
+        applied_coupons,
     Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices? prices,
     List<Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$shipping_addresses?>?
         shipping_addresses,
@@ -1353,6 +1462,12 @@ abstract class CopyWith$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$c
         selected_payment_method,
     String? $__typename,
   });
+  TRes applied_coupons(
+      Iterable<Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$applied_coupons?>? Function(
+              Iterable<
+                  CopyWith$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$applied_coupons<
+                      Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$applied_coupons>?>?)
+          _fn);
   CopyWith$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices<
       TRes> get prices;
   TRes shipping_addresses(
@@ -1393,6 +1508,7 @@ class _CopyWithImpl$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart<
   TRes call({
     Object? id = _undefined,
     Object? total_quantity = _undefined,
+    Object? applied_coupons = _undefined,
     Object? prices = _undefined,
     Object? shipping_addresses = _undefined,
     Object? billing_address = _undefined,
@@ -1405,6 +1521,10 @@ class _CopyWithImpl$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart<
         total_quantity: total_quantity == _undefined || total_quantity == null
             ? _instance.total_quantity
             : (total_quantity as double),
+        applied_coupons: applied_coupons == _undefined
+            ? _instance.applied_coupons
+            : (applied_coupons as List<
+                Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$applied_coupons?>?),
         prices: prices == _undefined
             ? _instance.prices
             : (prices
@@ -1430,6 +1550,20 @@ class _CopyWithImpl$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart<
             ? _instance.$__typename
             : ($__typename as String),
       ));
+
+  TRes applied_coupons(
+          Iterable<Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$applied_coupons?>? Function(
+                  Iterable<
+                      CopyWith$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$applied_coupons<
+                          Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$applied_coupons>?>?)
+              _fn) =>
+      call(
+          applied_coupons: _fn(_instance.applied_coupons?.map((e) => e == null
+              ? null
+              : CopyWith$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$applied_coupons(
+                  e,
+                  (i) => i,
+                )))?.toList());
 
   CopyWith$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices<
       TRes> get prices {
@@ -1506,6 +1640,8 @@ class _CopyWithStubImpl$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$c
   call({
     String? id,
     double? total_quantity,
+    List<Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$applied_coupons?>?
+        applied_coupons,
     Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices? prices,
     List<Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$shipping_addresses?>?
         shipping_addresses,
@@ -1518,6 +1654,8 @@ class _CopyWithStubImpl$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$c
     String? $__typename,
   }) =>
       _res;
+
+  applied_coupons(_fn) => _res;
 
   CopyWith$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices<
           TRes>
@@ -1542,26 +1680,176 @@ class _CopyWithStubImpl$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$c
               .stub(_res);
 }
 
+class Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$applied_coupons {
+  Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$applied_coupons({
+    required this.code,
+    this.$__typename = 'AppliedCoupon',
+  });
+
+  factory Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$applied_coupons.fromJson(
+      Map<String, dynamic> json) {
+    final l$code = json['code'];
+    final l$$__typename = json['__typename'];
+    return Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$applied_coupons(
+      code: (l$code as String),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final String code;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$code = code;
+    _resultData['code'] = l$code;
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$code = code;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$code,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other
+            is Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$applied_coupons) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$code = code;
+    final lOther$code = other.code;
+    if (l$code != lOther$code) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$applied_coupons
+    on Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$applied_coupons {
+  CopyWith$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$applied_coupons<
+          Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$applied_coupons>
+      get copyWith =>
+          CopyWith$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$applied_coupons(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$applied_coupons<
+    TRes> {
+  factory CopyWith$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$applied_coupons(
+    Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$applied_coupons
+        instance,
+    TRes Function(
+            Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$applied_coupons)
+        then,
+  ) = _CopyWithImpl$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$applied_coupons;
+
+  factory CopyWith$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$applied_coupons.stub(
+          TRes res) =
+      _CopyWithStubImpl$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$applied_coupons;
+
+  TRes call({
+    String? code,
+    String? $__typename,
+  });
+}
+
+class _CopyWithImpl$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$applied_coupons<
+        TRes>
+    implements
+        CopyWith$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$applied_coupons<
+            TRes> {
+  _CopyWithImpl$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$applied_coupons(
+    this._instance,
+    this._then,
+  );
+
+  final Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$applied_coupons
+      _instance;
+
+  final TRes Function(
+          Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$applied_coupons)
+      _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? code = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(
+          Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$applied_coupons(
+        code: code == _undefined || code == null
+            ? _instance.code
+            : (code as String),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+}
+
+class _CopyWithStubImpl$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$applied_coupons<
+        TRes>
+    implements
+        CopyWith$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$applied_coupons<
+            TRes> {
+  _CopyWithStubImpl$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$applied_coupons(
+      this._res);
+
+  TRes _res;
+
+  call({
+    String? code,
+    String? $__typename,
+  }) =>
+      _res;
+}
+
 class Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices {
   Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices({
-    this.subtotal_with_discount_excluding_tax,
+    this.discounts,
+    this.subtotal_excluding_tax,
     this.grand_total,
     this.$__typename = 'CartPrices',
   });
 
   factory Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices.fromJson(
       Map<String, dynamic> json) {
-    final l$subtotal_with_discount_excluding_tax =
-        json['subtotal_with_discount_excluding_tax'];
+    final l$discounts = json['discounts'];
+    final l$subtotal_excluding_tax = json['subtotal_excluding_tax'];
     final l$grand_total = json['grand_total'];
     final l$$__typename = json['__typename'];
     return Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices(
-      subtotal_with_discount_excluding_tax:
-          l$subtotal_with_discount_excluding_tax == null
+      discounts: (l$discounts as List<dynamic>?)
+          ?.map((e) => e == null
               ? null
-              : Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$subtotal_with_discount_excluding_tax
-                  .fromJson((l$subtotal_with_discount_excluding_tax
-                      as Map<String, dynamic>)),
+              : Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$discounts
+                  .fromJson((e as Map<String, dynamic>)))
+          .toList(),
+      subtotal_excluding_tax: l$subtotal_excluding_tax == null
+          ? null
+          : Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$subtotal_excluding_tax
+              .fromJson((l$subtotal_excluding_tax as Map<String, dynamic>)),
       grand_total: l$grand_total == null
           ? null
           : Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$grand_total
@@ -1570,8 +1858,12 @@ class Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices {
     );
   }
 
-  final Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$subtotal_with_discount_excluding_tax?
-      subtotal_with_discount_excluding_tax;
+  final List<
+          Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$discounts?>?
+      discounts;
+
+  final Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$subtotal_excluding_tax?
+      subtotal_excluding_tax;
 
   final Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$grand_total?
       grand_total;
@@ -1580,10 +1872,10 @@ class Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices {
 
   Map<String, dynamic> toJson() {
     final _resultData = <String, dynamic>{};
-    final l$subtotal_with_discount_excluding_tax =
-        subtotal_with_discount_excluding_tax;
-    _resultData['subtotal_with_discount_excluding_tax'] =
-        l$subtotal_with_discount_excluding_tax?.toJson();
+    final l$discounts = discounts;
+    _resultData['discounts'] = l$discounts?.map((e) => e?.toJson()).toList();
+    final l$subtotal_excluding_tax = subtotal_excluding_tax;
+    _resultData['subtotal_excluding_tax'] = l$subtotal_excluding_tax?.toJson();
     final l$grand_total = grand_total;
     _resultData['grand_total'] = l$grand_total?.toJson();
     final l$$__typename = $__typename;
@@ -1593,12 +1885,13 @@ class Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices {
 
   @override
   int get hashCode {
-    final l$subtotal_with_discount_excluding_tax =
-        subtotal_with_discount_excluding_tax;
+    final l$discounts = discounts;
+    final l$subtotal_excluding_tax = subtotal_excluding_tax;
     final l$grand_total = grand_total;
     final l$$__typename = $__typename;
     return Object.hashAll([
-      l$subtotal_with_discount_excluding_tax,
+      l$discounts == null ? null : Object.hashAll(l$discounts.map((v) => v)),
+      l$subtotal_excluding_tax,
       l$grand_total,
       l$$__typename,
     ]);
@@ -1614,12 +1907,25 @@ class Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices {
         runtimeType != other.runtimeType) {
       return false;
     }
-    final l$subtotal_with_discount_excluding_tax =
-        subtotal_with_discount_excluding_tax;
-    final lOther$subtotal_with_discount_excluding_tax =
-        other.subtotal_with_discount_excluding_tax;
-    if (l$subtotal_with_discount_excluding_tax !=
-        lOther$subtotal_with_discount_excluding_tax) {
+    final l$discounts = discounts;
+    final lOther$discounts = other.discounts;
+    if (l$discounts != null && lOther$discounts != null) {
+      if (l$discounts.length != lOther$discounts.length) {
+        return false;
+      }
+      for (int i = 0; i < l$discounts.length; i++) {
+        final l$discounts$entry = l$discounts[i];
+        final lOther$discounts$entry = lOther$discounts[i];
+        if (l$discounts$entry != lOther$discounts$entry) {
+          return false;
+        }
+      }
+    } else if (l$discounts != lOther$discounts) {
+      return false;
+    }
+    final l$subtotal_excluding_tax = subtotal_excluding_tax;
+    final lOther$subtotal_excluding_tax = other.subtotal_excluding_tax;
+    if (l$subtotal_excluding_tax != lOther$subtotal_excluding_tax) {
       return false;
     }
     final l$grand_total = grand_total;
@@ -1661,14 +1967,22 @@ abstract class CopyWith$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$c
       _CopyWithStubImpl$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices;
 
   TRes call({
-    Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$subtotal_with_discount_excluding_tax?
-        subtotal_with_discount_excluding_tax,
+    List<Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$discounts?>?
+        discounts,
+    Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$subtotal_excluding_tax?
+        subtotal_excluding_tax,
     Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$grand_total?
         grand_total,
     String? $__typename,
   });
-  CopyWith$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$subtotal_with_discount_excluding_tax<
-      TRes> get subtotal_with_discount_excluding_tax;
+  TRes discounts(
+      Iterable<Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$discounts?>? Function(
+              Iterable<
+                  CopyWith$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$discounts<
+                      Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$discounts>?>?)
+          _fn);
+  CopyWith$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$subtotal_excluding_tax<
+      TRes> get subtotal_excluding_tax;
   CopyWith$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$grand_total<
       TRes> get grand_total;
 }
@@ -1692,16 +2006,20 @@ class _CopyWithImpl$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$
   static const _undefined = <dynamic, dynamic>{};
 
   TRes call({
-    Object? subtotal_with_discount_excluding_tax = _undefined,
+    Object? discounts = _undefined,
+    Object? subtotal_excluding_tax = _undefined,
     Object? grand_total = _undefined,
     Object? $__typename = _undefined,
   }) =>
       _then(Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices(
-        subtotal_with_discount_excluding_tax:
-            subtotal_with_discount_excluding_tax == _undefined
-                ? _instance.subtotal_with_discount_excluding_tax
-                : (subtotal_with_discount_excluding_tax
-                    as Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$subtotal_with_discount_excluding_tax?),
+        discounts: discounts == _undefined
+            ? _instance.discounts
+            : (discounts as List<
+                Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$discounts?>?),
+        subtotal_excluding_tax: subtotal_excluding_tax == _undefined
+            ? _instance.subtotal_excluding_tax
+            : (subtotal_excluding_tax
+                as Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$subtotal_excluding_tax?),
         grand_total: grand_total == _undefined
             ? _instance.grand_total
             : (grand_total
@@ -1711,16 +2029,29 @@ class _CopyWithImpl$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$
             : ($__typename as String),
       ));
 
-  CopyWith$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$subtotal_with_discount_excluding_tax<
-      TRes> get subtotal_with_discount_excluding_tax {
-    final local$subtotal_with_discount_excluding_tax =
-        _instance.subtotal_with_discount_excluding_tax;
-    return local$subtotal_with_discount_excluding_tax == null
-        ? CopyWith$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$subtotal_with_discount_excluding_tax
+  TRes discounts(
+          Iterable<Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$discounts?>? Function(
+                  Iterable<
+                      CopyWith$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$discounts<
+                          Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$discounts>?>?)
+              _fn) =>
+      call(
+          discounts: _fn(_instance.discounts?.map((e) => e == null
+              ? null
+              : CopyWith$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$discounts(
+                  e,
+                  (i) => i,
+                )))?.toList());
+
+  CopyWith$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$subtotal_excluding_tax<
+      TRes> get subtotal_excluding_tax {
+    final local$subtotal_excluding_tax = _instance.subtotal_excluding_tax;
+    return local$subtotal_excluding_tax == null
+        ? CopyWith$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$subtotal_excluding_tax
             .stub(_then(_instance))
-        : CopyWith$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$subtotal_with_discount_excluding_tax(
-            local$subtotal_with_discount_excluding_tax,
-            (e) => call(subtotal_with_discount_excluding_tax: e));
+        : CopyWith$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$subtotal_excluding_tax(
+            local$subtotal_excluding_tax,
+            (e) => call(subtotal_excluding_tax: e));
   }
 
   CopyWith$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$grand_total<
@@ -1745,18 +2076,22 @@ class _CopyWithStubImpl$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$c
   TRes _res;
 
   call({
-    Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$subtotal_with_discount_excluding_tax?
-        subtotal_with_discount_excluding_tax,
+    List<Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$discounts?>?
+        discounts,
+    Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$subtotal_excluding_tax?
+        subtotal_excluding_tax,
     Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$grand_total?
         grand_total,
     String? $__typename,
   }) =>
       _res;
 
-  CopyWith$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$subtotal_with_discount_excluding_tax<
+  discounts(_fn) => _res;
+
+  CopyWith$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$subtotal_excluding_tax<
           TRes>
-      get subtotal_with_discount_excluding_tax =>
-          CopyWith$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$subtotal_with_discount_excluding_tax
+      get subtotal_excluding_tax =>
+          CopyWith$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$subtotal_excluding_tax
               .stub(_res);
 
   CopyWith$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$grand_total<
@@ -1766,19 +2101,205 @@ class _CopyWithStubImpl$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$c
               .stub(_res);
 }
 
-class Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$subtotal_with_discount_excluding_tax {
-  Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$subtotal_with_discount_excluding_tax({
+class Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$discounts {
+  Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$discounts({
+    required this.amount,
+    required this.label,
+    this.$__typename = 'Discount',
+  });
+
+  factory Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$discounts.fromJson(
+      Map<String, dynamic> json) {
+    final l$amount = json['amount'];
+    final l$label = json['label'];
+    final l$$__typename = json['__typename'];
+    return Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$discounts(
+      amount:
+          Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$discounts$amount
+              .fromJson((l$amount as Map<String, dynamic>)),
+      label: (l$label as String),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$discounts$amount
+      amount;
+
+  final String label;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$amount = amount;
+    _resultData['amount'] = l$amount.toJson();
+    final l$label = label;
+    _resultData['label'] = l$label;
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$amount = amount;
+    final l$label = label;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$amount,
+      l$label,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other
+            is Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$discounts) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$amount = amount;
+    final lOther$amount = other.amount;
+    if (l$amount != lOther$amount) {
+      return false;
+    }
+    final l$label = label;
+    final lOther$label = other.label;
+    if (l$label != lOther$label) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$discounts
+    on Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$discounts {
+  CopyWith$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$discounts<
+          Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$discounts>
+      get copyWith =>
+          CopyWith$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$discounts(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$discounts<
+    TRes> {
+  factory CopyWith$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$discounts(
+    Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$discounts
+        instance,
+    TRes Function(
+            Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$discounts)
+        then,
+  ) = _CopyWithImpl$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$discounts;
+
+  factory CopyWith$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$discounts.stub(
+          TRes res) =
+      _CopyWithStubImpl$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$discounts;
+
+  TRes call({
+    Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$discounts$amount?
+        amount,
+    String? label,
+    String? $__typename,
+  });
+  CopyWith$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$discounts$amount<
+      TRes> get amount;
+}
+
+class _CopyWithImpl$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$discounts<
+        TRes>
+    implements
+        CopyWith$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$discounts<
+            TRes> {
+  _CopyWithImpl$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$discounts(
+    this._instance,
+    this._then,
+  );
+
+  final Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$discounts
+      _instance;
+
+  final TRes Function(
+          Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$discounts)
+      _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? amount = _undefined,
+    Object? label = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(
+          Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$discounts(
+        amount: amount == _undefined || amount == null
+            ? _instance.amount
+            : (amount
+                as Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$discounts$amount),
+        label: label == _undefined || label == null
+            ? _instance.label
+            : (label as String),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+
+  CopyWith$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$discounts$amount<
+      TRes> get amount {
+    final local$amount = _instance.amount;
+    return CopyWith$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$discounts$amount(
+        local$amount, (e) => call(amount: e));
+  }
+}
+
+class _CopyWithStubImpl$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$discounts<
+        TRes>
+    implements
+        CopyWith$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$discounts<
+            TRes> {
+  _CopyWithStubImpl$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$discounts(
+      this._res);
+
+  TRes _res;
+
+  call({
+    Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$discounts$amount?
+        amount,
+    String? label,
+    String? $__typename,
+  }) =>
+      _res;
+
+  CopyWith$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$discounts$amount<
+          TRes>
+      get amount =>
+          CopyWith$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$discounts$amount
+              .stub(_res);
+}
+
+class Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$discounts$amount {
+  Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$discounts$amount({
     this.currency,
     this.value,
     this.$__typename = 'Money',
   });
 
-  factory Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$subtotal_with_discount_excluding_tax.fromJson(
+  factory Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$discounts$amount.fromJson(
       Map<String, dynamic> json) {
     final l$currency = json['currency'];
     final l$value = json['value'];
     final l$$__typename = json['__typename'];
-    return Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$subtotal_with_discount_excluding_tax(
+    return Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$discounts$amount(
       currency: l$currency == null
           ? null
           : fromJson$Enum$CurrencyEnum((l$currency as String)),
@@ -1823,7 +2344,7 @@ class Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$subtota
       return true;
     }
     if (!(other
-            is Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$subtotal_with_discount_excluding_tax) ||
+            is Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$discounts$amount) ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -1846,30 +2367,30 @@ class Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$subtota
   }
 }
 
-extension UtilityExtension$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$subtotal_with_discount_excluding_tax
-    on Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$subtotal_with_discount_excluding_tax {
-  CopyWith$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$subtotal_with_discount_excluding_tax<
-          Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$subtotal_with_discount_excluding_tax>
+extension UtilityExtension$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$discounts$amount
+    on Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$discounts$amount {
+  CopyWith$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$discounts$amount<
+          Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$discounts$amount>
       get copyWith =>
-          CopyWith$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$subtotal_with_discount_excluding_tax(
+          CopyWith$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$discounts$amount(
             this,
             (i) => i,
           );
 }
 
-abstract class CopyWith$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$subtotal_with_discount_excluding_tax<
+abstract class CopyWith$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$discounts$amount<
     TRes> {
-  factory CopyWith$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$subtotal_with_discount_excluding_tax(
-    Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$subtotal_with_discount_excluding_tax
+  factory CopyWith$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$discounts$amount(
+    Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$discounts$amount
         instance,
     TRes Function(
-            Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$subtotal_with_discount_excluding_tax)
+            Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$discounts$amount)
         then,
-  ) = _CopyWithImpl$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$subtotal_with_discount_excluding_tax;
+  ) = _CopyWithImpl$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$discounts$amount;
 
-  factory CopyWith$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$subtotal_with_discount_excluding_tax.stub(
+  factory CopyWith$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$discounts$amount.stub(
           TRes res) =
-      _CopyWithStubImpl$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$subtotal_with_discount_excluding_tax;
+      _CopyWithStubImpl$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$discounts$amount;
 
   TRes call({
     Enum$CurrencyEnum? currency,
@@ -1878,21 +2399,21 @@ abstract class CopyWith$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$c
   });
 }
 
-class _CopyWithImpl$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$subtotal_with_discount_excluding_tax<
+class _CopyWithImpl$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$discounts$amount<
         TRes>
     implements
-        CopyWith$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$subtotal_with_discount_excluding_tax<
+        CopyWith$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$discounts$amount<
             TRes> {
-  _CopyWithImpl$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$subtotal_with_discount_excluding_tax(
+  _CopyWithImpl$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$discounts$amount(
     this._instance,
     this._then,
   );
 
-  final Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$subtotal_with_discount_excluding_tax
+  final Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$discounts$amount
       _instance;
 
   final TRes Function(
-          Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$subtotal_with_discount_excluding_tax)
+          Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$discounts$amount)
       _then;
 
   static const _undefined = <dynamic, dynamic>{};
@@ -1903,7 +2424,7 @@ class _CopyWithImpl$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$
     Object? $__typename = _undefined,
   }) =>
       _then(
-          Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$subtotal_with_discount_excluding_tax(
+          Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$discounts$amount(
         currency: currency == _undefined
             ? _instance.currency
             : (currency as Enum$CurrencyEnum?),
@@ -1914,12 +2435,178 @@ class _CopyWithImpl$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$
       ));
 }
 
-class _CopyWithStubImpl$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$subtotal_with_discount_excluding_tax<
+class _CopyWithStubImpl$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$discounts$amount<
         TRes>
     implements
-        CopyWith$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$subtotal_with_discount_excluding_tax<
+        CopyWith$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$discounts$amount<
             TRes> {
-  _CopyWithStubImpl$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$subtotal_with_discount_excluding_tax(
+  _CopyWithStubImpl$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$discounts$amount(
+      this._res);
+
+  TRes _res;
+
+  call({
+    Enum$CurrencyEnum? currency,
+    double? value,
+    String? $__typename,
+  }) =>
+      _res;
+}
+
+class Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$subtotal_excluding_tax {
+  Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$subtotal_excluding_tax({
+    this.currency,
+    this.value,
+    this.$__typename = 'Money',
+  });
+
+  factory Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$subtotal_excluding_tax.fromJson(
+      Map<String, dynamic> json) {
+    final l$currency = json['currency'];
+    final l$value = json['value'];
+    final l$$__typename = json['__typename'];
+    return Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$subtotal_excluding_tax(
+      currency: l$currency == null
+          ? null
+          : fromJson$Enum$CurrencyEnum((l$currency as String)),
+      value: (l$value as num?)?.toDouble(),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final Enum$CurrencyEnum? currency;
+
+  final double? value;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$currency = currency;
+    _resultData['currency'] =
+        l$currency == null ? null : toJson$Enum$CurrencyEnum(l$currency);
+    final l$value = value;
+    _resultData['value'] = l$value;
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$currency = currency;
+    final l$value = value;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$currency,
+      l$value,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other
+            is Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$subtotal_excluding_tax) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$currency = currency;
+    final lOther$currency = other.currency;
+    if (l$currency != lOther$currency) {
+      return false;
+    }
+    final l$value = value;
+    final lOther$value = other.value;
+    if (l$value != lOther$value) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$subtotal_excluding_tax
+    on Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$subtotal_excluding_tax {
+  CopyWith$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$subtotal_excluding_tax<
+          Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$subtotal_excluding_tax>
+      get copyWith =>
+          CopyWith$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$subtotal_excluding_tax(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$subtotal_excluding_tax<
+    TRes> {
+  factory CopyWith$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$subtotal_excluding_tax(
+    Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$subtotal_excluding_tax
+        instance,
+    TRes Function(
+            Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$subtotal_excluding_tax)
+        then,
+  ) = _CopyWithImpl$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$subtotal_excluding_tax;
+
+  factory CopyWith$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$subtotal_excluding_tax.stub(
+          TRes res) =
+      _CopyWithStubImpl$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$subtotal_excluding_tax;
+
+  TRes call({
+    Enum$CurrencyEnum? currency,
+    double? value,
+    String? $__typename,
+  });
+}
+
+class _CopyWithImpl$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$subtotal_excluding_tax<
+        TRes>
+    implements
+        CopyWith$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$subtotal_excluding_tax<
+            TRes> {
+  _CopyWithImpl$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$subtotal_excluding_tax(
+    this._instance,
+    this._then,
+  );
+
+  final Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$subtotal_excluding_tax
+      _instance;
+
+  final TRes Function(
+          Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$subtotal_excluding_tax)
+      _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({
+    Object? currency = _undefined,
+    Object? value = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(
+          Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$subtotal_excluding_tax(
+        currency: currency == _undefined
+            ? _instance.currency
+            : (currency as Enum$CurrencyEnum?),
+        value: value == _undefined ? _instance.value : (value as double?),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+}
+
+class _CopyWithStubImpl$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$subtotal_excluding_tax<
+        TRes>
+    implements
+        CopyWith$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$subtotal_excluding_tax<
+            TRes> {
+  _CopyWithStubImpl$Mutation$SetPaymentMethodOnCart$setPaymentMethodOnCart$cart$prices$subtotal_excluding_tax(
       this._res);
 
   TRes _res;

@@ -9,6 +9,7 @@ import 'package:neat_store_frontend/core/business_logic/customer/customer_cubit.
 import 'package:neat_store_frontend/core/data/models/payment/payment_method_input_model.dart';
 import 'package:neat_store_frontend/core/utils/translations.dart';
 import 'package:neat_store_frontend/core/widgets/address/address_view.dart';
+import 'package:neat_store_frontend/features/checkout/presentation/widgets/coupon_code_input.dart';
 
 class CheckoutContainer extends StatefulWidget {
   const CheckoutContainer({super.key});
@@ -227,7 +228,7 @@ class _CheckoutContainerState extends State<CheckoutContainer> {
               // Billing
               Row(
                 children: [
-                  const Icon(Icons.description),
+                  const Icon(Icons.description_outlined),
                   const SizedBox(width: 4),
                   Text(
                     l10n.billing,
@@ -311,7 +312,6 @@ class _CheckoutContainerState extends State<CheckoutContainer> {
                               cart.availablePaymentMethods[index];
 
                           void onSelected() {
-                            // TODO: handle stripe payments
                             _cartCubit.setPaymentMethod(
                               paymentMethod: PaymentMethodInputModel(
                                 code: paymentMethod.code.toJson(),
@@ -345,6 +345,26 @@ class _CheckoutContainerState extends State<CheckoutContainer> {
                       ),
                     ],
                   ],
+                ),
+              ),
+
+              // Promo
+              const SizedBox(height: 48),
+              Row(
+                children: [
+                  const Icon(Icons.savings_outlined),
+                  const SizedBox(width: 4),
+                  Text(
+                    l10n.discounts,
+                    style: textTheme.headlineSmall,
+                  ),
+                ],
+              ),
+              const SizedBox(height: 6),
+              Padding(
+                padding: const EdgeInsets.only(left: 30),
+                child: CouponCodeInput(
+                  appliedDiscount: cart.prices.discount,
                 ),
               ),
             ],

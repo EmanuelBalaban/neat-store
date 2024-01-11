@@ -6,6 +6,8 @@ typedef RemoveProductFromCartState = AsyncValue<Void?>;
 typedef UpdateProductQuantityState = AsyncValue<Void?>;
 typedef SetShippingMethodState = AsyncValue<Void?>;
 typedef SetPaymentMethodState = AsyncValue<Void?>;
+typedef ApplyCouponCodeState = AsyncValue<Void?>;
+typedef RemoveCouponCodeState = AsyncValue<Void?>;
 typedef PlaceOrderState = AsyncValue<String?>;
 
 @freezed
@@ -19,6 +21,8 @@ class CartState with _$CartState {
     required UpdateProductQuantityState updateProductQuantityState,
     required SetShippingMethodState setShippingMethodState,
     required SetPaymentMethodState setPaymentMethodState,
+    required ApplyCouponCodeState applyCouponCodeState,
+    required RemoveCouponCodeState removeCouponCodeState,
     required PlaceOrderState placeOrderState,
     required String? stripeClientSecret,
     required String? stripePaymentMethodId,
@@ -31,6 +35,8 @@ class CartState with _$CartState {
         updateProductQuantityState: UpdateProductQuantityState.data(null),
         setShippingMethodState: SetShippingMethodState.data(null),
         setPaymentMethodState: SetPaymentMethodState.data(null),
+        applyCouponCodeState: ApplyCouponCodeState.data(null),
+        removeCouponCodeState: RemoveCouponCodeState.data(null),
         placeOrderState: PlaceOrderState.data(null),
         stripeClientSecret: null,
         stripePaymentMethodId: null,

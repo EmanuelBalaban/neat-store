@@ -2,8 +2,18 @@ query FetchCheckoutData {
     customerCart {
         id
         total_quantity
+        applied_coupons {
+            code
+        }
         prices {
-            subtotal_with_discount_excluding_tax {
+            discounts {
+                amount {
+                    currency
+                    value
+                }
+                label
+            }
+            subtotal_excluding_tax {
                 currency
                 value
             }

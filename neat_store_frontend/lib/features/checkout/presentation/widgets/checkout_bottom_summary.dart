@@ -53,6 +53,19 @@ class CheckoutBottomSummary extends StatelessWidget {
                   ),
                 ],
               ),
+              if (cart.prices.discount != null)
+                Row(
+                  children: [
+                    Text(
+                      '${l10n.discount}:',
+                      style: Theme.of(context).textTheme.titleMedium,
+                    ),
+                    const SizedBox(width: 4),
+                    RegionalPrice(
+                      price: cart.prices.discount?.amount ?? const MoneyModel(),
+                    ),
+                  ],
+                ),
               if (cart.selectedShippingMethod?.amount != null)
                 Row(
                   children: [

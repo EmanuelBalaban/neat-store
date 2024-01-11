@@ -343,6 +343,71 @@ class CartCubit extends Cubit<CartState> {
     }
   }
 
+  Future<void> applyCouponCode({
+    required String couponCode,
+  }) async {
+    final cartId = cart?.id ?? '';
+
+    emit(
+      state.copyWith(
+        applyCouponCodeState: const ApplyCouponCodeState.loading(),
+      ),
+    );
+
+    try {
+      final cart = await _cartRepository.applyCouponCode(
+        cartId: cartId,
+        couponCode: couponCode,
+      );
+
+      emit(
+        state.copyWith(
+          fetchCartState: FetchCartState.data(cart),
+          applyCouponCodeState: const ApplyCouponCodeState.data(Void()),
+        ),
+      );
+    } catch (error, stackTrace) {
+      emit(
+        state.copyWith(
+          applyCouponCodeState: ApplyCouponCodeState.error(
+            error,
+            stackTrace,
+          ),
+        ),
+      );
+    }
+  }
+
+  Future<void> removeCouponCode() async {
+    final cartId = cart?.id ?? '';
+
+    emit(
+      state.copyWith(
+        removeCouponCodeState: const RemoveCouponCodeState.loading(),
+      ),
+    );
+
+    try {
+      final cart = await _cartRepository.removeCouponCode(cartId: cartId);
+
+      emit(
+        state.copyWith(
+          fetchCartState: FetchCartState.data(cart),
+          removeCouponCodeState: const RemoveCouponCodeState.data(Void()),
+        ),
+      );
+    } catch (error, stackTrace) {
+      emit(
+        state.copyWith(
+          removeCouponCodeState: RemoveCouponCodeState.error(
+            error,
+            stackTrace,
+          ),
+        ),
+      );
+    }
+  }
+
   Future<void> placeOrder() async {
     final cartId = cart?.id ?? '';
 
