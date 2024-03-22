@@ -1,6 +1,8 @@
 import 'dart:convert';
 import 'dart:isolate';
 
+import 'package:flutter/foundation.dart';
+
 import 'package:graphql/client.dart';
 import 'package:logger/logger.dart';
 
@@ -27,30 +29,32 @@ class LoggerLink extends Link {
           final map = Map.from(response.response);
           final errors = response.errors?.toList();
 
-          Isolate.run(() {
-            // Create a new logger since isolates cannot access variables from
-            // the main isolate.
-            final logger = Logger(
-              printer: PrettyPrinter(
-                methodCount: 1,
-                errorMethodCount: null,
-                printTime: true,
-                printEmojis: false,
-              ),
-              filter: DebugFilter(),
-            );
-
-            final message = encoder.convert(map);
-
-            if (errors?.isNotEmpty ?? false) {
-              logger.e(
-                message,
-                error: errors?.first,
+          if (!kIsWeb) {
+            Isolate.run(() {
+              // Create a new logger since isolates cannot access variables from
+              // the main isolate.
+              final logger = Logger(
+                printer: PrettyPrinter(
+                  methodCount: 1,
+                  errorMethodCount: null,
+                  printTime: true,
+                  printEmojis: false,
+                ),
+                filter: DebugFilter(),
               );
-            } else {
-              logger.d(message);
-            }
-          });
+
+              final message = encoder.convert(map);
+
+              if (errors?.isNotEmpty ?? false) {
+                logger.e(
+                  message,
+                  error: errors?.first,
+                );
+              } else {
+                logger.d(message);
+              }
+            });
+          }
 
           return response;
         }).handleError((error) {
