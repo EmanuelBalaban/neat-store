@@ -41,7 +41,7 @@ Now check if you can access docker in your distribution terminal:
 Create a directory for Magento site by running:
 
 ```shell
-mkdir -p ~/Sites/magento
+mkdir -p ~/workspace/magento
 ```
 
 Change working directory to the newly created dir:
@@ -53,8 +53,12 @@ cd $_
 Install Magento:
 
 ```shell
-curl -s https://raw.githubusercontent.com/markshust/docker-magento/master/lib/onelinesetup | bash -s -- magento.test 2.4.6-p2 community
+curl -s https://raw.githubusercontent.com/markshust/docker-magento/master/lib/onelinesetup | bash -s -- magento.test 2.4.6-p4 community
 ```
+
+The keys for repo.magento.com can be fetched from https://commercemarketplace.adobe.com/customer/accessKeys/
+
+[Next, install certificate in Windows (optional).](doc/install_certificate.md)
 
 ### 4. Install sample data (optional)
 
@@ -63,10 +67,15 @@ bin/magento sampledata:deploy
 bin/magento setup:upgrade
 ```
 
-
 ### Install fails because project directory is not empty
 
 Follow the steps from here: https://github.com/markshust/docker-magento#install-fails-because-project-directory-is-not-empty
+
+### 5. Copy files from this directory
+
+After copying files from this directory, run `bin/magento setup:upgrade` to enable the custom modules.
+
+To check if everything is working, run `bin/magento module:status`.
 
 ### 5. Add magento.test to your Windows hosts file
 
@@ -74,3 +83,11 @@ Follow the steps from here: https://github.com/markshust/docker-magento#install-
 * Open file `C:\Windows\System32\drivers\etc\hosts`.
 * Append `127.0.0.1 ::1 magento.test` to the end of the file.
 * Save.
+
+### 6. Go to admin panel and enable 2FA authentication
+
+Go to https://magento.test/admin.
+
+Login with `john.smith` : `password123`.
+
+Go to http://magento.test:1080/.
