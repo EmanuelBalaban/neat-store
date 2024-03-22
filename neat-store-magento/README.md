@@ -77,6 +77,10 @@ After copying files from this directory, run `bin/magento setup:upgrade` to enab
 
 To check if everything is working, run `bin/magento module:status`.
 
+Next, import sql backup.
+
+If Stripe module doesn't apply, check https://www.mgt-commerce.com/tutorial/magento-2-stripe/.
+
 ### 5. Add magento.test to your Windows hosts file
 
 * Open Notepad in admin mode.
