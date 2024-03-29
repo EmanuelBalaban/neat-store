@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -24,10 +25,16 @@ class _StripeCreditCardDialogState extends State<StripeCreditCardDialog> {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
 
-    final enablePayButton = card.complete &&
-        card.validExpiryDate == CardValidationState.Valid &&
-        card.validCVC == CardValidationState.Valid &&
-        card.validNumber == CardValidationState.Valid;
+    bool enablePayButton;
+
+    if (kIsWeb) {
+      enablePayButton = card.complete;
+    } else {
+      enablePayButton = card.complete &&
+          card.validExpiryDate == CardValidationState.Valid &&
+          card.validCVC == CardValidationState.Valid &&
+          card.validNumber == CardValidationState.Valid;
+    }
 
     return Padding(
       // Note: Fix for keyboard not raising up
