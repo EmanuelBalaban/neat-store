@@ -7,6 +7,103 @@ import 'package:graphql/client.dart' as graphql;
 
 import '../magento.graphql.dart';
 
+class Variables$Query$FetchProducts {
+  factory Variables$Query$FetchProducts({required String query}) =>
+      Variables$Query$FetchProducts._({
+        r'query': query,
+      });
+
+  Variables$Query$FetchProducts._(this._$data);
+
+  factory Variables$Query$FetchProducts.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    final l$query = data['query'];
+    result$data['query'] = (l$query as String);
+    return Variables$Query$FetchProducts._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String get query => (_$data['query'] as String);
+
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    final l$query = query;
+    result$data['query'] = l$query;
+    return result$data;
+  }
+
+  CopyWith$Variables$Query$FetchProducts<Variables$Query$FetchProducts>
+      get copyWith => CopyWith$Variables$Query$FetchProducts(
+            this,
+            (i) => i,
+          );
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Variables$Query$FetchProducts) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$query = query;
+    final lOther$query = other.query;
+    if (l$query != lOther$query) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$query = query;
+    return Object.hashAll([l$query]);
+  }
+}
+
+abstract class CopyWith$Variables$Query$FetchProducts<TRes> {
+  factory CopyWith$Variables$Query$FetchProducts(
+    Variables$Query$FetchProducts instance,
+    TRes Function(Variables$Query$FetchProducts) then,
+  ) = _CopyWithImpl$Variables$Query$FetchProducts;
+
+  factory CopyWith$Variables$Query$FetchProducts.stub(TRes res) =
+      _CopyWithStubImpl$Variables$Query$FetchProducts;
+
+  TRes call({String? query});
+}
+
+class _CopyWithImpl$Variables$Query$FetchProducts<TRes>
+    implements CopyWith$Variables$Query$FetchProducts<TRes> {
+  _CopyWithImpl$Variables$Query$FetchProducts(
+    this._instance,
+    this._then,
+  );
+
+  final Variables$Query$FetchProducts _instance;
+
+  final TRes Function(Variables$Query$FetchProducts) _then;
+
+  static const _undefined = <dynamic, dynamic>{};
+
+  TRes call({Object? query = _undefined}) =>
+      _then(Variables$Query$FetchProducts._({
+        ..._instance._$data,
+        if (query != _undefined && query != null) 'query': (query as String),
+      }));
+}
+
+class _CopyWithStubImpl$Variables$Query$FetchProducts<TRes>
+    implements CopyWith$Variables$Query$FetchProducts<TRes> {
+  _CopyWithStubImpl$Variables$Query$FetchProducts(this._res);
+
+  TRes _res;
+
+  call({String? query}) => _res;
+}
+
 class Query$FetchProducts {
   Query$FetchProducts({
     this.products,
@@ -149,7 +246,17 @@ const documentNodeQueryFetchProducts = DocumentNode(definitions: [
   OperationDefinitionNode(
     type: OperationType.query,
     name: NameNode(value: 'FetchProducts'),
-    variableDefinitions: [],
+    variableDefinitions: [
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'query')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'String'),
+          isNonNull: true,
+        ),
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      )
+    ],
     directives: [],
     selectionSet: SelectionSetNode(selections: [
       FieldNode(
@@ -157,9 +264,13 @@ const documentNodeQueryFetchProducts = DocumentNode(definitions: [
         alias: null,
         arguments: [
           ArgumentNode(
-            name: NameNode(value: 'filter'),
-            value: ObjectValueNode(fields: []),
-          )
+            name: NameNode(value: 'search'),
+            value: VariableNode(name: NameNode(value: 'query')),
+          ),
+          ArgumentNode(
+            name: NameNode(value: 'pageSize'),
+            value: IntValueNode(value: '1000'),
+          ),
         ],
         directives: [],
         selectionSet: SelectionSetNode(selections: [
@@ -582,6 +693,7 @@ class Options$Query$FetchProducts
     extends graphql.QueryOptions<Query$FetchProducts> {
   Options$Query$FetchProducts({
     String? operationName,
+    required Variables$Query$FetchProducts variables,
     graphql.FetchPolicy? fetchPolicy,
     graphql.ErrorPolicy? errorPolicy,
     graphql.CacheRereadPolicy? cacheRereadPolicy,
@@ -593,6 +705,7 @@ class Options$Query$FetchProducts
     graphql.OnQueryError? onError,
   })  : onCompleteWithParsed = onComplete,
         super(
+          variables: variables.toJson(),
           operationName: operationName,
           fetchPolicy: fetchPolicy,
           errorPolicy: errorPolicy,
@@ -626,6 +739,7 @@ class WatchOptions$Query$FetchProducts
     extends graphql.WatchQueryOptions<Query$FetchProducts> {
   WatchOptions$Query$FetchProducts({
     String? operationName,
+    required Variables$Query$FetchProducts variables,
     graphql.FetchPolicy? fetchPolicy,
     graphql.ErrorPolicy? errorPolicy,
     graphql.CacheRereadPolicy? cacheRereadPolicy,
@@ -637,6 +751,7 @@ class WatchOptions$Query$FetchProducts
     bool carryForwardDataOnException = true,
     bool fetchResults = false,
   }) : super(
+          variables: variables.toJson(),
           operationName: operationName,
           fetchPolicy: fetchPolicy,
           errorPolicy: errorPolicy,
@@ -653,37 +768,46 @@ class WatchOptions$Query$FetchProducts
 }
 
 class FetchMoreOptions$Query$FetchProducts extends graphql.FetchMoreOptions {
-  FetchMoreOptions$Query$FetchProducts(
-      {required graphql.UpdateQuery updateQuery})
-      : super(
+  FetchMoreOptions$Query$FetchProducts({
+    required graphql.UpdateQuery updateQuery,
+    required Variables$Query$FetchProducts variables,
+  }) : super(
           updateQuery: updateQuery,
+          variables: variables.toJson(),
           document: documentNodeQueryFetchProducts,
         );
 }
 
 extension ClientExtension$Query$FetchProducts on graphql.GraphQLClient {
   Future<graphql.QueryResult<Query$FetchProducts>> query$FetchProducts(
-          [Options$Query$FetchProducts? options]) async =>
-      await this.query(options ?? Options$Query$FetchProducts());
+          Options$Query$FetchProducts options) async =>
+      await this.query(options);
   graphql.ObservableQuery<Query$FetchProducts> watchQuery$FetchProducts(
-          [WatchOptions$Query$FetchProducts? options]) =>
-      this.watchQuery(options ?? WatchOptions$Query$FetchProducts());
+          WatchOptions$Query$FetchProducts options) =>
+      this.watchQuery(options);
   void writeQuery$FetchProducts({
     required Query$FetchProducts data,
+    required Variables$Query$FetchProducts variables,
     bool broadcast = true,
   }) =>
       this.writeQuery(
         graphql.Request(
-            operation:
-                graphql.Operation(document: documentNodeQueryFetchProducts)),
+          operation:
+              graphql.Operation(document: documentNodeQueryFetchProducts),
+          variables: variables.toJson(),
+        ),
         data: data.toJson(),
         broadcast: broadcast,
       );
-  Query$FetchProducts? readQuery$FetchProducts({bool optimistic = true}) {
+  Query$FetchProducts? readQuery$FetchProducts({
+    required Variables$Query$FetchProducts variables,
+    bool optimistic = true,
+  }) {
     final result = this.readQuery(
       graphql.Request(
-          operation:
-              graphql.Operation(document: documentNodeQueryFetchProducts)),
+        operation: graphql.Operation(document: documentNodeQueryFetchProducts),
+        variables: variables.toJson(),
+      ),
       optimistic: optimistic,
     );
     return result == null ? null : Query$FetchProducts.fromJson(result);

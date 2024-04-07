@@ -6,6 +6,7 @@ import 'package:skeletons/skeletons.dart';
 
 import 'package:neat_store_frontend/core/business_logic/products/products_cubit.dart';
 import 'package:neat_store_frontend/core/data/models/product/configurable_attribute_type.dart';
+import 'package:neat_store_frontend/core/utils/translations.dart';
 import 'package:neat_store_frontend/features/products/presentation/widgets/product_card.dart';
 
 class ProductsContainer extends StatefulWidget {
@@ -89,6 +90,12 @@ class _ProductsContainerState extends State<ProductsContainer> {
     }
 
     final products = fetchProductsState.valueOrNull ?? [];
+
+    if (products.isEmpty) {
+      return Center(
+        child: Text(context.l10n.noItemsFound),
+      );
+    }
 
     return ListView.separated(
       physics: const ClampingScrollPhysics(),

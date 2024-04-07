@@ -12,11 +12,14 @@ part of 'products_cubit.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$ProductsState {
+  String? get query => throw _privateConstructorUsedError;
   AsyncValue<List<ProductModel>?> get fetchProductsState =>
+      throw _privateConstructorUsedError;
+  AsyncValue<List<String>?> get fetchSuggestionsState =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -30,7 +33,10 @@ abstract class $ProductsStateCopyWith<$Res> {
           ProductsState value, $Res Function(ProductsState) then) =
       _$ProductsStateCopyWithImpl<$Res, ProductsState>;
   @useResult
-  $Res call({AsyncValue<List<ProductModel>?> fetchProductsState});
+  $Res call(
+      {String? query,
+      AsyncValue<List<ProductModel>?> fetchProductsState,
+      AsyncValue<List<String>?> fetchSuggestionsState});
 }
 
 /// @nodoc
@@ -46,13 +52,23 @@ class _$ProductsStateCopyWithImpl<$Res, $Val extends ProductsState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? query = freezed,
     Object? fetchProductsState = null,
+    Object? fetchSuggestionsState = null,
   }) {
     return _then(_value.copyWith(
+      query: freezed == query
+          ? _value.query
+          : query // ignore: cast_nullable_to_non_nullable
+              as String?,
       fetchProductsState: null == fetchProductsState
           ? _value.fetchProductsState
           : fetchProductsState // ignore: cast_nullable_to_non_nullable
               as AsyncValue<List<ProductModel>?>,
+      fetchSuggestionsState: null == fetchSuggestionsState
+          ? _value.fetchSuggestionsState
+          : fetchSuggestionsState // ignore: cast_nullable_to_non_nullable
+              as AsyncValue<List<String>?>,
     ) as $Val);
   }
 }
@@ -65,7 +81,10 @@ abstract class _$$ProductsStateImplCopyWith<$Res>
       __$$ProductsStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({AsyncValue<List<ProductModel>?> fetchProductsState});
+  $Res call(
+      {String? query,
+      AsyncValue<List<ProductModel>?> fetchProductsState,
+      AsyncValue<List<String>?> fetchSuggestionsState});
 }
 
 /// @nodoc
@@ -79,13 +98,23 @@ class __$$ProductsStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? query = freezed,
     Object? fetchProductsState = null,
+    Object? fetchSuggestionsState = null,
   }) {
     return _then(_$ProductsStateImpl(
+      query: freezed == query
+          ? _value.query
+          : query // ignore: cast_nullable_to_non_nullable
+              as String?,
       fetchProductsState: null == fetchProductsState
           ? _value.fetchProductsState
           : fetchProductsState // ignore: cast_nullable_to_non_nullable
               as AsyncValue<List<ProductModel>?>,
+      fetchSuggestionsState: null == fetchSuggestionsState
+          ? _value.fetchSuggestionsState
+          : fetchSuggestionsState // ignore: cast_nullable_to_non_nullable
+              as AsyncValue<List<String>?>,
     ));
   }
 }
@@ -93,27 +122,39 @@ class __$$ProductsStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ProductsStateImpl extends _ProductsState {
-  const _$ProductsStateImpl({required this.fetchProductsState}) : super._();
+  const _$ProductsStateImpl(
+      {required this.query,
+      required this.fetchProductsState,
+      required this.fetchSuggestionsState})
+      : super._();
 
   @override
+  final String? query;
+  @override
   final AsyncValue<List<ProductModel>?> fetchProductsState;
+  @override
+  final AsyncValue<List<String>?> fetchSuggestionsState;
 
   @override
   String toString() {
-    return 'ProductsState(fetchProductsState: $fetchProductsState)';
+    return 'ProductsState(query: $query, fetchProductsState: $fetchProductsState, fetchSuggestionsState: $fetchSuggestionsState)';
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ProductsStateImpl &&
+            (identical(other.query, query) || other.query == query) &&
             (identical(other.fetchProductsState, fetchProductsState) ||
-                other.fetchProductsState == fetchProductsState));
+                other.fetchProductsState == fetchProductsState) &&
+            (identical(other.fetchSuggestionsState, fetchSuggestionsState) ||
+                other.fetchSuggestionsState == fetchSuggestionsState));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, fetchProductsState);
+  int get hashCode => Object.hash(
+      runtimeType, query, fetchProductsState, fetchSuggestionsState);
 
   @JsonKey(ignore: true)
   @override
@@ -124,12 +165,18 @@ class _$ProductsStateImpl extends _ProductsState {
 
 abstract class _ProductsState extends ProductsState {
   const factory _ProductsState(
-          {required final AsyncValue<List<ProductModel>?> fetchProductsState}) =
+          {required final String? query,
+          required final AsyncValue<List<ProductModel>?> fetchProductsState,
+          required final AsyncValue<List<String>?> fetchSuggestionsState}) =
       _$ProductsStateImpl;
   const _ProductsState._() : super._();
 
   @override
+  String? get query;
+  @override
   AsyncValue<List<ProductModel>?> get fetchProductsState;
+  @override
+  AsyncValue<List<String>?> get fetchSuggestionsState;
   @override
   @JsonKey(ignore: true)
   _$$ProductsStateImplCopyWith<_$ProductsStateImpl> get copyWith =>

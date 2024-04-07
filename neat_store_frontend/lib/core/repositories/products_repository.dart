@@ -2,6 +2,7 @@ import 'package:graphql/client.dart';
 import 'package:injectable/injectable.dart';
 
 import 'package:neat_store_frontend/core/data/converters/currency_converter.dart';
+import 'package:neat_store_frontend/core/data/graphql/queries/fetch_product_suggestions.graphql.dart';
 import 'package:neat_store_frontend/core/data/graphql/queries/fetch_products.graphql.dart';
 import 'package:neat_store_frontend/core/data/models/config/config_model.dart';
 import 'package:neat_store_frontend/core/data/models/money/money_model.dart';
@@ -19,8 +20,12 @@ class ProductsRepository {
 
   final GraphQLClient _gql;
 
-  Future<List<ProductModel>> fetchProducts() async {
-    final result = await _gql.query$FetchProducts();
+  Future<List<ProductModel>> fetchProducts(String query) async {
+    final result = await _gql.query$FetchProducts(
+      Options$Query$FetchProducts(
+        variables: Variables$Query$FetchProducts(query: query),
+      ),
+    );
 
     if (result.hasException) {
       throw result.exception!;
@@ -124,5 +129,21 @@ class ProductsRepository {
         );
       },
     ).toList();
+  }
+
+  Future<List<String>> fetchSuggestions() async {
+    final result = await _gql.query$FetchProductSuggestions();
+
+    if (result.hasException) {
+      throw result.exception!;
+    }
+
+    final products = result.parsedData?.products?.items ?? [];
+
+    return products
+        .map((item) => item?.name)
+        .where((element) => element?.isNotEmpty ?? false)
+        .cast<String>()
+        .toList();
   }
 }

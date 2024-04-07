@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -21,19 +23,55 @@ class ProductsCubit extends Cubit<ProductsState> {
   final Logger _logger;
   final ProductsRepository _productsRepository;
 
-  Future<void> fetchProducts() async {
+  StreamSubscription? _fetchProductsSubscription;
+
+  Future<void> fetchProducts([String query = '']) async {
+    if (query == state.query) {
+      return;
+    }
+
+    emit(
+      state.copyWith(query: query),
+    );
+
+    unawaited(_fetchProductsSubscription?.cancel());
+    _fetchProductsSubscription = _fetchProducts(query).listen(
+      (event) {
+        _logger.w('Updating fetch products state...');
+        emit(state.copyWith(fetchProductsState: event));
+      },
+    );
+  }
+
+  Stream<FetchProductsState> _fetchProducts(String query) async* {
+    yield const FetchProductsState.loading();
+
+    yield await FetchProductsState.guard(
+      () => _productsRepository.fetchProducts(query),
+    );
+  }
+
+  Future<List<String>> fetchSuggestions() async {
+    if (state.fetchSuggestionsState.value?.isNotEmpty ?? false) {
+      return state.fetchSuggestionsState.value ?? [];
+    }
+
     emit(
       state.copyWith(
-        fetchProductsState: const FetchProductsState.loading(),
+        fetchSuggestionsState: const FetchSuggestionsState.loading(),
       ),
+    );
+
+    final fetchSuggestionsState = await FetchSuggestionsState.guard(
+      _productsRepository.fetchSuggestions,
     );
 
     emit(
       state.copyWith(
-        fetchProductsState: await FetchProductsState.guard(
-          _productsRepository.fetchProducts,
-        ),
+        fetchSuggestionsState: fetchSuggestionsState,
       ),
     );
+
+    return state.fetchSuggestionsState.value ?? [];
   }
 }

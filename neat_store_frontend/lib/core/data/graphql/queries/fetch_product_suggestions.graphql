@@ -1,0 +1,9 @@
+query FetchProductSuggestions {
+    products(search: "", pageSize: 1000) {
+        items {
+            __typename
+
+            name
+        }
+    }
+}

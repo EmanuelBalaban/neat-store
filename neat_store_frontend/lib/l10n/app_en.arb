@@ -62,5 +62,7 @@
   "couponCodeHint": "ABC 10",
   "discount": "Discount",
   "apply": "Apply",
-  "remove": "Remove"
+  "remove": "Remove",
+  "search": "Search",
+  "noItemsFound": "No items found!"
 }

@@ -1,60 +1,60 @@
-query FetchProducts {
-    products(filter: {}) {
-        items {
-            __typename
+query FetchProducts($query: String!) {
+	products(search: $query, pageSize: 1000) {
+		items {
+			__typename
 
-            uid
-            sku
-            name
-            image {
-                url
-            }
-            review_count
-            rating_summary
-            price_range {
-                minimum_price {
-                    regular_price {
-                        value
-                        currency
-                    }
-                }
-            }
+			uid
+			sku
+			name
+			image {
+				url
+			}
+			review_count
+			rating_summary
+			price_range {
+				minimum_price {
+					regular_price {
+						value
+						currency
+					}
+				}
+			}
 
-            ... on ConfigurableProduct {
-                configurable_options {
-                    label
-                    attribute_code
-                    values {
-                        uid
-                        label
-                        swatch_data {
-                            value
-                        }
-                    }
-                }
-                variants {
-                    attributes {
-                        uid
-                        code
-                        label
-                    }
-                    product {
-                        uid
-                        sku
-                        image {
-                            url
-                        }
-                        price_range {
-                            minimum_price {
-                                regular_price {
-                                    value
-                                    currency
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
+			... on ConfigurableProduct {
+				configurable_options {
+					label
+					attribute_code
+					values {
+						uid
+						label
+						swatch_data {
+							value
+						}
+					}
+				}
+				variants {
+					attributes {
+						uid
+						code
+						label
+					}
+					product {
+						uid
+						sku
+						image {
+							url
+						}
+						price_range {
+							minimum_price {
+								regular_price {
+									value
+									currency
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 }
