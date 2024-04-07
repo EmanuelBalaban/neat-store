@@ -12,7 +12,7 @@ class ThemeCubit extends Cubit<ThemeMode> {
     this._logger,
     this._localStorage, {
     ThemeMode? themeMode,
-  }) : super(themeMode ?? ThemeMode.system);
+  }) : super(themeMode ?? ThemeMode.light);
 
   @FactoryMethod(preResolve: true)
   static Future<ThemeCubit> create(
